@@ -1,0 +1,2 @@
+# GhanaDataPlatforms
+Ghana study platform
