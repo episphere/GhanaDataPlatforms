@@ -106,35 +106,35 @@ export const confluence = async () => {
   };
   const confluenceDiv = document.getElementById("confluenceDiv");
   const navBarOptions = document.getElementById("navBarOptions");
-  document
-    .getElementById("loginBoxAppDev")
-    .addEventListener("click", loginAppDev);//loginAppDev);
-  document
-    .getElementById("loginBoxAppStage")
-    .addEventListener("click", loginObs);
-  document
-    .getElementById("loginBoxAppEpisphere")
-    .addEventListener("click", loginAppEpisphere);
-  document
-    .getElementById("loginBoxAppProd")
-    .addEventListener("click", loginAppProd);
+  // document
+  //   .getElementById("loginBoxAppDev")
+  //   .addEventListener("click", loginAppDev);//loginAppDev);
+  // document
+  //   .getElementById("loginBoxAppStage")
+  //   .addEventListener("click", loginObs);
+  // document
+  //   .getElementById("loginBoxAppEpisphere")
+  //   .addEventListener("click", loginAppEpisphere);
+  // document
+  //   .getElementById("loginBoxAppProd")
+  //   .addEventListener("click", loginAppProd);
 
   if (localStorage.parms === undefined) {
-    const loginBoxAppDev = document.getElementById("loginBoxAppDev");
-    const loginBoxAppEpisphere = document.getElementById(
-      "loginBoxAppEpisphere"
-    );
-    const loginBoxAppProd = document.getElementById("loginBoxAppProd");
-    const loginBoxAppStage = document.getElementById("loginBoxAppStage");
-    //let urltest = location.origin + location.pathname;
-    if (location.origin.match("localhost")) loginBoxAppDev.hidden = false;
-    if (location.origin.match("epidataplatforms-stage"))
-      loginBoxAppStage.hidden = false;
-    if (location.origin.match("epidataplatforms"))
-      loginBoxAppProd.hidden = false;
-    if (location.origin.match("episphere")) loginBoxAppEpisphere.hidden = false;
+  //   const loginBoxAppDev = document.getElementById("loginBoxAppDev");
+  //   const loginBoxAppEpisphere = document.getElementById(
+  //     "loginBoxAppEpisphere"
+  //   );
+  //   const loginBoxAppProd = document.getElementById("loginBoxAppProd");
+  //   const loginBoxAppStage = document.getElementById("loginBoxAppStage");
+  //   //let urltest = location.origin + location.pathname;
+  //   if (location.origin.match("localhost")) loginBoxAppDev.hidden = false;
+  //   if (location.origin.match("epidataplatforms-stage"))
+  //     loginBoxAppStage.hidden = false;
+  //   if (location.origin.match("epidataplatforms"))
+  //     loginBoxAppProd.hidden = false;
+  //   if (location.origin.match("episphere")) loginBoxAppEpisphere.hidden = false;
 
-    await storeAccessToken();
+  //   await storeAccessToken();
 
     manageRouter();
   }
@@ -415,7 +415,7 @@ const manageRouter = async () => {
     const element = document.getElementById("homePage");
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
-    document.title = "BCRP Data Platform";
+    document.title = "GBHS";
     assignNavbarActive(element);
     infoDeck();
     hideAnimation();
@@ -617,7 +617,7 @@ const manageHash = async () => {
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
     assignNavbarActive(element);
-    document.title = "BCRP Data Platform";
+    document.title = "GBHS";
     infoDeckAfterLoggedIn();
     hideAnimation();
   } else if (hash === "#about/overview") {

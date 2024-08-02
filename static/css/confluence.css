@@ -63,7 +63,7 @@ body {
 }
 
 .active {
-  border-bottom: 2px solid #2a72a5;
+  border-bottom: 2px solid #006B3D;
 }
 
 .active-tab {
@@ -231,7 +231,7 @@ body {
 }
 
 .confluence-pink {
-  color: #2a72a5;
+  color: #006B3D;
   font-weight: bold;
 }
 
@@ -397,7 +397,7 @@ label {
 
 .dc-chart .selected circle,
 .dc-chart .selected path {
-  stroke: #2a72a5 !important;
+  stroke: #006B3D !important;
   stroke-width: 2 !important;
 }
 
@@ -1036,7 +1036,7 @@ table.tablecon td {
   cursor: pointer;
   background-color: #ffffff !important;
   /* color: #A41652 !important; */
-  color: #2a72a5 !important;
+  color: #006B3D !important;
   border: 0px;
 }
 
@@ -1047,9 +1047,9 @@ table.tablecon td {
 } */
 
 .navbar-active {
-  border-bottom: 4px solid #2a72a5 !important;
+  border-bottom: 4px solid #006B3D !important;
   background-color: #ffffff !important;
-  color: #2a72a5 !important;
+  color: #006B3D !important;
 }
 
 .dropdown-btn {
@@ -1068,7 +1068,7 @@ table.tablecon td {
 .navbar-dropdown {
   background-color: #ffffff !important;
   /* color: #A41652 !important; */
-  color: #2a72a5 !important;
+  color: #006B3D !important;
   padding: 0 !important;
 }
 
@@ -1095,7 +1095,7 @@ table.tablecon td {
 .dropdown-menu-links {
   text-decoration: none !important;
   /* color: #A41652 !important; */
-  color: #2a72a5 !important;
+  color: #006B3D !important;
   padding: 0.35rem 1rem !important;
   font-weight: bold !important;
 }
@@ -1149,7 +1149,7 @@ table.tablecon td {
 
 .primary-bg {
   /* background-color: #A41652 !important; */
-  background-color: #319fbe !important;
+  background-color: #006B3D !important;
 }
 
 .secondary-bg {
@@ -1407,7 +1407,7 @@ span.icon {
 }
 
 .active-chart {
-  border-bottom: 2px solid #2a72a5;
+  border-bottom: 2px solid #006B3D;
 }
 
 .div-sticky {
@@ -1538,7 +1538,7 @@ form {
 }
 
 .btn-primary {
-  background-color: #2a72a5 !important;
+  background-color: #006B3D !important;
 }
 
 .links-border-right {
@@ -1850,7 +1850,7 @@ form {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 350px;
-  background-image: url("../images/nci-vol-10623-150.jpg");
+  background-image: url("../images/Picture1.jpg");
 }
 
 @media only screen and (max-device-width: 1366px) {
@@ -2102,14 +2102,14 @@ p {
 .buttonsubmit {
   position: relative;
   padding: 8px 16px;
-  background-color: #2a72a5 !important;
+  background-color: #006B3D !important;
   border: none;
   outline: none;
   border-radius: 2px;
   cursor: pointer;
 }
 .buttonsubmit:active {
-  background-color: #2a72a5ab !important;
+  background-color: #006B3Dab !important;
 }
 
 .buttonsubmit:hover {
@@ -2209,7 +2209,7 @@ ul.about-consortia {
 
 .header-sortable:hover {
   text-decoration: none;
-  color: #2a72a5;
+  color: #006B3D;
   cursor: pointer;
 }
 

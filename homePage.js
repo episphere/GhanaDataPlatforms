@@ -7,12 +7,12 @@ export const infoDeck = () => {
   template += `
         <div class="secondary-bg padding-bottom-1rem">
             <div class="confluence-banner">
-                <img src="./static/images/nci-vol-10623-150.jpg" class="banner-logo" style="min-height: 120px;  max-height=450px;" alt="Confluence logo">
+                <img src="./static/images/Picture1.jpg" class="banner-logo" style="min-height: 120px;  max-height=450px;" alt="Confluence logo">
                 <div class="banner-overlay-text row justify-content-center text-center">
                     <div class="col-xl-12">
-                        <h1 class="banner-overlay-h1">The Breast Cancer Risk Prediction Project (BCRPP)</h1>
+                        <h1 class="banner-overlay-h1">The Ghana Breast Health Study (GBHS)</h1>
                         <div class="banner-overlay-line"></div>
-                        <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> Building an integrated multi-ethnic breast cancer risk prediction model</h2>
+                        <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> Input Banner Here</h2>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@ export const infoDeck = () => {
             <div class="font-size-28 font-bold font-family-helvetica our-goals mt-3 mb-2">OUR GOALS</div>
             <div class="row">
                 <div class="col-lg-3"></div>
-                <div class="col-lg-6 font-size-18 align-left">To build a large-scale collaborative research resource with data from over 1.5 million women from diverse backgrounds participating in prospective cohort studies or trials to:</div>
+                <div class="col-lg-6 font-size-18 align-left">Update for GBHS</div>
                 <div class="col-lg-3"></div>
             </div>
             <br>
@@ -62,8 +62,8 @@ export const infoDeck = () => {
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6 font-size-18 align-left mb-3">
                     <ul>
-                        <li>Develop comprehensive breast cancer risk prediction models for precision prevention in diverse populations</li>
-                        <li>Validate newly developed models in integrated health care systems or breast cancer screening trials</li>
+                        <li>GBHS update needed</li>
+                        <li>GBHS update needed</li>
                     </ul>
                 </div>
                 <div class="col-lg-3"></div>
@@ -73,7 +73,7 @@ export const infoDeck = () => {
             <div class="container align-left confluence-info font-family-montserrat">
 
                 <!---<div>The BCRPP is funded by the US National Cancer Institute (NCI) and coordinated by the Division of Cancer Epidemiology and Genetics (DCEG) of NCI and the Harvard T.H. Chan School of Public Health in collaboration with the NCI Cohort Consortium.</div>--->
-                <div>The BCRPP is funded by the US National Cancer Institute (NCI) grant number <a href="https://maps.cancer.gov/overview/DCCPSGrants/abstract.jsp?applId=10263893&term=CA249866">1U01CA249866-01</a> and the NCI Intramural Research Funds. BCRPP is coordinated by the Harvard T.H. Chan School of Public Health and the Division of Cancer Epidemiology and Genetics (DCEG) of NCI, in collaboration with the NCI Cohort Consortium.</div>
+                <div>The GBHS is funded by the US National Cancer Institute (NCI) grant number <a href="https://maps.cancer.gov/overview/DCCPSGrants/abstract.jsp?applId=10263893&term=CA249866">UPDATE LINK AND NUMBER</a> and the NCI Intramural Research Funds. BCRPP is coordinated by the Harvard T.H. Chan School of Public Health and the Division of Cancer Epidemiology and Genetics (DCEG) of NCI, in collaboration with the NCI Cohort Consortium.</div>
             </div>
         </div>
     `;
@@ -86,10 +86,10 @@ export const infoDeckAfterLoggedIn = async () => {
   template += `
         <div class="secondary-bg padding-bottom-1rem">
             <div class="confluence-banner">
-                <img src="./static/images/nci-vol-10623-150.jpg" class="banner-logo" style="min-height: 120px;  max-height=250px;" alt="Confluence logo">
+                <img src="./static/images/Picture1.jpg" class="banner-logo" style="min-height: 120px;  max-height=250px;" alt="Confluence logo">
                 <div class="banner-overlay-text row justify-content-center text-center">
                     <div class="col-md-12">
-                        <h1 class="banner-overlay-h1">The Breast Cancer Risk Prediction Project (BCRPP)</h1>
+                        <h1 class="banner-overlay-h1">The Ghana Breast Health Study (GBHS)</h1>
                         <div class="banner-overlay-line"></div>
                         <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> Building an integrated multi-ethnic breast cancer risk prediction model</h2>
                     </div>
