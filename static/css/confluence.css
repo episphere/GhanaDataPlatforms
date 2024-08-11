@@ -1119,6 +1119,7 @@ table.tablecon td {
   display: block;
   z-index: 0;
   overflow: hidden;
+  max-height: 450px;
 }
 
 .banner-overlay-h1 {
@@ -1845,12 +1846,13 @@ form {
 } */
 
 .banner-logo {
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 350px;
-  background-image: url("../images/Picture1.jpg");
+  max-height: 400px;
+  background-image: url("../images/Picture8.png");
 }
 
 @media only screen and (max-device-width: 1366px) {

@@ -7,7 +7,7 @@ export const infoDeck = () => {
   template += `
         <div class="secondary-bg padding-bottom-1rem">
             <div class="confluence-banner">
-                <img src="./static/images/Picture1.jpg" class="banner-logo" style="min-height: 120px;  max-height=450px;" alt="Confluence logo">
+                <img src="./static/images/Picture4.jpg" class="banner-logo" style="min-height: 100px;  max-height=200px;" alt="Confluence logo">
                 <div class="banner-overlay-text row justify-content-center text-center">
                     <div class="col-xl-12">
                         <h1 class="banner-overlay-h1">The Ghana Breast Health Study (GBHS)</h1>
@@ -86,7 +86,7 @@ export const infoDeckAfterLoggedIn = async () => {
   template += `
         <div class="secondary-bg padding-bottom-1rem">
             <div class="confluence-banner">
-                <img src="./static/images/Picture1.jpg" class="banner-logo" style="min-height: 120px;  max-height=250px;" alt="Confluence logo">
+                <img src="./static/images/Picture4.jpg" class="banner-logo" style="min-height: 120px;  max-height=250px;" alt="Confluence logo">
                 <div class="banner-overlay-text row justify-content-center text-center">
                     <div class="col-md-12">
                         <h1 class="banner-overlay-h1">The Ghana Breast Health Study (GBHS)</h1>
