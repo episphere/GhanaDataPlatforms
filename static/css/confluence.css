@@ -1102,7 +1102,7 @@ table.tablecon td {
 
 .banner-overlay-line {
   box-sizing: border-box;
-  border-bottom: 2.5px solid #ffffff;
+  border-bottom: 2.5px solid #000000;
   margin: 3% 16%;
 }
 
@@ -1124,7 +1124,7 @@ table.tablecon td {
 
 .banner-overlay-h1 {
   font-size: 3vw;
-  color: #ffffff;
+  color: #000000;
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
   margin: 0px !important;
@@ -1132,7 +1132,7 @@ table.tablecon td {
 
 .banner-overlay-h3 {
   font-size: 1.5vw;
-  color: #ffffff;
+  color: #000000;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -1847,7 +1847,7 @@ form {
 
 .banner-logo {
   /* background-attachment: fixed; */
-  background-position: center;
+  /* background-position: center; */
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 350px;
@@ -1859,6 +1859,18 @@ form {
   .banner-logo {
     background-attachment: scroll;
   }
+}
+
+.imgB1 {
+  z-index: 0;
+  position: absolute;
+  left: 10%;
+  top: 15%;
+  height: 75%;
+  /* -ms-transform: translateY(-50%);
+  transform: translateY(-50%); */
+  /* transform: translateX(-300%);
+  -ms-transform: translateX(-300%); */
 }
 
 .active-page {

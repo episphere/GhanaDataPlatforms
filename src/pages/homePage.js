@@ -7,6 +7,7 @@ export const infoDeck = () => {
         <div class="secondary-bg padding-bottom-1rem">
             <div class="confluence-banner">
                 <div class="banner-logo">
+                    <img class="imgB1" src="static/images/ghanaOutline.png">
                     <div class="banner-overlay-text row justify-content-center text-center">
                         <div class="col-xl-12">
                             <h1 class="banner-overlay-h1">The Ghana Breast Health Study (GBHS)</h1>
