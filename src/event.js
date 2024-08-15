@@ -31,7 +31,7 @@ import {
   summaryStatsFolder,
   summaryStatsFolderId
 } from "./shared.js";
-import { renderDataSummary } from "./pages/about.js";
+//import { renderDataSummary } from "./pages/about.js";
 import { variables } from "./variables.js";
 import {
   template as dataGovernanceTemplate,
@@ -1781,14 +1781,14 @@ export const addEventConsortiaFilter = (d) => {
           totalPatients += obj.numPatients;
           totalWomen += obj.numWomen;
         });
-        renderDataSummary(
-          {
-            totalConsortia,
-            totalPatients,
-            totalWomen,
-          },
-          true
-        );
+        // renderDataSummary(
+        //   {
+        //     totalConsortia,
+        //     totalPatients,
+        //     totalWomen,
+        //   },
+        //   true
+        // );
       } else {
         let totalConsortia = 0,
           totalWomen = 0,
@@ -1798,14 +1798,14 @@ export const addEventConsortiaFilter = (d) => {
           totalPatients += obj.numPatients;
           totalWomen += obj.numWomen;
         });
-        renderDataSummary(
-          {
-            totalConsortia,
-            totalPatients,
-            totalWomen,
-          },
-          true
-        );
+        // renderDataSummary(
+        //   {
+        //     totalConsortia,
+        //     totalPatients,
+        //     totalWomen,
+        //   },
+        //   true
+        // );
       }
     });
   });
