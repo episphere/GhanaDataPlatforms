@@ -107,11 +107,33 @@ export const renderOverView = async () => {
                     </table>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="column-ghana">
+                    <ul>
+                      <li>Controls (2106, 736 Accra, 1370 Kumasi)</li>
+                      <li>Cases (2213, 573 Accra, 1640 Kumasi)</li>
+                        <ul>
+                          <li>Invasive (1152, 390 Accra, 762 Kumasi)</li>
+                          <li>In-situ (18, 5 Accra, 13 Kumasi)</li>
+                          <li>Benign (786, 137 Accra, 649 Kumasi)</li>
+                          <li>Other case type (23, 7 Accra, 16 Kumasi)</li>
+                          <li>Unconfirmed cases (234, 34 Accra, 200 Kumasi)
+                        </ul>
+                    </ul>
+                  </div>
+                </div>
             </div>
         </div>
-        <div class="align-left" id="confluenceDataSummary"></div>
+        <div class="ternary-bg">
+          <div class="container align-left confluence-info font-family-montserrat">
+            For more information
+            <br>
+            Visit: <a href="https://dceg.cancer.gov/research/cancer-types/breast-cancer/ghana-breast-study">https://dceg.cancer.gov/research/cancer-types/breast-cancer/ghana-breast-study</a>
+            <br>
+            Email: xxx@nih.gov
+          </div>
+        </div>
     </div>
-    <div class="align-left" id="confluenceDataSummary"></div>
     `;
     
   document.getElementById("overview").innerHTML = template;
