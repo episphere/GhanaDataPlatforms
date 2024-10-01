@@ -309,7 +309,7 @@ export const confluence = async () => {
       const element = document.getElementById("dataRequest");
       if (!element) return;
       if (element.classList.contains("navbar-active")) return;
-      document.title = "BCRPP - Data Access";
+      document.title = "GBHS - Data Access";
       assignNavbarActive(element, 1);
       confluenceDiv.innerHTML = dataRequestTemplate("overview");
       hideAnimation();

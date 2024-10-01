@@ -63,30 +63,23 @@ export const dataAccessNotSignedIn = () => {
               </div>
               <div class="data-submission div-border font-size-18" style="padding-left: 1rem; padding-right: 1rem;">
                   <div class="row m-0">
-                      The Breast Cancer Risk Prediction Project is currently generating genotyping data and harmonizing 
-                      risk factor and clinical data. Data is expected to be available for request in 2024. Data access 
-                      will be facilitated through this platform, in accordance to the data transfer agreements signed 
-                      between participating studies (originator) and the 
-                        <a href="/BCRP-DACC-Policies-Procedures-2023-01-16.docx" download>
-                          policies and procedures of the BCRPP Data Coordinating Center (DCC)
-                        </a>
-                      at the Division of Cancer Epidemiology and Genetics at the National Cancer Institute.
+                    <b>Guidelines for Scientific Review of Proposals</b>
+                      All studies that are proposing to utilize data collected from the Ghana Breast Health Study must be reviewed and approved by the Ghana Breast Health Study Steering Committee (GBHSSC).  The proposal should not exceed five pages (including references and tables) and should contain the following information:
                   </div></br>
                   <div class="row m-0">
-                      The following data access procedures are planned:
-                  </div>
-                  <div class="row m-0">
                       <ul>
-                          <li style=" margin-bottom: 10px;">Researcher submits a study concept describing the project, including variables of interest, via the BCRPP Data Platform. This request will be sent via the platform to the relevant BCRPP data access coordinating committee (DACC) which governs the requested data.</li>
-                          <li style=" margin-bottom: 10px;">After approval by the DACC, individual studies contributing data are notified and given a time period to opt-out their study from the approved project.</li>
-                          <li style=" margin-bottom: 10px;">After the opt-out period has elapsed, the researcher's institution signs a data transfer agreement (DTA) for the study concept with the BCRPP DCC.</li>
-                          <li style=" margin-bottom: 10px;">Upon DTA signatures, the DCC will provide access of the approved data to researchers. </li>
-                          <li style=" margin-bottom: 10px;">Users granted access to BCRPP data agree to only access data for the purposes outlined their approved proposal. Users will not save any individual participant's data (i.e., make permanent copies) on local computers or any persistent storage device other than the controlled-access workspace provided by the BCRPP designated for the project.</li>
+                          <li style=" margin-bottom: 10px;">Study title</li>
+                          <li style=" margin-bottom: 10px;">Names of key investigators for the study and their affiliations, and a description of the study team’s experience in the subject area for the proposed work</li>
+                          <li style=" margin-bottom: 10px;">Background for the hypotheses to be evaluated in the proposed study, and how the data from this study will contribute to the literature</li>
+                          <li style=" margin-bottom: 10px;">Overall goal and specific study aims</li>
+                          <li style=" margin-bottom: 10px;">Data and biological specimens requested.  If biologic material is involved with the proposal, the type of biologic material (e.g., saliva, serum, tissue, etc.) and the amount (e.g., volume, weight, number) of each sample that is being requested</li>
+                          <li style=" margin-botton: 10px;">Laboratory assays, collaborating laboratory(ies), and quality control measures</li>
+                          <li style=" margin-botton: 10px;">Data analysis and study power considerations</li>
+                          <li style=" margin-botton: 10px;">Budgetary considerations</li>
+                          <li style=" margin-botton: 10px;">Timeline for completion of different components of this project (Gantt Chart)</li>
                       </ul>
                   </div>
-                    To request the ability to submit study concepts to the BCRPP DACC, please email
-                    <a href = "mailto:bcrpp@mail.nih.gov">bcrpp@mail.nih.gov</a>. 
-                    Note that study concepts submitted to the BCRPP DACC should not request access to data from only a few cohorts that are participating in the BCRPP. In such situations, please directly contact the cohorts you are interested in requesting data from.
+                    Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the GBHS Team. The GBHSSC will review proposals as they are submitted and get back to the lead investigators within two weeks. No response after two weeks will be interpreted as having no objections to the proposal. Updates of proposals will be requested on a yearly basis.  There will need to be evidence of substantial progress over time.  Should there not be such evidence, the project (and/or associated data) will be considered appropriate for re-assignment to other investigators.
                 </div>
             </div>
         </div>
