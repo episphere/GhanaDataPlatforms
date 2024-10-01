@@ -180,11 +180,11 @@ body {
   color: #ffd663;
 }
 
-.list-group-item {
+/* .list-group-item {
   background-color: #d0cece !important;
   text-align: left !important;
   border: 1px solid #ffffff !important;
-}
+} */
 
 .about-list-item {
   margin: 0.25px 0px;
@@ -235,15 +235,15 @@ body {
   background-color: #ffffff;
 }
 
-.list-group-item:hover {
+/* .list-group-item:hover {
   cursor: pointer;
   font-weight: bold;
-}
+} */
 
-.list-group-item-active:hover {
+/* .list-group-item-active:hover {
   color: #ffffff !important;
   font-weight: bold;
-}
+} */
 
 .confluence-pink {
   color: #006B3D;
@@ -262,11 +262,11 @@ body {
   padding-left: 20px !important;
 }
 
-.list-group-item-active {
+/* .list-group-item-active {
   color: #ffffff !important;
   background-color: #4e5051 !important;
   font-weight: bold;
-}
+} */
 
 .info-confluence {
   margin: 1rem 0;
@@ -815,23 +815,23 @@ table.tablecon td {
   padding: 0 0.5rem;
 }
 
-.list-group-item {
+/* .list-group-item {
   padding: 0.25rem 1.25rem !important;
   width: inherit;
   color: #495057;
   margin: 1;
-}
+} */
 
-.list-group-item.active {
+/* .list-group-item.active {
   background-color: #fff !important;
   border-color: #1127fc !important;
   color: #000 !important;
-}
+} */
 
-.list-group-item:hover {
+/* .list-group-item:hover {
   text-decoration: none;
   color: #000 !important;
-}
+} */
 
 .list-variables {
   overflow: scroll;

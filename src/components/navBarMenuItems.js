@@ -14,8 +14,8 @@ export const navBarMenutemplate = () => {
             </button>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/overview" id="aboutBCRPP">Overview</a>
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/description" id="studydescBCRPP">Description of Studies</a>
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/contact" id="contactBCRPP">DACC Members</a>
+                <!---<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/description" id="studydescBCRPP">Description of Studies</a>--->
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/contact" id="contactBCRPP">Study Team Members</a>
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="https://github.com/Breast-Cancer-Risk-Prediction-Project" target="_blank" id="BCRPP_github">BCRPP GitHub</a>
             </div>
         </div>
@@ -180,7 +180,7 @@ export function pageNavBar(page, activeTab, ...pageHeaders) {
       link.href = `#${page}/description`;
       if (activeTab === "description") link.classList.add("active");
     }
-    if (header === "DACC Members") {
+    if (header === "Study Team Members") {
       link.href = `#${page}/contact`;
       if (activeTab === "contact") link.classList.add("active");
     }

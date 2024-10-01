@@ -400,7 +400,7 @@ const manageRouter = async () => {
     const element = document.getElementById("contactBCRPP");
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
-    document.title = "GBHS - DACC Members";
+    document.title = "GBHS - Study Team";
     assignNavbarActive(element, 1);
     aboutConfluence("contact", true);
     confluenceContactPage();
@@ -604,7 +604,7 @@ const manageHash = async () => {
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
     assignNavbarActive(element, 1);
-    document.title = "GBHS - DACC Members";
+    document.title = "GBHS - Study Team";
     //const fileInfo = await getFileInfo(904897189551);
     //console.log({ fileInfo });
     //aboutConfluence("contact", fileInfo ? true : false);

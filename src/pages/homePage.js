@@ -47,27 +47,23 @@ export const infoDeck = () => {
         <div class="container align-center">
             <div class="font-size-28 font-bold font-family-montserrat our-goals mt-3 mb-2">OUR GOALS</div>
             <div class="row">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6 font-size-18 align-left">Update for GBHS</div>
-                <div class="col-lg-3"></div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6 font-size-18 align-left mb-3">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 font-size-18 align-left mb-3">
                     <ul>
-                        <li>GBHS update needed</li>
-                        <li>GBHS update needed</li>
+                        <li>Identify factors that predispose to the development of breast cancer among Ghanaian women (including assessing the role of well-accepted breast cancer risk factors originally identified in other populations as well as more speculative factors that might play unique roles among African women)</li>
+                        <li>Identify genetic and other biologic parameters predictive of risk and that may interact with other risk factors (including assessing the role of established breast cancer susceptibility regions originally identified in other populations as well as more speculative factors such as epigenetic and immunologic markers that might play unique roles among African women)</li>
+                        <li>Assess how these factors vary by clinical and molecular characteristics of the tumors (including assessing risk factors for triple negative tumors)</li>
+                        <li>Assist in building capacity for future research investigations in Ghana</li>
                     </ul>
                 </div>
-                <div class="col-lg-3"></div>
+                <div class="col-lg-1"></div>
             </div>
         </div>
-        <div class="ternary-bg">
+        <!---<div class="ternary-bg">
             <div class="container align-left confluence-info font-family-montserrat">
             <div>The GBHS is funded by the US National Cancer Institute (NCI) grant number <a href="https://maps.cancer.gov/overview/DCCPSGrants/abstract.jsp?applId=10263893&term=CA249866">UPDATE FOR GBHS</a> and the NCI Intramural Research Funds. BCRPP is coordinated by the Harvard T.H. Chan School of Public Health and the Division of Cancer Epidemiology and Genetics (DCEG) of NCI, in collaboration with the NCI Cohort Consortium.</div>
             </div>
-        </div>
+        </div>--->
     `;
   document.getElementById("confluenceDiv").innerHTML = template;
 };
