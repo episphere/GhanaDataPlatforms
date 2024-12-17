@@ -64,7 +64,7 @@ export const dataDictionaryTemplate = async () => {
         <button id="filterBarToggle"><i class="fas fa-lg fa-caret-left"></i></button>
         <div class="main-summary-row pl-2" style="min-height: 10px;margin-bottom: 1rem;">
             <div class="col white-bg div-border align-left font-size-17" style="padding: 0.5rem;" id="listFilters">
-                <span class="font-bold">Categories:</span> All
+                <span class="font-bold">Variable Category:</span> All
             </div>
         </div>
         <div class="main-summary-row pl-2">
@@ -289,7 +289,7 @@ const filterDataHandler = (dictionary) => {
     ${
       variableTypeSelection.length > 0
         ? `
-        <span class="font-bold">Category: </span>${variableTypeSelection[0]} ${
+        <span class="font-bold">Variable Category: </span>${variableTypeSelection[0]} ${
             variableTypeSelection.length > 1
               ? `and <span class="other-variable-count">${
                   variableTypeSelection.length - 1
@@ -298,7 +298,7 @@ const filterDataHandler = (dictionary) => {
           }
     `
         : `
-        <span class="font-bold">Category:</span> All`
+        <span class="font-bold">Variable Category:</span> All`
     }
     `;
 

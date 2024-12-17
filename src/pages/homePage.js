@@ -45,7 +45,7 @@ export const infoDeck = () => {
         </div>
         <div class="secondary-bg inverse-triangle"></div>
         <div class="container align-center">
-            <div class="font-size-28 font-bold font-family-montserrat our-goals mt-3 mb-2">OUR GOALS</div>
+            <div class="font-size-28 font-bold font-family-montserrat our-goals mt-3 mb-2">Aims and Goals</div>
             <div class="row">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10 font-size-18 align-left mb-3">

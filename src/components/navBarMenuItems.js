@@ -34,7 +34,10 @@ export const navBarMenutemplate = () => {
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
                 <!--h6 class="dropdown-header dropdown-header-bg font-bold">Explore Data</h6-->
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/dictionary" title="Data Dictionary" id="dataDictionary">
-                Dictionary
+                  Dictionary
+                </a>
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/protocols" title="Protocols" id="dataProtocols">
+                  Protocols
                 </a>
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/summary" title="Summary Statistics" id="dataSummary">
                     Summary Statistics
@@ -191,6 +194,10 @@ export function pageNavBar(page, activeTab, ...pageHeaders) {
     if (header === "Dictionary") {
       link.href = `#${page}/dictionary`;
       if (activeTab === "dictionary") link.classList.add("active");
+    }
+    if (header === "Protocols") {
+      link.href = `#${page}/protocols`;
+      if (activeTab === "protocols") link.classList.add("active");
     }
     if (header === "Subset Statistics") {
       link.href = `#${page}/subset`;

@@ -74,6 +74,7 @@ import { renderDescription, renderDescriptionNotSignedIn } from "./src/pages/des
 import { dataDictionaryTemplate } from "./src/pages/dictionary.js";
 import { showPreview } from "./src/components/boxPreview.js";
 import { confluenceEventsPage, eventsBody } from './src/pages/events.js';
+import { protocolsTemplate } from './src/pages/protocols.js';
 
 /**
  * 1. add Scientifix comitte to menu
@@ -126,6 +127,7 @@ export const confluence = async () => {
     const dataSummaryElement = document.getElementById("dataSummary");
     const dataSummarySubsetElement = document.getElementById("dataSummarySubset");
     const dataDictionaryElement = document.getElementById("dataDictionary");
+    const dataProtocols = document.getElementById("dataProtocols");
     const dataRequestElement = document.getElementById("dataRequest");
     const dataFormElement = document.getElementById("dataForm");
     const studyAcceptedElement = document.getElementById("studyAccepted");
@@ -207,7 +209,7 @@ export const confluence = async () => {
         const confluenceDiv = document.getElementById("confluenceDiv");
         showAnimation();
         assignNavbarActive(dataDictionaryElement, 1);
-        document.title = "BCRPP - Data Dictionary";
+        document.title = "GBHS - Data Dictionary";
         confluenceDiv.innerHTML = dataSummary(
           "Data Dictionary",
           true,
@@ -221,6 +223,28 @@ export const confluence = async () => {
           .querySelectorAll('[href="#data_exploration/dictionary"]')[1]
           .classList.add("active");
         dataDictionaryTemplate();
+      });
+    }
+    if (dataProtocols) {
+      dataProtocols.addEventListener("click", () => {
+        if (dataProtocols.classList.contains("navbar-active")) return;
+        const confluenceDiv = document.getElementById("confluenceDiv");
+        showAnimation();
+        assignNavbarActive(dataProtocols, 1);
+        document.title = "";
+        confluenceDiv.innerHTML = dataSummary(
+          "Protocols",
+          true,
+          false,
+          false
+        );
+        //addEventUpdateSummaryStatsData();
+        //addEventcreateaccessStats();
+        removeActiveClass("nav-link", "active");
+        document
+          .querySelectorAll('[href="#data_exploration/protocols"]')[1]
+          .classList.add("active");
+          protocolsTemplate();
       });
     }
     if (dataFormElement) {
@@ -501,6 +525,26 @@ const manageRouter = async () => {
       .querySelectorAll('[href="#data_exploration/dictionary"]')[1]
       .classList.add("active");
     dataDictionaryTemplate();
+  } else if (hash === "#data_exploration/protocols") {
+    const dataProtocols = document.getElementById("dataProtocols");
+    if (
+      !dataProtocols ||
+      dataProtocols.classList.contains("navbar-active")
+    )
+      return;
+    showAnimation();
+    assignNavbarActive(dataProtocols, 1);
+    document.title = "GBHS - Protocols";
+    confluenceDiv.innerHTML = dataSummary(
+      "Sample/Data Collection Protocols",
+      true,
+      false,
+      false,
+      true
+    );
+    removeActiveClass("nav-link", "active");
+    document.querySelectorAll('[href="#data_exploration/protocols"]')[1].classList.add("active");
+    protocolsTemplate();
   } else if (hash === "#userSubmissions") {
     const viewUserSubmissionElement =
       document.getElementById("userSubmissions");
