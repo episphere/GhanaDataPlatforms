@@ -406,19 +406,34 @@ const renderDataDictionary = (dictionary, pageSize, headers) => {
             </div>
             <div id="study${desc["Variable Name"] ? desc["Variable Name"].replace(/(<b>)|(<\/b>)/g,"") : ""}" class="collapse" aria-labelledby="heading${desc["Variable Name"]}">
                 <div class="card-body" style="padding-left: 10px;background-color:#f6f6f6;">
-                    <!---${
-                      desc["Category"]
-                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Category</div><div class="col">${desc["Category"]}</div></div>`
-                        : ``
-                    } --->
                     ${
-                      desc["Coding"]
-                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Coding</div><div class="col">${desc["Coding"]}</div></div>`
+                      desc["Data Source"]
+                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Data Source</div><div class="col">${desc["Data Source"]}</div></div>`
+                        : ``
+                    }
+                   ${
+                      desc["Question Text"]
+                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Question Text</div><div class="col">${desc["Question Text"]}</div></div>`
                         : ``
                     }
                     ${
                       desc["Variable Type"]
                         ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Variable Type</div><div class="col">${desc["Variable Type"]}</div></div>`
+                        : ``
+                    }
+                    ${
+                      desc["Variable Length"]
+                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Variable Length</div><div class="col">${desc["Variable Length"]}</div></div>`
+                        : ``
+                    }
+                    ${
+                      desc["Derived variable macro Code"]
+                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Derived variable macro Code</div><div class="col">${desc["Derived variable macro Code"]}</div></div>`
+                        : ``
+                    }
+                    ${
+                      desc["Format/Value"]
+                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Format/Value</div><div class="col">${desc["Format/Value"]}</div></div>`
                         : ``
                     }
                 `;
