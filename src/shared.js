@@ -1888,6 +1888,55 @@ export const handleRangeRequests = async () => {
   });
 };
 
+export const getFileXLSX = async (id) => {
+  try{
+      const access_token = JSON.parse(localStorage.parms).access_token;
+      let r = await fetch(`https://api.box.com/2.0/files/${id}/content`,{
+          method:'GET',
+          headers:{
+              Authorization:"Bearer "+access_token
+          }
+      });
+      if(r.status === 401) {
+          if((await refreshToken()) === true) return await getFile(id);
+      }
+      else if(r.status === 200) {
+          return r;
+      }
+      else{
+          hideAnimation();
+          console.error(r);
+      }
+  }
+  catch(err) {
+      if((await refreshToken()) === true) return await getFile(id);
+  }
+};
+
+export const array2Json = (array) => {
+  const keys = array.shift();
+  const json = array.reduce((agg, arr) => {
+      agg.push(arr.reduce((obj, item, index) => {
+        obj[keys[index]] = item;
+        return obj;
+      }, {}));
+      return agg;
+    }, [])
+  return json;
+}
+
+export function getUniqueKeyNames(arr) {
+  const uniqueKeys = new Set();
+
+  arr.forEach(subArray => {
+    subArray.forEach(obj => {
+      Object.keys(obj).forEach(key => uniqueKeys.add(key));
+    });
+  });
+
+  return Array.from(uniqueKeys);
+}
+
 export const filePreviewer = (fileId, divId) => {
   const access_token = JSON.parse(localStorage.parms).access_token;
   const preview = new Box.Preview();

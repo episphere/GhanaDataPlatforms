@@ -67,7 +67,7 @@ export const dataAccessNotSignedIn = () => {
                       All studies that are proposing to utilize data collected from the Ghana Breast Health Study must be reviewed and approved by the Ghana Breast Health Study Steering Committee (GBHSSC).  The proposal should not exceed five pages (including references and tables) and should contain the following information:
                   </div></br>
                   <div class="row m-0">
-                      <ul>
+                      <ol>
                           <li style=" margin-bottom: 10px;">Study title</li>
                           <li style=" margin-bottom: 10px;">Names of key investigators for the study and their affiliations, and a description of the study team’s experience in the subject area for the proposed work</li>
                           <li style=" margin-bottom: 10px;">Background for the hypotheses to be evaluated in the proposed study, and how the data from this study will contribute to the literature</li>
@@ -77,7 +77,7 @@ export const dataAccessNotSignedIn = () => {
                           <li style=" margin-botton: 10px;">Data analysis and study power considerations</li>
                           <li style=" margin-botton: 10px;">Budgetary considerations</li>
                           <li style=" margin-botton: 10px;">Timeline for completion of different components of this project (Gantt Chart)</li>
-                      </ul>
+                      </ol>
                   </div>
                     Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the GBHS Team. The GBHSSC will review proposals as they are submitted and get back to the lead investigators within two weeks. No response after two weeks will be interpreted as having no objections to the proposal. Updates of proposals will be requested on a yearly basis.  There will need to be evidence of substantial progress over time.  Should there not be such evidence, the project (and/or associated data) will be considered appropriate for re-assignment to other investigators.
                 </div>

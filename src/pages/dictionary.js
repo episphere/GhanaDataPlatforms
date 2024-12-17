@@ -5,7 +5,7 @@ import {
   hideAnimation,
   shortenText,
   tsv2JsonDic, tsv2Json,
-  json2other,
+  json2other, getFileXLSX, array2Json, getUniqueKeyNames
 } from "./../shared.js";
 import {
   addEventToggleCollapsePanelBtn,
@@ -16,21 +16,37 @@ import {
 let previousValue = "";
 
 export const dataDictionaryTemplate = async () => {
-  const data = await (await fetch("./BCRP_DataDictionary.txt")).text();
+  const data = await (await fetch("static/GBHS_dataDictionary_Core+NewVar_16sep24.xlsx"));
   console.log(data);
-  const tsvData = tsv2Json(data);
-  console.log(tsvData);
-  tsvData.data.forEach(function(record) {
-    record.Category = record.Category.replace('\n', '');
-    if (record.Coding) {
-      record.Coding = record.Coding.replaceAll('\n', '<br>');
-      };
-    }
-  );
+  // console.log(data);
+  // const tsvData = tsv2Json(data);
+  // console.log(tsvData);
+  // tsvData.data.forEach(function(record) {
+  //   record.Category = record.Category.replace('\n', '');
+  //   if (record.Coding) {
+  //     record.Coding = record.Coding.replaceAll('\n', '<br>');
+  //     };
+  //   }
+  // );
+  //let dictFile = 'static/GBHS_dataDictionary_Core+NewVar_16sep24.xlsx';
+  //let data = await getFileXLSX(boxDictFile);
+  //console.log(data);
+  let file = await data.arrayBuffer();
+  let workbook = XLSX.read(file);
+  console.log(workbook);
+  let worksheet = workbook.Sheets[workbook.SheetNames[0]];
+  console.log(worksheet);
+  let raw_data = XLSX.utils.sheet_to_json(worksheet, {header: 1});
+  console.log(raw_data);
+  let dictionary = array2Json(raw_data);
+  //console.log(json_input);
 
-  const dictionary = tsvData.data;
+  //const dictionary = tsvData.data;
   console.log(dictionary);
-  const headers = tsvData.headers;
+  // const headers = dictionary.headers;
+  // console.log(headers);
+  let headers =  [...new Set(dictionary.flatMap(Object.keys))];
+  console.log(headers);
   let template = `
     <div class="col-xl-2 filter-column" id="summaryFilterSiderBar">
         <div class="div-border white-bg align-left p-2">
@@ -139,92 +155,70 @@ const addEventPageBtns = (pageSize, data, headers) => {
 }
 
 const renderDataDictionaryFilters = (dictionary, headers) => {
-  var coreArray = Object.values(dictionary).filter(function (el) {
-    return el.Category === "Core";
-  });
-  var mamArray = Object.values(dictionary).filter(function (el) {
-    return el.Category === "Mammographic density";
-  });
-  var incArray = Object.values(dictionary).filter(function (el) {
-    return el.Category.trim() === "Incident Breast Cancer";
-  });
+  // var coreArray = Object.values(dictionary).filter(function (el) {
+  //   return el.Category === "Participant Recruitment/Enrollment Variables";
+  // });
+  // var mamArray = Object.values(dictionary).filter(function (el) {
+  //   return el.Category === "Demographic Data";
+  // });
+  // var incArray = Object.values(dictionary).filter(function (el) {
+  //   return el.Category.trim() === "Biopsy and Case Diagnosis Data";
+  // });
+  // var riskArray = Object.values(dictionary).filter(function (el) {
+  //   return el.Category.trim() === "Risk Factors";
+  // });
 
-  const coreVariableType = coreArray.map((dt) => dt["Sub-Category"]);
-  const mamVariableType = mamArray.map((dt) => dt["Sub-Category"]);
-  const incVariableType = incArray.map((dt) => dt["Sub-Category"]);
-  //const allVariableType = Object.values(dictionary).map(dt => dt['Sub-Category']);
-  //const uniqueType = allVariableType.filter((d,i) => allVariableType.indexOf(d) === i).sort();
-  const coreuniqueType = coreVariableType
-    .filter((d, i) => coreVariableType.indexOf(d) === i);
-    // .sort();
-  const mamuniqueType = mamVariableType
-    .filter((d, i) => mamVariableType.indexOf(d) === i);
-    // .sort();
-  const incuniqueType = incVariableType
-    .filter((d, i) => incVariableType.indexOf(d) === i);
-    // .sort();
+  // const coreVariableType = coreArray.map((dt) => dt["Sub-Category"]);
+  // const mamVariableType = mamArray.map((dt) => dt["Sub-Category"]);
+  // const incVariableType = incArray.map((dt) => dt["Sub-Category"]);
+  // //const allVariableType = Object.values(dictionary).map(dt => dt['Sub-Category']);
+  // //const uniqueType = allVariableType.filter((d,i) => allVariableType.indexOf(d) === i).sort();
+  // const coreuniqueType = coreVariableType
+  //   .filter((d, i) => coreVariableType.indexOf(d) === i);
+  //   // .sort();
+  // const mamuniqueType = mamVariableType
+  //   .filter((d, i) => mamVariableType.indexOf(d) === i);
+  //   // .sort();
+  // const incuniqueType = incVariableType
+  //   .filter((d, i) => incVariableType.indexOf(d) === i);
+  //   // .sort();
+  const allVariableType = Object.values(dictionary).filter(dt => dt['Variable category ']).map(dt => dt['Variable category ']);
+  const uniqueType = allVariableType.filter((d,i) => allVariableType.indexOf(d) === i);
 
-  let template = "";
+  let template = '';
   template += `
-    <div class="main-summary-row">
-        <div style="width: 100%;">
-            <div class="form-group" margin:0px>
-                <div class="input-group">
-                    <input type="search" class="form-control rounded" autocomplete="off" placeholder="Search min. 3 characters" aria-label="Search" id="searchDataDictionary" aria-describedby="search-addon" />
-                    <span class="input-group-text border-0 search-input">
-                        <i class="fas fa-search"></i>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="main-summary-row">
-        <div style="width: 100%;">
-            <div class="form-group" margin:0px>
-                <label class="filter-label font-size-13" for="variableTypeList">Baseline</label>
-                <ul class="remove-padding-left font-size-15 allow-overflow" id="variableTypeList">
-                `;
-  coreuniqueType.forEach((vt) => {
-    template += `
-                        <li class="filter-list-item">
-                            <input type="checkbox" data-variable-type="${vt}" id="label${vt}" class="select-variable-type" style="margin-left: 1px !important;">
-                            <label for="label${vt}" class="sub-category" title="${vt}">${shortenText(vt,60)}</label>
-                        </li>
-                    `;
-  });
-  template += `
-                </ul>
-                <label class="filter-label font-size-13" for="variableTypeList">Mammographic Density</label>
-                <ul class="remove-padding-left font-size-15 allow-overflow" id="variableTypeList">
-                `;
-  mamuniqueType.forEach((vt) => {
-    template += `
-                        <li class="filter-list-item">
-                            <input type="checkbox" data-variable-type="${vt}" id="label${vt}" class="select-variable-type" style="margin-left: 1px !important;">
-                            <label for="label${vt}" class="sub-category" title="${vt}">${shortenText(vt,60)}</label>
-                        </li>
-                    `;
-  });
-  template += `
-                </ul>
-                <label class="filter-label font-size-13" for="variableTypeList">Incident Breast Cancer</label>
-                <ul class="remove-padding-left font-size-15 allow-overflow" id="variableTypeList">
-                `;
-
-  incuniqueType.forEach((vt) => {
-    template += `
-                        <li class="filter-list-item">
-                            <input type="checkbox" data-variable-type="${vt}" id="label${vt}" class="select-variable-type" style="margin-left: 1px !important;">
-                            <label for="label${vt}" class="sub-category" title="${vt}">${shortenText(vt,60)}</label>
-                        </li>
-                    `;
-  });
-  template += `
-                </ul>
-            </div>
-        </div>
-    </div>
-    `;
+  <div class="main-summary-row">
+      <div style="width: 100%;">
+          <div class="form-group" margin:0px>
+              <div class="input-group">
+                  <input type="search" class="form-control rounded" autocomplete="off" placeholder="Search min. 3 characters" aria-label="Search" id="searchDataDictionary" aria-describedby="search-addon" />
+                  <!--<span class="input-group-text border-0 search-input">
+                      <i class="fas fa-search"></i>
+                  </span>-->
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="main-summary-row">
+      <div style="width: 100%;">
+          <div class="form-group" margin:0px>
+              <label class="filter-label font-size-13" for="variableTypeList">Variable Category </label>
+              <ul class="remove-padding-left font-size-15 filter-sub-div allow-overflow" id="variableTypeList">
+              `
+              uniqueType.forEach(vt => {
+                  template += `
+                      <li class="filter-list-item">
+                          <input type="checkbox" data-variable-type="${vt}" id="label${vt}" class="select-variable-type" style="margin-left: 1px !important;">
+                          <label for="label${vt}" class="variable-type" title="${vt}">${shortenText(vt, 60)}</label>
+                      </li>
+                  `
+              })
+              template +=`
+              </ul>
+          </div>
+      </div>
+  </div>
+  `
   document.getElementById("filterDataDictionary").innerHTML = template;
   addEventFilterDataDictionary(dictionary, headers);
   downloadFiles(dictionary, headers, "dictionary");
@@ -286,7 +280,7 @@ const filterDataHandler = (dictionary) => {
   let filteredData = dictionary;
   if (variableTypeSelection.length > 0) {
     filteredData = filteredData.filter(
-      dt => variableTypeSelection.indexOf(dt["Sub-Category"]) !== -1
+      dt => variableTypeSelection.indexOf(dt["Variable category "]) !== -1
     );
   }
   if (variableTypeSelection.length === 0) filteredData = dictionary;
@@ -322,7 +316,7 @@ const filterDataHandler = (dictionary) => {
     console.log(dt["Variable Name"]);
     let found = false;
     if (dt["Variable Name"].toLowerCase().includes(currentValue)) found = true;
-    if (dt["Label"].toLowerCase().includes(currentValue)) found = true;
+    if (dt["Data Type by Category"].toLowerCase().includes(currentValue)) found = true;
     if (found) return dt;
   });
   let highlightData = JSON.parse(JSON.stringify(searchedData));
@@ -331,7 +325,7 @@ const filterDataHandler = (dictionary) => {
       new RegExp(currentValue, "gi"),
       "<b>$&</b>"
     );
-    dt["Label"] = dt["Label"].replace(
+    dt["Data Type by Category"] = dt["Data Type by Category"].replace(
       new RegExp(currentValue, "gi"),
       "<b>$&</b>"
     );
@@ -376,8 +370,8 @@ const renderDataDictionary = (dictionary, pageSize, headers) => {
             <div class="col-md-11">
                 <div class="row">
                     <div class="col-md-4 font-bold">Variable <button class="transparent-btn sort-column" data-column-name="Variable Name"><i class="fas fa-sort"></i></button></div>
-                    <div class="col-md-5 font-bold">Label <button class="transparent-btn sort-column" data-column-name="Label"><i class="fas fa-sort"></i></button></div>
-                    <div class="col-md-3 font-bold">Category <button class="transparent-btn sort-column" data-column-name="Sub-Category"><i class="fas fa-sort"></i></button></div>
+                    <div class="col-md-5 font-bold">Category <button class="transparent-btn sort-column" data-column-name="Data Type by Category"><i class="fas fa-sort"></i></button></div>
+                    <div class="col-md-3 font-bold">Variable category <button class="transparent-btn sort-column" data-column-name="Variable category "><i class="fas fa-sort"></i></button></div>
                 </div>
             </div>
             <div class="ml-auto"></div>
@@ -397,10 +391,10 @@ const renderDataDictionary = (dictionary, pageSize, headers) => {
                               desc["Variable Name"] ? desc["Variable Name"] : ""
                             }</div>
                             <div class="col-md-5">${
-                              desc["Label"] ? desc["Label"] : ""
+                              desc["Data Type by Category"] ? desc["Data Type by Category"] : ""
                             }</div>
                             <div class="col-md-3">${
-                              desc["Sub-Category"] ? desc["Sub-Category"] : ""
+                              desc["Variable category "] ? desc["Variable category "] : ""
                             }</div>
                         </div>
                     </div>
