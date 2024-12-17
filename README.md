@@ -1,4 +1,4 @@
 # GhanaDataPlatforms
 Ghana study platform
 
-Initial Commit
+[Github Pages Live Link](https://episphere.github.io/GhanaDataPlatforms/)
