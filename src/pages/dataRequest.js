@@ -143,37 +143,35 @@ export const dataAccess = (activeTab, showDescripton) => {
         `;
 
   template += `
-        <div class="general-bg padding-bottom-1rem">
-            <div class="container body-min-height">
-                <div class="main-summary-row">
-                    <div class="align-left">
-                        <h1 class="page-header">Data Access-Overview</h1>
-                    </div>
+      <div class="general-bg padding-bottom-1rem">
+          <div class="container body-min-height">
+              <div class="main-summary-row">
+                  <div class="align-left">
+                      <h1 class="page-header">Data Access</h1>
+                  </div>
+              </div>
+              <div class="data-submission div-border font-size-18" style="padding-left: 1rem; padding-right: 1rem;">
+                  <div class="row m-0">
+                    <b>Guidelines for Scientific Review of Proposals</b>
+                      All studies that are proposing to utilize data collected from the Ghana Breast Health Study must be reviewed and approved by the Ghana Breast Health Study Steering Committee (GBHSSC).  The proposal should not exceed five pages (including references and tables) and should contain the following information:
+                  </div></br>
+                  <div class="row m-0">
+                      <ol>
+                          <li style=" margin-bottom: 10px;">Study title</li>
+                          <li style=" margin-bottom: 10px;">Names of key investigators for the study and their affiliations, and a description of the study team’s experience in the subject area for the proposed work</li>
+                          <li style=" margin-bottom: 10px;">Background for the hypotheses to be evaluated in the proposed study, and how the data from this study will contribute to the literature</li>
+                          <li style=" margin-bottom: 10px;">Overall goal and specific study aims</li>
+                          <li style=" margin-bottom: 10px;">Data and biological specimens requested.  If biologic material is involved with the proposal, the type of biologic material (e.g., saliva, serum, tissue, etc.) and the amount (e.g., volume, weight, number) of each sample that is being requested</li>
+                          <li style=" margin-botton: 10px;">Laboratory assays, collaborating laboratory(ies), and quality control measures</li>
+                          <li style=" margin-botton: 10px;">Data analysis and study power considerations</li>
+                          <li style=" margin-botton: 10px;">Budgetary considerations</li>
+                          <li style=" margin-botton: 10px;">Timeline for completion of different components of this project (Gantt Chart)</li>
+                      </ol>
+                  </div>
+                    Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the GBHS Team. The GBHSSC will review proposals as they are submitted and get back to the lead investigators within two weeks. No response after two weeks will be interpreted as having no objections to the proposal. Updates of proposals will be requested on a yearly basis.  There will need to be evidence of substantial progress over time.  Should there not be such evidence, the project (and/or associated data) will be considered appropriate for re-assignment to other investigators.
                 </div>
-                <div class="data-submission div-border font-size-18" style="padding-left: 1rem; padding-right: 1rem;">
-                    <div class="row m-0">
-
-                        The Breast Cancer Risk Prediction Project is currently harmonizing risk factor and clinical data from participating cohorts. 
-                        Data is expected to be available for request in 2024. Data access will be facilitated through this platform, 
-                        in accordance to the data transfer agreements signed between participating studies (originator) and the 
-                          <a href="/BCRP-DACC-Policies-Procedures-2023-01-16.docx" download>
-                          policies and procedures of the BCRPP Data Coordinating Center (DCC)
-                          </a>
-                         at the Division of Cancer Epidemiology and Genetics at the National Cancer Institute.
-
-                    </div></br>
-                    <div class="row m-0">
-                        The following data access procedures are planned:
-                    </div>
-                    <div class="row m-0">
-                        <ul>
-                            <li style=" margin-bottom: 10px;">Researcher submits a study concept describing the project, including variables of interest, via the BCRPP Data Platform. This request will be sent via the platform to the BCRPP data access coordinating committee (DACC), which governs the requested data.</li>
-                            <li style=" margin-bottom: 10px;">After approval by the DACC, individual studies contributing data are notified and given a time period to opt-out their study from the approved project.</li>
-                            <li style=" margin-bottom: 10px;">After the opt-out period has elapsed, the researcher's institution signs a data transfer agreement (DTA) for the study concept with the BCRPP DCC.</li>
-                            <li style=" margin-bottom: 10px;">Upon DTA signatures, the DCC will provide access of the approved data to researchers.</li>
-                            <li style=" margin-bottom: 10px;">Users granted access to BCRPP data agree to only access data for the purposes outlined their approved proposal. Users will not save any individual participant's data (i.e., make permanent copies) on local computers or any persistent storage device other than the controlled-access workspace provided by the BCRPP designated for the project.</li>
-                        </ul>
-                    </div> `;
+            </div>
+        </div> `;
   template += `</div>
               </div>
             </div>
@@ -247,7 +245,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
                               <div class="main-summary-row confluence-resources white-bg div-border font-size-18">
                                 <div class="col">
                                   <span>You currently do not have access to submit a data request form.</span></br>
-                                  <span>For access, please contact <a href="mailto:bcrpp@mail.nih.gov">Thomas Ahearn</a></span>
+                                  <span>For access, please contact <a href="mailto:gbhs@mail.nih.gov">GBHS</a></span>
                           </div>
                   </div>
                 `;
@@ -328,11 +326,11 @@ export const formSection = async (activeTab, showDescripton) => {
         </div>
         <div class="data-submission div-border font-size-18" style="padding-left: 1rem; padding-right: 1rem;">             
           <section class="contact-form">
-            <p>Please fill out the form below. This will be reviewed by the BCRPP Data Access Coordination Committee (DACC) 
-            to ensure that the proposal is consistent with BCRPP goals and individual cohorts’ consents. The DACC consists of 
-            representatives from the BCRPP Steering Committee and representatives of individual cohorts. Proposals will be reviewed 
+            <p>Please fill out the form below. This will be reviewed by the GBHS Data Access Coordination Committee (DACC) 
+            to ensure that the proposal is consistent with GBHS goals and individual cohorts’ consents. The DACC consists of 
+            representatives from the GBHS Steering Committee and representatives of individual cohorts. Proposals will be reviewed 
             once every four months. Data for approved concepts will be sent only to the Investigators listed below, 
-            each of whose Institutions will need to sign the BCRPP DTA.</p>
+            each of whose Institutions will need to sign the GBHS DTA.</p>
             <form>
             <!---<div class='col-3 mb-3 input-group'>
               <input type='file' class='' id='uploadJSON' />
@@ -347,15 +345,13 @@ export const formSection = async (activeTab, showDescripton) => {
                 <input id="projname" name="projname" type="text" required/>
               </div>
 
-              <div class="input-group">
+              <!--<div class="input-group">
                 <label for="amendment"> <b>Is this an amendment?</b><span class='required-label'>*</span> </label>      
                   <input id="amendmentyes" name="amendment" type="radio" value="Yes" required/>
                     <label class="inline" for="amendmentyes"> Yes </label>
                   <input id="amendmentno" name="amendment" type="radio" value="No" required/>
                     <label class="inline" for="amendmentno"> No </label>
-                  <!--label for="ifamendmentyes"> If yes, provide Concept Number of original form </label>
-                    <input type="text" id="conNum" name="conNum"/-->
-              </div>
+              </div>-->
 
               <div class='input-group d-none' >
                 <select class='form-select' id='amendmentSelect'></select>
@@ -377,7 +373,7 @@ export const formSection = async (activeTab, showDescripton) => {
               </div>
 
               <div class="input-group">
-                <label for="member"> <b>Are you a member of BCRPP?</b> <span class='required-label'>*</span></label>
+                <label for="member"> <b>Are you a member of GBHS?</b> <span class='required-label'>*</span></label>
                   <input id="memberyes" name="member" type="radio" value="Yes" required/>
                     <label class="inline" for="memberyes"> Yes </label>
                   <input id="memberno" name="member" type="radio" value="No" required/>
@@ -385,7 +381,7 @@ export const formSection = async (activeTab, showDescripton) => {
               </div>
 
               <div class="input-group">
-                <label for="acro"><b>If yes, BCRPP Study Acronym(s) for the Contact Investigator</b></label>
+                <label for="acro"><b>If yes, GBHS Study Acronym(s) for the Contact Investigator</b></label>
                 <textarea id="acro" name="acro" rows="2" cols="65"></textarea>
               </div>
 
@@ -432,12 +428,12 @@ export const formSection = async (activeTab, showDescripton) => {
                 <button class='btn btn-primary btn-sm' type='button' id='importDictvars'>Import Variables</button>--->
 
               <div class="input-group">
-                <p>The <a href="#data_exploration/dictionary">BCRPP data dictionary</a> lists and describes variables shared by cohorts participating in the BCRPP. 
+                <p>The <a href="#data_exploration/dictionary">GBHS data dictionary</a> lists and describes variables shared by cohorts participating in the GBHS. 
                 Data availability and descriptive statistics can be explored via the <a href="#data_exploration/summary">Explore Data</a> tool. If data from a particular category is requested,
                 all variables from that category will be provided.</p>
               </div>
               
-              <div class="input-group">
+              <!--<div class="input-group">
                 <label for="basevar"><b>Baseline</b><span class='required-label'>*</span></label>
 
                 <label>
@@ -666,13 +662,13 @@ export const formSection = async (activeTab, showDescripton) => {
                     <label class="container-ul" for="WLH">WLH</label>
                   </div>
                 </ul>
-              </div>
+              </div>-->
 
               <br>
               <p><u><b>Timeline</b></u><span class='required-label'>*</span></p>
                 <div class="input-group">
                   <label for="timeline">Please indicate estimated time from receipt of data to completion of analysesand submission of paper; 
-                  the expectation (per the BCRPP Recipient DTA) is that results will be published within one year after completion</label>
+                  the expectation (per the GBHS Recipient DTA) is that results will be published within one year after completion</label>
                   <textarea id="timeline" name="timeline" rows="4" cols="65" required></textarea>
                 </div>
 
@@ -680,7 +676,7 @@ export const formSection = async (activeTab, showDescripton) => {
               <p><u><b>Authorship</b></u><span class='required-label'>*</span></p>
                 <div class="input-group">
                   <u id="tooltip1"><a><label for="authconf"><input id="authconf" name="authconf" type="checkbox" value="Yes" required/> 
-                  <b>Please confirm that you agree to comply with the BCRPP authorship and publication requirements.</b>
+                  <b>Please confirm that you agree to comply with the GBHS authorship and publication requirements.</b>
                   <span>
                   Recipient shall have the first right to publish on the Results of the Research Study. 
                   It is the intention that the Recipient and Contributors shall be co-authors on initial 
@@ -696,7 +692,7 @@ export const formSection = async (activeTab, showDescripton) => {
                   Research Study (“Publication Period”). If this is not possible, Recipient will consult with NCI, 
                   who will liaise with the Contributors as soon as possible and in any case prior to lapse of the 
                   Publication Period, with a view to resolve the issue(s) delaying publication. If the Contributors 
-                  and BCRPP DACC decide that the publication is being delayed unduly by the Recipient, the Recipient 
+                  and GBHS DACC decide that the publication is being delayed unduly by the Recipient, the Recipient 
                   shall lose its first right to publish.
                   </span></a></u></label>
                   <br>
@@ -708,9 +704,9 @@ export const formSection = async (activeTab, showDescripton) => {
               <p><u><b>Data Access</b></u><span class='required-label'>*</span></p>
                 <div class="input-group">
                   <u id="tooltip2"><a><label for="dataaccess"><input id="dataaccess" name="dataaccess" type="checkbox" value="Yes" required/> 
-                  <b>Please confirm that you agree to comply with the BCRPP data access and storage requirements.</b>
+                  <b>Please confirm that you agree to comply with the GBHS data access and storage requirements.</b>
                   <span>
-                    Users granted access to BCRPP data agree to only access data for the purposes outlined in this proposal, and will not save any individual participant's data (i.e., make permanent copies) on local computers or any persistent storage device other than the controlled-access workspace provided by the BCRPP designated for this project.
+                    Users granted access to GBHS data agree to only access data for the purposes outlined in this proposal, and will not save any individual participant's data (i.e., make permanent copies) on local computers or any persistent storage device other than the controlled-access workspace provided by the GBHS designated for this project.
                   </span></a></u></label>
                 </div>
                 
@@ -899,7 +895,7 @@ export const acceptedStudiesView = async () => {
   let template = `
     <div class="main-summary-row">
             <div class="row align-left w-100 m-0">
-                <h1 class="col page-header pl-0 pt-2">Learn about BCRPP</h1>
+                <h1 class="col page-header pl-0 pt-2">Learn about GBHS</h1>
                 <div class="ml-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
                 <div class="ml-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
                 <div class="ml-auto mt-3 mb-3" id="downloadContainer">
@@ -1931,7 +1927,7 @@ export const dataForm = async () => {
               default: new docx.Header({
                 children: [
                   new docx.Paragraph({
-                    text: "Breast Cancer Risk Prediction Project Analysis Proposal",
+                    text: "Ghana Breast Health Study Analysis Proposal",
                     heading: docx.HeadingLevel.HEADING_1,
                     alignment: docx.AlignmentType.CENTER,
                   }),
@@ -2056,7 +2052,7 @@ export const dataForm = async () => {
                 alignment: docx.AlignmentType.START,
                 children: [
                   new docx.TextRun({
-                    text: "Are you a member of BCRPP ",
+                    text: "Are you a member of GBHS ",
                   }),
                   new docx.TextRun({
                     text: jsondata.member,
@@ -2072,7 +2068,7 @@ export const dataForm = async () => {
                 alignment: docx.AlignmentType.START,
                 children: [
                   new docx.TextRun({
-                    text: "BCRPP Study Acronym(s) for the Contact Investigator: ",
+                    text: "GBHS Study Acronym(s) for the Contact Investigator: ",
                   }),
                   new docx.TextRun({
                     text: jsondata.acro,
@@ -2367,7 +2363,7 @@ export const dataForm = async () => {
             default: new docx.Header({
               children: [
                 new docx.Paragraph({
-                  text: "Breast Cancer Risk Prediction Project Analysis Proposal",
+                  text: "Ghana Breast Health Study Analysis Proposal",
                   heading: docx.HeadingLevel.HEADING_1,
                   alignment: docx.AlignmentType.CENTER,
                 }),
@@ -2407,38 +2403,38 @@ export const dataForm = async () => {
                 after: 150,
               },
             }),
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "Is this an amendment: ",
-                }),
-                new docx.TextRun({
-                  text: jsondata.amendment,
-                  bold: false,
-                }),
-              ],
-              spacing: {
-                after: 150,
-              },
-            }),
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "Amendment: ",
-                }),
-                new docx.TextRun({
-                  text: jsondata.conNum,
-                  bold: false,
-                }),
-              ],
-              spacing: {
-                after: 150,
-              },
-            }),
+            // new docx.Paragraph({
+            //   heading: docx.HeadingLevel.HEADING_2,
+            //   alignment: docx.AlignmentType.START,
+            //   children: [
+            //     new docx.TextRun({
+            //       text: "Is this an amendment: ",
+            //     }),
+            //     new docx.TextRun({
+            //       text: jsondata.amendment,
+            //       bold: false,
+            //     }),
+            //   ],
+            //   spacing: {
+            //     after: 150,
+            //   },
+            // }),
+            // new docx.Paragraph({
+            //   heading: docx.HeadingLevel.HEADING_2,
+            //   alignment: docx.AlignmentType.START,
+            //   children: [
+            //     new docx.TextRun({
+            //       text: "Amendment: ",
+            //     }),
+            //     new docx.TextRun({
+            //       text: jsondata.conNum,
+            //       bold: false,
+            //     }),
+            //   ],
+            //   spacing: {
+            //     after: 150,
+            //   },
+            // }),
             new docx.Paragraph({
               heading: docx.HeadingLevel.HEADING_2,
               alignment: docx.AlignmentType.START,
@@ -2492,7 +2488,7 @@ export const dataForm = async () => {
               alignment: docx.AlignmentType.START,
               children: [
                 new docx.TextRun({
-                  text: "Are you a member of BCRPP ",
+                  text: "Are you a member of GBHS ",
                 }),
                 new docx.TextRun({
                   text: jsondata.member,
@@ -2509,7 +2505,7 @@ export const dataForm = async () => {
               alignment: docx.AlignmentType.START,
               children: [
                 new docx.TextRun({
-                  text: "BCRPP Study Acronym(s) for the Contact Investigator: ",
+                  text: "GBHS Study Acronym(s) for the Contact Investigator: ",
                 }),
               ],
               spacing: {
@@ -2618,76 +2614,76 @@ export const dataForm = async () => {
                 after: 150,
               }}),
 
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "Core Variables: ",
-                }),
-                new docx.TextRun({
-                  text: JSON.stringify(jsondata.basevar, null, 2)
-                    .replace("[", "")
-                    .replace("]", ""),
-                  bold: false,
-                }),
-              ],
-              spacing: {
-                after: 150,
-              },
-            }),
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "MMD Variables: ",
-                }),
-                new docx.TextRun({
-                  text: jsondata.mmdvarv,
-                  bold: false,
-                }),
-              ],
-              spacing: {
-                after: 150,
-              },
-            }),
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "BRCA Variables: ",
-                }),
-                new docx.TextRun({
-                  text: JSON.stringify(jsondata.ibcvar, null, 2)
-                    .replace("[", "")
-                    .replace("]", ""),
-                  bold: false,
-                }),
-              ],
-              spacing: {
-                after: 150,
-              },
-            }),
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "Requested Cohorts: ",
-                }),
-                new docx.TextRun({
-                  text: JSON.stringify(jsondata.reqcoh, null, 2)
-                    .replace("[", "")
-                    .replace("]", ""),
-                  bold: false,
-                }),
-              ],
-              spacing: {
-                after: 150,
-              },
-            }),
+            // new docx.Paragraph({
+            //   heading: docx.HeadingLevel.HEADING_2,
+            //   alignment: docx.AlignmentType.START,
+            //   children: [
+            //     new docx.TextRun({
+            //       text: "Core Variables: ",
+            //     }),
+            //     new docx.TextRun({
+            //       text: JSON.stringify(jsondata.basevar, null, 2)
+            //         .replace("[", "")
+            //         .replace("]", ""),
+            //       bold: false,
+            //     }),
+            //   ],
+            //   spacing: {
+            //     after: 150,
+            //   },
+            // }),
+            // new docx.Paragraph({
+            //   heading: docx.HeadingLevel.HEADING_2,
+            //   alignment: docx.AlignmentType.START,
+            //   children: [
+            //     new docx.TextRun({
+            //       text: "MMD Variables: ",
+            //     }),
+            //     new docx.TextRun({
+            //       text: jsondata.mmdvarv,
+            //       bold: false,
+            //     }),
+            //   ],
+            //   spacing: {
+            //     after: 150,
+            //   },
+            // }),
+            // new docx.Paragraph({
+            //   heading: docx.HeadingLevel.HEADING_2,
+            //   alignment: docx.AlignmentType.START,
+            //   children: [
+            //     new docx.TextRun({
+            //       text: "BRCA Variables: ",
+            //     }),
+            //     new docx.TextRun({
+            //       text: JSON.stringify(jsondata.ibcvar, null, 2)
+            //         .replace("[", "")
+            //         .replace("]", ""),
+            //       bold: false,
+            //     }),
+            //   ],
+            //   spacing: {
+            //     after: 150,
+            //   },
+            // }),
+            // new docx.Paragraph({
+            //   heading: docx.HeadingLevel.HEADING_2,
+            //   alignment: docx.AlignmentType.START,
+            //   children: [
+            //     new docx.TextRun({
+            //       text: "Requested Cohorts: ",
+            //     }),
+            //     new docx.TextRun({
+            //       text: JSON.stringify(jsondata.reqcoh, null, 2)
+            //         .replace("[", "")
+            //         .replace("]", ""),
+            //       bold: false,
+            //     }),
+            //   ],
+            //   spacing: {
+            //     after: 150,
+            //   },
+            // }),
 
             new docx.Paragraph({
               heading: docx.HeadingLevel.HEADING_2,
@@ -2989,16 +2985,16 @@ export async function viewFinalDecisionFilesTemplate(files) {
     let btns = Array.from(document.querySelectorAll(".preview-file"));
     btns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        btn.dataset.target = "#bcrppPreviewerModal";
-        const header = document.getElementById("bcrppPreviewerModalHeader");
-        const body = document.getElementById("bcrppPreviewerModalBody");
+        btn.dataset.target = "#gbhsPreviewerModal";
+        const header = document.getElementById("gbhsPreviewerModalHeader");
+        const body = document.getElementById("gbhsPreviewerModalBody");
         header.innerHTML = `<h5 class="modal-title">File preview</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>`;
         const fileId = btn.dataset.fileId;
-        $("#bcrppPreviewerModal").modal("show");
-        showPreview(fileId, "bcrppPreviewerModalBody");
+        $("#gbhsPreviewerModal").modal("show");
+        showPreview(fileId, "gbhsPreviewerModalBody");
       });
     });
     //Filtering and Sorting
@@ -3056,7 +3052,7 @@ export async function viewFinalDecisionFiles(files) {
 <div class="card mt-1 mb-1 align-left" >
     <div style="padding: 10px" aria-expanded="false" id="file${fileId}" class='filedata'>
         <div class="row">
-            <div class="col-lg-3 text-left">${shortfilename}<button class="btn btn-lg custom-btn preview-file" title='Preview File' data-file-id="${fileId}" aria-label="Preview File"  data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#bcrppPreviewerModal"><i class="fas fa-external-link-alt"></i></button></div>
+            <div class="col-lg-3 text-left">${shortfilename}<button class="btn btn-lg custom-btn preview-file" title='Preview File' data-file-id="${fileId}" aria-label="Preview File"  data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#gbhsPreviewerModal"><i class="fas fa-external-link-alt"></i></button></div>
             <div class="col-lg-2 text-left">${fileInfo.created_by.name}</div>
             <div class="col-lg-2 text-center">${new Date(fileInfo.created_at)
               .toDateString()

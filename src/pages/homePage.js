@@ -69,80 +69,70 @@ export const infoDeck = () => {
 };
 
 export const infoDeckAfterLoggedIn = async () => {
-  const studyDescription = await getFileInfo(904897189551); //new: 904897189551
   let template = "";
   template += `
         <div class="secondary-bg padding-bottom-1rem">
             <div class="confluence-banner">
                 <div class="banner-logo">
+                    <img class="imgB1" src="static/images/ghanaOutline.png">
                     <div class="banner-overlay-text row justify-content-center text-center">
-                        <div class="col-md-12">
-                            <h1 class="banner-overlay-h1">The Breast Cancer Risk Prediction Project (BCRPP)</h1>
+                        <div class="col-xl-12">
+                            <h1 class="banner-overlay-h1">The Ghana Breast Health Study (GBHS)</h1>
                             <div class="banner-overlay-line"></div>
-                            <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> Building an integrated multi-ethnic breast cancer risk prediction model</h2>
+                            <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> A multidisciplinary case-control study in West Africa</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container align-middle text-center" style="margin-top: 70px;">
                 <div class="card-deck" id="infoDeck" style="min-height: 200px;">`;
-  if (studyDescription)
-    template += cardContents({
-      header: "Study Description",
-      button: "Study Description",
-      href: "#about/description",
-      icon: "fa-file-alt",
-      explanation: "View descriptions of participating studies.",
-    });
-  template += cardContents({
-    header: "Data Dictionary",
-    button: "Data Dictionary",
-    href: "#data_exploration/dictionary",
-    icon: "fa-database",
-    explanation: "View variables from participating studies.",
-  });
-  template += cardContents({
-    header: "Explore Data",
-    button: "Explore Data",
-    href: "#data_exploration/summary",
-    icon: "fa-chart-bar",
-    explanation: "Explore summary-level data to plan analyses.",
-  });
-  template += cardContents({
-    header: "Data Access",
-    button: "Data Access",
-    href: "#data_access/overview",
-    icon: "fa-handshake",
-    explanation: "View procedures for accessing data.",
-  });
+
+                template += cardContents({
+                    header: "Learn about GBHS",
+                    button: "Learn about GBHS",
+                    href: "#about/overview",
+                    icon: "fa-download",
+                    explanation: "View main goals and collaborating institutions.",
+                  });
+                  template += cardContents({
+                    header: "Data Access",
+                    button: "Data Access",
+                    href: "#data_access/overview",
+                    icon: "fa-handshake",
+                    explanation: "View procedures for accessing data.",
+                  });
+                  template += cardContents({
+                    header: "Data Dictionary",
+                    button: "Data Dictionary",
+                    href: "#data_exploration/dictionary",
+                    icon: "fa-database",
+                    explanation: "View data types collected from participating cohort studies.",
+                  });
+
   template += `</div>
             </div>
         </div>
         <div class="secondary-bg inverse-triangle"></div>
         <div class="container align-center">
-            <div class="font-size-28 font-bold font-family-montserrat our-goals mt-3 mb-2">OUR GOALS</div>
+            <div class="font-size-28 font-bold font-family-montserrat our-goals mt-3 mb-2">Aims and Goals</div>
             <div class="row">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6 font-size-18 align-left">To build a large-scale collaborative research resource with data from over 1.5 million women from diverse backgrounds participating in prospective cohort studies or trials to:</div>
-                <div class="col-lg-3"></div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6 font-size-18 align-left mb-3">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 font-size-18 align-left mb-3">
                     <ul>
-                        <li>Develop comprehensive breast cancer risk prediction models for precision prevention in diverse populations</li>
-                        <li>Validate newly developed models in integrated health care systems or breast cancer screening trials</li>
+                        <li>Identify factors that predispose to the development of breast cancer among Ghanaian women (including assessing the role of well-accepted breast cancer risk factors originally identified in other populations as well as more speculative factors that might play unique roles among African women)</li>
+                        <li>Identify genetic and other biologic parameters predictive of risk and that may interact with other risk factors (including assessing the role of established breast cancer susceptibility regions originally identified in other populations as well as more speculative factors such as epigenetic and immunologic markers that might play unique roles among African women)</li>
+                        <li>Assess how these factors vary by clinical and molecular characteristics of the tumors (including assessing risk factors for triple negative tumors)</li>
+                        <li>Assist in building capacity for future research investigations in Ghana</li>
                     </ul>
                 </div>
-                <div class="col-lg-3"></div>
+                <div class="col-lg-1"></div>
             </div>
         </div>
-        <div class="ternary-bg">
+        <!---<div class="ternary-bg">
             <div class="container align-left confluence-info font-family-montserrat">
-            <div>The BCRPP is funded by the US National Cancer Institute (NCI) grant number <a href="https://maps.cancer.gov/overview/DCCPSGrants/abstract.jsp?applId=10263893&term=CA249866">1U01CA249866-01</a> and the NCI Intramural Research Funds. BCRPP is coordinated by the Harvard T.H. Chan School of Public Health and the Division of Cancer Epidemiology and Genetics (DCEG) of NCI, in collaboration with the NCI Cohort Consortium.</div>
+            <div>The GBHS is funded by the US National Cancer Institute (NCI) grant number <a href="https://maps.cancer.gov/overview/DCCPSGrants/abstract.jsp?applId=10263893&term=CA249866">UPDATE FOR GBHS</a> and the NCI Intramural Research Funds. BCRPP is coordinated by the Harvard T.H. Chan School of Public Health and the Division of Cancer Epidemiology and Genetics (DCEG) of NCI, in collaboration with the NCI Cohort Consortium.</div>
             </div>
-        </div>
+        </div>--->
     `;
   document.getElementById("confluenceDiv").innerHTML = template;
 };

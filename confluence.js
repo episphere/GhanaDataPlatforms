@@ -31,7 +31,12 @@ import {
 } from "./src/pages/dataRequest.js";
 import {
   checkAccessTokenValidity,
-  logOut
+  loginAppDev,
+  loginObs,
+  loginAppEpisphere,
+  logOut,
+  loginAppProd,
+  //loginMail,
 } from "./src/manageAuthentication.js";
 import {
   storeAccessToken,
@@ -102,9 +107,34 @@ export const confluence = async () => {
   };
   const confluenceDiv = document.getElementById("confluenceDiv");
   const navBarOptions = document.getElementById("navBarOptions");
+  document
+    .getElementById("loginBoxAppDev")
+    .addEventListener("click", loginAppDev);//loginAppDev);
+  document
+    .getElementById("loginBoxAppStage")
+    .addEventListener("click", loginObs);
+  document
+    .getElementById("loginBoxAppEpisphere")
+    .addEventListener("click", loginAppEpisphere);
+  document
+    .getElementById("loginBoxAppProd")
+    .addEventListener("click", loginAppProd);
 
   if (localStorage.parms === undefined) {
+    const loginBoxAppDev = document.getElementById("loginBoxAppDev");
+    const loginBoxAppEpisphere = document.getElementById(
+      "loginBoxAppEpisphere"
+    );
+    const loginBoxAppProd = document.getElementById("loginBoxAppProd");
+    const loginBoxAppStage = document.getElementById("loginBoxAppStage");
+    if (location.origin.match("localhost")) loginBoxAppDev.hidden = false;
+    if (location.origin.match("epidataplatforms-stage"))
+      loginBoxAppStage.hidden = false;
+    if (location.origin.match("epidataplatforms"))
+      loginBoxAppProd.hidden = false;
+    if (location.origin.match("episphere")) loginBoxAppEpisphere.hidden = false;
 
+    await storeAccessToken();
     manageRouter();
   }
   if (localStorage.parms && JSON.parse(localStorage.parms).access_token) {
@@ -140,7 +170,7 @@ export const confluence = async () => {
       if (dataSubmissionElement.classList.contains("navbar-active")) return;
       showAnimation();
       assignNavbarActive(dataSubmissionElement, 1);
-      document.title = "BCRPP - Data Submit";
+      document.title = "GBHS - Data Submit";
       confluenceDiv.innerHTML = await dataSubmissionTemplate();
       lazyload();
       addEventStudyRadioBtn();
@@ -152,7 +182,7 @@ export const confluence = async () => {
     dataSummaryElement.addEventListener("click", async () => {
       if (dataSummaryElement.classList.contains("navbar-active")) return;
       assignNavbarActive(dataSummaryElement, 1);
-      document.title = "BCRPP - Summary Statistics";
+      document.title = "GBHS - Summary Statistics";
       confluenceDiv.innerHTML = dataSummary("Summary Statistics", false, true, true);
       addEventUpdateSummaryStatsData();
       addEventcreateaccessStats();
@@ -170,7 +200,7 @@ export const confluence = async () => {
         if (dataSummarySubsetElement.classList.contains("navbar-active")) return;
         const confluenceDiv = document.getElementById("confluenceDiv");
         assignNavbarActive(dataSummarySubsetElement, 1);
-        document.title = "BCRPP - Subset Statistics";
+        document.title = "GBHS - Subset Statistics";
         confluenceDiv.innerHTML = dataSummary("Subset Statistics", false, true, true);
         addEventUpdateSummaryStatsData();
         addEventcreateaccessStats();
@@ -198,7 +228,7 @@ export const confluence = async () => {
           return;
         showAnimation();
         assignNavbarActive(viewUserSubmissionElement, 1);
-        document.title = "BCRPP - Your Submissions";
+        document.title = "GBHS - Your Submissions";
         await userSubmissionTemplate("Your Submissions", "User Submissions");
         hideAnimation();
       });
@@ -254,7 +284,7 @@ export const confluence = async () => {
         showAnimation();
         if (!element) return;
         if (element.classList.contains("navbar-active")) return;
-        document.title = "BCRPP - Data Form";
+        document.title = "GBHS - Data Form";
         assignNavbarActive(element, 1);
         //dataForm();
         const getCollaborators = await getCollaboration(
@@ -271,19 +301,19 @@ export const confluence = async () => {
         console.log(getMyPermissionLevel);
         if (getMyPermissionLevel) {
           confluenceDiv.innerHTML = await formSection("form");
-          populateAmendSelect();
-          document
-            .getElementById("amendmentyes")
-            .addEventListener("click", amendFormSelect);
-          document
-            .getElementById("amendmentno")
-            .addEventListener("click", amendFormSelect);
+          // populateAmendSelect();
+          // document
+          //   .getElementById("amendmentyes")
+          //   .addEventListener("click", amendFormSelect);
+          // document
+          //   .getElementById("amendmentno")
+          //   .addEventListener("click", amendFormSelect);
           await dataForm();
         } else {
           confluenceDiv.innerHTML = await formSectionOther("form");
           hideAnimation();
         }
-        formFunctions();
+        //formFunctions();
         hideAnimation();
       });
     }
@@ -294,7 +324,7 @@ export const confluence = async () => {
         showAnimation();
         if (!element) return;
         if (element.classList.contains("navbar-active")) return;
-        document.title = "BCRPP - Accepted Studies";
+        document.title = "GBHS - Accepted Studies";
         assignNavbarActive(element, 1);
         confluenceDiv.innerHTML = acceptedStudiesSection("acceptedStudies");
         acceptedStudiesView();
@@ -308,7 +338,7 @@ export const confluence = async () => {
         showAnimation();
         if (!element) return;
         if (element.classList.contains("navbar-active")) return;
-        document.title = "BCRPP - Chair View";
+        document.title = "GBHS - Chair View";
         assignNavbarActive(element, 1);
         confluenceDiv.innerHTML = chairSection("chairView");
         chairFileView();
@@ -321,7 +351,7 @@ export const confluence = async () => {
         showAnimation();
         if (!element) return;
         if (element.classList.contains("navbar-active")) return;
-        document.title = "BCRPP - DACC View";
+        document.title = "GBHS - DACC View";
         assignNavbarActive(element, 1);
         confluenceDiv.innerHTML = daccSection("daccView");
         daccFileView();
@@ -421,7 +451,7 @@ const manageRouter = async () => {
     aboutConfluence("overview", true);
     renderOverView();
   } else if (hash === "#about/contact") {
-    const element = document.getElementById("contactBCRPP");
+    const element = document.getElementById("contactGBHS");
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
     document.title = "GBHS - Study Team";
@@ -450,10 +480,10 @@ const manageRouter = async () => {
     confluenceResources();
   }
   // else if (hash === "#contact") {
-  //   const element = document.getElementById("contactBCRPP");
+  //   const element = document.getElementById("contactGBHS");
   //   if (!element) return;
   //   if (element.classList.contains("navbar-active")) return;
-  //   document.title = "BCRPP - Contact";
+  //   document.title = "GBHS - Contact";
   //   assignNavbarActive(element, 1);
   //   confluenceDiv.innerHTML = confluenceContactPage();
   // }
@@ -473,7 +503,7 @@ const manageRouter = async () => {
     document.title = "GBHS - Data Form";
     confluenceDiv.innerHTML = await formSection();
     removeActiveClass("nav-link", "active");
-    formFunctions();
+    //formFunctions();
   } else if (hash === "#data_access/acceptedStudies") {
     const acceptedStudiesElement = document.getElementById(
       "acceptedStudiesView"
@@ -643,7 +673,7 @@ const manageHash = async () => {
     renderOverView();
     hideAnimation();
   } else if (hash === "#about/contact") {
-    const element = document.getElementById("contactBCRPP");
+    const element = document.getElementById("contactGBHS");
     //console.log({ element });
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
@@ -687,7 +717,7 @@ const manageHash = async () => {
     hideAnimation();
 }
   // else if (hash === "#contact") {
-  //   const element = document.getElementById("contactBCRPP");
+  //   const element = document.getElementById("contactGBHS");
   //   if (!element) return;
   //   if (element.classList.contains("navbar-active")) return;
   //   assignNavbarActive(element, 1);

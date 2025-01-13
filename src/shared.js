@@ -44,21 +44,19 @@ export const cps2StatsFileId = 908522264695;
 
 export const summaryStatsFolder = 145995372820;
 
-export const uploadFormFolder = 155292358576;
+export const uploadFormFolder = 302463515558; //Updated for GBHS
 
-export const daccReviewFolder = 161192245846;
+export const daccReviewFolder = 302459186137; //Updated for GBHS
 
-export const daccReviewChairFolder = 165542319674;
+export const daccReviewChairFolder = 302458897963; //Updated for GBHS
 
-export const chairReviewFolder = 161191639493;
+export const chairReviewFolder = 302460783786; //Updated for GBHS
 
-//export const finalFolder = 162221886155 //Currently using Temp Folder. Final Folder:161192097034;
+export const acceptedFolder = 302461158289; //Updated for GBHS
 
-export const acceptedFolder = 162222239448;
+export const deniedFolder = 302462150134; //Updated for GBHS
 
-export const deniedFolder = 162221803333;
-
-export const submitterFolder = 162222418449;
+export const submitterFolder = 302459953400; //Updated for GBHS
 
 export const getFolderItems = async (id) => {
   try {

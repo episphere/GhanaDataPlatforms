@@ -10,13 +10,13 @@ export const navBarMenutemplate = () => {
         </div>
         <div class="grid-elements dropdown">
             <button class="nav-link nav-menu-links dropdown-toggle dropdown-btn white-font" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                About BCRPP
+                About GBHS
             </button>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/overview" id="aboutBCRPP">Overview</a>
                 <!---<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/description" id="studydescBCRPP">Description of Studies</a>--->
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/contact" id="contactBCRPP">Study Team Members</a>
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="https://github.com/Breast-Cancer-Risk-Prediction-Project" target="_blank" id="BCRPP_github">BCRPP GitHub</a>
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/contact" id="contactGBHS">Study Team Members</a>
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="https://github.com/episphere/GhanaDataPlatforms" target="_blank" id="Ghana_github">GBHS GitHub</a>
             </div>
         </div>
         <!--<div class="grid-elements dropdown">
@@ -36,9 +36,9 @@ export const navBarMenutemplate = () => {
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/dictionary" title="Data Dictionary" id="dataDictionary">
                   Dictionary
                 </a>
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/protocols" title="Protocols" id="dataProtocols">
+                <!--a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/protocols" title="Protocols" id="dataProtocols">
                   Protocols
-                </a>
+                </a-->
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/summary" title="Summary Statistics" id="dataSummary">
                     Summary Statistics
                 </a>
