@@ -79,7 +79,10 @@ export const dataAccessNotSignedIn = () => {
                           <li style=" margin-botton: 10px;">Timeline for completion of different components of this project (Gantt Chart)</li>
                       </ol>
                   </div>
-                    Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the GBHS Team. The GBHSSC will review proposals as they are submitted and get back to the lead investigators within two weeks. No response after two weeks will be interpreted as having no objections to the proposal. Updates of proposals will be requested on a yearly basis.  There will need to be evidence of substantial progress over time.  Should there not be such evidence, the project (and/or associated data) will be considered appropriate for re-assignment to other investigators.
+                    Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the GBHS Team. The GBHSSC will review proposals 
+                    as they are submitted and get back to the lead investigators within two weeks. No response after two weeks will be interpreted as having no objections 
+                    to the proposal. Updates of proposals will be requested on a yearly basis.  There will need to be evidence of substantial progress over time.  Should 
+                    there not be such evidence, the project (and/or associated data) will be considered appropriate for re-assignment to other investigators.
                 </div>
             </div>
         </div>

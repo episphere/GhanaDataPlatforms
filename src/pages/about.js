@@ -15,7 +15,9 @@ export const aboutConfluence = (activeTab, showDescription) => {
 
         "Overview",
 
-        "Study Team Members"
+        "Study Team Members",
+
+        "Study Questionaire"
       )
     : `<div id='overview'></div>`;
   let template = `
@@ -41,7 +43,7 @@ export const renderOverView = async () => {
             <div class="col align-left">
                 </br>
                 <span>
-                  The Ghana Breast Health Study (GBHS) was conducted to determine etiologic
+                  Etiology of Aggressive Breast Cancer Study (EABCS) was conducted to determine etiologic
                   factors associated to different molecular subtypes of breast cancer.
                 </span>
                 </br></br>

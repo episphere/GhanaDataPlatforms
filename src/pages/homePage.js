@@ -10,7 +10,7 @@ export const infoDeck = () => {
                     <img class="imgB1" src="static/images/ghanaOutline.png">
                     <div class="banner-overlay-text row justify-content-center text-center">
                         <div class="col-xl-12">
-                            <h1 class="banner-overlay-h1">The Ghana Breast Health Study (GBHS)</h1>
+                            <h1 class="banner-overlay-h1"> Etiology of Aggressive Breast Cancer Study (EABCS) </h1>
                             <div class="banner-overlay-line"></div>
                             <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> A multidisciplinary case-control study in West Africa</h2>
                         </div>
@@ -77,7 +77,7 @@ export const infoDeckAfterLoggedIn = async () => {
                     <img class="imgB1" src="static/images/ghanaOutline.png">
                     <div class="banner-overlay-text row justify-content-center text-center">
                         <div class="col-xl-12">
-                            <h1 class="banner-overlay-h1">The Ghana Breast Health Study (GBHS)</h1>
+                            <h1 class="banner-overlay-h1">Etiology of Aggressive Breast Cancer Study (EABCS)</h1>
                             <div class="banner-overlay-line"></div>
                             <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> A multidisciplinary case-control study in West Africa</h2>
                         </div>

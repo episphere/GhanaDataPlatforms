@@ -73,7 +73,7 @@ import { dataAnalysisTemplate } from "./src/pages/dataAnalysis.js";
 import { getFileContent, getFileContentCases } from "./src/visualization.js";
 import { aboutConfluence, renderOverView } from "./src/pages/about.js";
 import { confluenceResources } from "./src/pages/join.js";
-import { confluenceContactPage } from "./src/pages/contact.js";
+import { confluenceContactPage, confluenceQuestionairePage } from "./src/pages/contact.js";
 import { footerTemplate } from "./src/components/footer.js";
 import { renderDescription, renderDescriptionNotSignedIn } from "./src/pages/description.js";
 import { dataDictionaryTemplate } from "./src/pages/dictionary.js";
@@ -459,6 +459,15 @@ const manageRouter = async () => {
     aboutConfluence("contact", true);
     confluenceContactPage();
     hideAnimation();
+  } else if (hash === "#about/questionGBHS") {
+    const element = document.getElementById("questionGBHS");
+    if (!element) return;
+    if (element.classList.contains("navbar-active")) return;
+    document.title = "GBHS - Study Questionaire";
+    assignNavbarActive(element, 1);
+    aboutConfluence("questionGBHS", true);
+    confluenceQuestionairePage();
+    hideAnimation();
   } else if (hash === "#about/description") {
     const element = document.getElementById("studydescBCRPP");
     if (!element) return;
@@ -684,6 +693,19 @@ const manageHash = async () => {
     //aboutConfluence("contact", fileInfo ? true : false);
     aboutConfluence("contact", true);
     confluenceContactPage();
+    hideAnimation();
+  } else if (hash === "#about/questionGBHS") {
+    const element = document.getElementById("questionGBHS");
+    //console.log({ element });
+    if (!element) return;
+    if (element.classList.contains("navbar-active")) return;
+    assignNavbarActive(element, 1);
+    document.title = "GBHS - Study Questionaire";
+    //const fileInfo = await getFileInfo(904897189551);
+    //console.log({ fileInfo });
+    //aboutConfluence("contact", fileInfo ? true : false);
+    aboutConfluence("questionGBHS", true);
+    confluenceQuestionairePage();
     hideAnimation();
   } else if (hash === "#about/description") {
     const element = document.getElementById("studydescBCRPP");

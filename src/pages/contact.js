@@ -242,3 +242,21 @@ export const confluenceContactPage = () => {
     `;
   document.getElementById("overview").innerHTML = template;
 };
+
+export const confluenceQuestionairePage = () => {
+    const template = `
+          <div class="general-bg padding-bottom-1rem">
+              <div class="body-min-height">
+                  <div class="main-summary-row">
+                      <div class="align-left">
+                           <h1 class="page-header">Study Questionaire</h1>
+                      </div>
+                  </div>
+                  <div class="confluence-resources white-bg div-border font-size-18 height100">
+                    <iframe src="./static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf" width="100%" height="100%">
+                  </div>
+                </div>
+            </div>
+                  `
+    document.getElementById("overview").innerHTML = template;
+}

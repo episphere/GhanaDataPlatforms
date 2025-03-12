@@ -16,6 +16,7 @@ export const navBarMenutemplate = () => {
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/overview" id="aboutBCRPP">Overview</a>
                 <!---<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/description" id="studydescBCRPP">Description of Studies</a>--->
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/contact" id="contactGBHS">Study Team Members</a>
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/question" id="questionGBHS">Study Questionaire</a>
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="https://github.com/episphere/GhanaDataPlatforms" target="_blank" id="Ghana_github">GBHS GitHub</a>
             </div>
         </div>
@@ -186,6 +187,10 @@ export function pageNavBar(page, activeTab, ...pageHeaders) {
     if (header === "Study Team Members") {
       link.href = `#${page}/contact`;
       if (activeTab === "contact") link.classList.add("active");
+    }
+    if (header === "Study Questionaire") {
+      link.href = `#${page}/questionGBHS`;
+      if (activeTab === "questionGBHS") link.classList.add("active");
     }
     if (header === "Summary Statistics") {
       link.href = `#${page}/summary`;
