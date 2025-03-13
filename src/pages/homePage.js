@@ -12,7 +12,7 @@ export const infoDeck = () => {
                         <div class="col-xl-12">
                             <h1 class="banner-overlay-h1"> Etiology of Aggressive Breast Cancer Study (EABCS) </h1>
                             <div class="banner-overlay-line"></div>
-                            <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> A multidisciplinary case-control study in West Africa</h2>
+                            <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> A multidisciplinary population-based case-control study</h2>
                         </div>
                     </div>
                 </div>
@@ -20,8 +20,8 @@ export const infoDeck = () => {
             <div class="container align-middle text-center" style="margin-top: 70px;">
                 <div class="card-deck" id="infoDeck" style="min-height: 200px;">`;
   template += cardContents({
-    header: "Learn about GBHS",
-    button: "Learn about GBHS",
+    header: "Learn about the study",
+    button: "Learn about the study",
     href: "#about/overview",
     icon: "fa-download",
     explanation: "View main goals and collaborating institutions.",
@@ -79,7 +79,7 @@ export const infoDeckAfterLoggedIn = async () => {
                         <div class="col-xl-12">
                             <h1 class="banner-overlay-h1">Etiology of Aggressive Breast Cancer Study (EABCS)</h1>
                             <div class="banner-overlay-line"></div>
-                            <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> A multidisciplinary case-control study in West Africa</h2>
+                            <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> A multidisciplinary population-based case-control study</h2>
                         </div>
                     </div>
                 </div>
@@ -88,8 +88,8 @@ export const infoDeckAfterLoggedIn = async () => {
                 <div class="card-deck" id="infoDeck" style="min-height: 200px;">`;
 
                 template += cardContents({
-                    header: "Learn about GBHS",
-                    button: "Learn about GBHS",
+                    header: "Learn about the study",
+                    button: "Learn about the study",
                     href: "#about/overview",
                     icon: "fa-download",
                     explanation: "View main goals and collaborating institutions.",
