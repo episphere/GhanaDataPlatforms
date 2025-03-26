@@ -44,19 +44,19 @@ export const cps2StatsFileId = 908522264695;
 
 export const summaryStatsFolder = 145995372820;
 
-export const uploadFormFolder = 302463515558; //Updated for GBHS
+export const uploadFormFolder = 302463515558; //Updated for EABCS
 
-export const daccReviewFolder = 302459186137; //Updated for GBHS
+export const daccReviewFolder = 302459186137; //Updated for EABCS
 
-export const daccReviewChairFolder = 302458897963; //Updated for GBHS
+export const daccReviewChairFolder = 302458897963; //Updated for EABCS
 
-export const chairReviewFolder = 302460783786; //Updated for GBHS
+export const chairReviewFolder = 302460783786; //Updated for EABCS
 
-export const acceptedFolder = 302461158289; //Updated for GBHS
+export const acceptedFolder = 302461158289; //Updated for EABCS
 
-export const deniedFolder = 302462150134; //Updated for GBHS
+export const deniedFolder = 302462150134; //Updated for EABCS
 
-export const submitterFolder = 302459953400; //Updated for GBHS
+export const submitterFolder = 302459953400; //Updated for EABCS
 
 export const getFolderItems = async (id) => {
   try {
@@ -1941,8 +1941,18 @@ export const filePreviewer = (fileId, divId) => {
   preview.show(fileId, access_token, {
       container: divId
   });
-
 }
+
+export function selectProps(...props){
+  return function(obj){
+    const newObj = {};
+    props.forEach(name =>{
+      newObj[name] = obj[name];
+    });
+    
+    return newObj;
+  }
+};
 
 export const applicationURLs = {
   dev: "https://episphere.github.io/bcrpDataPlatform",

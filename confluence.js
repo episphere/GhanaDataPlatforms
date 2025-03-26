@@ -80,6 +80,7 @@ import { dataDictionaryTemplate } from "./src/pages/dictionary.js";
 import { showPreview } from "./src/components/boxPreview.js";
 import { confluenceEventsPage, eventsBody } from './src/pages/events.js';
 import { protocolsTemplate } from './src/pages/protocols.js';
+import { publication, publicationNoSign, publicationAdmin } from "./src/pages/publicationpage.js";
 
 /**
  * 1. add Scientifix comitte to menu
@@ -163,6 +164,7 @@ export const confluence = async () => {
     const studyAcceptedElement = document.getElementById("studyAccepted");
     const chairViewElement = document.getElementById("chairView");
     const daccViewElement = document.getElementById("daccView");
+    const PublicationPageElement = document.getElementById("publicationID");
     // const platformTutorialElement = document.getElementById('platformTutorial');
     // const dataAnalysisElement = document.getElementById('dataAnalysis');
 
@@ -170,7 +172,7 @@ export const confluence = async () => {
       if (dataSubmissionElement.classList.contains("navbar-active")) return;
       showAnimation();
       assignNavbarActive(dataSubmissionElement, 1);
-      document.title = "GBHS - Data Submit";
+      document.title = "EABCS - Data Submit";
       confluenceDiv.innerHTML = await dataSubmissionTemplate();
       lazyload();
       addEventStudyRadioBtn();
@@ -182,7 +184,7 @@ export const confluence = async () => {
     dataSummaryElement.addEventListener("click", async () => {
       if (dataSummaryElement.classList.contains("navbar-active")) return;
       assignNavbarActive(dataSummaryElement, 1);
-      document.title = "GBHS - Summary Statistics";
+      document.title = "EABCS - Summary Statistics";
       confluenceDiv.innerHTML = dataSummary("Summary Statistics", false, true, true);
       addEventUpdateSummaryStatsData();
       addEventcreateaccessStats();
@@ -200,7 +202,7 @@ export const confluence = async () => {
         if (dataSummarySubsetElement.classList.contains("navbar-active")) return;
         const confluenceDiv = document.getElementById("confluenceDiv");
         assignNavbarActive(dataSummarySubsetElement, 1);
-        document.title = "GBHS - Subset Statistics";
+        document.title = "EABCS - Subset Statistics";
         confluenceDiv.innerHTML = dataSummary("Subset Statistics", false, true, true);
         addEventUpdateSummaryStatsData();
         addEventcreateaccessStats();
@@ -228,7 +230,7 @@ export const confluence = async () => {
           return;
         showAnimation();
         assignNavbarActive(viewUserSubmissionElement, 1);
-        document.title = "GBHS - Your Submissions";
+        document.title = "EABCS - Your Submissions";
         await userSubmissionTemplate("Your Submissions", "User Submissions");
         hideAnimation();
       });
@@ -239,7 +241,7 @@ export const confluence = async () => {
         const confluenceDiv = document.getElementById("confluenceDiv");
         showAnimation();
         assignNavbarActive(dataDictionaryElement, 1);
-        document.title = "GBHS - Data Dictionary";
+        document.title = "EABCS - Data Dictionary";
         confluenceDiv.innerHTML = dataSummary(
           "Data Dictionary",
           true,
@@ -284,7 +286,7 @@ export const confluence = async () => {
         showAnimation();
         if (!element) return;
         if (element.classList.contains("navbar-active")) return;
-        document.title = "GBHS - Data Form";
+        document.title = "EABCS - Data Form";
         assignNavbarActive(element, 1);
         //dataForm();
         const getCollaborators = await getCollaboration(
@@ -324,7 +326,7 @@ export const confluence = async () => {
         showAnimation();
         if (!element) return;
         if (element.classList.contains("navbar-active")) return;
-        document.title = "GBHS - Accepted Studies";
+        document.title = "EABCS - Accepted Studies";
         assignNavbarActive(element, 1);
         confluenceDiv.innerHTML = acceptedStudiesSection("acceptedStudies");
         acceptedStudiesView();
@@ -338,7 +340,7 @@ export const confluence = async () => {
         showAnimation();
         if (!element) return;
         if (element.classList.contains("navbar-active")) return;
-        document.title = "GBHS - Chair View";
+        document.title = "EABCS - Chair View";
         assignNavbarActive(element, 1);
         confluenceDiv.innerHTML = chairSection("chairView");
         chairFileView();
@@ -351,19 +353,33 @@ export const confluence = async () => {
         showAnimation();
         if (!element) return;
         if (element.classList.contains("navbar-active")) return;
-        document.title = "GBHS - DACC View";
+        document.title = "EABCS - DACC View";
         assignNavbarActive(element, 1);
         confluenceDiv.innerHTML = daccSection("daccView");
         daccFileView();
       });
     }
+    
+    PublicationPageElement.addEventListener("click", () => {
+      if (PublicationPageElement.classList.contains("navbar-active")) return;
+      const element = document.getElementById("publicationID");
+      if (!element) return;
+      if (element.classList.contains("navbar-active")) return;
+      document.title = "DCEG - Publication";
+      assignNavbarActive(element);
+      console.log('publication');
+      aboutConfluence("overview");
+      publication();
+      //addEventUpdateSummaryStatsData();
+      hideAnimation();
+    });
 
     dataRequestElement.addEventListener("click", () => {
       if (dataRequestElement.classList.contains("navbar-active")) return;
       const element = document.getElementById("dataRequest");
       if (!element) return;
       if (element.classList.contains("navbar-active")) return;
-      document.title = "GBHS - Data Access";
+      document.title = "EABCS - Data Access";
       assignNavbarActive(element, 1);
       confluenceDiv.innerHTML = dataRequestTemplate("overview");
       hideAnimation();
@@ -437,7 +453,7 @@ const manageRouter = async () => {
     const element = document.getElementById("homePage");
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
-    document.title = "GBHS";
+    document.title = "EABCS";
     assignNavbarActive(element);
     infoDeck();
     hideAnimation();
@@ -446,7 +462,7 @@ const manageRouter = async () => {
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
     console.log("about overview clicked");
-    document.title = "GBHS - Overview";
+    document.title = "EABCS - Overview";
     assignNavbarActive(element, 1);
     aboutConfluence("overview", true);
     renderOverView();
@@ -454,7 +470,7 @@ const manageRouter = async () => {
     const element = document.getElementById("contactGBHS");
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
-    document.title = "GBHS - Study Team";
+    document.title = "EABCS - Study Team";
     assignNavbarActive(element, 1);
     aboutConfluence("contact", true);
     confluenceContactPage();
@@ -463,7 +479,7 @@ const manageRouter = async () => {
     const element = document.getElementById("questionGBHS");
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
-    document.title = "GBHS - Study Questionaire";
+    document.title = "EABCS - Study Questionaire";
     assignNavbarActive(element, 1);
     aboutConfluence("questionGBHS", true);
     confluenceQuestionairePage();
@@ -474,7 +490,7 @@ const manageRouter = async () => {
     console.log("test");
     //if (element.classList.contains("navbar-active")) return;
     assignNavbarActive(element, 1);
-    document.title = "GBHS - Study Description";
+    document.title = "EABCS - Study Description";
     showAnimation();
     // const fileInfo = await getFileInfo(904897189551); //new: 904897189551; original: 881144462693
     aboutConfluence("description", true);
@@ -484,7 +500,7 @@ const manageRouter = async () => {
     const element = document.getElementById("resourcesBCRPP");
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
-    document.title = "GBHS - Resources";
+    document.title = "EABCS - Resources";
     assignNavbarActive(element, 1);
     confluenceResources();
   }
@@ -492,7 +508,7 @@ const manageRouter = async () => {
   //   const element = document.getElementById("contactGBHS");
   //   if (!element) return;
   //   if (element.classList.contains("navbar-active")) return;
-  //   document.title = "GBHS - Contact";
+  //   document.title = "EABCS - Contact";
   //   assignNavbarActive(element, 1);
   //   confluenceDiv.innerHTML = confluenceContactPage();
   // }
@@ -500,7 +516,7 @@ const manageRouter = async () => {
     const element = document.getElementById("dataRequest");
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
-    document.title = "GBHS - Data Access";
+    document.title = "EABCS - Data Access";
     assignNavbarActive(element, 1);
     confluenceDiv.innerHTML = dataAccessNotSignedIn();
   } else if (hash === "#data_access/form") {
@@ -509,7 +525,7 @@ const manageRouter = async () => {
     if (dataFormElement.classList.contains("navbar-active")) return;
     showAnimation();
     assignNavbarActive(dataFormElement, 1);
-    document.title = "GBHS - Data Form";
+    document.title = "EABCS - Data Form";
     confluenceDiv.innerHTML = await formSection();
     removeActiveClass("nav-link", "active");
     //formFunctions();
@@ -521,7 +537,7 @@ const manageRouter = async () => {
     if (acceptedStudiesElement.classList.contains("navbar-active")) return;
     showAnimation();
     assignNavbarActive(acceptedStudiesElement, 1);
-    document.title = "GBHS - Accepted Studies";
+    document.title = "EABCS - Accepted Studies";
     confluenceDiv.innerHTML = acceptedStudiesSection();
     removeActiveClass("nav-link", "active");
   } else if (hash === "#data_access/chairView") {
@@ -530,7 +546,7 @@ const manageRouter = async () => {
     if (chairViewElement.classList.contains("navbar-active")) return;
     showAnimation();
     assignNavbarActive(chairViewElement, 1);
-    document.title = "GBHS - Chair View";
+    document.title = "EABCS - Chair View";
     confluenceDiv.innerHTML = chairSection();
     removeActiveClass("nav-link", "active");
   } else if (hash === "#data_access/daccView") {
@@ -539,7 +555,7 @@ const manageRouter = async () => {
     if (!daccViewElement) return;
     if (daccViewElement.classList.contains("navbar-active")) return;
     assignNavbarActive(daccViewElement, 1);
-    document.title = "GBHS - DACC View";
+    document.title = "EABCS - DACC View";
     confluenceDiv.innerHTML = daccSection();
     removeActiveClass("nav-link", "active");
   } else if (hash === "#data_exploration/dictionary") {
@@ -551,7 +567,7 @@ const manageRouter = async () => {
       return;
     showAnimation();
     assignNavbarActive(dataDictionaryElement, 1);
-    document.title = "GBHS - Data Dictionary";
+    document.title = "EABCS - Data Dictionary";
     confluenceDiv.innerHTML = dataSummary(
       "Data Dictionary",
       true,
@@ -573,7 +589,7 @@ const manageRouter = async () => {
       return;
     showAnimation();
     assignNavbarActive(dataProtocols, 1);
-    document.title = "GBHS - Protocols";
+    document.title = "EABCS - Protocols";
     confluenceDiv.innerHTML = dataSummary(
       "Sample/Data Collection Protocols",
       true,
@@ -594,9 +610,17 @@ const manageRouter = async () => {
       return;
     showAnimation();
     assignNavbarActive(viewUserSubmissionElement, 1);
-    document.title = "GBHS - Your Submissions";
+    document.title = "EABCS - Your Submissions";
     userSubmissionTemplate("Your Submissions", "User Submissions");
     hideAnimation();
+  } else if (hash === "#publicationpage") {
+    const element = document.getElementById("publicationID");
+    if (!element) return;
+    if (element.classList.contains("navbar-active")) return;
+    document.title = "DCEG - publicationpage";
+    assignNavbarActive(element);
+    aboutConfluence("overview");
+    publicationNoSign();
   } else window.location.hash = "#home";
 };
 
@@ -660,6 +684,12 @@ const manageHash = async () => {
     if (element) {
       element.click();
     } else window.location.hash = "#";
+  } else if (hash === "#publicationpage") {
+    const element = document.getElementById("publicationID");
+    element.click();
+  } else if (hash === "#adminpublicationpage") {
+    const element = document.getElementById("adminpublicationID");
+    element.click();
   } else if (hash === "#logout") {
     const element = document.getElementById("logOutBtn");
     element.click();
@@ -668,7 +698,7 @@ const manageHash = async () => {
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
     assignNavbarActive(element);
-    document.title = "GBHS";
+    document.title = "EABCS";
     infoDeckAfterLoggedIn();
     hideAnimation();
   } else if (hash === "#about/overview") {
@@ -676,7 +706,7 @@ const manageHash = async () => {
     if (!element) return;
     //if (element.classList.contains("navbar-active")) return;
     assignNavbarActive(element, 1);
-    document.title = "GBHS - Overview";
+    document.title = "EABCS - Overview";
     const fileInfo = await getFileInfo(904897189551);
     aboutConfluence("overview", fileInfo ? true : false);
     renderOverView();
@@ -687,7 +717,7 @@ const manageHash = async () => {
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
     assignNavbarActive(element, 1);
-    document.title = "GBHS - Study Team";
+    document.title = "EABCS - Study Team";
     //const fileInfo = await getFileInfo(904897189551);
     //console.log({ fileInfo });
     //aboutConfluence("contact", fileInfo ? true : false);
@@ -700,7 +730,7 @@ const manageHash = async () => {
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
     assignNavbarActive(element, 1);
-    document.title = "GBHS - Study Questionaire";
+    document.title = "EABCS - Study Questionaire";
     //const fileInfo = await getFileInfo(904897189551);
     //console.log({ fileInfo });
     //aboutConfluence("contact", fileInfo ? true : false);
@@ -712,7 +742,7 @@ const manageHash = async () => {
     if (!element) return;
     //if (element.classList.contains("navbar-active")) return;
     assignNavbarActive(element, 1);
-    document.title = "GBHS - Study Description";
+    document.title = "EABCS - Study Description";
     showAnimation();
     const fileInfo = await getFileInfo(904897189551); //new: 904897189551; original: 881144462693
     aboutConfluence("description", fileInfo ? true : false);
@@ -723,7 +753,7 @@ const manageHash = async () => {
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
     assignNavbarActive(element, 1);
-    document.title = "GBHS - Resources";
+    document.title = "EABCS - Resources";
     confluenceResources();
     hideAnimation();
   }

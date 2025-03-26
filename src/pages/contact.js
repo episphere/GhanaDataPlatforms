@@ -9,8 +9,8 @@ export const confluenceContactPage = () => {
                 </div>
                 <div class="main-summary-row confluence-resources white-bg div-border font-size-18">
                     <div class="col">
-                        <span>For questions about the Ghana Breast Health Study </span></br>
-                        <span>Send email to: GBHS at </strong> <a href="gbhs@mail.nih.gov">gbhs@mail.nih.gov</a></span></br>
+                        <span>For questions about the Etiology of Aggressive Breast Cancer Study </span></br>
+                        <span>Send email to: EABCS at </strong> <a href="EABCS@mail.nih.gov">EABCS@mail.nih.gov</a></span></br>
                         </br>
                         <div class="row">
                             <div class="col-4">

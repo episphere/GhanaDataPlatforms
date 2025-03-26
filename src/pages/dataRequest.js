@@ -64,7 +64,7 @@ export const dataAccessNotSignedIn = () => {
               <div class="data-submission div-border font-size-18" style="padding-left: 1rem; padding-right: 1rem;">
                   <div class="row m-0">
                     <b>Guidelines for Scientific Review of Proposals</b>
-                      All studies that are proposing to utilize data collected from the Ghana Breast Health Study must be reviewed and approved by the Ghana Breast Health Study Steering Committee (GBHSSC).  The proposal should not exceed five pages (including references and tables) and should contain the following information:
+                      All studies that are proposing to utilize data collected from the Etiology of Aggressive Breast Cancer Study must be reviewed and approved by the Etiology of Aggressive Breast Cancer Study Steering Committee (GBHSSC).  The proposal should not exceed five pages (including references and tables) and should contain the following information:
                   </div></br>
                   <div class="row m-0">
                       <ol>
@@ -79,7 +79,7 @@ export const dataAccessNotSignedIn = () => {
                           <li style=" margin-botton: 10px;">Timeline for completion of different components of this project (Gantt Chart)</li>
                       </ol>
                   </div>
-                    Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the GBHS Team. The GBHSSC will review proposals 
+                    Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the EABCS Team. The GBHSSC will review proposals 
                     as they are submitted and get back to the lead investigators within two weeks. No response after two weeks will be interpreted as having no objections 
                     to the proposal. Updates of proposals will be requested on a yearly basis.  There will need to be evidence of substantial progress over time.  Should 
                     there not be such evidence, the project (and/or associated data) will be considered appropriate for re-assignment to other investigators.
@@ -156,7 +156,7 @@ export const dataAccess = (activeTab, showDescripton) => {
               <div class="data-submission div-border font-size-18" style="padding-left: 1rem; padding-right: 1rem;">
                   <div class="row m-0">
                     <b>Guidelines for Scientific Review of Proposals</b>
-                      All studies that are proposing to utilize data collected from the Ghana Breast Health Study must be reviewed and approved by the Ghana Breast Health Study Steering Committee (GBHSSC).  The proposal should not exceed five pages (including references and tables) and should contain the following information:
+                      All studies that are proposing to utilize data collected from the Etiology of Aggressive Breast Cancer Study must be reviewed and approved by the Etiology of Aggressive Breast Cancer Study Steering Committee (GBHSSC).  The proposal should not exceed five pages (including references and tables) and should contain the following information:
                   </div></br>
                   <div class="row m-0">
                       <ol>
@@ -171,7 +171,7 @@ export const dataAccess = (activeTab, showDescripton) => {
                           <li style=" margin-botton: 10px;">Timeline for completion of different components of this project (Gantt Chart)</li>
                       </ol>
                   </div>
-                    Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the GBHS Team. The GBHSSC will review proposals as they are submitted and get back to the lead investigators within two weeks. No response after two weeks will be interpreted as having no objections to the proposal. Updates of proposals will be requested on a yearly basis.  There will need to be evidence of substantial progress over time.  Should there not be such evidence, the project (and/or associated data) will be considered appropriate for re-assignment to other investigators.
+                    Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the EABCS Team. The GBHSSC will review proposals as they are submitted and get back to the lead investigators within two weeks. No response after two weeks will be interpreted as having no objections to the proposal. Updates of proposals will be requested on a yearly basis.  There will need to be evidence of substantial progress over time.  Should there not be such evidence, the project (and/or associated data) will be considered appropriate for re-assignment to other investigators.
                 </div>
             </div>
         </div> `;
@@ -248,7 +248,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
                               <div class="main-summary-row confluence-resources white-bg div-border font-size-18">
                                 <div class="col">
                                   <span>You currently do not have access to submit a data request form.</span></br>
-                                  <span>For access, please contact <a href="mailto:gbhs@mail.nih.gov">GBHS</a></span>
+                                  <span>For access, please contact <a href="mailto:EABCS@mail.nih.gov">EABCS</a></span>
                           </div>
                   </div>
                 `;
@@ -329,11 +329,11 @@ export const formSection = async (activeTab, showDescripton) => {
         </div>
         <div class="data-submission div-border font-size-18" style="padding-left: 1rem; padding-right: 1rem;">             
           <section class="contact-form">
-            <p>Please fill out the form below. This will be reviewed by the GBHS Data Access Coordination Committee (DACC) 
-            to ensure that the proposal is consistent with GBHS goals and individual cohorts’ consents. The DACC consists of 
-            representatives from the GBHS Steering Committee and representatives of individual cohorts. Proposals will be reviewed 
+            <p>Please fill out the form below. This will be reviewed by the EABCS Data Access Coordination Committee (DACC) 
+            to ensure that the proposal is consistent with EABCS goals and individual cohorts’ consents. The DACC consists of 
+            representatives from the EABCS Steering Committee and representatives of individual cohorts. Proposals will be reviewed 
             once every four months. Data for approved concepts will be sent only to the Investigators listed below, 
-            each of whose Institutions will need to sign the GBHS DTA.</p>
+            each of whose Institutions will need to sign the EABCS DTA.</p>
             <form>
             <!---<div class='col-3 mb-3 input-group'>
               <input type='file' class='' id='uploadJSON' />
@@ -376,7 +376,7 @@ export const formSection = async (activeTab, showDescripton) => {
               </div>
 
               <div class="input-group">
-                <label for="member"> <b>Are you a member of GBHS?</b> <span class='required-label'>*</span></label>
+                <label for="member"> <b>Are you a member of EABCS?</b> <span class='required-label'>*</span></label>
                   <input id="memberyes" name="member" type="radio" value="Yes" required/>
                     <label class="inline" for="memberyes"> Yes </label>
                   <input id="memberno" name="member" type="radio" value="No" required/>
@@ -384,7 +384,7 @@ export const formSection = async (activeTab, showDescripton) => {
               </div>
 
               <div class="input-group">
-                <label for="acro"><b>If yes, GBHS Study Acronym(s) for the Contact Investigator</b></label>
+                <label for="acro"><b>If yes, EABCS Study Acronym(s) for the Contact Investigator</b></label>
                 <textarea id="acro" name="acro" rows="2" cols="65"></textarea>
               </div>
 
@@ -431,7 +431,7 @@ export const formSection = async (activeTab, showDescripton) => {
                 <button class='btn btn-primary btn-sm' type='button' id='importDictvars'>Import Variables</button>--->
 
               <div class="input-group">
-                <p>The <a href="#data_exploration/dictionary">GBHS data dictionary</a> lists and describes variables shared by cohorts participating in the GBHS. 
+                <p>The <a href="#data_exploration/dictionary">EABCS data dictionary</a> lists and describes variables shared by cohorts participating in the EABCS. 
                 Data availability and descriptive statistics can be explored via the <a href="#data_exploration/summary">Explore Data</a> tool. If data from a particular category is requested,
                 all variables from that category will be provided.</p>
               </div>
@@ -671,7 +671,7 @@ export const formSection = async (activeTab, showDescripton) => {
               <p><u><b>Timeline</b></u><span class='required-label'>*</span></p>
                 <div class="input-group">
                   <label for="timeline">Please indicate estimated time from receipt of data to completion of analysesand submission of paper; 
-                  the expectation (per the GBHS Recipient DTA) is that results will be published within one year after completion</label>
+                  the expectation (per the EABCS Recipient DTA) is that results will be published within one year after completion</label>
                   <textarea id="timeline" name="timeline" rows="4" cols="65" required></textarea>
                 </div>
 
@@ -679,7 +679,7 @@ export const formSection = async (activeTab, showDescripton) => {
               <p><u><b>Authorship</b></u><span class='required-label'>*</span></p>
                 <div class="input-group">
                   <u id="tooltip1"><a><label for="authconf"><input id="authconf" name="authconf" type="checkbox" value="Yes" required/> 
-                  <b>Please confirm that you agree to comply with the GBHS authorship and publication requirements.</b>
+                  <b>Please confirm that you agree to comply with the EABCS authorship and publication requirements.</b>
                   <span>
                   Recipient shall have the first right to publish on the Results of the Research Study. 
                   It is the intention that the Recipient and Contributors shall be co-authors on initial 
@@ -695,7 +695,7 @@ export const formSection = async (activeTab, showDescripton) => {
                   Research Study (“Publication Period”). If this is not possible, Recipient will consult with NCI, 
                   who will liaise with the Contributors as soon as possible and in any case prior to lapse of the 
                   Publication Period, with a view to resolve the issue(s) delaying publication. If the Contributors 
-                  and GBHS DACC decide that the publication is being delayed unduly by the Recipient, the Recipient 
+                  and EABCS DACC decide that the publication is being delayed unduly by the Recipient, the Recipient 
                   shall lose its first right to publish.
                   </span></a></u></label>
                   <br>
@@ -707,9 +707,9 @@ export const formSection = async (activeTab, showDescripton) => {
               <p><u><b>Data Access</b></u><span class='required-label'>*</span></p>
                 <div class="input-group">
                   <u id="tooltip2"><a><label for="dataaccess"><input id="dataaccess" name="dataaccess" type="checkbox" value="Yes" required/> 
-                  <b>Please confirm that you agree to comply with the GBHS data access and storage requirements.</b>
+                  <b>Please confirm that you agree to comply with the EABCS data access and storage requirements.</b>
                   <span>
-                    Users granted access to GBHS data agree to only access data for the purposes outlined in this proposal, and will not save any individual participant's data (i.e., make permanent copies) on local computers or any persistent storage device other than the controlled-access workspace provided by the GBHS designated for this project.
+                    Users granted access to EABCS data agree to only access data for the purposes outlined in this proposal, and will not save any individual participant's data (i.e., make permanent copies) on local computers or any persistent storage device other than the controlled-access workspace provided by the EABCS designated for this project.
                   </span></a></u></label>
                 </div>
                 
@@ -898,7 +898,7 @@ export const acceptedStudiesView = async () => {
   let template = `
     <div class="main-summary-row">
             <div class="row align-left w-100 m-0">
-                <h1 class="col page-header pl-0 pt-2">Learn about GBHS</h1>
+                <h1 class="col page-header pl-0 pt-2">Learn about EABCS</h1>
                 <div class="ml-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
                 <div class="ml-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
                 <div class="ml-auto mt-3 mb-3" id="downloadContainer">
@@ -1930,7 +1930,7 @@ export const dataForm = async () => {
               default: new docx.Header({
                 children: [
                   new docx.Paragraph({
-                    text: "Ghana Breast Health Study Analysis Proposal",
+                    text: "Etiology of Aggressive Breast Cancer Study Analysis Proposal",
                     heading: docx.HeadingLevel.HEADING_1,
                     alignment: docx.AlignmentType.CENTER,
                   }),
@@ -2055,7 +2055,7 @@ export const dataForm = async () => {
                 alignment: docx.AlignmentType.START,
                 children: [
                   new docx.TextRun({
-                    text: "Are you a member of GBHS ",
+                    text: "Are you a member of EABCS ",
                   }),
                   new docx.TextRun({
                     text: jsondata.member,
@@ -2071,7 +2071,7 @@ export const dataForm = async () => {
                 alignment: docx.AlignmentType.START,
                 children: [
                   new docx.TextRun({
-                    text: "GBHS Study Acronym(s) for the Contact Investigator: ",
+                    text: "EABCS Study Acronym(s) for the Contact Investigator: ",
                   }),
                   new docx.TextRun({
                     text: jsondata.acro,
@@ -2366,7 +2366,7 @@ export const dataForm = async () => {
             default: new docx.Header({
               children: [
                 new docx.Paragraph({
-                  text: "Ghana Breast Health Study Analysis Proposal",
+                  text: "Etiology of Aggressive Breast Cancer Study Analysis Proposal",
                   heading: docx.HeadingLevel.HEADING_1,
                   alignment: docx.AlignmentType.CENTER,
                 }),
@@ -2491,7 +2491,7 @@ export const dataForm = async () => {
               alignment: docx.AlignmentType.START,
               children: [
                 new docx.TextRun({
-                  text: "Are you a member of GBHS ",
+                  text: "Are you a member of EABCS ",
                 }),
                 new docx.TextRun({
                   text: jsondata.member,
@@ -2508,7 +2508,7 @@ export const dataForm = async () => {
               alignment: docx.AlignmentType.START,
               children: [
                 new docx.TextRun({
-                  text: "GBHS Study Acronym(s) for the Contact Investigator: ",
+                  text: "EABCS Study Acronym(s) for the Contact Investigator: ",
                 }),
               ],
               spacing: {

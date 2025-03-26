@@ -35,7 +35,7 @@ export const renderOverView = async () => {
   let template = `
     <div class="main-summary-row">
       <div class="align-left">
-            <h1 class="page-header">Learn About GBHS</h1>
+            <h1 class="page-header">Learn About EABCS</h1>
       </div>
     </div>
     <div class="home-page-stats font-size-18">

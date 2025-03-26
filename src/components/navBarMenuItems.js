@@ -10,14 +10,14 @@ export const navBarMenutemplate = () => {
         </div>
         <div class="grid-elements dropdown">
             <button class="nav-link nav-menu-links dropdown-toggle dropdown-btn white-font" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                About GBHS
+                About EABCS
             </button>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/overview" id="aboutBCRPP">Overview</a>
                 <!---<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/description" id="studydescBCRPP">Description of Studies</a>--->
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/contact" id="contactGBHS">Study Team Members</a>
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/question" id="questionGBHS">Study Questionaire</a>
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="https://github.com/episphere/GhanaDataPlatforms" target="_blank" id="Ghana_github">GBHS GitHub</a>
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="https://github.com/episphere/GhanaDataPlatforms" target="_blank" id="Ghana_github">EABCS GitHub</a>
             </div>
         </div>
         <!--<div class="grid-elements dropdown">
