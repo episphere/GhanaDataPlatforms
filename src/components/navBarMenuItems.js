@@ -37,11 +37,14 @@ export const navBarMenutemplate = () => {
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/dictionary" title="Data Dictionary" id="dataDictionary">
                   Dictionary
                 </a>
-                <!--a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/protocols" title="Protocols" id="dataProtocols">
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#protocols/protocol" title="Protocols" id="dataProtocols">
                   Protocols
-                </a-->
+                </a>
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/summary" title="Summary Statistics" id="dataSummary">
                     Summary Statistics
+                </a>
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#publicationpage" id="publicationID"> 
+                    Publications
                 </a>
                 ${
                   location.origin.match(applicationURLs.dev)
@@ -201,8 +204,9 @@ export function pageNavBar(page, activeTab, ...pageHeaders) {
       if (activeTab === "dictionary") link.classList.add("active");
     }
     if (header === "Protocols") {
-      link.href = `#${page}/protocols`;
-      if (activeTab === "protocols") link.classList.add("active");
+      link.href = `#${page}/protocol`;
+      if (activeTab === "protocol") link.classList.add("active");
+      console.log(link);
     }
     if (header === "Subset Statistics") {
       link.href = `#${page}/subset`;

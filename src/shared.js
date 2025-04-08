@@ -1769,7 +1769,7 @@ export const csv2Json = (csv) => {
     if (Object.keys(obj).length > 0) result.push(obj);
   }
   return {
-    data: result,
+    jsonData: result,
     headers,
   };
 };

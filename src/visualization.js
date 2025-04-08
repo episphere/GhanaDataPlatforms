@@ -10,6 +10,7 @@ import {
   summaryStatsCasesFileId,
   reSizePlots,
   csv2Json2,
+  csv2Json,
   getMail
 } from "./shared.js";
 import { variables } from "./variables.js";
@@ -31,9 +32,11 @@ const chartLabels = {
 
 export const getFileContent = async () => {
   showAnimation();
-  const { jsonData, headers } = csvJSON(await getFile(summaryStatsFileId));
-  const lastModified = (await getFileInfo(summaryStatsFileId)).modified_at;
-  document.getElementById("dataLastModified").innerHTML = `Data current as of - ${new Date(lastModified).toLocaleString()}`;
+  //static\data\testghana26march2025.csv
+  const data = await (await fetch('../static/data/testghana26march2025.csv')).text();
+  const {jsonData, headers} = csv2Json(data)//await getFile(summaryStatsFileId));
+  //const lastModified = (await getFileInfo(summaryStatsFileId)).modified_at;
+  //document.getElementById("dataLastModified").innerHTML = `Data current as of - ${new Date(lastModified).toLocaleString()}`;
   if (jsonData.length === 0) {
     document.getElementById(
       "confluenceDiv"
@@ -76,129 +79,44 @@ export const getFileContent = async () => {
   hideAnimation();
 };
 
-export const getFileContentCases = async () => {
-  showAnimation();
-  const { jsonData, headers } = csvJSON(await getFile(summaryStatsCasesFileId)); // Get summary level data
-  const lastModified = (await getFileInfo(summaryStatsCasesFileId)).modified_at;
-  document.getElementById(
-    "dataLastModified"
-  ).innerHTML = `Data current as of - ${new Date(
-    lastModified
-  ).toLocaleString()}`;
-  if (jsonData.length === 0) {
-    document.getElementById(
-      "confluenceDiv"
-    ).innerHTML = `You don't have access to summary level data, please contact NCI for the access.`;
-    return;
-  }
-  renderAllCasesCharts(jsonData, headers);
-
-  const graph1 = document.getElementById("dataSummaryVizLabel1");
-  graph1.addEventListener("change", function (event) {
-    filterData(jsonData, headers);
-    });
-
-  const graph2 = document.getElementById("dataSummaryVizLabel2");
-    graph2.addEventListener("change", function (event) {
-      filterData(jsonData, headers);
-      });
-
-  const graph3 = document.getElementById("dataSummaryVizLabel3");
-    graph3.addEventListener("change", function (event) {
-      filterData(jsonData, headers);
-      });
-
-  const graph4 = document.getElementById("dataSummaryVizLabel4");
-    graph4.addEventListener("change", function (event) {
-      filterData(jsonData, headers);
-      });
-
-  const graph5 = document.getElementById("dataSummaryVizLabel5");
-    graph5.addEventListener("change", function (event) {
-      filterData(jsonData, headers);
-      });
-
-  allFilters(jsonData, headers, "cases");
-  hideAnimation();
-};
-
 const allFilters = (jsonData, headers, caseSelection) => {
   document.getElementById("allFilters").innerHTML = "";
   const div1 = document.createElement("div");
   div1.classList = ["row select"];
-  const studies = getStudies(jsonData);
-  const races = getRace(jsonData);
-  const ethnicities = getEthnicity(jsonData);
+  const site_values = getSites(jsonData);
+  const case_control = getCase_Control(jsonData);
 
-  let studyOptions = " ";
-  Object.keys(studies).forEach((element) => {
-    studyOptions =
-      studyOptions + `<option value='${element}'>${element}</option>`;
+  let siteOptions = "";
+  Object.keys(site_values).forEach((element) => {
+    siteOptions =
+    siteOptions + `<option value='${element}'>${element}</option>`;
   });
 
-  let raceOptions = "";
-  Object.keys(races).forEach((element) => {
-    raceOptions =
-      raceOptions + `<option value='${element}'>${element}</option>`;
+  let casecontrolOptions = "";
+  Object.keys(case_control).forEach((element) => {
+    casecontrolOptions =
+    casecontrolOptions + `<option value='${element}'>${element}</option>`;
   });
 
-  let ethnicityOptions = "";
-  Object.keys(ethnicities).forEach((element) => {
-    ethnicityOptions =
-      ethnicityOptions + `<option value='${element}'>${element}</option>`;
-  });
   let template = `
         <div style="width: 100%;">
         `;
-  if (caseSelection === "all") {
-    template += `<div class="ml-auto mt-3 mb-1" id="classSelect">
+    template += `
             <div class="col-md-12 p-0 form-group">
-                <label class="filter-label font-size-13" for="subcasesSelection">Population</label>
+                <label class="filter-label font-size-13" for="subcasesSelection">Site</label>
                 <select class="form-control font-size-15" id="subcasesSelection" data-variable='subcases'>
-                    <option value='all' selected>Full Cohort</option>
-                    <option value='cases'>Cases</option>
+                    <option value='all' selected>All</option>
+                    ${siteOptions}
                 </select>
             </div>
-        </div>`;
-  } else if (caseSelection === "cases") {
-    template += `<div class="ml-auto mt-3 mb-1" id="classSelect">
-            <div class="col-md-12 p-0 form-group">
-                <label class="filter-label font-size-13" for="subcasesSelection">Population</label>
-                <select class="form-control font-size-15" id="subcasesSelection" data-variable='subcases'>
-                    <option value='all'>Full Cohort</option>
-                    <option value='cases' selected>Cases</option>
-                </select>
-            </div>
-        </div>`;
-  }
+`;
 
   template += `  
             <div class="form-group">
-                <label class="filter-label font-size-13" for="raceSelection">Race</label>
-                <select class="form-control font-size-15" id="raceSelection" data-variable='race'>
+                <label class="filter-label font-size-13" for="case_control">Case/Control</label>
+                <select class="form-control font-size-15" id="case_control" data-variable='case_control'>
                     <option selected value='all'>All</option>
-                    ${raceOptions}
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label class="filter-label font-size-13" for="ethnicitySelection">Ethnicity</label>
-                <select class="form-control font-size-15" id="ethnicitySelection" data-variable='ethnicity'>
-                    <option selected value='all'>All</option>
-                    ${ethnicityOptions}
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label class="filter-label font-size-13" for="studySelection">
-                  Cohort
-                  <a href="#about/description">
-                    <img src="./static/images/icons/arrow_out.png" width="18" height="18" />
-                  </a>
-                </label>
-                <select class="form-control font-size-15" id="studySelection" data-variable='study'>
-                    <option selected value='all'>All</option>
-                    ${studyOptions}
+                    ${casecontrolOptions}
                 </select>
             </div>
     `;
@@ -242,14 +160,22 @@ const getStudies = (jsonData) => {
   });
   return obj;
 };
-const getRace = (jsonData) => {
+const getCase_Control = (jsonData) => {
   let obj = {};
   // obj['totalSubjects'] = 0;
   jsonData.forEach((value) => {
-    obj[value.race] = value.race;
+    obj[value.case_control] = value.case_control;
   });
   return obj;
 };
+const getSites = (jsonData) => {
+  let obj = {};
+  // obj['totalSubjects'] = 0;
+  jsonData.forEach((value) => {
+    obj[value.site] = value.site;
+  });
+  return obj;
+}
 const getEthnicity = (jsonData) => {
   let obj = {};
   // obj['totalSubjects'] = 0;
@@ -281,12 +207,13 @@ export const renderAllCharts = (data) => {
   document.getElementById("chartRow2").innerHTML = "";
   let finalData = {};
   finalData = data;
+
   let totalSubjects = 0;
-  data.forEach((value) => (totalSubjects += parseInt(value.TotalSubjects)));
+  data.forEach((value) => (totalSubjects += 1));
   document.getElementById("participantCount").innerHTML = `<b>No. of Participants:</b> ${totalSubjects.toLocaleString("en-US")}`;
 
   generateBarChart(
-    "birth_year",
+    "numpregn",
     "dataSummaryVizChart1",
     "dataSummaryVizLabel1",
     finalData,
@@ -294,7 +221,7 @@ export const renderAllCharts = (data) => {
     "Full Cohort"
   );
   generateBarChart(
-    "age",
+    "flag_gen",
     "dataSummaryVizChart2",
     "dataSummaryVizLabel2",
     finalData,
@@ -302,7 +229,7 @@ export const renderAllCharts = (data) => {
     "Full Cohort"
   );
   generateBarChart(
-    "ageMenarche",
+    "flag_weights",
     "dataSummaryVizChart3",
     "dataSummaryVizLabel3",
     finalData,
@@ -310,7 +237,7 @@ export const renderAllCharts = (data) => {
     "Full Cohort"
   );
   generateBarChart(
-    "parous",
+    "tumorper_cat",
     "dataSummaryVizChart4",
     "dataSummaryVizLabel4",
     finalData,
@@ -318,7 +245,7 @@ export const renderAllCharts = (data) => {
     "Full Cohort"
   );
   generateBarChart(
-    "parity",
+    "consdiag_cnt",
     "dataSummaryVizChart5",
     "dataSummaryVizLabel5",
     finalData,
@@ -326,7 +253,7 @@ export const renderAllCharts = (data) => {
     "Full Cohort"
   );
   generateBarChart(
-    "bmi",
+    "agefbirth_cat",
     "dataSummaryVizChart6",
     "dataSummaryVizLabel6",
     finalData,
@@ -339,11 +266,11 @@ export const updateAllCharts = (data) => {
   let finalData = {};
   finalData = data;
   let totalSubjects = 0;
-  data.forEach((value) => (totalSubjects += parseInt(value.TotalSubjects)));
+  data.forEach((value) => (totalSubjects += 1));
   document.getElementById("participantCount").innerHTML = `<b>No. of Participants:</b> ${totalSubjects.toLocaleString("en-US")}`;
 
   updateBarChart(
-    "birth_year",//document.getElementById("dataSummaryVizLabel1").value,
+    document.getElementById("dataSummaryVizLabel1").value,
     "dataSummaryVizChart1",
     "dataSummaryVizLabel1",
     finalData,
@@ -351,7 +278,7 @@ export const updateAllCharts = (data) => {
     "Full Cohort"
   );
   updateBarChart(
-    "age",//document.getElementById("dataSummaryVizLabel2").value,
+    document.getElementById("dataSummaryVizLabel2").value,
     "dataSummaryVizChart2",
     "dataSummaryVizLabel2",
     finalData,
@@ -359,7 +286,7 @@ export const updateAllCharts = (data) => {
     "Full Cohort"
   );
   updateBarChart(
-    "ageMenarche",//document.getElementById("dataSummaryVizLabel3").value,
+    document.getElementById("dataSummaryVizLabel3").value,
     "dataSummaryVizChart3",
     "dataSummaryVizLabel3",
     finalData,
@@ -367,7 +294,7 @@ export const updateAllCharts = (data) => {
     "Full Cohort"
   );
   updateBarChart(
-    "parous",//document.getElementById("dataSummaryVizLabel4").value,
+    document.getElementById("dataSummaryVizLabel4").value,
     "dataSummaryVizChart4",
     "dataSummaryVizLabel4",
     finalData,
@@ -375,7 +302,7 @@ export const updateAllCharts = (data) => {
     "Full Cohort"
   );
   updateBarChart(
-    "parity",//document.getElementById("dataSummaryVizLabel5").value,
+    document.getElementById("dataSummaryVizLabel5").value,
     "dataSummaryVizChart5",
     "dataSummaryVizLabel5",
     finalData,
@@ -383,7 +310,7 @@ export const updateAllCharts = (data) => {
     "Full Cohort"
   );
   updateBarChart(
-    "bmi",//document.getElementById("dataSummaryVizLabel6").value,
+    document.getElementById("dataSummaryVizLabel6").value,
     "dataSummaryVizChart6",
     "dataSummaryVizLabel6",
     finalData,
@@ -536,16 +463,27 @@ export const getSelectedStudies = () => {
   return array;
 };
 
+const countObjectsWithKeyValue = (arr, key, value) => {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] && arr[i].hasOwnProperty(key) && arr[i][key] === value) {
+      count++;
+    }
+  }
+  return count;
+}
+
 const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population) => {
   const div = document.createElement("div");
   div.classList = ["col-xl-4 pl-2 padding-right-zero mb-3"];
-  const dataGraphs = population==="Full Cohort" ? graphVariables : graphVariablesCases;
+  const dataGraphs = graphVariables;
   div.innerHTML = dataVisulizationCards({
     cardHeaderId: labelID,
     cardBodyId: id,
   });
+
   let x = Object.values(dataGraphs[parameter].values);
-  let y = Object.keys(dataGraphs[parameter].values).map(key => mapReduce(jsonData, key));
+  let y = Object.keys(dataGraphs[parameter].values).map(key => countObjectsWithKeyValue(jsonData, parameter, key));
 
   let csvContent = '';
   for (let i =0; i<x.length;i++) {
@@ -558,7 +496,7 @@ const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population
       x: x,
       y: y,
       marker: {
-        color: Array(Math.ceil(x.length/2)).fill(["#8bc1e8","#319fbe"]).flat(),
+        color: Array(Math.ceil(x.length/2)).fill(["#006B3D","#53ab78"]).flat(),
       },
       type: "bar",
     },
@@ -613,7 +551,7 @@ const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population
   Plotly.newPlot(`${id}`, data, layout, config);
 
   var htmlTitle = document.getElementById(labelID);
-  htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[parameter].title, id, true, true);
+  htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[parameter].title, parameter, true, true);
   // for (let index in dataGraphs) {
   //   let defaultSelected = true ? index===parameter : false
   //   htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[index].title, index, defaultSelected, defaultSelected);
@@ -623,7 +561,7 @@ const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population
 const updateBarChart = (parameter, id, labelID, jsonData, chartRow, population) => {
   const dataGraphs = population==="Full Cohort" ? graphVariables : graphVariablesCases;
   let x = Object.values(dataGraphs[parameter].values);
-  let y = Object.keys(dataGraphs[parameter].values).map(key => mapReduce(jsonData, key));
+  let y = Object.keys(dataGraphs[parameter].values).map(key => countObjectsWithKeyValue(jsonData, parameter, key));
   let csvContent = '';
   for (let i =0; i<x.length;i++) {
     csvContent += x[i] + ',' + y[i] + '\n';
@@ -633,7 +571,7 @@ const updateBarChart = (parameter, id, labelID, jsonData, chartRow, population) 
       x: x,
       y: y,
       marker: {
-        color: Array(Math.ceil(x.length/2)).fill(["#8bc1e8","#319fbe"]).flat(),
+        color: Array(Math.ceil(x.length/2)).fill(["#006B3D","#53ab78"]).flat(),
       },
       type: "bar",
     },

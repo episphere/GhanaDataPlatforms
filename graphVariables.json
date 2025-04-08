@@ -1,4 +1,101 @@
 {
+    "tumor_area":
+        {
+            "title" : "Area of Tumor",
+            "units" : "cm^2",
+            "values":{
+
+            }
+        },
+    "flag_gen":
+        {
+            "title" : "Flag Gen",
+            "units" : "",
+            "values":
+                {
+                "0": "0",
+                "1": "1"
+                }
+        },
+    "flag_weights":
+        {
+            "title" : "Flag Weights",
+            "units" : "",
+            "values":
+                {
+                "0": "0",
+                "1": "1"
+                }
+        },
+    "tumorper_cat":
+        {
+            "title" : "Tumor Category",
+            "units" : "",
+            "values":
+                {
+                "0": "0",
+                "1": "1",
+                "2": "2"
+                }
+        },
+    "consdiag_cnt":
+        {
+            "title" : "Cons Diag Count",
+            "units" : "",
+            "values":
+                {
+                "0": "0",
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5"
+                }
+        },
+    "agefbirth_cat":
+        {
+            "title" : "Age of Birth Category",
+            "units" : "",
+            "values":
+                {
+                "0": "0",
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6",
+                "7": "7",
+                "8": "8",
+                "9": "9"
+                }
+        },
+    "numpregn" :
+        {
+        "title" : "Number of pregnancies",
+        "units" : "Number",
+        "values" : 
+            {
+            "0": "0",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            "11": "11",
+            "12": "12",
+            "13": "13",
+            "14": "14",
+            "15": "15",
+            "16": "16",
+            "DK": "Unknown"
+            }
+        },
     "age" : 
         {
         "title" : "Age at Record Date",

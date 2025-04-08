@@ -49,8 +49,7 @@ import {
   updateAllCharts,
   updateAllCasesCharts,
   updateCounts,
-  getFileContent,
-  getFileContentCases,
+  getFileContent
 } from "./visualization.js";
 
 import { showPreview } from "./components/boxPreview.js";
@@ -1660,104 +1659,50 @@ export const addEventMissingnessFilterBarToggle = () => {
 };
 
 export const addEventSummaryStatsFilterForm = (jsonData, headers) => {
-  const ethnicitySelection = document.getElementById("ethnicitySelection");
-  ethnicitySelection.addEventListener("change", () => {
+
+  const case_control = document.getElementById("case_control");
+  case_control.addEventListener("change", () => {
     filterData(jsonData, headers);
   });
 
-  const raceSelection = document.getElementById("raceSelection");
-  raceSelection.addEventListener("change", () => {
+  const subCases = document.getElementById("subcasesSelection");
+  subCases.addEventListener("change", () => {
     filterData(jsonData, headers);
   });
 
-  const studySelection = document.getElementById("studySelection");
-  studySelection.addEventListener("change", () => {
-    filterData(jsonData, headers);
-  });
-
-  const subcasesSelection = document.getElementById("subcasesSelection");
-  subcasesSelection.addEventListener("change", function (event) {
-    if (event.target.value == "all") getFileContent();
-    if (event.target.value == "cases") getFileContentCases();
-  });
-
-  const elements = document.getElementsByClassName("select-consortium");
-  Array.from(elements).forEach((el, index) => {
-    el.addEventListener("click", () => {
-      if (el.checked) {
-        Array.from(
-          el.parentNode.parentNode.querySelectorAll(".select-study")
-        ).forEach((btns) => (btns.checked = true));
-      } else {
-        Array.from(
-          el.parentNode.parentNode.querySelectorAll(".select-study")
-        ).forEach((btns) => (btns.checked = false));
-      }
-      filterData(jsonData, headers);
-    });
-  });
-
-  const studyElements = document.getElementsByClassName("select-study");
-  Array.from(studyElements).forEach((ele) => {
-    ele.addEventListener("click", () => {
-      filterData(jsonData, headers);
-    });
-  });
 };
 
 export const filterData = (jsonData, headers) => {
-  const ethnicity = document.getElementById("ethnicitySelection").value;
-  const study = document.getElementById("studySelection").value;
-  const race = document.getElementById("raceSelection").value;
+
+  const case_control = document.getElementById("case_control").value;
   const subCases = document.getElementById("subcasesSelection").value;
-  const ethnicityFilter = Array.from(
-    document.getElementById("ethnicitySelection").options
+  const case_controlFilter = Array.from(
+    document.getElementById("case_control").options
   ).filter((op) => op.selected)[0].textContent;
-  const studyFilter = Array.from(
-    document.getElementById("studySelection").options
-  ).filter((op) => op.selected)[0].textContent;
-  const raceFilter = Array.from(
-    document.getElementById("raceSelection").options
-  ).filter((op) => op.selected)[0].textContent;
-  const subCasesFilter = Array.from(
-    document.getElementById("subcasesSelection").options
-  ).filter((op) => op.selected)[0].textContent;
+
   let finalData = jsonData;
-  let onlyCIMBA = false;
   let selectedConsortia = [];
   Array.from(document.getElementsByClassName("select-consortium")).forEach(
     (dt) => {
       if (dt.checked) selectedConsortia.push(dt.dataset.consortia);
     }
   );
-  const array = getSelectedStudies();
 
-  if (ethnicity !== "all") {
-    finalData = finalData.filter((dt) => dt["ethnicity"] === ethnicity);
+  if (case_control !== "all") {
+    finalData = finalData.filter((dt) => dt["case_control"] === case_control);
   }
-  if (study !== "all") {
-    finalData = finalData.filter((dt) => dt["study"] === study);
-  }
-  if (race !== "all") {
-    finalData = finalData.filter((dt) => dt["race"] === race);
+  if (subCases !== "all") {
+    finalData = finalData.filter((dt) => dt["site"] === subCases);
   }
 
   updateCounts(finalData);
-
-  if (array.length > 0) {
-    finalData = finalData.filter(
-      (dt) => array.indexOf(`${dt.consortium}@#$${dt.study}`) !== -1
-    );
-  }
-  const selectedStudies = array.map((s) => s.split("@#$")[1]);
 
   let totalSubjects = 0;
   finalData.forEach((value) => {
     totalSubjects += value.TotalSubjects;
   });
-  if (subCases == "all") {
-    updateAllCharts(finalData);
-  } else updateAllCasesCharts(finalData);
+
+  updateAllCharts(finalData);
 };
 
 export const addEventConsortiaFilter = (d) => {

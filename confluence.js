@@ -70,7 +70,7 @@ import {
   addEventcreateaccessStats,
 } from "./src/event.js";
 import { dataAnalysisTemplate } from "./src/pages/dataAnalysis.js";
-import { getFileContent, getFileContentCases } from "./src/visualization.js";
+import { getFileContent } from "./src/visualization.js";
 import { aboutConfluence, renderOverView } from "./src/pages/about.js";
 import { confluenceResources } from "./src/pages/join.js";
 import { confluenceContactPage, confluenceQuestionairePage } from "./src/pages/contact.js";
@@ -79,7 +79,7 @@ import { renderDescription, renderDescriptionNotSignedIn } from "./src/pages/des
 import { dataDictionaryTemplate } from "./src/pages/dictionary.js";
 import { showPreview } from "./src/components/boxPreview.js";
 import { confluenceEventsPage, eventsBody } from './src/pages/events.js';
-import { protocolsTemplate } from './src/pages/protocols.js';
+import { protocolsTemplate, protocolSummary } from './src/pages/protocols.js';
 import { publication, publicationNoSign, publicationAdmin } from "./src/pages/publicationpage.js";
 
 /**
@@ -153,7 +153,7 @@ export const confluence = async () => {
     const viewUserSubmissionElement =
       document.getElementById("userSubmissions");
 
-    
+
     const dataSubmissionElement = document.getElementById("dataSubmission");
     const dataSummaryElement = document.getElementById("dataSummary");
     const dataSummarySubsetElement = document.getElementById("dataSummarySubset");
@@ -186,15 +186,10 @@ export const confluence = async () => {
       assignNavbarActive(dataSummaryElement, 1);
       document.title = "EABCS - Summary Statistics";
       confluenceDiv.innerHTML = dataSummary("Summary Statistics", false, true, true);
-      addEventUpdateSummaryStatsData();
-      addEventcreateaccessStats();
+      //addEventUpdateSummaryStatsData();
+      //addEventcreateaccessStats();
       dataSummaryStatisticsTemplate();
       await getFileContent();
-      const subcasesSelection = document.getElementById("subcasesSelection");
-      subcasesSelection.addEventListener("change", function (event) {
-        if (event.target.value == "all") getFileContent();
-        if (event.target.value == "cases") getFileContentCases();
-      });
     });
 
     if (dataSummarySubsetElement) {
@@ -204,13 +199,13 @@ export const confluence = async () => {
         assignNavbarActive(dataSummarySubsetElement, 1);
         document.title = "EABCS - Subset Statistics";
         confluenceDiv.innerHTML = dataSummary("Subset Statistics", false, true, true);
-        addEventUpdateSummaryStatsData();
-        addEventcreateaccessStats();
+        //addEventUpdateSummaryStatsData();
+        //addEventcreateaccessStats();
         removeActiveClass("nav-link", "active");
         document.querySelectorAll('[href="#data_exploration/subset"]')[1].classList.add("active");
         dataSummaryMissingTopBarTemplate();
         await dataSummaryMissingTemplate("Full Cohort");
-        
+
         const popSelection = document.getElementById("populationSelection");
         popSelection.addEventListener("change", function (event) {
           console.log("popSelection Changed");
@@ -248,8 +243,8 @@ export const confluence = async () => {
           false,
           false
         );
-        addEventUpdateSummaryStatsData();
-        addEventcreateaccessStats();
+        //addEventUpdateSummaryStatsData();
+        //addEventcreateaccessStats();
         removeActiveClass("nav-link", "active");
         document
           .querySelectorAll('[href="#data_exploration/dictionary"]')[1]
@@ -264,18 +259,14 @@ export const confluence = async () => {
         showAnimation();
         assignNavbarActive(dataProtocols, 1);
         document.title = "";
-        confluenceDiv.innerHTML = dataSummary(
-          "Protocols",
-          true,
-          false,
-          false
-        );
-        //addEventUpdateSummaryStatsData();
-        //addEventcreateaccessStats();
-        removeActiveClass("nav-link", "active");
-        document
-          .querySelectorAll('[href="#data_exploration/protocols"]')[1]
-          .classList.add("active");
+        confluenceDiv.innerHTML = protocolSummary(
+          "protocol", "Protocols"
+        )
+        //removeActiveClass("nav-link", "active");
+        // document
+        //   .querySelectorAll('[href="#protocols"]')[1]
+        //   .classList.add("active");
+          confluenceDiv.innerHTML = ``
           protocolsTemplate();
       });
     }
@@ -359,7 +350,6 @@ export const confluence = async () => {
         daccFileView();
       });
     }
-    
     PublicationPageElement.addEventListener("click", () => {
       if (PublicationPageElement.classList.contains("navbar-active")) return;
       const element = document.getElementById("publicationID");
@@ -580,7 +570,7 @@ const manageRouter = async () => {
       .querySelectorAll('[href="#data_exploration/dictionary"]')[1]
       .classList.add("active");
     dataDictionaryTemplate();
-  } else if (hash === "#data_exploration/protocols") {
+  } else if (hash === "#protocols/protocol") {
     const dataProtocols = document.getElementById("dataProtocols");
     if (
       !dataProtocols ||
@@ -590,15 +580,11 @@ const manageRouter = async () => {
     showAnimation();
     assignNavbarActive(dataProtocols, 1);
     document.title = "EABCS - Protocols";
-    confluenceDiv.innerHTML = dataSummary(
-      "Sample/Data Collection Protocols",
-      true,
-      false,
-      false,
-      true
-    );
-    removeActiveClass("nav-link", "active");
-    document.querySelectorAll('[href="#data_exploration/protocols"]')[1].classList.add("active");
+    confluenceDiv.innerHTML = protocolSummary(
+      "protocol", "Protocols"
+    )
+    //removeActiveClass("nav-link", "active");
+    // document.querySelectorAll('[href="#protocols"]')[1].classList.add("active");
     protocolsTemplate();
   } else if (hash === "#userSubmissions") {
     const viewUserSubmissionElement =

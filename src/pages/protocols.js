@@ -12,10 +12,37 @@ import {
   dataPagination,
   paginationTemplate,
 } from "./description.js";
+import { pageNavBar } from "../components/navBarMenuItems.js";
 let previousValue = "";
 
+export const protocolSummary = (
+  activeTab, pageHeader
+) => {
+  return `
+        <div class="general-bg">
+            <div class="container2 body-min-height">
+                ${
+                   pageNavBar("protocols", activeTab, "Protocols", "Anthropometry", "Saliva", "Stool", "Blood", "Breast Tissue Biopsy Collection")//, "Anthropometry", "Saliva", "Stool", "Blood", "Breast tissue biopsy collection")
+                } 
+                <div class="main-summary-row">
+                    <div class="row align-left w-100 m-0">
+                        <h1 class="col page-header pl-0 pt-2">${pageHeader}</h1>  
+                    </div>
+                </div>
+                
+                <div class="main-summary-row" id="protocolPage"></div>
+                <div class="main-summary-row">
+                    <div class="col p-0">
+                        <div class="offset-xl-2 pl-4 align-left" id="dataLastModified"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+};
+
 export const protocolsTemplate = async () => {
-    document.getElementById("downloadContainer").style.display = 'none';
+    //document.getElementById("downloadContainer").style.display = 'none';
     let template = `
     <div class="home-page-stats font-size-18">
         <div class="main-summary-row">
@@ -37,6 +64,6 @@ export const protocolsTemplate = async () => {
             </div>
         </div>
     </div>`
-    document.getElementById("dataSummaryStatistics").innerHTML = template;
+    document.getElementById("protocolPage").innerHTML = template;
     hideAnimation();
 }

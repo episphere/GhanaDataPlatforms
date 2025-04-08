@@ -38,7 +38,7 @@ export const dataSummary = (
             <div class="container2 body-min-height">
                 ${
                   publicAccess
-                    ? pageNavBar("data_exploration", "dictionary", "Dictionary", "Protocols")
+                    ? pageNavBar("data_exploration", "dictionary", "Dictionary")
                     : pageNavBar(
                         "data_exploration",
                         "summary",
@@ -74,22 +74,7 @@ export const dataSummary = (
                         }   
                     </div>
                 </div>
-                
-                ${
-                  showUpdateButton &&
-                  localStorage.parms &&
-                  JSON.parse(localStorage.parms).login &&
-                  emailsAllowedToUpdateData.indexOf(
-                    JSON.parse(localStorage.parms).login
-                  ) !== -1
-                    ? `
-                    <div class="main-summary-row">
-                      <button id="updateSummaryStatsData" class="btn btn-outline-dark" aria-label="Update summary stats data" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#confluenceMainModal">Update data</button>
-                      <button id="createaccessStats" class="btn btn-outline-dark" aria-label="Create access stats CSV" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#confluenceMainModal">Create Access Stats</button>
-                    </div>
-                `
-                    : ``
-                }
+
                 <div class="main-summary-row" id="dataSummaryStatistics"></div>
                 <div class="main-summary-row">
                     <div class="col p-0">
