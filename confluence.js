@@ -267,7 +267,7 @@ export const confluence = async () => {
         //   .querySelectorAll('[href="#protocols"]')[1]
         //   .classList.add("active");
           confluenceDiv.innerHTML = ``
-          protocolsTemplate();
+          protocolsTemplate('main');
       });
     }
     if (dataFormElement) {
@@ -356,6 +356,7 @@ export const confluence = async () => {
       if (!element) return;
       if (element.classList.contains("navbar-active")) return;
       document.title = "DCEG - Publication";
+      removeActiveClass("nav-link", "active");
       assignNavbarActive(element);
       console.log('publication');
       aboutConfluence("overview");
@@ -572,11 +573,6 @@ const manageRouter = async () => {
     dataDictionaryTemplate();
   } else if (hash === "#protocols/protocol") {
     const dataProtocols = document.getElementById("dataProtocols");
-    if (
-      !dataProtocols ||
-      dataProtocols.classList.contains("navbar-active")
-    )
-      return;
     showAnimation();
     assignNavbarActive(dataProtocols, 1);
     document.title = "EABCS - Protocols";
@@ -585,8 +581,75 @@ const manageRouter = async () => {
     )
     //removeActiveClass("nav-link", "active");
     // document.querySelectorAll('[href="#protocols"]')[1].classList.add("active");
-    protocolsTemplate();
-  } else if (hash === "#userSubmissions") {
+    protocolsTemplate('main');
+  } 
+  else if (hash === "#protocols/anthropometry") {
+    const dataProtocols = document.getElementById("dataProtocols");
+    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+    showAnimation();
+    assignNavbarActive(dataProtocols, 1);
+    document.title = "EABCS - Protocols";
+    confluenceDiv.innerHTML = protocolSummary(
+      "Anthropometry", "Anthropometry"
+    )
+    removeActiveClass("nav-link", "active");
+    document.querySelectorAll('[href="#protocols/anthropometry"]')[0].classList.add("active");
+    protocolsTemplate('Anthropometry');
+  } 
+  else if (hash === "#protocols/saliva") {
+    const dataProtocols = document.getElementById("dataProtocols");
+    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+    showAnimation();
+    assignNavbarActive(dataProtocols, 1);
+    document.title = "EABCS - Protocols";
+    confluenceDiv.innerHTML = protocolSummary(
+      "Saliva", "Saliva"
+    )
+    removeActiveClass("nav-link", "active");
+    document.querySelectorAll('[href="#protocols/saliva"]')[0].classList.add("active");
+    protocolsTemplate('Saliva');
+  } 
+  else if (hash === "#protocols/stool") {
+    const dataProtocols = document.getElementById("dataProtocols");
+    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+    showAnimation();
+    assignNavbarActive(dataProtocols, 1);
+    document.title = "EABCS - Protocols";
+    confluenceDiv.innerHTML = protocolSummary(
+      "Stool", "Stool"
+    )
+    removeActiveClass("nav-link", "active");
+    document.querySelectorAll('[href="#protocols/stool"]')[0].classList.add("active");
+    protocolsTemplate('Stool');
+  } 
+  else if (hash === "#protocols/blood") {
+    console.log("Blood");
+    const dataProtocols = document.getElementById("dataProtocols");
+    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+    showAnimation();
+    assignNavbarActive(dataProtocols, 1);
+    document.title = "EABCS - Protocols";
+    confluenceDiv.innerHTML = protocolSummary(
+      "Blood", "Blood"
+    )
+    removeActiveClass("nav-link", "active");
+    document.querySelectorAll('[href="#protocols/blood"]')[0].classList.add("active");
+    protocolsTemplate('Blood');
+  } 
+  else if (hash === "#protocols/breasttissuebiopsycollection") {
+    const dataProtocols = document.getElementById("dataProtocols");
+    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+    showAnimation();
+    assignNavbarActive(dataProtocols, 1);
+    document.title = "EABCS - Protocols";
+    confluenceDiv.innerHTML = protocolSummary(
+      "Breast Tissue Biopsy Collection", "Breast Tissue Biopsy Collection"
+    )
+    removeActiveClass("nav-link", "active");
+    document.querySelectorAll('[href="#protocols/breasttissuebiopsycollection"]')[0].classList.add("active");
+    protocolsTemplate('Breast Tissue Biopsy Collection');
+  } 
+  else if (hash === "#userSubmissions") {
     const viewUserSubmissionElement =
       document.getElementById("userSubmissions");
     if (
@@ -604,6 +667,7 @@ const manageRouter = async () => {
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
     document.title = "DCEG - publicationpage";
+    removeActiveClass("nav-link", "active");
     assignNavbarActive(element);
     aboutConfluence("overview");
     publicationNoSign();

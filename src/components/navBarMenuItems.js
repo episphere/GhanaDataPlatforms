@@ -46,15 +46,6 @@ export const navBarMenutemplate = () => {
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#publicationpage" id="publicationID"> 
                     Publications
                 </a>
-                ${
-                  location.origin.match(applicationURLs.dev)
-                    ? ``
-                    : `
-                        <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/subset" title="Subset Statistics" id="dataSummarySubset">
-                            Subset Statistics
-                        </a>
-                    `
-                }
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links" href="#data_submission" title="Data Submitted" id="dataSubmission"> 
                 </a>
                 <div id="governanceNav" class="grid-elements"></div>
@@ -206,11 +197,34 @@ export function pageNavBar(page, activeTab, ...pageHeaders) {
     if (header === "Protocols") {
       link.href = `#${page}/protocol`;
       if (activeTab === "protocol") link.classList.add("active");
-      console.log(link);
     }
     if (header === "Subset Statistics") {
       link.href = `#${page}/subset`;
       if (activeTab === "subset") link.classList.add("active");
+    }
+    if (header === "Publications") {
+      link.href = `#publicationpage`;
+      if (activeTab === "summary") link.classList.add("active");
+    }
+    if (header === "Anthropometry") {
+      link.href = `#${page}/anthropometry`;
+      if (activeTab === "anthropometry") link.classList.add("active");
+    }
+    if (header === "Saliva") {
+      link.href = `#${page}/saliva`;
+      if (activeTab === "saliva") link.classList.add("active");
+    }
+    if (header === "Stool") {
+      link.href = `#${page}/stool`;
+      if (activeTab === "stool") link.classList.add("active");
+    }
+    if (header === "Blood") {
+      link.href = `#${page}/blood`;
+      if (activeTab === "blood") link.classList.add("active");
+    }
+    if (header === "Breast Tissue Biopsy Collection") {
+      link.href = `#${page}/breasttissuebiopsycollection`;
+      if (activeTab === "breasttissuebiopsycollection") link.classList.add("active");
     }
 
     link.innerText = header;

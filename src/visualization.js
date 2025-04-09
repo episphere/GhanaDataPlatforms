@@ -32,7 +32,6 @@ const chartLabels = {
 
 export const getFileContent = async () => {
   showAnimation();
-  //static\data\testghana26march2025.csv
   const data = await (await fetch('../static/data/testghana26march2025.csv')).text();
   const {jsonData, headers} = csv2Json(data)//await getFile(summaryStatsFileId));
   //const lastModified = (await getFileInfo(summaryStatsFileId)).modified_at;

@@ -8,6 +8,7 @@ import {
   tsv2Json2,
   emailsAllowedToUpdateData
 } from "./../shared.js";
+import { pageNavBar } from "../components/navBarMenuItems.js";
 import { downloadFiles } from "./dictionary.js";
 let previousValue = "";
 

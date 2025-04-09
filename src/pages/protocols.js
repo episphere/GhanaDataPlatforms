@@ -41,9 +41,62 @@ export const protocolSummary = (
     `;
 };
 
-export const protocolsTemplate = async () => {
+export const protocolsTemplate = async (page) => {
     //document.getElementById("downloadContainer").style.display = 'none';
-    let template = `
+    let template = ``;
+    console.log(page);
+    if (page == "Anthropometry"){
+        template = `
+        <div class="general-bg padding-bottom-1rem">
+            <div class="body-min-height">
+                <div class="confluence-resources white-bg div-border font-size-18 height100">
+                  <iframe src="./static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf" width="100%" height="100%">
+                </div>
+              </div>
+          </div>
+                `
+    } else if (page == "Saliva"){
+        template = `
+        <div class="general-bg padding-bottom-1rem">
+            <div class="body-min-height">
+                <div class="confluence-resources white-bg div-border font-size-18 height100">
+                  <iframe src="./static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf" width="100%" height="100%">
+                </div>
+              </div>
+          </div>
+                `
+    } else if (page == "Stool"){
+        template = `
+        <div class="general-bg padding-bottom-1rem">
+            <div class="body-min-height">
+                <div class="confluence-resources white-bg div-border font-size-18 height100">
+                  <iframe src="./static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf" width="100%" height="100%">
+                </div>
+              </div>
+          </div>
+                `
+       } else if (page == "Blood"){
+        template = `
+        <div class="general-bg padding-bottom-1rem">
+            <div class="body-min-height">
+                <div class="confluence-resources white-bg div-border font-size-18 height100">
+                  <iframe src="./static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf" width="100%" height="100%">
+                </div>
+              </div>
+          </div>
+                `
+       }   else if (page == "Breast Tissue Biopsy Collection"){
+        template = `
+        <div class="general-bg padding-bottom-1rem">
+            <div class="body-min-height">
+                <div class="confluence-resources white-bg div-border font-size-18 height100">
+                  <iframe src="./static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf" width="100%" height="100%">
+                </div>
+              </div>
+          </div>
+                `
+       } else {
+    template = `
     <div class="home-page-stats font-size-18">
         <div class="main-summary-row">
             <div class="col align-left">
@@ -63,7 +116,8 @@ export const protocolsTemplate = async () => {
                 <a href="./static/files/GBHS_Breast_Biopsy_Annotated_WithV2_d20170821.docx" download>Breast tissue biopsy collection</a>
             </div>
         </div>
-    </div>`
+    </div>`}
+
     document.getElementById("protocolPage").innerHTML = template;
     hideAnimation();
 }
