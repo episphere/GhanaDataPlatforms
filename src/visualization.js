@@ -32,7 +32,7 @@ const chartLabels = {
 
 export const getFileContent = async () => {
   showAnimation();
-  const data = await (await fetch('../static/data/testghana26march2025.csv')).text();
+  const data = await (await fetch('https://raw.githubusercontent.com/episphere/GhanaDataPlatforms/main/static/data/testghana26march2025.csv')).text();
   const {jsonData, headers} = csv2Json(data)//await getFile(summaryStatsFileId));
   //const lastModified = (await getFileInfo(summaryStatsFileId)).modified_at;
   //document.getElementById("dataLastModified").innerHTML = `Data current as of - ${new Date(lastModified).toLocaleString()}`;

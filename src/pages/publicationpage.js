@@ -160,7 +160,7 @@ export const publicationAdmin = (modified_at) => {
 
 const getDescription = async (signedIn) => {
   //const data = await (await fetch("https://raw.githubusercontent.com/episphere/dataplatform/production/imports/DCEG_Publications.tsv")).text();
-  const data = await (await fetch("../static/data/EABCS_Publications.txt")).text();
+  const data = await (await fetch("https://raw.githubusercontent.com/episphere/GhanaDataPlatforms/main/static/data/EABCS_Publications.txt")).text();
   console.log(data)
   const tsv = tsv2Json2(data);
   console.log(tsv);
