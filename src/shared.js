@@ -1732,7 +1732,7 @@ export const tsv2Json2 = (tsv) => {
   const lines = tsv
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "|")
+    .replace(/"/g, "")
     .split(/\r?\n/);
   const result = [];
   const headers = lines[0].replace(/"/g, "").split(/[\t]/g);
@@ -1742,7 +1742,7 @@ export const tsv2Json2 = (tsv) => {
     for (let j = 0; j < headers.length; j++) {
       if (currentline[j]) {
         let value = headers[j];
-        obj[value] = currentline[j];
+        obj[value] = currentline[j].trim();
       }
     }
     if (Object.keys(obj).length > 0) result.push(obj);

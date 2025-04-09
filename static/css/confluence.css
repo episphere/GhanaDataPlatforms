@@ -1813,6 +1813,10 @@ form {
   max-height: 112px;
 }
 
+.filter-sub-pub-div {
+  max-height: 15%;
+}
+
 .checkbox-consortia {
   margin-top: 5px;
   margin-right: 3px;

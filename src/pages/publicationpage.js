@@ -44,21 +44,11 @@ export const publicationNoSign = (modified_at) => {
             </div>
             <div class="col-xl-10 padding-right-zero font-size-16" id="summaryStatsCharts">
                 <button id="filterBarToggle"><i class="fas fa-lg fa-caret-left"></i></button>
-                <!---<div class="main-summary-row pl-2" style="min-height: 10px;margin-bottom: 1rem;">
-                    <div class="col white-bg div-border align-left font-size-17" style="padding: 0.5rem;" id="listFilters">
-                        <span class="font-bold">Region:</span> All
-                    </div>
-                </div>--->
                 <div class="main-summary-row pl-2">
                     <div class="col-xl-12 pb-2 pl-0 pr-0 white-bg div-border">
                         <div class="pt-0 pl-2 pb-2 pr-2 allow-overflow" style="height: calc(100vh - 190px) !important;min-height: 500px;" id="descriptionBody"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="main-summary-row">
-            <div class="offset-xl-2 col data-last-modified align-left mt-3 mb-0 pl-4" id="dataLastModified">
-                Data last modified at - ${new Date(modified_at).toLocaleString()}
             </div>
         </div>
     `;
@@ -100,21 +90,11 @@ export const publication = (modified_at) => {
             </div>
             <div class="col-xl-10 padding-right-zero font-size-16" id="summaryStatsCharts">
                 <button id="filterBarToggle"><i class="fas fa-lg fa-caret-left"></i></button>
-                <!---<div class="main-summary-row pl-2" style="min-height: 10px;margin-bottom: 1rem;">
-                    <div class="col white-bg div-border align-left font-size-17" style="padding: 0.5rem;" id="listFilters">
-                        <span class="font-bold">Region:</span> All
-                    </div>
-                </div>--->
                 <div class="main-summary-row pl-2">
                     <div class="col-xl-12 pb-2 pl-0 pr-0 white-bg div-border">
                         <div class="pt-0 pl-2 pb-2 pr-2 allow-overflow" style="height: calc(100vh - 190px) !important;min-height: 500px;" id="descriptionBody"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="main-summary-row">
-            <div class="offset-xl-2 col data-last-modified align-left mt-3 mb-0 pl-4" id="dataLastModified">
-                Data last modified at - ${new Date(modified_at).toLocaleString()}
             </div>
         </div>
     `;
@@ -172,31 +152,19 @@ export const publicationAdmin = (modified_at) => {
                 </div>
             </div>
         </div>
-        <div class="main-summary-row">
-            <div class="offset-xl-2 col data-last-modified align-left mt-3 mb-0 pl-4" id="dataLastModified">
-                Data last modified at - ${new Date(modified_at).toLocaleString()}
-            </div>
-        </div>
     `;
   document.getElementById("overview").innerHTML = template;
   getDescriptionAdmin(true);
 };
 
 const getDescription = async (signedIn) => {
-  const data = await (await fetch("https://raw.githubusercontent.com/episphere/dataplatform/production/imports/DCEG_Publications.tsv")).text();
+  //const data = await (await fetch("https://raw.githubusercontent.com/episphere/dataplatform/production/imports/DCEG_Publications.tsv")).text();
+  const data = await (await fetch("../static/data/EABCS_Publications.txt")).text();
+  console.log(data)
   const tsv = tsv2Json2(data);
   console.log(tsv);
   const json = tsv.data;
   const headers = tsv.headers;
-  json.forEach((obj) => {
-    if (obj["nores"] === "true") obj["nores"] = "No Restrictions";
-    if (obj["hmb"] === "true") obj["hmb"] = "Health/Medical/Biomedical";
-    if (obj["ngm"] === "true") obj["ngm"] = "No General Methods";
-    if (obj["nfp"] === "true") obj["nfp"] = "Not for Profit Use Only";
-    if (obj["gru"] === "true") obj["gru"] = "General Research Use";
-    if (obj["dsr"] === "true") obj["dsr"] = "Disease-Specific Research";
-    if (obj["dsr_value"] === undefined) obj["dsr_value"] = "False";
-  });
 
   const allJournals = [];
   Object.values(json).forEach((dt) => {
@@ -217,18 +185,6 @@ const getDescription = async (signedIn) => {
   const uniqueJournals = allJournals
     .filter((d, i) => d && allJournals.indexOf(d.trim()) === i)
     .sort();
-  const allTitles = Object.values(json).map((dt) => dt["title"]);
-
-  const uniqueRestrictions = allRestrictions
-  .filter((d, i) => d && allRestrictions.indexOf(d.trim()) === i)
-  .sort();
-
-  // const countries = allCountries
-  //   .filter((d, i) => allCountries.indexOf(d) === i)
-  //   .sort();
-  const uniqueTitles = allTitles
-    .filter((d, i) => d && allTitles.indexOf(d.trim()) === i)
-    .sort();
 
   let filterTemplate = `
         <div class="main-summary-row">
@@ -244,29 +200,16 @@ const getDescription = async (signedIn) => {
             <div style="width: 100%;">
                 <div class="form-group" margin:0px>
                     <label class="filter-label font-size-13" for="journalsList">Journal</label>
-                    <ul class="remove-padding-left font-size-15 filter-sub-div allow-overflow" id="journalsList">
+                    <ul class="remove-padding-left font-size-15 filter-sub-pub-div allow-overflow" id="journalsList">
                         `;
   uniqueJournals.forEach((journ) => {
     filterTemplate += `
                 <li class="filter-list-item">
-                    <input type="checkbox" data-journal="${journ}" id="label${journ}" class="select-journal" style="margin-left: 1px !important;">
+                    <input type="checkbox" data-journal="${journ}" id="label${journ}" class="select-journal" style="margin-left: 2px !important; margin-right: 2px !important">
                     <label for="label${journ}" class="journal-name" title="${journ}">${shortenText(journ,25)}</label>
                 </li>
             `;
   });
-  filterTemplate += `
-    </ul>
-      <label class="filter-label font-size-13" for="restrictionsList">Restrictions</label>
-        <ul class="remove-padding-left font-size-15 filter-sub-div allow-overflow" id="restrictionsList">`
-
-    uniqueRestrictions.forEach((res) => {
-    filterTemplate += `
-                  <li class="filter-list-item">
-                      <input type="checkbox" data-restrictions="${res}" id="label${res}" class="select-restrictions" style="margin-left: 1px !important;">
-                      <label for="label${res}" class="restrictions-name" title="${res}">${res}</label>
-                  </li>
-        `;
-    })
   // filterTemplate += `
   //                 </ul>
   //                   <label class="filter-label font-size-13" for="restrictionsList">Restrictions</label>
@@ -441,7 +384,7 @@ const getDescriptionAdmin = async (signedIn) => {
 
 const renderStudyDescription = (descriptions, pageSize, headers, signedIn) => {
   let template = "";
-  const newDesc = descriptions.map(selectProps("title", "date", "author", "journal_name", "journal_acro", "res"));
+  const newDesc = descriptions.map(selectProps("title", "date", "first author", "journal_name", "doi", "all authors"));
 	
   let uniqueTitles = [...new Map(newDesc.map((item) => [item["title"], item])).values()];
   // const allTitles = Object.values(newDesc).map((dt) => [dt["title"], dt["date"], dt["author"], dt["journal_name"], dt["journal_acro"]]);
@@ -456,10 +399,9 @@ const renderStudyDescription = (descriptions, pageSize, headers, signedIn) => {
   if (descriptions.length > 0) {
     template = `
         <div class="row m-0 pt-2 pb-2 align-left div-sticky" style="border-bottom: 1px solid rgb(0,0,0, 0.1);">
-            <div class="col-md-6 font-bold ws-nowrap pl-2">Title of Publication <button class="transparent-btn sort-column" data-column-name="title"><i class="fas fa-sort"></i></button></div>
-            <div class="col-md-2 font-bold ws-nowrap">First Author <button class="transparent-btn sort-column" data-column-name="author"><i class="fas fa-sort"></i></button></div>
-            <div class="col-md-1 font-bold ws-nowrap">Publication Date <button class="transparent-btn sort-column" data-column-name="date"><i class="fas fa-sort"></i></button></div>
-            <div class="col-md-1"></div>
+            <div class="col-md-7 font-bold ws-nowrap pl-2">Title of Publication <button class="transparent-btn sort-column" data-column-name="title"><i class="fas fa-sort"></i></button></div>
+            <div class="col-md-2 font-bold ws-nowrap">First Author <button class="transparent-btn sort-column" data-column-name="first author"><i class="fas fa-sort"></i></button></div>
+            <div class="col-md-2 font-bold ws-nowrap">Publication Date <button class="transparent-btn sort-column" data-column-name="date"><i class="fas fa-sort"></i></button></div>
             <div class="col-md-1"></div>
         </div>`;
     uniqueTitles.forEach((desc, index) => {
@@ -469,13 +411,13 @@ const renderStudyDescription = (descriptions, pageSize, headers, signedIn) => {
               <div class="card mt-1 mb-1 align-left">
                   <div style="padding: 10px" aria-expanded="false" id="heading${desc["title"].replace(/\s+/g,"").replace(/[^a-zA-Z ]/g, "")}">
                       <div class="row">
-                          <div class="col-md-6">${
+                          <div class="col-md-7">${
                             desc["title"] ? desc["title"] : ""
                           }</div>
                           <div class="col-md-2">${
-                            desc["author"] ? desc["author"] : ""
+                            desc["first author"] ? desc["first author"] : ""
                           }</div>
-                          <div class="col-md-1">${
+                          <div class="col-md-2">${
                             desc["date"] ? desc["date"] : ""
                           }</div>
                           <div class="col-md-1">
@@ -483,19 +425,19 @@ const renderStudyDescription = (descriptions, pageSize, headers, signedIn) => {
                                   <i class="fas fa-caret-down fa-2x"></i>
                               </button>
                           </div>`
-      if(signedIn) {
-        template += `
-                          <div class-"col-md-1">
-                            <button title="Link To Data Access" class="buttonsubmit" data-id='{"title": "${desc["title"]}", "author": "${desc["author"]}", "date": "${desc["date"]}", "journal": "${desc["journal_name"]}"}' onClick="localStorage.setItem('dataSelected', JSON.stringify($(this).data('id'))); window.location.href = '#data_access/form'"><span class="buttonsubmit__text"> Request Data </span></button>
-                          </div>
-                          `
-      } else {
-        template += `
-        <div class-"col-md-1">
-          <a href="#dataAccessHowTo"><button title="Please Log In" class="buttonsubmit"><span class="buttonsubmit__text"> Data Access Process </span></button></a>
-        </div>
-        `
-      }
+      // if(signedIn) {
+      //   template += `
+      //                     <div class-"col-md-1">
+      //                       <button title="Link To Data Access" class="buttonsubmit" data-id='{"title": "${desc["title"]}", "author": "${desc["author"]}", "date": "${desc["date"]}", "journal": "${desc["journal_name"]}"}' onClick="localStorage.setItem('dataSelected', JSON.stringify($(this).data('id'))); window.location.href = '#data_access/form'"><span class="buttonsubmit__text"> Request Data </span></button>
+      //                     </div>
+      //                     `
+      // } else {
+      //   template += `
+      //   <div class-"col-md-1">
+      //     <a href="#dataAccessHowTo"><button title="Please Log In" class="buttonsubmit"><span class="buttonsubmit__text"> Data Access Process </span></button></a>
+      //   </div>
+      //   `
+      // }
         template += `
                       </div>
                   </div>
@@ -512,27 +454,16 @@ const renderStudyDescription = (descriptions, pageSize, headers, signedIn) => {
                           : ``
                       }
                       ${
-                        desc["author_first"]
-                          ? `<div class="row mb-1 m-0"><div class="col-md-3 font-bold">First Author</div><div class="col">${desc["author"]}</div></div>`
+                        desc["all authors"]
+                          ? `<div class="row mb-1 m-0"><div class="col-md-3 font-bold">Authors</div><div class="col">${desc["all authors"]}</div></div>`
+                          : ``
+                      }
+                      ${
+                        desc["doi"]
+                          ? `<div class="row mb-1 m-0"><div class="col-md-3 font-bold">doi</div><div class="col"><a href=${desc["doi"]} target="__blank">${desc["doi"]}</a></div></div>`
                           : ``
                       }`
 
-                    desc2.forEach(desc2 => {
-                      template += `
-                      <HR>
-                      ${
-                        desc2["study"]
-                          ? `<div class="row mb-1 m-0"><div class="col-md-3 font-bold">Study</div><div class="col">${desc2["study"]}</div></div>`
-                          : ``
-                      }
-                      <!--<div class="row mb-1 m-0"><div class="col-md-3 font-bold">Restrictions</div></div>-->
-                      ${
-                        desc2["res"]
-                          ? `<div class="row mb-1 m-0"><div class="col-md-3 font-bold">Restrictions</div><div class="col">${desc2["res"]}</div></div>`
-                          : ``
-                      }
-                      `;
-                    });
         template += `
                       </div>
                   </div>
@@ -665,12 +596,6 @@ const filterDataBasedOnSelection = (descriptions, headers) => {
     .filter((dt) => dt.checked)
     .map((dt) => dt.dataset.journal);
 
-  const restrictionsSelected = Array.from(
-    document.getElementsByClassName("select-restrictions")
-  )
-    .filter((dt) => dt.checked)
-    .map((dt) => dt.dataset.restrictions);
-
   let filteredData = descriptions;
 
   if (journalSelected.length > 0) {
@@ -679,22 +604,7 @@ const filterDataBasedOnSelection = (descriptions, headers) => {
     );
   }
 
-  if (restrictionsSelected.length > 0) {
-    filteredData = filteredData.filter(
-      (dt) => restrictionsSelected.indexOf(dt["res"]) !== -1
-      // let found = false;
-      // if (restrictionsSelected.includes("nores") && dt["nores"] !== "false")  found = true;
-      // if (restrictionsSelected.includes("hmb") && dt["hmb"] !== "false") found = true;
-      // if (restrictionsSelected.includes("ngm") && dt["ngm"] !== "false") found = true;
-      // if (restrictionsSelected.includes("nfp") && dt["nfp"] !== "false") found = true;
-      // if (restrictionsSelected.includes("gru") && dt["gru"] !== "false") found = true;
-      // if (restrictionsSelected.includes("dsr") && dt["dsr"] !== "false") found = true;
-      // if (restrictionsSelected.includes("dsr_value") && dt["dsr_value"] !== "false") found = true;
-      // if (found) return dt;
-    );
-  }
-
-  if (journalSelected.length === 0 && restrictionsSelected === 0) filteredData = descriptions;
+  if (journalSelected.length === 0 ) filteredData = descriptions;
   const input = document.getElementById("searchDataCatalog");
   const currentValue = input.value.trim().toLowerCase();
 
@@ -724,10 +634,10 @@ const filterDataBasedOnSelection = (descriptions, headers) => {
   searchedData = searchedData.filter((dt) => {
     let found = false;
     if (dt["title"].toLowerCase().includes(currentValue)) found = true;
-    if (dt["author"].toLowerCase().includes(currentValue)) found = true;
+    if (dt["first author"].toLowerCase().includes(currentValue)) found = true;
     if (dt["date"].toLowerCase().includes(currentValue)) found = true;
     if (dt["journal_name"].toLowerCase().includes(currentValue)) found = true;
-    if (dt["res"].toLowerCase().includes(currentValue)) found = true;
+    if (dt["all authors"].toLowerCase().includes(currentValue)) found = true;
     if (found) return dt;
   });
   searchedData = searchedData.map((dt) => {
@@ -735,7 +645,7 @@ const filterDataBasedOnSelection = (descriptions, headers) => {
       new RegExp(currentValue, "gi"),
       "<b>$&</b>"
     );
-    dt["author"] = dt["author"].replace(
+    dt["first author"] = dt["first author"].replace(
       new RegExp(currentValue, "gi"),
       "<b>$&</b>"
     );

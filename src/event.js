@@ -1673,7 +1673,6 @@ export const addEventSummaryStatsFilterForm = (jsonData, headers) => {
 };
 
 export const filterData = (jsonData, headers) => {
-
   const case_control = document.getElementById("case_control").value;
   const subCases = document.getElementById("subcasesSelection").value;
   const case_controlFilter = Array.from(
@@ -1681,12 +1680,6 @@ export const filterData = (jsonData, headers) => {
   ).filter((op) => op.selected)[0].textContent;
 
   let finalData = jsonData;
-  let selectedConsortia = [];
-  Array.from(document.getElementsByClassName("select-consortium")).forEach(
-    (dt) => {
-      if (dt.checked) selectedConsortia.push(dt.dataset.consortia);
-    }
-  );
 
   if (case_control !== "all") {
     finalData = finalData.filter((dt) => dt["case_control"] === case_control);
