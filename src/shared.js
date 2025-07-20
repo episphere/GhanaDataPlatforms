@@ -28,7 +28,7 @@ export const emailforDACC = ['shahk6@nih.gov', 'figueroaj@nih.gov', 'sbehpour@de
 
 export const publicDataFileId = 697309514903; //Unknown
 
-export const summaryStatsFileId = 956943662666; //861342561526;//908600664259; //Confluence Summary Statistics (691143057533) => Pilot - BCRP_Summary_Results_AllSubjects.csv (861342561526)
+export const summaryStatsFileId = 1897719782149; //861342561526;//908600664259; //Confluence Summary Statistics (691143057533) => Pilot - BCRP_Summary_Results_AllSubjects.csv (861342561526)
 
 export const summaryStatsCasesFileId = 862065772362; //862065772362; //958869203942; //927803436743; //862065772362; //cases => Pilot - BCRP_Summary_Results_Cases.csv
 
@@ -1585,6 +1585,7 @@ export const inactivityTime = () => {
 };
 
 export const csvJSON = (csv) => {
+  console.log(csv);
   const lines = csv.replace(/"/g, "").split(/[\r\n]+/g);
   const result = [];
   const headers = lines[0].replace(/"/g, "").split(/[,\t]/g);
@@ -1615,17 +1616,14 @@ export const csvJSON = (csv) => {
       // if (value === "birth_year_1990_1999") value = "1990-1999";
       obj[value] = currentline[j];
     }
-    if (obj.study !== undefined) {
+    if (obj.site !== undefined) {
       result.push(obj);
     }
   }
   for (let obj of result) {
-    obj.total = parseInt(obj["statusTotal"]);
+    obj.total = parseInt(obj['statusTotal']);
   }
-  return {
-    jsonData: result,
-    headers,
-  };
+  return {jsonData:result, headers};
 };
 
 export const csv2Json2 = (csv) => {
@@ -1914,10 +1912,11 @@ export const getFileXLSX = async (id) => {
 export const array2Json = (array) => {
   const keys = array.shift();
   const json = array.reduce((agg, arr) => {
+      if (arr.length > 1) {
       agg.push(arr.reduce((obj, item, index) => {
         obj[keys[index]] = item;
         return obj;
-      }, {}));
+      }, {}))};
       return agg;
     }, [])
   return json;

@@ -32,8 +32,9 @@ const chartLabels = {
 
 export const getFileContent = async () => {
   showAnimation();
-  const data = await (await fetch('https://raw.githubusercontent.com/episphere/GhanaDataPlatforms/main/static/data/testghana26march2025.csv')).text();
-  const {jsonData, headers} = csv2Json(data)//await getFile(summaryStatsFileId));
+  //const data = await (await fetch('https://raw.githubusercontent.com/episphere/GhanaDataPlatforms/main/static/data/testghana26march2025.csv')).text();
+  const {jsonData, headers} = csvJSON(await getFile(summaryStatsFileId));//csv2Json(data)//await getFile(summaryStatsFileId));
+  console.log(headers);
   //const lastModified = (await getFileInfo(summaryStatsFileId)).modified_at;
   //document.getElementById("dataLastModified").innerHTML = `Data current as of - ${new Date(lastModified).toLocaleString()}`;
   if (jsonData.length === 0) {
@@ -91,11 +92,11 @@ const allFilters = (jsonData, headers, caseSelection) => {
     siteOptions + `<option value='${element}'>${element}</option>`;
   });
 
-  let casecontrolOptions = "";
-  Object.keys(case_control).forEach((element) => {
-    casecontrolOptions =
-    casecontrolOptions + `<option value='${element}'>${element}</option>`;
-  });
+  // let casecontrolOptions = "";
+  // Object.keys(case_control).forEach((element) => {
+  //   casecontrolOptions =
+  //   casecontrolOptions + `<option value='${element}'>${element}</option>`;
+  // });
 
   let template = `
         <div style="width: 100%;">
@@ -110,15 +111,15 @@ const allFilters = (jsonData, headers, caseSelection) => {
             </div>
 `;
 
-  template += `  
-            <div class="form-group">
-                <label class="filter-label font-size-13" for="case_control">Case/Control</label>
-                <select class="form-control font-size-15" id="case_control" data-variable='case_control'>
-                    <option selected value='all'>All</option>
-                    ${casecontrolOptions}
-                </select>
-            </div>
-    `;
+  // template += `  
+  //           <div class="form-group">
+  //               <label class="filter-label font-size-13" for="case_control">Case/Control</label>
+  //               <select class="form-control font-size-15" id="case_control" data-variable='case_control'>
+  //                   <option selected value='all'>All</option>
+  //                   ${casecontrolOptions}
+  //               </select>
+  //           </div>
+  //   `;
 
   template += `</br>
     </div>`;
@@ -163,7 +164,7 @@ const getCase_Control = (jsonData) => {
   let obj = {};
   // obj['totalSubjects'] = 0;
   jsonData.forEach((value) => {
-    obj[value.case_control] = value.case_control;
+    obj[value.status] = value.status;
   });
   return obj;
 };
@@ -212,7 +213,7 @@ export const renderAllCharts = (data) => {
   document.getElementById("participantCount").innerHTML = `<b>No. of Participants:</b> ${totalSubjects.toLocaleString("en-US")}`;
 
   generateBarChart(
-    "numpregn",
+    "age_cat",
     "dataSummaryVizChart1",
     "dataSummaryVizLabel1",
     finalData,
@@ -236,7 +237,7 @@ export const renderAllCharts = (data) => {
     "Full Cohort"
   );
   generateBarChart(
-    "tumorper_cat",
+    "bodysize_cat",
     "dataSummaryVizChart4",
     "dataSummaryVizLabel4",
     finalData,
@@ -252,7 +253,7 @@ export const renderAllCharts = (data) => {
     "Full Cohort"
   );
   generateBarChart(
-    "agefbirth_cat",
+    "menop",
     "dataSummaryVizChart6",
     "dataSummaryVizLabel6",
     finalData,
@@ -261,7 +262,7 @@ export const renderAllCharts = (data) => {
   );
 };
 
-export const updateAllCharts = (data) => {
+export const updateAllCharts2 = (data) => {
   let finalData = {};
   finalData = data;
   let totalSubjects = 0;
@@ -462,6 +463,12 @@ export const getSelectedStudies = () => {
   return array;
 };
 
+// Global variables for cross-filtering
+let globalData = [];
+let filteredData = [];
+let chartIds = [];
+let selectedBars = {};
+
 const countObjectsWithKeyValue = (arr, key, value) => {
   let count = 0;
   for (let i = 0; i < arr.length; i++) {
@@ -481,6 +488,7 @@ const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population
     cardBodyId: id,
   });
 
+  console.log(dataGraphs[parameter]);
   let x = Object.values(dataGraphs[parameter].values);
   let y = Object.keys(dataGraphs[parameter].values).map(key => countObjectsWithKeyValue(jsonData, parameter, key));
 
@@ -515,6 +523,7 @@ const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population
       tickformat: ",d",
       tickfont: { size: plotTextSize },
     },
+    margin: { t: 30, r: 20, b: 80, l: 60 },
     // paper_bgcolor: "rgba(0,0,0,0)",
     // plot_bgcolor: "rgba(0,0,0,0)",
   };
@@ -548,9 +557,55 @@ const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population
   };
 
   Plotly.newPlot(`${id}`, data, layout, config);
+  
+  // Store chart ID and add selection event
+  chartIds.push(id);
+  globalData = jsonData;
+  filteredData = jsonData;
+  
+  document.getElementById(id).on('plotly_click', function(eventData) {
+    if (eventData && eventData.points.length > 0) {
+      const clickedValue = eventData.points[0].x;
+      
+      if (!selectedBars[id]) selectedBars[id] = [];
+      
+      const existingIndex = selectedBars[id].findIndex(bar => bar.value === clickedValue);
+      
+      if (existingIndex > -1) {
+        // Deselect - remove from array
+        selectedBars[id].splice(existingIndex, 1);
+      } else {
+        // Select - add to array
+        const selectedKey = Object.keys(dataGraphs[parameter].values).find(key => 
+          dataGraphs[parameter].values[key] === clickedValue
+        );
+        selectedBars[id].push({ value: clickedValue, key: selectedKey, parameter: parameter });
+      }
+      
+      // Filter data based on all selected bars for this chart
+      if (selectedBars[id].length > 0) {
+        const selectedKeys = selectedBars[id].map(bar => bar.key);
+        filteredData = globalData.filter(item => 
+          selectedKeys.includes(String(item[parameter]))
+        );
+      } else {
+        filteredData = globalData;
+      }
+      
+      updateAllCharts(id);
+    }
+  });
+  
+  document.getElementById(id).on('plotly_doubleclick', function() {
+    selectedBars = {};
+    filteredData = globalData;
+    updateAllCharts(id);
+  });
 
   var htmlTitle = document.getElementById(labelID);
   htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[parameter].title, parameter, true, true);
+  
+  document.getElementById(id).setAttribute('data-parameter', parameter);
   // for (let index in dataGraphs) {
   //   let defaultSelected = true ? index===parameter : false
   //   htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[index].title, index, defaultSelected, defaultSelected);
@@ -1690,3 +1745,34 @@ const dataVisulizationCards = (obj) => `
 //Number of cases according to Population, Race, Ethnicity, and Cohort
 
 //Sample size according to Variable Selection distribution
+
+// Function to update all charts when one is selected
+const updateAllCharts = (excludeId) => {
+  chartIds.forEach(chartId => {
+    const parameter = document.getElementById(chartId).getAttribute('data-parameter');
+    if (parameter) {
+      const dataGraphs = graphVariables;
+      let x = Object.values(dataGraphs[parameter].values);
+      
+      // Use original data for the selected chart, filtered data for others
+      let dataToUse = (selectedBars[chartId] && selectedBars[chartId].length > 0) ? globalData : filteredData;
+      let y = Object.keys(dataGraphs[parameter].values).map(key => 
+        countObjectsWithKeyValue(dataToUse, parameter, key)
+      );
+      
+      // Create color array with highlighting
+      let colors = Array(Math.ceil(x.length/2)).fill(["#006B3D","#53ab78"]).flat();
+      if (selectedBars[chartId] && selectedBars[chartId].length > 0) {
+        const selectedValues = selectedBars[chartId].map(bar => bar.value);
+        colors = x.map((xVal, index) => 
+          selectedValues.includes(xVal) ? '#FF6B35' : 'rgba(0, 107, 61, 0.3)'
+        );
+      }
+      
+      Plotly.restyle(chartId, {
+        'y': [y],
+        'marker.color': [colors]
+      });
+    }
+  });
+};

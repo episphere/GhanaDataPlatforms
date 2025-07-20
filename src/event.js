@@ -46,7 +46,7 @@ import {
   getSelectedStudies,
   renderAllCasesCharts,
   renderAllCharts,
-  updateAllCharts,
+  updateAllCharts2,
   updateAllCasesCharts,
   updateCounts,
   getFileContent
@@ -1660,10 +1660,10 @@ export const addEventMissingnessFilterBarToggle = () => {
 
 export const addEventSummaryStatsFilterForm = (jsonData, headers) => {
 
-  const case_control = document.getElementById("case_control");
-  case_control.addEventListener("change", () => {
-    filterData(jsonData, headers);
-  });
+  // const case_control = document.getElementById("case_control");
+  // case_control.addEventListener("change", () => {
+  //   filterData(jsonData, headers);
+  // });
 
   const subCases = document.getElementById("subcasesSelection");
   subCases.addEventListener("change", () => {
@@ -1673,17 +1673,17 @@ export const addEventSummaryStatsFilterForm = (jsonData, headers) => {
 };
 
 export const filterData = (jsonData, headers) => {
-  const case_control = document.getElementById("case_control").value;
+  // const case_control = document.getElementById("case_control").value;
   const subCases = document.getElementById("subcasesSelection").value;
-  const case_controlFilter = Array.from(
-    document.getElementById("case_control").options
-  ).filter((op) => op.selected)[0].textContent;
+  // const case_controlFilter = Array.from(
+  //   document.getElementById("case_control").options
+  // ).filter((op) => op.selected)[0].textContent;
 
   let finalData = jsonData;
 
-  if (case_control !== "all") {
-    finalData = finalData.filter((dt) => dt["case_control"] === case_control);
-  }
+  // if (case_control !== "all") {
+  //   finalData = finalData.filter((dt) => dt["case_control"] === case_control);
+  // }
   if (subCases !== "all") {
     finalData = finalData.filter((dt) => dt["site"] === subCases);
   }
@@ -1695,7 +1695,7 @@ export const filterData = (jsonData, headers) => {
     totalSubjects += value.TotalSubjects;
   });
 
-  updateAllCharts(finalData);
+  updateAllCharts2(finalData);
 };
 
 export const addEventConsortiaFilter = (d) => {
