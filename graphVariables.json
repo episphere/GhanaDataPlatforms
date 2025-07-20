@@ -1,4 +1,28 @@
 {
+    "bodysize_cat":
+        {
+            "title" : "Body Size Category",
+            "units" : "",
+            "values":
+                {
+                    "Slight": "Slight",
+                    "Average": "Average",
+                    "Slightly heavy": "Slightly Heavy",
+                    "Very Heavy": "Very Heavy",
+                    "Unknown": "Unknown"
+                }
+        },
+    "menop":
+        {
+            "title" : "Menopause status",
+            "units" : "",
+            "values":
+            {
+                "Postmenopausal": "Postmenopausal",
+                "Premenopausal": "Premenopausal",
+                "Unknown": "Unknown"
+            }
+        },
     "tumor_area":
         {
             "title" : "Area of Tumor",
@@ -13,8 +37,8 @@
             "units" : "",
             "values":
                 {
-                "0": "0",
-                "1": "1"
+                "Yes": "Yes",
+                "No": "No"
                 }
         },
     "flag_weights":
@@ -23,8 +47,8 @@
             "units" : "",
             "values":
                 {
-                "0": "0",
-                "1": "1"
+                "Yes": "Yes",
+                "No": "No"
                 }
         },
     "tumorper_cat":
@@ -44,12 +68,12 @@
             "units" : "",
             "values":
                 {
-                "0": "0",
-                "1": "1",
-                "2": "2",
-                "3": "3",
-                "4": "4",
-                "5": "5"
+                "Invasive": "Invasive",
+                "Benign": "Benign",
+                "Controls": "Controls",
+                "In-situ": "In-Situ",
+                "Other case type": "Other Case Type",
+                "Unconfirmed cases": "Unconfirmed cases"
                 }
         },
     "agefbirth_cat":
@@ -96,22 +120,17 @@
             "DK": "Unknown"
             }
         },
-    "age" : 
+    "age_cat" : 
         {
         "title" : "Age at Record Date",
         "units" : "Years",
         "values" : 
             {
-            "age_LT20": "<20",
-            "age_20_29": "20 to 29",
-            "age_30_39": "30 to 39",
-            "age_40_49": "40 to 49",
-            "age_50_59": "50 to 59",
-            "age_60_69": "60 to 69",
-            "age_70_79": "70 to 79",
-            "age_80_89": "80 to 89",
-            "age_90_99": "90 to 99",
-            "age_GE100": ">100",
+            "<34": "<34",
+            "35-44": "30 to 39",
+            "45-54": "45 to 54",
+            "55-74": "55 to 74",
+            ">75": ">75",
             "age_DK": "Unknown"
             }
         },
