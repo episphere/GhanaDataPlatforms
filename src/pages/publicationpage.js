@@ -159,11 +159,8 @@ export const publicationAdmin = (modified_at) => {
 };
 
 const getDescription = async (signedIn) => {
-  //const data = await (await fetch("https://raw.githubusercontent.com/episphere/dataplatform/production/imports/DCEG_Publications.tsv")).text();
   const data = await (await fetch("https://raw.githubusercontent.com/episphere/GhanaDataPlatforms/main/static/data/EABCS_Publications.txt")).text();
-  console.log(data)
   const tsv = tsv2Json2(data);
-  console.log(tsv);
   const json = tsv.data;
   const headers = tsv.headers;
 
@@ -419,7 +416,7 @@ const renderStudyDescription = (descriptions, pageSize, headers, signedIn) => {
                             desc["first author"] ? desc["first author"] : ""
                           }</div>
                           <div class="col-md-2">${
-                            desc["date"] ? desc["date"] : ""
+                            desc["date"] ? desc["date"].split('/').pop() : ""
                           }</div>
                           <div class="col-md-1">
                               <button title="Expand/Collapse" class="transparent-btn collapse-panel-btn" data-toggle="collapse" data-target="#study${desc["title"].replace(/\s+/g,"").replace(/[^a-zA-Z ]/g, "")}">
