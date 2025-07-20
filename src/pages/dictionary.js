@@ -15,8 +15,26 @@ import {
 } from "./description.js";
 let previousValue = "";
 
+/**
+ * Checks if a row appears to be a merged header row rather than a data row
+ * @param {Object} row - The row object from the Excel sheet
+ * @returns {boolean} - True if the row appears to be a merged header row
+ */
+const isMergedRow = (row) => {
+    // Get all keys in the row
+    const keys = Object.keys(row);
+    
+    // If the row has very few columns compared to what we expect, it might be a merged row
+    if (keys.length < 2) {
+        return true;
+    }
+    
+    return false;
+};
+
 export const dataDictionaryTemplate = async () => {
-  const data = await (await fetch("static/GBHS_dataDictionary_Core+NewVar_16sep24.xlsx"));
+  // const data = await (await fetch("static/GBHS_dataDictionary_Core+NewVar_16sep24.xlsx"));
+  const data = await (await fetch("static/GBHS_dataplatform_DataDictionary_17June.xlsx"));
   console.log(data);
   // console.log(data);
   // const tsvData = tsv2Json(data);
@@ -33,11 +51,33 @@ export const dataDictionaryTemplate = async () => {
   //console.log(data);
   let file = await data.arrayBuffer();
   let workbook = XLSX.read(file);
-  console.log(workbook);
   let worksheet = workbook.Sheets[workbook.SheetNames[0]];
-  console.log(worksheet);
   let raw_data = XLSX.utils.sheet_to_json(worksheet, {header: 1});
-  console.log(raw_data);
+  // const allSheetData = [];
+  // sheetData.forEach(row => {
+  //           // Check if this row appears to have merged columns (header rows)
+  //           // This typically happens when a row has a long text spanning multiple columns
+  //           // and is missing most of the expected column values
+  //           console.log(row);
+  //           const isMergedHeaderRow = isMergedRow(row);
+  //           console.log(isMergedHeaderRow)
+            
+  //           // Skip rows that appear to be merged header rows
+  //           if (isMergedHeaderRow) {
+  //               return;
+  //           }
+            
+  //           // If Category is empty, use the last non-empty Category
+  //           // if (!row.Category || row.Category.trim() === '') {
+  //           //     row.Category = lastCategory;
+  //           // } else {
+  //           //     lastCategory = row.Category;
+  //           // }
+            
+  //           allSheetData.push(row);
+  //       });
+  //const dictionary = allSheetData;
+
   let dictionary = array2Json(raw_data);
   //console.log(json_input);
 
@@ -315,8 +355,12 @@ const filterDataHandler = (dictionary) => {
   searchedData = searchedData.filter((dt) => {
     console.log(dt["Variable Name"]);
     let found = false;
-    if (dt["Variable Name"].toLowerCase().includes(currentValue)) found = true;
-    if (dt["Data Type by Category"].toLowerCase().includes(currentValue)) found = true;
+    if (dt['Variable Name']) {
+      if (dt["Variable Name"].toLowerCase().includes(currentValue)) found = true;
+    };
+    if (dt["Data Type by Category"]) {
+      if (dt["Data Type by Category"].toLowerCase().includes(currentValue)) found = true;
+    }
     if (found) return dt;
   });
   let highlightData = JSON.parse(JSON.stringify(searchedData));
@@ -379,7 +423,7 @@ const renderDataDictionary = (dictionary, pageSize, headers) => {
         <div class="row m-0 align-left allow-overflow w-100">
         `;
   dictionary.forEach((desc, index) => {
-    console.log(desc.Coding);
+    //console.log(desc.Coding);
     if (index > pageSize) return;
     template += `
         <div class="card border-0 mt-1 mb-1 align-left w-100 pt-md-1 dictionaryData">
