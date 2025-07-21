@@ -79,8 +79,16 @@ export const dataDictionaryTemplate = async () => {
   //const dictionary = allSheetData;
 
   let dictionary = array2Json(raw_data);
+  
+  // Modify Variable Category values containing 'riskfactors'
+  dictionary.forEach(item => {
+    if (item['Variable category '] && 
+        item['Variable category '].toString().toLowerCase().replace(" ","").includes('riskfactors')) {
+      item['Variable category '] = 'Risk Factors';
+    }
+  });
+  
   //console.log(json_input);
-
   //const dictionary = tsvData.data;
   console.log(dictionary);
   // const headers = dictionary.headers;
