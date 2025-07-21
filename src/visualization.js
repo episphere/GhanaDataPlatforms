@@ -212,8 +212,8 @@ export const renderAllCharts = (data) => {
   data.forEach((value) => (totalSubjects += 1));
   document.getElementById("participantCount").innerHTML = `<b>No. of Participants:</b> ${totalSubjects.toLocaleString("en-US")}`;
 
-  generateBarChart(
-    "age_cat",
+    generateBarChart(
+    "consdiag_cnt",
     "dataSummaryVizChart1",
     "dataSummaryVizLabel1",
     finalData,
@@ -221,7 +221,7 @@ export const renderAllCharts = (data) => {
     "Full Cohort"
   );
   generateBarChart(
-    "flag_gen",
+    "age_cat",
     "dataSummaryVizChart2",
     "dataSummaryVizLabel2",
     finalData,
@@ -229,7 +229,7 @@ export const renderAllCharts = (data) => {
     "Full Cohort"
   );
   generateBarChart(
-    "flag_weights",
+    "flag_gen",
     "dataSummaryVizChart3",
     "dataSummaryVizLabel3",
     finalData,
@@ -237,7 +237,7 @@ export const renderAllCharts = (data) => {
     "Full Cohort"
   );
   generateBarChart(
-    "bodysize_cat",
+    "flag_weights",
     "dataSummaryVizChart4",
     "dataSummaryVizLabel4",
     finalData,
@@ -245,7 +245,7 @@ export const renderAllCharts = (data) => {
     "Full Cohort"
   );
   generateBarChart(
-    "consdiag_cnt",
+    "bodysize_cat",
     "dataSummaryVizChart5",
     "dataSummaryVizLabel5",
     finalData,
