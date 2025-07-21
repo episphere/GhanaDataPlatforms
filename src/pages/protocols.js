@@ -50,31 +50,31 @@ export const protocolsTemplate = async (page) => {
     if (page == "Anthropometry"){
         template = `
                 <div class="confluence-resources white-bg div-border font-size-18 height100">
-                  <iframe src="./static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf" width="100%" height="100%">
+                  <iframe src="./static/files/GBHS_Anthropometry_Annotated_d20170821.pdf" width="100%" height="100%">
                 </div>
                 `
     } else if (page == "Saliva"){
         template = `
                 <div class="confluence-resources white-bg div-border font-size-18 height100">
-                  <iframe src="./static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf" width="100%" height="100%">
+                  <iframe src="./static/files/GBHS_Saliva_Collection_Annotated_d20170821.pdf" width="100%" height="100%">
                 </div>
                 `
     } else if (page == "Stool"){
         template = `
                 <div class="confluence-resources white-bg div-border font-size-18 height100">
-                  <iframe src="./static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf" width="100%" height="100%">
+                  <iframe src="./static/files/GBHS_Stool_Collection_Annotated_d20170821.pdf" width="100%" height="100%">
                 </div>
                 `
        } else if (page == "Blood"){
         template = `
                 <div class="confluence-resources white-bg div-border font-size-18 height100">
-                  <iframe src="./static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf" width="100%" height="100%">
+                  <iframe src="./static/files/GBHS_Blood_Collection_Annotated_d20170821.pdf" width="100%" height="100%">
                 </div>
                 `
        }   else if (page == "Breast Tissue Biopsy Collection"){
         template = `
                 <div class="confluence-resources white-bg div-border font-size-18 height100">
-                  <iframe src="./static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf" width="100%" height="100%">
+                  <iframe src="./static/files/GBHS_Breast_Biopsy_Annotated_WithV2_d20170821.pdf" width="100%" height="100%">
                 </div>
                 `
        } else {
