@@ -14,6 +14,13 @@ export const confluenceContactPage = () => {
                         </br>
                         <div class="row">
                             <div class="col-4">
+                                <b>NCI DCEG</b>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"> Jonine Figueroa, Ph.D., M.P.H </li>
+                                    <li class="list-group-item"> Mustapha Abubakar, M.D., Ph.D. </li>
+                                    <li class="list-group-item"> Khushali Keyur Shahm, M.P.H </li>
+                                </ul>
+
                                 <b>Trans-Divisional Research Program (TDRP)</b>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item"> Thomas Ahearn, Ph.D. </li>
