@@ -488,7 +488,6 @@ const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population
     cardBodyId: id,
   });
 
-  console.log(dataGraphs[parameter]);
   let x = Object.values(dataGraphs[parameter].values);
   let y = Object.keys(dataGraphs[parameter].values).map(key => countObjectsWithKeyValue(jsonData, parameter, key));
 
@@ -645,16 +644,18 @@ const updateBarChart = (parameter, id, labelID, jsonData, chartRow, population) 
       tickformat: ",d",
       tickfont: { size: plotTextSize },
     },
+    margin: { t: 30, r: 20, b: 80, l: 60 },
     // paper_bgcolor: "rgba(0,0,0,0)",
     // plot_bgcolor: "rgba(0,0,0,0)",
   };
 
   var config = {
     responsive: true,
+    displayModeBar: true,
     modeBarButtonsToRemove: ['hoverClosestCartesian', 'hoverCompareCartesian','toggleHover','toggleSpikelines','zoom2d', 'pan2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d'],
     displaylogo: false,
     toImageButtonOptions: {
-      format: 'png', // one of png, svg, jpeg, webp
+      format: 'svg', // one of png, svg, jpeg, webp
       filename: parameter,
       height: 500,
       width: 700,
@@ -677,6 +678,59 @@ const updateBarChart = (parameter, id, labelID, jsonData, chartRow, population) 
   };
 
   Plotly.newPlot(`${id}`, data, layout, config);
+
+  // Store chart ID and add selection event
+  chartIds.push(id);
+  globalData = jsonData;
+  filteredData = jsonData;
+  
+  document.getElementById(id).on('plotly_click', function(eventData) {
+    if (eventData && eventData.points.length > 0) {
+      const clickedValue = eventData.points[0].x;
+      
+      if (!selectedBars[id]) selectedBars[id] = [];
+      
+      const existingIndex = selectedBars[id].findIndex(bar => bar.value === clickedValue);
+      
+      if (existingIndex > -1) {
+        // Deselect - remove from array
+        selectedBars[id].splice(existingIndex, 1);
+      } else {
+        // Select - add to array
+        const selectedKey = Object.keys(dataGraphs[parameter].values).find(key => 
+          dataGraphs[parameter].values[key] === clickedValue
+        );
+        selectedBars[id].push({ value: clickedValue, key: selectedKey, parameter: parameter });
+      }
+      
+      // Filter data based on all selected bars for this chart
+      if (selectedBars[id].length > 0) {
+        const selectedKeys = selectedBars[id].map(bar => bar.key);
+        filteredData = globalData.filter(item => 
+          selectedKeys.includes(String(item[parameter]))
+        );
+      } else {
+        filteredData = globalData;
+      }
+      
+      updateAllCharts(id);
+    }
+  });
+  
+  document.getElementById(id).on('plotly_doubleclick', function() {
+    selectedBars = {};
+    filteredData = globalData;
+    updateAllCharts(id);
+  });
+
+  var htmlTitle = document.getElementById(labelID);
+  htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[parameter].title, parameter, true, true);
+  
+  document.getElementById(id).setAttribute('data-parameter', parameter);
+  // for (let index in dataGraphs) {
+  //   let defaultSelected = true ? index===parameter : false
+  //   htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[index].title, index, defaultSelected, defaultSelected);
+  // }
 };
 
 const generateAgeBarChart = (parameter, id, labelID, jsonData, chartRow) => {
