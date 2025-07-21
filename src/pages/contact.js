@@ -14,7 +14,7 @@ export const confluenceContactPage = () => {
                         </br>
                         <div class="row">
                             <div class="col-4">
-                                <b>NCI DCEG EABCS Team</b>
+                                <b>Integrative Tumor Epidemiology Branch (ITEB)</b>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item"> Jonine Figueroa, Ph.D., M.P.H </li>
                                     <li class="list-group-item"> Mustapha Abubakar, M.D., Ph.D. </li>
