@@ -34,7 +34,7 @@ const isMergedRow = (row) => {
 
 export const dataDictionaryTemplate = async () => {
   // const data = await (await fetch("static/GBHS_dataDictionary_Core+NewVar_16sep24.xlsx"));
-  const data = await (await fetch("static/GBHS_dataplatform_DataDictionary_17June.xlsx"));
+  const data = await (await fetch("static/GBHS_dataplatform_DataDictionary_16July_Final-.xlsx"));
   console.log(data);
   // console.log(data);
   // const tsvData = tsv2Json(data);
@@ -422,7 +422,7 @@ const renderDataDictionary = (dictionary, pageSize, headers) => {
             <div class="col-md-11">
                 <div class="row">
                     <div class="col-md-4 font-bold">Variable <button class="transparent-btn sort-column" data-column-name="Variable Name"><i class="fas fa-sort"></i></button></div>
-                    <div class="col-md-5 font-bold">Category <button class="transparent-btn sort-column" data-column-name="Data Type by Category"><i class="fas fa-sort"></i></button></div>
+                    <div class="col-md-5 font-bold">Category <button class="transparent-btn sort-column" data-column-name="Cont/Categorical"><i class="fas fa-sort"></i></button></div>
                     <div class="col-md-3 font-bold">Variable category <button class="transparent-btn sort-column" data-column-name="Variable category "><i class="fas fa-sort"></i></button></div>
                 </div>
             </div>
@@ -443,7 +443,7 @@ const renderDataDictionary = (dictionary, pageSize, headers) => {
                               desc["Variable Name"] ? desc["Variable Name"] : ""
                             }</div>
                             <div class="col-md-5">${
-                              desc["Data Type by Category"] ? desc["Data Type by Category"] : ""
+                              desc["Cont/Categorical"] ? desc["Cont/Categorical"] : ""
                             }</div>
                             <div class="col-md-3">${
                               desc["Variable category "] ? desc["Variable category "] : ""
@@ -460,32 +460,32 @@ const renderDataDictionary = (dictionary, pageSize, headers) => {
                 <div class="card-body" style="padding-left: 10px;background-color:#f6f6f6;">
                     ${
                       desc["Data Source"]
-                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Data Source</div><div class="col">${desc["Data Source"]}</div></div>`
+                        ? `<div class="row mb-1 m-0" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;"><div class="col-md-2 pl-2 font-bold">Data Source</div><div class="col">${desc["Data Source"]}</div></div>`
                         : ``
                     }
                    ${
-                      desc["Question Text"]
-                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Question Text</div><div class="col">${desc["Question Text"]}</div></div>`
+                      desc["Question Text/Label"]
+                        ? `<div class="row mb-1 m-0" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;"><div class="col-md-2 pl-2 font-bold">Question Text/Label</div><div class="col">${desc["Question Text/Label"]}</div></div>`
                         : ``
                     }
                     ${
                       desc["Variable Type"]
-                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Variable Type</div><div class="col">${desc["Variable Type"]}</div></div>`
-                        : ``
-                    }
-                    ${
-                      desc["Variable Length"]
-                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Variable Length</div><div class="col">${desc["Variable Length"]}</div></div>`
+                        ? `<div class="row mb-1 m-0" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;"><div class="col-md-2 pl-2 font-bold">Variable Type</div><div class="col">${desc["Variable Type"]}</div></div>`
                         : ``
                     }
                     ${
                       desc["Derived variable macro Code"]
-                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Derived variable macro Code</div><div class="col">${desc["Derived variable macro Code"]}</div></div>`
+                        ? `<div class="row mb-1 m-0" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;"><div class="col-md-2 pl-2 font-bold">Derived variable macro Code</div><div class="col">${desc["Derived variable macro Code"]}</div></div>`
                         : ``
                     }
                     ${
                       desc["Format/Value"]
-                        ? `<div class="row mb-1 m-0"><div class="col-md-2 pl-2 font-bold">Format/Value</div><div class="col">${desc["Format/Value"]}</div></div>`
+                        ? `<div class="row mb-1 m-0" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;"><div class="col-md-2 pl-2 font-bold">Format/Value</div><div class="col">${desc["Format/Value"]}</div></div>`
+                        : ``
+                    }
+                   ${
+                      desc["Publicly availbale on data platform "]
+                        ? `<div class="row mb-1 m-0" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;"><div class="col-md-2 pl-2 font-bold">Publicly available on data platform</div><div class="col">${desc["Publicly availbale on data platform "]}</div></div>`
                         : ``
                     }
                 `;
