@@ -1670,11 +1670,17 @@ export const addEventSummaryStatsFilterForm = (jsonData, headers) => {
     filterData(jsonData, headers);
   });
 
+  const consDiag = document.getElementById("consdiagSelection");
+  consDiag.addEventListener("change", () => {
+    filterData(jsonData, headers);
+  });
+
 };
 
 export const filterData = (jsonData, headers) => {
   // const case_control = document.getElementById("case_control").value;
   const subCases = document.getElementById("subcasesSelection").value;
+  const consDiag = document.getElementById("consdiagSelection").value;
   // const case_controlFilter = Array.from(
   //   document.getElementById("case_control").options
   // ).filter((op) => op.selected)[0].textContent;
@@ -1686,6 +1692,9 @@ export const filterData = (jsonData, headers) => {
   // }
   if (subCases !== "all") {
     finalData = finalData.filter((dt) => dt["site"] === subCases);
+  }
+  if (consDiag !== "all") {
+    finalData = finalData.filter((dt) => dt["consdiag_cnt"] === consDiag);
   }
 
   updateCounts(finalData);

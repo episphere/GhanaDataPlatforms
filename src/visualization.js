@@ -85,11 +85,18 @@ const allFilters = (jsonData, headers, caseSelection) => {
   div1.classList = ["row select"];
   const site_values = getSites(jsonData);
   const case_control = getCase_Control(jsonData);
+  const consdiag_values = getConsdiag(jsonData);
 
   let siteOptions = "";
   Object.keys(site_values).forEach((element) => {
     siteOptions =
     siteOptions + `<option value='${element}'>${element}</option>`;
+  });
+
+  let consdiagOptions = "";
+  Object.keys(consdiag_values).forEach((element) => {
+    consdiagOptions =
+    consdiagOptions + `<option value='${element}'>${element}</option>`;
   });
 
   // let casecontrolOptions = "";
@@ -107,6 +114,16 @@ const allFilters = (jsonData, headers, caseSelection) => {
                 <select class="form-control font-size-15" id="subcasesSelection" data-variable='subcases'>
                     <option value='all' selected>All</option>
                     ${siteOptions}
+                </select>
+            </div>
+`;
+
+  template += `
+            <div class="col-md-12 p-0 form-group">
+                <label class="filter-label font-size-13" for="consdiagSelection">Consensus Diagnosis</label>
+                <select class="form-control font-size-15" id="consdiagSelection" data-variable='consdiag_cnt'>
+                    <option value='all' selected>All</option>
+                    ${consdiagOptions}
                 </select>
             </div>
 `;
@@ -176,6 +193,13 @@ const getSites = (jsonData) => {
   });
   return obj;
 }
+const getConsdiag = (jsonData) => {
+  let obj = {};
+  jsonData.forEach((value) => {
+    obj[value.consdiag_cnt] = value.consdiag_cnt;
+  });
+  return obj;
+};
 const getEthnicity = (jsonData) => {
   let obj = {};
   // obj['totalSubjects'] = 0;
