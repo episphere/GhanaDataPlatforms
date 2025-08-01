@@ -216,7 +216,7 @@ const getDescription = async (signedIn) => {
         <div class="main-summary-row">
             <div style="width: 100%;">
                 <div class="form-group" margin:0px>
-                    <label class="filter-label font-size-13" for="yearList">Year</label>
+                    <label class="filter-label font-size-13" for="yearList">Publication Year</label>
                     <ul class="remove-padding-left font-size-15 filter-sub-pub-div allow-overflow" id="yearList">
                         `;
   uniqueYears.forEach((year) => {
@@ -397,7 +397,7 @@ const renderStudyDescription = (descriptions, pageSize, headers, signedIn) => {
         <div class="row m-0 pt-2 pb-2 align-left div-sticky" style="border-bottom: 1px solid rgb(0,0,0, 0.1);">
             <div class="col-md-7 font-bold ws-nowrap pl-2">Title of Publication <button class="transparent-btn sort-column" data-column-name="title"><i class="fas fa-sort"></i></button></div>
             <div class="col-md-2 font-bold ws-nowrap">First Author <button class="transparent-btn sort-column" data-column-name="first author"><i class="fas fa-sort"></i></button></div>
-            <div class="col-md-2 font-bold ws-nowrap">Publication Date <button class="transparent-btn sort-column" data-column-name="date"><i class="fas fa-sort"></i></button></div>
+            <div class="col-md-2 font-bold ws-nowrap">Publication Year <button class="transparent-btn sort-column" data-column-name="date"><i class="fas fa-sort"></i></button></div>
             <div class="col-md-1"></div>
         </div>`;
     uniqueTitles.forEach((desc, index) => {
