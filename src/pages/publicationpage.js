@@ -164,6 +164,21 @@ const getDescription = async (signedIn) => {
   const json = tsv.data;
   const headers = tsv.headers;
 
+  // Convert date from mm/dd/yyyy to just year
+  json.forEach((obj) => {
+    if (obj["date"] && obj["date"].includes('/')) {
+      obj["date"] = obj["date"].split('/').pop();
+    }
+  });
+
+  const allYears = [];
+  Object.values(json).forEach((dt) => {
+    if (dt["date"] === undefined) return;
+    dt["date"].split(",").forEach((ctr) => {
+        if (ctr.trim()) allYears.push(ctr.trim());
+    });
+  });
+
   const allJournals = [];
   Object.values(json).forEach((dt) => {
     if (dt["journal_name"] === undefined) return;
@@ -184,6 +199,10 @@ const getDescription = async (signedIn) => {
     .filter((d, i) => d && allJournals.indexOf(d.trim()) === i)
     .sort();
 
+  const uniqueYears = allYears
+    .filter((d, i) => d && allYears.indexOf(d.trim()) === i)
+    .sort();
+
   let filterTemplate = `
         <div class="main-summary-row">
             <div style="width: 100%;">
@@ -197,46 +216,18 @@ const getDescription = async (signedIn) => {
         <div class="main-summary-row">
             <div style="width: 100%;">
                 <div class="form-group" margin:0px>
-                    <label class="filter-label font-size-13" for="journalsList">Journal</label>
-                    <ul class="remove-padding-left font-size-15 filter-sub-pub-div allow-overflow" id="journalsList">
+                    <label class="filter-label font-size-13" for="yearList">Year</label>
+                    <ul class="remove-padding-left font-size-15 filter-sub-pub-div allow-overflow" id="yearList">
                         `;
-  uniqueJournals.forEach((journ) => {
+  uniqueYears.forEach((year) => {
     filterTemplate += `
                 <li class="filter-list-item">
-                    <input type="checkbox" data-journal="${journ}" id="label${journ}" class="select-journal" style="margin-left: 2px !important; margin-right: 2px !important">
-                    <label for="label${journ}" class="journal-name" title="${journ}">${shortenText(journ,25)}</label>
+                    <input type="checkbox" data-year="${year}" id="label${year}" class="select-year" style="margin-left: 2px !important; margin-right: 2px !important">
+                    <label for="label${year}" class="year-name" title="${year}">${shortenText(year,25)}</label>
                 </li>
             `;
   });
-  // filterTemplate += `
-  //                 </ul>
-  //                   <label class="filter-label font-size-13" for="restrictionsList">Restrictions</label>
-  //                   <ul class="remove-padding-left font-size-15 filter-sub-div allow-overflow" id="restrictionsList">
-  //                     <li class="filter-list-item">
-  //                         <input type="checkbox" data-restrictions="nores" id="labelnores" class="select-restrictions" style="margin-left: 1px !important;">
-  //                         <label for="labelnores" class="restrictions-name" title="nores">No Restrictions</label>
-  //                     </li>
-  //                     <li class="filter-list-item">
-  //                         <input type="checkbox" data-restrictions="hmb" id="labelhmb" class="select-restrictions" style="margin-left: 1px !important;">
-  //                         <label for="labelhmb" class="restrictions-name" title="hmb">Health/Medical/Biomedical</label>
-  //                     </li>
-  //                     <li class="filter-list-item">
-  //                         <input type="checkbox" data-restrictions="ngm" id="labelngm" class="select-restrictions" style="margin-left: 1px !important;">
-  //                         <label for="labelngm" class="restrictions-name" title="ngm">No General Methods</label>
-  //                     </li>
-  //                     <li class="filter-list-item">
-  //                         <input type="checkbox" data-restrictions="nfp" id="labelnfp" class="select-restrictions" style="margin-left: 1px !important;">
-  //                         <label for="labelnfp" class="restrictions-name" title="nfp">Not for Profit Use Only</label>
-  //                     </li>
-  //                     <li class="filter-list-item">
-  //                         <input type="checkbox" data-restrictions="gru" id="labelgru" class="select-restrictions" style="margin-left: 1px !important;">
-  //                         <label for="labelgru" class="restrictions-name" title="gru">General Research Use</label>
-  //                     </li>
-  //                     <li class="filter-list-item">
-  //                         <input type="checkbox" data-restrictions="dsr" id="labeldsr" class="select-restrictions" style="margin-left: 1px !important;">
-  //                         <label for="labeldsr" class="restrictions-name" title="dsr">Disease-Specific Research</label>
-  //                     </li>
-  //           `;
+
   filterTemplate += `
                     </ul>
                 </div>
@@ -271,6 +262,13 @@ const getDescriptionAdmin = async (signedIn) => {
   const tsv = tsv2Json2(data);
   const json = tsv.data;
   const headers = tsv.headers;
+
+  // Convert date from mm/dd/yyyy to just year
+  json.forEach((obj) => {
+    if (obj["date"] && obj["date"].includes('/')) {
+      obj["date"] = obj["date"].split('/').pop();
+    }
+  });
   // json.forEach((obj) => {
   //   if (obj["nores"] === "true") obj["nores"] = "No Restrictions";
   //   if (obj["hmb"] === "true") obj["hmb"] = "Health/Medical/Biomedical";
@@ -538,6 +536,13 @@ const addEventFilterDataCatalogue = (descriptions, headers) => {
     });
   });
 
+  const yearSelection = document.getElementsByClassName("select-year");
+  Array.from(yearSelection).forEach((ele) => {
+    ele.addEventListener("click", () => {
+      filterDataBasedOnSelection(descriptions, headers);
+    });
+  });
+
   const restrictionsSelection = document.getElementsByClassName("select-restrictions");
   Array.from(restrictionsSelection).forEach((ele) => {
     ele.addEventListener("click", () => {
@@ -582,17 +587,17 @@ export const addEventToggleCollapsePanelBtn = () => {
 };
 
 const filterDataBasedOnSelection = (descriptions, headers) => {
-  // const consortiumSelected = Array.from(
-  //   document.getElementsByClassName("select-consortium")
-  // )
-  //   .filter((dt) => dt.checked)
-  //   .map((dt) => dt.dataset.consortium);
-
   const journalSelected = Array.from(
     document.getElementsByClassName("select-journal")
   )
     .filter((dt) => dt.checked)
     .map((dt) => dt.dataset.journal);
+
+  const yearSelected = Array.from(
+    document.getElementsByClassName("select-year")
+  )
+    .filter((dt) => dt.checked)
+    .map((dt) => dt.dataset.year);
 
   let filteredData = descriptions;
 
@@ -602,7 +607,13 @@ const filterDataBasedOnSelection = (descriptions, headers) => {
     );
   }
 
-  if (journalSelected.length === 0 ) filteredData = descriptions;
+  if (yearSelected.length > 0) {
+    filteredData = filteredData.filter(
+      (dt) => yearSelected.indexOf(dt["date"]) !== -1
+    );
+  }
+
+  if (journalSelected.length === 0 && yearSelected.length === 0) filteredData = descriptions;
   const input = document.getElementById("searchDataCatalog");
   const currentValue = input.value.trim().toLowerCase();
 
@@ -633,7 +644,6 @@ const filterDataBasedOnSelection = (descriptions, headers) => {
     let found = false;
     if (dt["title"].toLowerCase().includes(currentValue)) found = true;
     if (dt["first author"].toLowerCase().includes(currentValue)) found = true;
-    if (dt["date"].toLowerCase().includes(currentValue)) found = true;
     if (dt["journal_name"].toLowerCase().includes(currentValue)) found = true;
     if (dt["all authors"].toLowerCase().includes(currentValue)) found = true;
     if (found) return dt;
