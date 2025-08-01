@@ -104,7 +104,7 @@ export const dataAccess = (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
       "DACC Menu"
@@ -114,7 +114,7 @@ export const dataAccess = (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "Chair Menu"
     );
@@ -123,7 +123,7 @@ export const dataAccess = (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "DACC Menu"
     );
@@ -132,7 +132,7 @@ export const dataAccess = (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions"
     );
   }
@@ -194,7 +194,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
       "DACC Menu"
@@ -204,7 +204,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "Chair Menu"
     );
@@ -213,7 +213,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "DACC Menu"
     );
@@ -222,7 +222,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions"
     );
   }
@@ -267,7 +267,7 @@ export const formSection = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
       "DACC Menu"
@@ -277,7 +277,7 @@ export const formSection = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "Chair Menu"
     );
@@ -286,7 +286,7 @@ export const formSection = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "DACC Menu"
     );
@@ -295,7 +295,7 @@ export const formSection = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions"
     );
   }
@@ -329,11 +329,9 @@ export const formSection = async (activeTab, showDescripton) => {
         </div>
         <div class="data-submission div-border font-size-18" style="padding-left: 1rem; padding-right: 1rem;">             
           <section class="contact-form">
-            <p>Please fill out the form below. This will be reviewed by the EABCS Data Access Coordination Committee (DACC) 
-            to ensure that the proposal is consistent with EABCS goals and individual cohorts’ consents. The DACC consists of 
-            representatives from the EABCS Steering Committee and representatives of individual cohorts. Proposals will be reviewed 
-            once every four months. Data for approved concepts will be sent only to the Investigators listed below, 
-            each of whose Institutions will need to sign the EABCS DTA.</p>
+            <p>All studies that are proposing to utilize data collected from the Ghana Breast Health Study must be reviewed and approved by the Ghana Breast Health Study Steering Committee (GBHSSC).
+            Please fill out and submit the below form for review.</p>
+            <p>Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the GBHS Team. The GBHSSC will review proposals as they are submitted and get back to the lead investigators within two weeks. No response after two weeks will be interpreted as having no objections to the proposal. Updates of proposals will be requested on a yearly basis.  There will need to be evidence of substantial progress over time.  Should there not be such evidence, the project (and/or associated data) will be considered appropriate for re-assignment to other investigators.</p>
             <form>
             <!---<div class='col-3 mb-3 input-group'>
               <input type='file' class='' id='uploadJSON' />
@@ -344,374 +342,94 @@ export const formSection = async (activeTab, showDescripton) => {
               </div>
 
               <div class="input-group">
-                <label for="projname"><b>Title of Proposed Project</b><span class='required-label'>*</span></label>
+                <label for="projname"><b>Study Title</b><span class='required-label'>*</span></label>
                 <input id="projname" name="projname" type="text" required/>
               </div>
 
-              <!--<div class="input-group">
-                <label for="amendment"> <b>Is this an amendment?</b><span class='required-label'>*</span> </label>      
-                  <input id="amendmentyes" name="amendment" type="radio" value="Yes" required/>
-                    <label class="inline" for="amendmentyes"> Yes </label>
-                  <input id="amendmentno" name="amendment" type="radio" value="No" required/>
-                    <label class="inline" for="amendmentno"> No </label>
-              </div>-->
-
-              <div class='input-group d-none' >
-                <select class='form-select' id='amendmentSelect'></select>
+              <div class="input-group">
+                <label for="investigators"><b>Key Investigator(s) Names and Institutions</b> <span class='required-label'>*</span></label>
+                <textarea id="investigators" name="investigators" rows="2" cols="65" required/></textarea>
               </div>
 
               <div class="input-group">
-                <label for="investigators"><b>Contact Investigator(s)</b> <span class='required-label'>*</span></label>
-                <input id="investigators" name="investigators" type="text" required/>
+                <label for="expdesc"><b>Description of study team's experience in subject area of proposed work</b> <span class='required-label'>*</span></label>
+                <textarea id="expdesc" name="expdesc" rows="2" cols="65" required/></textarea>
               </div>
 
               <div class="input-group">
-                <label for="institution"><b>Institution(s)</b><span class='required-label'>*</span></label>
-                <input id="institution" name="institution" type="text" required/>
-              </div>
-                
-              <div class="input-group">
-                <label for="email"><b>Contact Email</b><span class='required-label'>*</span></label>
-                <input id="email" name="email" type="email" required/>
-              </div>
-
-              <div class="input-group">
-                <label for="member"> <b>Are you a member of EABCS?</b> <span class='required-label'>*</span></label>
-                  <input id="memberyes" name="member" type="radio" value="Yes" required/>
-                    <label class="inline" for="memberyes"> Yes </label>
-                  <input id="memberno" name="member" type="radio" value="No" required/>
-                    <label class="inline" for="memberno"> No </label>
-              </div>
-
-              <div class="input-group">
-                <label for="acro"><b>If yes, EABCS Study Acronym(s) for the Contact Investigator</b></label>
-                <textarea id="acro" name="acro" rows="2" cols="65"></textarea>
-              </div>
-
-              <div class="input-group">
-                <label for="otherinvest"><b>OTHER Investigators and their institutions</b><span class='required-label'>*</span></label>
-                <textarea id="otherinvest" name="otherinvest" rows="2" cols="65" required></textarea>
-              </div>
-
-              <div class="input-group">
-                <label for="allinvest"><b>ALL Investigators (and their institutions) who will require access to the data requested</b><span class='required-label'>*</span></label>
-                <textarea id="allinvest" name="allinvest" rows="2" cols="65" required></textarea>
-              </div>
-
-              <div class="input-group">
-                <label><input id="confirmation" name="confirmation" type="checkbox" value="Yes" required/><b> Please confirm that ALL the named investigators have read AND agreed to be named on this proposal?</b><span class='required-label'>*</span></label>
-              </div>
-
-              <br>
-
-              <p><u><b>Project Description</b></u></p>
-
-              <div class="input-group">
-              <p>Please provide a concise description of Background, Aims, and Analysis Plan. Provide enough detail so contributing cohorts can assess whether Aims (i) align with participant consents and (ii) overlap with other cohort projects. Please list all planned analyses.</p>
-            </div>
-
-              <div class="input-group">
-                <label for="background"><b>Background</b> <i> Please provide a concise description of Background</i><span class='required-label'>*</span></label>
+                <label for="background"><b>Background for the hypotheses to be evaluated in the proposed study</b><span class='required-label'>*</span></label>
                 <textarea id="background" name="background" rows="4" cols="65" required></textarea>
               </div>
 
+               <div class="input-group">
+                <label for="background2"><b>How will the data from this study contribute to the literature?</b><span class='required-label'>*</span></label>
+                <textarea id="background2" name="background2" rows="4" cols="65" required></textarea>
+              </div>
+
               <div class="input-group">
-                <label for="aims"><b>Aims</b><i> Please provide a concise description of Aims</i><span class='required-label'>*</span></label>
+                <label for="aims"><b>Overall goal and specific aims</b><i> Please provide a concise description of Aims</i><span class='required-label'>*</span></label>
                 <textarea id="aims" name="aims" rows="4" cols="65" required> </textarea>
               </div>
 
-              <div class="input-group">
-                <label for="analyplan"><b>Analysis Plan</b><i> Please provide a concise description of your Analysis Plan</i><span class='required-label'>*</span></label>
-                <textarea id="analyplan" name="analyplan" rows="4" cols="65" required> </textarea>
-              </div>
-
-              <br>
-
-              <!---<p><u><b>Core Covariate, Mammography and Incident Breast Cancer Data Requested</b></u></p>
-                <button class='btn btn-primary btn-sm' type='button' id='importDictvars'>Import Variables</button>--->
-
-              <div class="input-group">
+              <!--<div class="input-group">
                 <p>The <a href="#data_exploration/dictionary">EABCS data dictionary</a> lists and describes variables shared by cohorts participating in the EABCS. 
                 Data availability and descriptive statistics can be explored via the <a href="#data_exploration/summary">Explore Data</a> tool. If data from a particular category is requested,
                 all variables from that category will be provided.</p>
-              </div>
-              
-              <!--<div class="input-group">
-                <label for="basevar"><b>Baseline</b><span class='required-label'>*</span></label>
-
-                <label>
-                  <input id="basevarv" name="basevarv" type="checkbox" value="basevarv"/>
-                  Check All
-                </label>
-              </div>
-              
-              <div class="input-group">
-
-                <ul class="form" id='basevarlist'>
-                  <div class="inline-field">
-                    <input id="alctob" name="basevar" type="checkbox" value="Alcohol and Tobacco"/>
-                    <label class="container-ul" for="alctob">Alcohol and Tobacco</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="anthros" name="basevar" type="checkbox" value="Anthropometry"/>
-                    <label class="container-ul" for="anthros">Anthropometry</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="demos" name="basevar" type="checkbox" value="Demographics"/>
-                    <label class="container-ul" for="demos">Demographics</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="identdates" name="basevar" type="checkbox" value="Identification/Dates"/>
-                    <label class="container-ul" for="identdates">Identification/Dates</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="pershist" name="basevar" type="checkbox" value="Personal and Family Health History"/>
-                    <label class="container-ul" for="pershist">Personal and Family Health History</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="physact" name="basevar" type="checkbox" value="Physical Activity"/>
-                    <label class="container-ul" for="physact">Physical Activity</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="reprohist" name="basevar" type="checkbox" value="Reproductive History"/>
-                    <label class="container-ul" for="reprohist">Reproductive History</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="scrhist" name="basevar" type="checkbox" value="Screening History"/>
-                    <label class="container-ul" for="scrhist">Screening History</label>
-                  </div>
-                </ul>
-              </div>
-
-              <div class="input-group">
-                <label for="ibcvar"><b>Incident Breast Cancer</b><span class='required-label'>*</span></label>
-                <label>
-                  <input id="ibcvarv" name="ibcvarv" type="checkbox" value="ibcvarv"/>
-                  Check All
-                </label>
-              </div>
-
-              <div class="input-group">
-                <ul class="form" id='ibcvarlist'>
-                  <div class="inline-field">
-                    <input id="diag" name="ibcvar" type="checkbox" value="Diagnostic"/>
-                    <label class="container-ul" for="diag">Diagnostic</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="path" name="ibcvar" type="checkbox" value="Pathology"/>
-                    <label class="container-ul" for="path">Pathology</label>
-                  </div>
-                </ul>
-              </div>
-
-              <div class="input-group">
-                <label for="mmdvar"><b>Mammographic Density</b><span class='required-label'>*</span></label>
-                <label>
-                  <input id="mmdvarv" name="mmdvarv" type="checkbox" value="Mammographic Density"/>
-                </label>
-              </div>
-
-              <div class="input-group">
-                <p>Select cohorts from which data is being requested. Proposals only requesting data from a single cohort will not be approved. If you are interested in only analyzing data from a particular cohort, please contact that cohort directly. Information on cohorts can be found <a href="#about/description">here</a>.</p>
-                <label for="reqcoh"><b>Requested Cohorts</b><span class='required-label'>*</span></label>
-                <label>
-                  <input id="reqcohv" name="reqcohv" type="checkbox" value="reqcohv" checked/>
-                  Check All
-                </label>
-              </div>
-
-              <div class="input-group">
-                <ul class="form" id='reqcohlist'>
-                  <div class="inline-field">
-                    <input id="CSDLH" name="reqcoh" type="checkbox" value="CSDLH" checked/>
-                    <label class="container-ul" for="CSDLH">CSDLH</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="BCFR" name="reqcoh" type="checkbox" value="BCFR" checked/>
-                    <label class="container-ul" for="BCFR">BCFR</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="BWHS" name="reqcoh" type="checkbox" value="BWHS" checked/>
-                    <label class="container-ul" for="BWHS">BWHS</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="CARET" name="reqcoh" type="checkbox" value="CARET" checked/>
-                    <label class="container-ul" for="CARET">CARET</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="CLUE-II" name="reqcoh" type="checkbox" value="CLUE-II" checked/>
-                    <label class="container-ul" for="CLUE-II">CLUE-II</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="Connect" name="reqcoh" type="checkbox" value="Connect" checked/>
-                    <label class="container-ul" for="Connect">Connect</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="CPS-2" name="reqcoh" type="checkbox" value="CPS-2" checked/>
-                    <label class="container-ul" for="CPS-2">CPS-2</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="CPS-3" name="reqcoh" type="checkbox" value="CPS-3" checked/>
-                    <label class="container-ul" for="CPS-3">CPS-3</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="CTS" name="reqcoh" type="checkbox" value="CTS" checked/>
-                    <label class="container-ul" for="CTS">CTS</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="EPIC" name="reqcoh" type="checkbox" value="EPIC" checked/>
-                    <label class="container-ul" for="EPIC">EPIC</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="GS" name="reqcoh" type="checkbox" value="GS" checked/>
-                    <label class="container-ul" for="GS">GS</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="JANUS" name="reqcoh" type="checkbox" value="JANUS" checked/>
-                    <label class="container-ul" for="JANUS">JANUS</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="MAC" name="reqcoh" type="checkbox" value="MAC" checked/>
-                    <label class="container-ul" for="MAC">MAC</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="MCCS" name="reqcoh" type="checkbox" value="MCCS" checked/>
-                    <label class="container-ul" for="MCCS">MCCS</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="MEC" name="reqcoh" type="checkbox" value="MEC" checked/>
-                    <label class="container-ul" for="MEC">MEC</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="MMHS" name="reqcoh" type="checkbox" value="MMHS" checked/>
-                    <label class="container-ul" for="MMHS">MMHS</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="NHS" name="reqcoh" type="checkbox" value="NHS" checked/>
-                    <label class="container-ul" for="NHS">NHS</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="NHS-2" name="reqcoh" type="checkbox" value="NHS-2" checked/>
-                    <label class="container-ul" for="NHS-2">NHS-2</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="NYUWHS" name="reqcoh" type="checkbox" value="NYUWHS" checked/>
-                    <label class="container-ul" for="NYUWHS">NYUWHS</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="PLCO" name="reqcoh" type="checkbox" value="PLCO" checked/>
-                    <label class="container-ul" for="PLCO">PLCO</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="SISTER" name="reqcoh" type="checkbox" value="SISTER" checked/>
-                    <label class="container-ul" for="SISTER">SISTER</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="SNM" name="reqcoh" type="checkbox" value="SNM" checked/>
-                    <label class="container-ul" for="SNM">SNM</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="VITAL" name="reqcoh" type="checkbox" value="VITAL" checked/>
-                    <label class="container-ul" for="VITAL">VITAL</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="WHI" name="reqcoh" type="checkbox" value="WHI" checked/>
-                    <label class="container-ul" for="WHI">WHI</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="WHS" name="reqcoh" type="checkbox" value="WHS" checked/>
-                    <label class="container-ul" for="WHS">WHS</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="WISDOM" name="reqcoh" type="checkbox" value="WISDOM" checked/>
-                    <label class="container-ul" for="WISDOM">WISDOM</label>
-                  </div>
-
-                  <div class="inline-field">
-                    <input id="WLH" name="reqcoh" type="checkbox" value="WLH" checked/>
-                    <label class="container-ul" for="WLH">WLH</label>
-                  </div>
-                </ul>
               </div>-->
+              
+              <div class="input-group">
+                <div style="display: flex; align-items: center;">
+                  <label for="basevar" style="margin-right: 20px;"><b>Data and biological specimens requested</b><span class='required-label'>*</span></label>
+                  <div style="display: flex; align-items: center;">
+                    <input id="basevarYes" name="basevar" type="radio" value="Yes" required/>
+                    <label for="basevarYes" style="margin-right: 15px;">Yes</label>
+                    <input id="basevarNo" name="basevar" type="radio" value="No" required/>
+                    <label for="basevarNo">No</label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="input-group" id="basevarlistContainer" style="display: none; margin-left: 30px;">
+                <div>
+                  <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
+                    <input id="saliva" name="basevarOptions" type="checkbox" value="Saliva" style="margin-right: 5px;"/>
+                    <label class="container-ul" for="saliva">Saliva</label>
+                    <input id="salivaAmount" name="salivaAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                  </div>
+                  <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
+                    <input id="serum" name="basevarOptions" type="checkbox" value="Serum" style="margin-right: 5px;"/>
+                    <label class="container-ul" for="serum">Serum</label>
+                    <input id="serumAmount" name="serumAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                  </div>
+                  <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
+                    <input id="tissue" name="basevarOptions" type="checkbox" value="Tissue" style="margin-right: 5px;"/>
+                    <label class="container-ul" for="tissue">Tissue</label>
+                    <input id="tissueAmount" name="tissueAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                  </div>
+                </div>
+              </div>
 
-              <br>
-              <p><u><b>Timeline</b></u><span class='required-label'>*</span></p>
+              <div class="input-group">
+                <label for="labassays"><b>Lab assays, collaborating laboratory(ies), and quality control measures</b> <span class='required-label'>*</span></label>
+                <textarea id="labassays" name="labassays" rows="2" cols="65" required/></textarea>
+              </div>
+
+              <div class="input-group">
+                <label for="analyplan"><b>Data analysis and study power considerations</b> <span class='required-label'>*</span></label>
+                <textarea id="analyplan" name="analyplan" rows="2" cols="65" required/></textarea>
+              </div>
+
+              <div class="input-group">
+                <label for="budget"><b>Budgetary considerations</b> <span class='required-label'>*</span></label>
+                <textarea id="budget" name="budget" rows="2" cols="65" required/></textarea>
+              </div>
+
                 <div class="input-group">
-                  <label for="timeline">Please indicate estimated time from receipt of data to completion of analysesand submission of paper; 
-                  the expectation (per the EABCS Recipient DTA) is that results will be published within one year after completion</label>
+                  <label for="timeline"><b>Timeline for completion of different components of this project</b></label>
                   <textarea id="timeline" name="timeline" rows="4" cols="65" required></textarea>
                 </div>
 
-              <br>
-              <p><u><b>Authorship</b></u><span class='required-label'>*</span></p>
-                <div class="input-group">
-                  <u id="tooltip1"><a><label for="authconf"><input id="authconf" name="authconf" type="checkbox" value="Yes" required/> 
-                  <b>Please confirm that you agree to comply with the EABCS authorship and publication requirements.</b>
-                  <span>
-                  Recipient shall have the first right to publish on the Results of the Research Study. 
-                  It is the intention that the Recipient and Contributors shall be co-authors on initial 
-                  publications of the Results of the Research Study; however, authorship shall be determined 
-                  in accordance with academic custom. The Recipient agrees to send all publication manuscripts 
-                  to the Contributors for review thirty (30) days prior to publishing (“Review Period”). The 
-                  Contributors can submit comments to the Recipient during the Review Period and the Recipient 
-                  shall give due consideration to any recommendations made. The receiving party agrees not to 
-                  disclose any Confidential Information without seeking permission from the disclosing party, 
-                  prior to publishing.
-                  <br><br>
-                  The Recipient shall ensure the Results are published within one (1) year on completion of the 
-                  Research Study (“Publication Period”). If this is not possible, Recipient will consult with NCI, 
-                  who will liaise with the Contributors as soon as possible and in any case prior to lapse of the 
-                  Publication Period, with a view to resolve the issue(s) delaying publication. If the Contributors 
-                  and EABCS DACC decide that the publication is being delayed unduly by the Recipient, the Recipient 
-                  shall lose its first right to publish.
-                  </span></a></u></label>
-                  <br>
-                  <i>Please include any special considerations you would like to bring to the DACC’s attention.</i>
-                  <textarea id="anyoth" name="anyoth" rows="4" cols="65"></textarea>
-                </div>
-
                 <br>
-              <p><u><b>Data Access</b></u><span class='required-label'>*</span></p>
-                <div class="input-group">
-                  <u id="tooltip2"><a><label for="dataaccess"><input id="dataaccess" name="dataaccess" type="checkbox" value="Yes" required/> 
-                  <b>Please confirm that you agree to comply with the EABCS data access and storage requirements.</b>
-                  <span>
-                    Users granted access to EABCS data agree to only access data for the purposes outlined in this proposal, and will not save any individual participant's data (i.e., make permanent copies) on local computers or any persistent storage device other than the controlled-access workspace provided by the EABCS designated for this project.
-                  </span></a></u></label>
-                </div>
                 
                 <button type="submit" id="submitFormButton" class="buttonsubmit"> 
                   <span class="buttonsubmit__text"> Send Form </span>
@@ -2279,18 +1997,18 @@ export const dataForm = async () => {
     eventtest.preventDefault();
     const form = document.querySelector(".contact-form form")
     const data = new FormData(eventtest.target);
+    console.log(data);
     const jsondata = Object.fromEntries(data.entries());
-    jsondata.basevar = data.getAll("basevar");
-    jsondata.ibcvar = data.getAll("ibcvar");
-    jsondata.reqcoh = data.getAll("reqcoh");
-    jsondata.acrosplit = jsondata.acro.split('\n');
-    jsondata.otherinvestsplit = jsondata.otherinvest.split('\n');
-    jsondata.allinvestsplit = jsondata.allinvest.split('\n');
+    jsondata.basevarOptions = data.getAll("basevarOptions");
+    jsondata.expdescsplit = jsondata.expdesc.split('\n');
+    jsondata.investigatorssplit = jsondata.investigators.split('\n');
     jsondata.backgroundsplit = jsondata.background.split('\n');
+    jsondata.background2split = jsondata.background2.split('\n');
+    jsondata.labassayssplit = jsondata.labassays.split('\n');
     jsondata.aimssplit = jsondata.aims.split('\n');
     jsondata.analyplansplit = jsondata.analyplan.split('\n');
     jsondata.timesplit = jsondata.timeline.split('\n');
-    jsondata.anyothsplit = jsondata.anyoth.split('\n');
+    jsondata.budgetsplit = jsondata.budget.split('\n');
 
     // const results = document.querySelector(".results pre");
     // results.innerText = JSON.stringify(formJSON, null, 2);
@@ -2314,14 +2032,15 @@ export const dataForm = async () => {
   }
 
   async function generateWord(jsondata) {
-    const acroRun = jsondata.acrosplit.map(line=>new docx.TextRun({break:1,text:line}));
-    const otherinvestRun = jsondata.otherinvestsplit.map(line=>new docx.TextRun({break:1,text:line}));
-    const allinvestRun = jsondata.allinvestsplit.map(line=>new docx.TextRun({break:1,text:line}));
+    const expdescRun = jsondata.expdescsplit.map(line=>new docx.TextRun({break:1,text:line}));
+    const investigatorsRun = jsondata.investigatorssplit.map(line=>new docx.TextRun({break:1,text:line}));
     const backgroundRun = jsondata.backgroundsplit.map(line=>new docx.TextRun({break:1,text:line}));
+    const backgroundRun2 = jsondata.background2split.map(line=>new docx.TextRun({break:1,text:line}));
     const aimsRun = jsondata.aimssplit.map(line=>new docx.TextRun({break:1,text:line}));
+    const labassaysRun = jsondata.labassayssplit.map(line=>new docx.TextRun({break:1,text:line}));
     const analyplanRun = jsondata.analyplansplit.map(line=>new docx.TextRun({break:1,text:line}));
     const timeRun = jsondata.timesplit.map(line=>new docx.TextRun({break:1,text:line}));
-    const anyothRun = jsondata.anyothsplit.map(line=>new docx.TextRun({break:1,text:line}));
+    const budgetRun = jsondata.budgetsplit.map(line=>new docx.TextRun({break:1,text:line}));
 
     const doc = new docx.Document({
       styles: {
@@ -2395,7 +2114,7 @@ export const dataForm = async () => {
               alignment: docx.AlignmentType.START,
               children: [
                 new docx.TextRun({
-                  text: "Project Title: ",
+                  text: "Study Title: ",
                 }),
                 new docx.TextRun({
                   text: jsondata.projname,
@@ -2406,109 +2125,12 @@ export const dataForm = async () => {
                 after: 150,
               },
             }),
-            // new docx.Paragraph({
-            //   heading: docx.HeadingLevel.HEADING_2,
-            //   alignment: docx.AlignmentType.START,
-            //   children: [
-            //     new docx.TextRun({
-            //       text: "Is this an amendment: ",
-            //     }),
-            //     new docx.TextRun({
-            //       text: jsondata.amendment,
-            //       bold: false,
-            //     }),
-            //   ],
-            //   spacing: {
-            //     after: 150,
-            //   },
-            // }),
-            // new docx.Paragraph({
-            //   heading: docx.HeadingLevel.HEADING_2,
-            //   alignment: docx.AlignmentType.START,
-            //   children: [
-            //     new docx.TextRun({
-            //       text: "Amendment: ",
-            //     }),
-            //     new docx.TextRun({
-            //       text: jsondata.conNum,
-            //       bold: false,
-            //     }),
-            //   ],
-            //   spacing: {
-            //     after: 150,
-            //   },
-            // }),
             new docx.Paragraph({
               heading: docx.HeadingLevel.HEADING_2,
               alignment: docx.AlignmentType.START,
               children: [
                 new docx.TextRun({
-                  text: "Contact Investigator(s): ",
-                }),
-                new docx.TextRun({
-                  text: jsondata.investigators,
-                  bold: false,
-                }),
-              ],
-              spacing: {
-                after: 150,
-              },
-            }),
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "Institution(s): ",
-                }),
-                new docx.TextRun({
-                  text: jsondata.institution,
-                  bold: false,
-                }),
-              ],
-              spacing: {
-                after: 150,
-              },
-            }),
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "Contact Email: ",
-                }),
-                new docx.TextRun({
-                  text: jsondata.email,
-                  bold: false,
-                }),
-              ],
-              spacing: {
-                after: 150,
-              },
-            }),
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "Are you a member of EABCS ",
-                }),
-                new docx.TextRun({
-                  text: jsondata.member,
-                  bold: false,
-                }),
-              ],
-              spacing: {
-                after: 150,
-              },
-            }),
-
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "EABCS Study Acronym(s) for the Contact Investigator: ",
+                  text: "Key Investigator(s) Names and Institutions: ",
                 }),
               ],
               spacing: {
@@ -2517,7 +2139,25 @@ export const dataForm = async () => {
             }),
             new docx.Paragraph({
               style: "longinput",
-              children: acroRun,
+              children: investigatorsRun,
+              spacing: {
+                after: 150,
+              }}),
+            new docx.Paragraph({
+              heading: docx.HeadingLevel.HEADING_2,
+              alignment: docx.AlignmentType.START,
+              children: [
+                new docx.TextRun({
+                  text: "Description of study team's experience in subject area of proposed work: ",
+                }),
+              ],
+              spacing: {
+                after: 0,
+              },
+            }),
+            new docx.Paragraph({
+              style: "longinput",
+              children: expdescRun,
               spacing: {
                 after: 150,
               }}),
@@ -2527,45 +2167,7 @@ export const dataForm = async () => {
               alignment: docx.AlignmentType.START,
               children: [
                 new docx.TextRun({
-                  text: "OTHER Investigators and their institutions: ",
-                }),
-              ],
-              spacing: {
-                after: 0,
-              },
-            }),
-            new docx.Paragraph({
-              style: "longinput",
-              children: otherinvestRun,
-              spacing: {
-                after: 150,
-              }}),
-
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "ALL Investigators (and their institutions) who will require access to the data requested: ",
-                }),
-              ],
-              spacing: {
-                after: 0,
-              },
-            }),
-            new docx.Paragraph({
-              style: "longinput",
-              children: allinvestRun,
-              spacing: {
-                after: 150,
-              }}),
-
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "Background: ",
+                  text: "Background for the hypotheses to be evaluated in the proposed study: ",
                 }),
               ],
               spacing: {
@@ -2584,7 +2186,26 @@ export const dataForm = async () => {
               alignment: docx.AlignmentType.START,
               children: [
                 new docx.TextRun({
-                  text: "Aims: ",
+                  text: "How will the data from this study contribute to the literature: ",
+                }),
+              ],
+              spacing: {
+                after: 0,
+              },
+            }),
+            new docx.Paragraph({
+              style: "longinput",
+              children: backgroundRun2,
+              spacing: {
+                after: 150,
+              }}),
+
+            new docx.Paragraph({
+              heading: docx.HeadingLevel.HEADING_2,
+              alignment: docx.AlignmentType.START,
+              children: [
+                new docx.TextRun({
+                  text: "Overall goal and specific aims</b><i> Please provide a concise description of Aims: ",
                 }),
               ],
               spacing: {
@@ -2594,6 +2215,76 @@ export const dataForm = async () => {
             new docx.Paragraph({
               style: "longinput",
               children: aimsRun,
+              spacing: {
+                after: 150,
+              }}),
+
+            new docx.Paragraph({
+              heading: docx.HeadingLevel.HEADING_2,
+              alignment: docx.AlignmentType.START,
+              children: [
+                new docx.TextRun({
+                  text: "Data and biological specimens requested: ",
+                }),
+                new docx.TextRun({
+                  text: jsondata.basevar || "No",
+                  bold: false,
+                }),
+              ],
+              spacing: {
+                after: 150,
+              },
+            }),
+
+            ...(jsondata.basevar === "Yes" && jsondata.basevarOptions && jsondata.basevarOptions.length > 0 ? [
+              new docx.Paragraph({
+                heading: docx.HeadingLevel.HEADING_2,
+                alignment: docx.AlignmentType.START,
+                children: [
+                  new docx.TextRun({
+                    text: "Requested specimens: ",
+                  }),
+                ],
+                spacing: {
+                  after: 0,
+                },
+              }),
+              ...jsondata.basevarOptions.map(specimen => 
+                new docx.Paragraph({
+                  style: "longinput",
+                  children: [
+                    new docx.TextRun({
+                      text: `${specimen}${jsondata[specimen.toLowerCase() + 'Amount'] ? ': ' + jsondata[specimen.toLowerCase() + 'Amount'] : ''}`,
+                    }),
+                  ],
+                  spacing: {
+                    after: 50,
+                  },
+                })
+              ),
+              new docx.Paragraph({
+                text: "",
+                spacing: {
+                  after: 100,
+                },
+              }),
+            ] : []),
+
+            new docx.Paragraph({
+              heading: docx.HeadingLevel.HEADING_2,
+              alignment: docx.AlignmentType.START,
+              children: [
+                new docx.TextRun({
+                  text: "Lab assays, collaborating laboratory(ies), and quality control measures: ",
+                }),
+              ],
+              spacing: {
+                after: 0,
+              },
+            }),
+            new docx.Paragraph({
+              style: "longinput",
+              children: labassaysRun,
               spacing: {
                 after: 150,
               }}),
@@ -2617,76 +2308,24 @@ export const dataForm = async () => {
                 after: 150,
               }}),
 
-            // new docx.Paragraph({
-            //   heading: docx.HeadingLevel.HEADING_2,
-            //   alignment: docx.AlignmentType.START,
-            //   children: [
-            //     new docx.TextRun({
-            //       text: "Core Variables: ",
-            //     }),
-            //     new docx.TextRun({
-            //       text: JSON.stringify(jsondata.basevar, null, 2)
-            //         .replace("[", "")
-            //         .replace("]", ""),
-            //       bold: false,
-            //     }),
-            //   ],
-            //   spacing: {
-            //     after: 150,
-            //   },
-            // }),
-            // new docx.Paragraph({
-            //   heading: docx.HeadingLevel.HEADING_2,
-            //   alignment: docx.AlignmentType.START,
-            //   children: [
-            //     new docx.TextRun({
-            //       text: "MMD Variables: ",
-            //     }),
-            //     new docx.TextRun({
-            //       text: jsondata.mmdvarv,
-            //       bold: false,
-            //     }),
-            //   ],
-            //   spacing: {
-            //     after: 150,
-            //   },
-            // }),
-            // new docx.Paragraph({
-            //   heading: docx.HeadingLevel.HEADING_2,
-            //   alignment: docx.AlignmentType.START,
-            //   children: [
-            //     new docx.TextRun({
-            //       text: "BRCA Variables: ",
-            //     }),
-            //     new docx.TextRun({
-            //       text: JSON.stringify(jsondata.ibcvar, null, 2)
-            //         .replace("[", "")
-            //         .replace("]", ""),
-            //       bold: false,
-            //     }),
-            //   ],
-            //   spacing: {
-            //     after: 150,
-            //   },
-            // }),
-            // new docx.Paragraph({
-            //   heading: docx.HeadingLevel.HEADING_2,
-            //   alignment: docx.AlignmentType.START,
-            //   children: [
-            //     new docx.TextRun({
-            //       text: "Requested Cohorts: ",
-            //     }),
-            //     new docx.TextRun({
-            //       text: JSON.stringify(jsondata.reqcoh, null, 2)
-            //         .replace("[", "")
-            //         .replace("]", ""),
-            //       bold: false,
-            //     }),
-            //   ],
-            //   spacing: {
-            //     after: 150,
-            //   },
-            // }),
+            new docx.Paragraph({
+              heading: docx.HeadingLevel.HEADING_2,
+              alignment: docx.AlignmentType.START,
+              children: [
+                new docx.TextRun({
+                  text: "Budgetary considerations: ",
+                }),
+              ],
+              spacing: {
+                after: 0,
+              },
+            }),
+            new docx.Paragraph({
+              style: "longinput",
+              children: budgetRun,
+              spacing: {
+                after: 150,
+              }}),
 
             new docx.Paragraph({
               heading: docx.HeadingLevel.HEADING_2,
@@ -2703,25 +2342,6 @@ export const dataForm = async () => {
             new docx.Paragraph({
               style: "longinput",
               children: timeRun,
-              spacing: {
-                after: 150,
-              }}),
-
-            new docx.Paragraph({
-              heading: docx.HeadingLevel.HEADING_2,
-              alignment: docx.AlignmentType.START,
-              children: [
-                new docx.TextRun({
-                  text: "Special Considerations: ",
-                }),
-              ],
-              spacing: {
-                after: 0,
-              },
-            }),
-            new docx.Paragraph({
-              style: "longinput",
-              children: anyothRun,
               spacing: {
                 after: 150,
               }}),
@@ -2742,10 +2362,10 @@ export const dataForm = async () => {
     let user = JSON.parse(localStorage.parms).login.split('@')[0];
     const date = new Date();
     const today = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
-    let filename = jsondata.projname + '_' + user + '_' + today + '_' + Date.now() + '.docx';
+    let filename = jsondata.projname + '_' + user + '_' + today + '.docx';
     await docx.Packer.toBlob(doc).then(async (blob, btn) => {
-      let response = await uploadWordFile(blob, filename, uploadFormFolder);
-      // let response = {'status': 201};
+      //let response = await uploadWordFile(blob, filename, uploadFormFolder);
+      let response = {'status': 201};
       console.log(response);
       if (response.status === 401) {
         btn.classList.toggle("buttonsubmit--loading");
@@ -2760,8 +2380,8 @@ export const dataForm = async () => {
         btn.classList.toggle("buttonsubmit--loading");
         btn.disabled = false;
       } else {
-      let fileid = response.entries[0].id;
-      //let fileid = "testing";
+      //let fileid = response.entries[0].id;
+      let fileid = "testing";
       //let metaData = addMetaData(fileid, jsondata.datacon);
       const downloadLink = URL.createObjectURL(blob);
       let a = document.createElement("a");
@@ -2819,6 +2439,32 @@ export const dataForm = async () => {
 
   const form = await document.querySelector(".contact-form");
   form.addEventListener("submit", handleFormSubmit);
+
+  // Add event listeners for basevar radio buttons
+  document.getElementById("basevarYes").addEventListener("change", function() {
+    if (this.checked) {
+      document.getElementById("basevarlistContainer").style.display = "block";
+    }
+  });
+
+  document.getElementById("basevarNo").addEventListener("change", function() {
+    if (this.checked) {
+      document.getElementById("basevarlistContainer").style.display = "none";
+    }
+  });
+
+  // Add event listeners for specimen checkboxes to show/hide amount text boxes
+  document.getElementById("saliva").addEventListener("change", function() {
+    document.getElementById("salivaAmount").style.display = this.checked ? "inline" : "none";
+  });
+
+  document.getElementById("serum").addEventListener("change", function() {
+    document.getElementById("serumAmount").style.display = this.checked ? "inline" : "none";
+  });
+
+  document.getElementById("tissue").addEventListener("change", function() {
+    document.getElementById("tissueAmount").style.display = this.checked ? "inline" : "none";
+  });
 
   // const downloadJSON = document.getElementById("downloadJSON");
   // downloadJSON.addEventListener("click", handleFormDownload);
