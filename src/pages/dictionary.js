@@ -366,8 +366,8 @@ const filterDataHandler = (dictionary) => {
     if (dt['Variable Name']) {
       if (dt["Variable Name"].toLowerCase().includes(currentValue)) found = true;
     };
-    if (dt["Data Type by Category"]) {
-      if (dt["Data Type by Category"].toLowerCase().includes(currentValue)) found = true;
+    if (dt["Cont/Categorical"]) {
+      if (dt["Cont/Categorical"].toLowerCase().includes(currentValue)) found = true;
     }
     if (found) return dt;
   });
@@ -377,7 +377,7 @@ const filterDataHandler = (dictionary) => {
       new RegExp(currentValue, "gi"),
       "<b>$&</b>"
     );
-    dt["Data Type by Category"] = dt["Data Type by Category"].replace(
+    dt["Cont/Categorical"] = dt["Cont/Categorical"].replace(
       new RegExp(currentValue, "gi"),
       "<b>$&</b>"
     );
