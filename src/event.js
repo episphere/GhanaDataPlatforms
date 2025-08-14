@@ -1660,11 +1660,6 @@ export const addEventMissingnessFilterBarToggle = () => {
 
 export const addEventSummaryStatsFilterForm = (jsonData, headers) => {
 
-  // const case_control = document.getElementById("case_control");
-  // case_control.addEventListener("change", () => {
-  //   filterData(jsonData, headers);
-  // });
-
   const subCases = document.getElementById("subcasesSelection");
   subCases.addEventListener("change", () => {
     filterData(jsonData, headers);
@@ -1675,12 +1670,18 @@ export const addEventSummaryStatsFilterForm = (jsonData, headers) => {
     filterData(jsonData, headers);
   });
 
+  const cityDiag = document.getElementById("citySelection");
+  cityDiag.addEventListener("change", () => {
+    filterData(jsonData, headers);
+  });
+
 };
 
 export const filterData = (jsonData, headers) => {
   // const case_control = document.getElementById("case_control").value;
   const subCases = document.getElementById("subcasesSelection").value;
   const consDiag = document.getElementById("consdiagSelection").value;
+  const cityDiag = document.getElementById("citySelection").value;
   // const case_controlFilter = Array.from(
   //   document.getElementById("case_control").options
   // ).filter((op) => op.selected)[0].textContent;
@@ -1695,6 +1696,9 @@ export const filterData = (jsonData, headers) => {
   }
   if (consDiag !== "all") {
     finalData = finalData.filter((dt) => dt["consdiag_cnt"] === consDiag);
+  }
+  if (cityDiag !== "all") {
+    finalData = finalData.filter((dt) => dt["city"] === cityDiag);
   }
 
   updateCounts(finalData);
