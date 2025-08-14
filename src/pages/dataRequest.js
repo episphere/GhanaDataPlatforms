@@ -337,47 +337,47 @@ export const formSection = async (activeTab, showDescripton) => {
             </div>--->
               <div class="input-group">
                 <label for="date"><b>Date</b><span class='required-label'>*</span></label>
-                <input id="date" name="date" type="date" value='${today}' required/>
+                <input id="date" name="date" type="date" value='${today}' class="form-text-input" required/>
               </div>
 
               <div class="input-group">
                 <label for="projname"><b>Study Title</b><span class='required-label'>*</span></label>
-                <input id="projname" name="projname" type="text" required/>
+                <input id="projname" name="projname" type="text" class="form-text-input" required/>
               </div>
 
               <div class="input-group">
                 <label for="investigators"><b>Key Investigator(s) Names and Institutions</b> <span class='required-label'>*</span></label>
-                <textarea id="investigators" name="investigators" rows="2" cols="65" required/></textarea>
+                <textarea id="investigators" name="investigators" rows="2" cols="65" class="form-text-input" required/></textarea>
               </div>
 
               <div class="input-group">
                 <label for="expdesc"><b>Description of study team's experience in subject area of proposed work</b> <span class='required-label'>*</span></label>
-                <textarea id="expdesc" name="expdesc" rows="2" cols="65" required/></textarea>
+                <textarea id="expdesc" name="expdesc" rows="2" cols="65" class="form-text-input" required/></textarea>
               </div>
 
               <div class="input-group">
                 <label for="background"><b>Background for the hypotheses to be evaluated in the proposed study</b><span class='required-label'>*</span></label>
-                <textarea id="background" name="background" rows="4" cols="65" required></textarea>
+                <textarea id="background" name="background" rows="4" cols="65" class="form-text-input" required></textarea>
               </div>
 
                <div class="input-group">
                 <label for="background2"><b>How will the data from this study contribute to the literature?</b><span class='required-label'>*</span></label>
-                <textarea id="background2" name="background2" rows="4" cols="65" required></textarea>
+                <textarea id="background2" name="background2" rows="4" cols="65" class="form-text-input" required></textarea>
               </div>
 
               <div class="input-group">
                 <label for="aims"><b>Overall goal and specific aims</b><i> Please provide a concise description of Aims</i><span class='required-label'>*</span></label>
-                <textarea id="aims" name="aims" rows="4" cols="65" required> </textarea>
+                <textarea id="aims" name="aims" rows="4" cols="65" class="form-text-input" required> </textarea>
               </div>
 
               <div class="input-group">
                 <label for="questionData"><b>Questionaire data and variables requested</b><span class='required-label'>*</span></label>
-                <textarea id="questionData" name="questionData" rows="4" cols="65" required> </textarea>
+                <textarea id="questionData" name="questionData" rows="4" cols="65" class="form-text-input" required> </textarea>
               </div>
 
               <div class="input-group">
                 <label for="moleassayData"><b>Existing molecular assay data</b> <i>(e.g. GWAS, IHC from tumor tissue, etc. and manuscript reference)</i><span class='required-label'>*</span></label>
-                <textarea id="moleassayData" name="moleassayData" rows="4" cols="65" required> </textarea>
+                <textarea id="moleassayData" name="moleassayData" rows="4" cols="65" class="form-text-input" required> </textarea>
               </div>
     
               <div class="input-group">
@@ -397,81 +397,75 @@ export const formSection = async (activeTab, showDescripton) => {
                   <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
                     <input id="saliva" name="basevarOptions" type="checkbox" value="Saliva" style="margin-right: 5px;"/>
                     <label class="container-ul" for="saliva">Saliva</label>
-                    <input id="salivaAmount" name="salivaAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                    <input id="salivaAmount" name="salivaAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" class="form-text-input" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
                   </div>
                   <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
                     <input id="serum" name="basevarOptions" type="checkbox" value="Serum" style="margin-right: 5px;"/>
                     <label class="container-ul" for="serum">Serum</label>
-                    <input id="serumAmount" name="serumAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                    <input id="serumAmount" name="serumAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" class="form-text-input" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
                   </div>
                   <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
                     <input id="tissue" name="basevarOptions" type="checkbox" value="Tissue" style="margin-right: 5px;"/>
                     <label class="container-ul" for="tissue">Tumor Tissue</label>
-                    <input id="tissueAmount" name="tissueAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                    <input id="tissueAmount" name="tissueAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" class="form-text-input" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
                   </div>
                   <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
                     <input id="plasma" name="basevarOptions" type="checkbox" value="Plasma" style="margin-right: 5px;"/>
                     <label class="container-ul" for="plasma">Plasma</label>
-                    <input id="plasmaAmount" name="plasmaAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                    <input id="plasmaAmount" name="plasmaAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" class="form-text-input" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
                   </div>
                   <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
                     <input id="bloodclot" name="basevarOptions" type="checkbox" value="Blood Clot" style="margin-right: 5px;"/>
                     <label class="container-ul" for="bloodclot">Blood Clot</label>
-                    <input id="bloodclotAmount" name="bloodclotAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                    <input id="bloodclotAmount" name="bloodclotAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" class="form-text-input" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
                   </div>
                   <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
                     <input id="redbloodcell" name="basevarOptions" type="checkbox" value="Red Blood Cell" style="margin-right: 5px;"/>
                     <label class="container-ul" for="redbloodcell">Red Blood Cell</label>
-                    <input id="redbloodcellAmount" name="redbloodcellAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                    <input id="redbloodcellAmount" name="redbloodcellAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" class="form-text-input" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
                   </div>
                   <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
                     <input id="buffycoat" name="basevarOptions" type="checkbox" value="Buffy Coat" style="margin-right: 5px;"/>
                     <label class="container-ul" for="buffycoat">Buffy Coat</label>
-                    <input id="buffycoatAmount" name="buffycoatAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                    <input id="buffycoatAmount" name="buffycoatAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" class="form-text-input" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
                   </div>
                   <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
                     <input id="fecalmicrobiome" name="basevarOptions" type="checkbox" value="Fecal Microbiome" style="margin-right: 5px;"/>
                     <label class="container-ul" for="fecalmicrobiome">Fecal Microbiome</label>
-                    <input id="fecalmicrobiomeAmount" name="fecalmicrobiomeAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                    <input id="fecalmicrobiomeAmount" name="fecalmicrobiomeAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" class="form-text-input" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
                   </div>
                 </div>
               </div>
 
               <div class="input-group">
                 <label for="labassays"><b>Lab assays, collaborating laboratory(ies), and quality control measures</b> <span class='required-label'>*</span></label>
-                <textarea id="labassays" name="labassays" rows="2" cols="65" required/></textarea>
+                <textarea id="labassays" name="labassays" rows="2" cols="65" class="form-text-input" required/></textarea>
               </div>
 
               <div class="input-group">
                 <label for="analyplan"><b>Data analysis and study power considerations</b> <span class='required-label'>*</span></label>
-                <textarea id="analyplan" name="analyplan" rows="2" cols="65" required/></textarea>
+                <textarea id="analyplan" name="analyplan" rows="2" cols="65" class="form-text-input" required/></textarea>
               </div>
 
               <div class="input-group">
                 <label for="budget"><b>Budgetary considerations</b> <span class='required-label'>*</span></label>
-                <textarea id="budget" name="budget" rows="2" cols="65" required/></textarea>
+                <textarea id="budget" name="budget" rows="2" cols="65" class="form-text-input" required/></textarea>
               </div>
 
                 <div class="input-group">
                   <label for="timeline"><b>Timeline for completion of different components of this project</b></label>
-                  <textarea id="timeline" name="timeline" rows="4" cols="65" required></textarea>
+                  <textarea id="timeline" name="timeline" rows="4" cols="65" class="form-text-input" required></textarea>
                 </div>
 
                 <br>
-                
-                <button type="submit" id="submitFormButton" class="buttonsubmit"> 
-                  <span class="buttonsubmit__text"> Send Form </span>
-                </button>
-                <!--<button type="button" id="downloadJSON" class="buttonsubmit"> 
-                  <span class="buttonsubmit__text"> Download JSON </span>
-                </button>-->
-                <!--button type="button" id="downloadWord" class="buttonsubmit d-none"> 
-                  <span class="buttonsubmit__text"> Download Word </span>
-                </button>
-                
-                <button type="submit" id="otherButton" class="buttonsubmit d-none"> 
-                  <span class="buttonsubmit__text"> Something else </span>
-                </button-->
+                <div style="display: flex; gap: 10px;">
+                  <button type="button" id="downloadForm" class="buttonsubmit" title="Download the form with your current responses to a word document."> 
+                    <span class="buttonsubmit__text">Download Form with Inputs</span>
+                  </button>
+                  <button type="submit" id="submitFormButton" class="buttonsubmit"title="Download and submit the form for review.> 
+                    <span class="buttonsubmit__text"> Send Form </span>
+                  </button>
+               </div>
               </form>
 
             </section>
@@ -1603,6 +1597,44 @@ export const dataApproval = () => {
 };
 
 export const dataForm = async () => {
+  async function handleFormSubmit2(eventtest) {
+    const btn = document.activeElement;
+    btn.classList.toggle("buttonsubmit--loading");
+    btn.disabled = true;
+    eventtest.preventDefault();
+    const form = document.querySelector(".contact-form form")
+    const data = new FormData(form);
+    console.log(data);
+    const jsondata = Object.fromEntries(data.entries());
+    jsondata.basevarOptions = data.getAll("basevarOptions");
+    jsondata.salivaAmount = data.get("salivaAmount") || "";
+    jsondata.serumAmount = data.get("serumAmount") || "";
+    jsondata.tissueAmount = data.get("tissueAmount") || "";
+    jsondata.plasmaAmount = data.get("plasmaAmount") || "";
+    jsondata.bloodclotAmount = data.get("bloodclotAmount") || "";
+    jsondata.redbloodcellAmount = data.get("redbloodcellAmount") || "";
+    jsondata.buffycoatAmount = data.get("buffycoatAmount") || "";
+    jsondata.fecalmicrobiomeAmount = data.get("fecalmicrobiomeAmount") || "";
+    jsondata.expdescsplit = jsondata.expdesc.split('\n');
+    jsondata.investigatorssplit = jsondata.investigators.split('\n');
+    jsondata.backgroundsplit = jsondata.background.split('\n');
+    jsondata.background2split = jsondata.background2.split('\n');
+    jsondata.labassayssplit = jsondata.labassays.split('\n');
+    jsondata.aimssplit = jsondata.aims.split('\n');
+    jsondata.analyplansplit = jsondata.analyplan.split('\n');
+    jsondata.timesplit = jsondata.timeline.split('\n');
+    jsondata.budgetsplit = jsondata.budget.split('\n');
+    jsondata.questionDatasplit = jsondata.questionData ? jsondata.questionData.split('\n') : [];
+    jsondata.moleassayDatasplit = jsondata.moleassayData ? jsondata.moleassayData.split('\n') : [];
+
+    // const results = document.querySelector(".results pre");
+    // results.innerText = JSON.stringify(formJSON, null, 2);
+    // fs.wrtieFile('test.json', formJSON);
+    await generateWord(jsondata, btn, false);
+    btn.classList.toggle("buttonsubmit--loading");
+    btn.disabled = false;
+  }
+
   let files = await getFolderItems(uploadFormFolder);
   const d = new Date();
   let filename =
@@ -2024,7 +2056,7 @@ export const dataForm = async () => {
     btn.disabled = true;
     eventtest.preventDefault();
     const form = document.querySelector(".contact-form form")
-    const data = new FormData(eventtest.target);
+    const data = new FormData(form);
     console.log(data);
     const jsondata = Object.fromEntries(data.entries());
     jsondata.basevarOptions = data.getAll("basevarOptions");
@@ -2051,7 +2083,7 @@ export const dataForm = async () => {
     // const results = document.querySelector(".results pre");
     // results.innerText = JSON.stringify(formJSON, null, 2);
     // fs.wrtieFile('test.json', formJSON);
-    await generateWord(jsondata);
+    await generateWord(jsondata, btn, true);
     btn.classList.toggle("buttonsubmit--loading");
     btn.disabled = false;
   }
@@ -2069,7 +2101,7 @@ export const dataForm = async () => {
     await createMetadata(fileId);
   }
 
-  async function generateWord(jsondata) {
+  async function generateWord(jsondata, button, uploadReady=false) {
     const expdescRun = jsondata.expdescsplit.map(line=>new docx.TextRun({break:1,text:line}));
     const investigatorsRun = jsondata.investigatorssplit.map(line=>new docx.TextRun({break:1,text:line}));
     const backgroundRun = jsondata.backgroundsplit.map(line=>new docx.TextRun({break:1,text:line}));
@@ -2446,9 +2478,9 @@ export const dataForm = async () => {
     const today = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
     let filename = jsondata.projname + '_' + user + '_' + today + '.docx';
     await docx.Packer.toBlob(doc).then(async (blob, btn) => {
-      //let response = await uploadWordFile(blob, filename, uploadFormFolder);
-      let response = {'status': 201};
-      console.log(response);
+      if (uploadReady) {
+        let response = await uploadWordFile(blob, filename, uploadFormFolder);
+        console.log(response);
       if (response.status === 401) {
         btn.classList.toggle("buttonsubmit--loading");
         btn.disabled = false;
@@ -2462,65 +2494,34 @@ export const dataForm = async () => {
         btn.classList.toggle("buttonsubmit--loading");
         btn.disabled = false;
       } else {
-      //let fileid = response.entries[0].id;
-      let fileid = "testing";
-      //let metaData = addMetaData(fileid, jsondata.datacon);
-      const downloadLink = URL.createObjectURL(blob);
-      let a = document.createElement("a");
-      a.href = downloadLink;
-      a.download = filename;
-      document.getElementById("modalBody").innerHTML = `
+        fileid = response.entries[0].id;
+        document.getElementById("modalBody").innerHTML = `
             <p>File was successfully uploaded.</p>
             <p>Document ID: ${fileid}</p>`;
-      $("#popUpModal").modal("show");
-      a.click();
-      let popup = document.getElementById('popUpModal');
-      let btns = popup.querySelectorAll('button');
-      for (let button of btns) {
-        button.addEventListener('click', function () {
-          location.reload();
-          })
-        }
-      }
-      // if (filesinfoldernames.includes(filename)) {
-      //   const [name, extension] = filename.split(".");
-      //   let i = 1;
-      //   while (filesinfoldernames.includes(filename)) {
-      //     if (filename.includes(")")) {
-      //       const [name, version] = filename.split("(");
-      //       filename = name + `(${i})` + version.substring(2);
-      //     } else {
-      //       filename = name + `(${i}).` + extension;
-      //     }
-      //     i++;
-      //   }
-      //   let response = await uploadWordFile(blob, filename, uploadFormFolder);
-      //   await assigntasktochair();
-      //   let fileid = response.entries[0].id;
-      //   //Modal code here
-      //   document.getElementById("modalBody").innerHTML = `
-      //     <p>File was successfully uploaded.</p>
-      //     <p>Document ID: ${fileid}</p>`;
-      //   $("#popUpModal").modal("show");
-      // } else {
-      //   // Adding keywords
-      //   let response = await uploadWordFile(blob, filename, uploadFormFolder);
-      //   if (response.status === 201) {
-      //     await assigntasktochair();
-      //     let fileid = response.entries[0].id;
-      //     //Modal code here
-      //     document.getElementById("modalBody").innerHTML = `
-      //   <p>File was successfully uploaded.</p>
-      //   <p>Document ID: ${fileid}</p>`;
-      //     $("#popUpModal").modal("show");
-      //   } else {
-      //   }
-      // }
+            $("#popUpModal").modal("show");
+            let popup = document.getElementById('popUpModal');
+            let btns = popup.querySelectorAll('button');
+            for (let button of btns) {
+              button.addEventListener('click', function () {
+              location.reload();
+              })
+            }
+        }}
+        const downloadLink = URL.createObjectURL(blob);
+        let a = document.createElement("a");
+        a.href = downloadLink;
+        a.download = filename;
+        a.click();
     });
   }
 
   const form = await document.querySelector(".contact-form");
   form.addEventListener("submit", handleFormSubmit);
+
+  const downloadBtn2 = document.getElementById("downloadForm");
+  if (downloadBtn2) {
+    downloadBtn2.addEventListener("click", handleFormSubmit2);
+  }
 
   // Add event listeners for basevar radio buttons
   document.getElementById("basevarYes").addEventListener("change", function() {

@@ -2147,7 +2147,10 @@ p {
 }
 
 .buttonsubmit:hover {
-  background-color: #1c4f74 !important;
+  background-color: #005f36 !important;
+  box-shadow: 0 0 15px rgba(0, 107, 61, 0.6);
+  border-color: #006B3D;
+  cursor: pointer;
 }
 
 .buttonsubmit__text {
@@ -2174,6 +2177,12 @@ p {
   border-top-color: #ffffff;
   border-radius: 50%;
   animation: buttonsubmit-loading-spinner 1s ease infinite;
+}
+
+.form-text-input:hover {
+  box-shadow: 0 0 5px #005f36; /* Blue glow */
+  border-color: #006B3Dab !important;
+  cursor: text;
 }
 
 @keyframes buttonsubmit-loading-spinner {
@@ -2280,4 +2289,8 @@ th {
 
 .height100 {
   height: 100vh;
+}
+
+input[type="radio"]:hover {
+  box-shadow: 0 0 10px rgba(0, 107, 61, 0.6);
 }
