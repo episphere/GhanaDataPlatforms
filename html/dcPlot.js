@@ -1,10 +1,12 @@
 import { tsv2Json, tsv2Json2, csvJSON, getFile } from "../src/shared.js";
 
-const txtid = "908521040771";
+const txtid = "1897719782149"//"908521040771";
 
 const data = await getFile(txtid);
-const tsv2json = tsv2Json2(data);
-const json = tsv2json.data;
+const tsv2json = csvJSON(data);
+console.log(tsv2json);
+const json = tsv2json.jsonData;
+console.log(json);
 const headers = tsv2json.headers;
 const headerscatter = ["height", "weight"];
 const gsel = ["Interval Bar Chart", "Ordinal Bar Chart", "Pie Chart"];
@@ -67,45 +69,45 @@ const variables2 = (headers) => {
   }
 };
 
-const variables3_0 = (headers) => {
-  var theDiv = document.getElementById("graph3sel0");
-  var selectList = document.createElement("select");
-  selectList.id = "select3_0";
-  document.body.appendChild(selectList);
-  theDiv.appendChild(selectList);
-  var option = document.createElement("option");
-  option.text = "Choose X Variable";
-  option.selected = true;
-  option.disabled = true;
-  selectList.appendChild(option);
+// const variables3_0 = (headers) => {
+//   var theDiv = document.getElementById("graph3sel0");
+//   var selectList = document.createElement("select");
+//   selectList.id = "select3_0";
+//   document.body.appendChild(selectList);
+//   theDiv.appendChild(selectList);
+//   var option = document.createElement("option");
+//   option.text = "Choose X Variable";
+//   option.selected = true;
+//   option.disabled = true;
+//   selectList.appendChild(option);
 
-  for (var i = 1; i < headers.length; i++) {
-    var option = document.createElement("option");
-    option.value = headers[i];
-    option.text = headers[i];
-    selectList.appendChild(option);
-  }
-};
+//   for (var i = 1; i < headers.length; i++) {
+//     var option = document.createElement("option");
+//     option.value = headers[i];
+//     option.text = headers[i];
+//     selectList.appendChild(option);
+//   }
+// };
 
-const variables3_1 = (headers) => {
-  var theDiv = document.getElementById("graph3sel0");
-  var selectList = document.createElement("select");
-  selectList.id = "select3_1";
-  document.body.appendChild(selectList);
-  theDiv.appendChild(selectList);
-  var option = document.createElement("option");
-  option.text = "Choose Y Variable";
-  option.selected = true;
-  option.disabled = true;
-  selectList.appendChild(option);
+// const variables3_1 = (headers) => {
+//   var theDiv = document.getElementById("graph3sel0");
+//   var selectList = document.createElement("select");
+//   selectList.id = "select3_1";
+//   document.body.appendChild(selectList);
+//   theDiv.appendChild(selectList);
+//   var option = document.createElement("option");
+//   option.text = "Choose Y Variable";
+//   option.selected = true;
+//   option.disabled = true;
+//   selectList.appendChild(option);
 
-  for (var i = 1; i < headers.length; i++) {
-    var option = document.createElement("option");
-    option.value = headers[i];
-    option.text = headers[i];
-    selectList.appendChild(option);
-  }
-};
+//   for (var i = 1; i < headers.length; i++) {
+//     var option = document.createElement("option");
+//     option.value = headers[i];
+//     option.text = headers[i];
+//     selectList.appendChild(option);
+//   }
+// };
 
 const graphSel0 = (gsel) => {
   var theDiv = document.getElementById("graph0sel");
@@ -167,8 +169,8 @@ const graphSel2 = (gsel) => {
 variables0(headers);
 variables1(headers);
 variables2(headers);
-variables3_0(headers);
-variables3_1(headers);
+// variables3_0(headers);
+// variables3_1(headers);
 graphSel0(gsel);
 graphSel1(gsel);
 graphSel2(gsel);
@@ -182,61 +184,66 @@ const button = () => {
     var var0 = document.querySelector("#select0");
     var var1 = document.querySelector("#select1");
     var var2 = document.querySelector("#select2");
-    var var3_0 = document.querySelector("#select3_0");
-    var var3_1 = document.querySelector("#select3_1");
+    // var var3_0 = document.querySelector("#select3_0");
+    // var var3_1 = document.querySelector("#select3_1");
     var out0 = var0.value;
     var out1 = var1.value;
     var out2 = var2.value;
-    var out3_0 = var3_0.value;
-    var out3_1 = var3_1.value;
-    var keys = [out0, out1, out2, out3_0, out3_1, "race", "study"];
+    // var out3_0 = var3_0.value;
+    // var out3_1 = var3_1.value;
+    var keys = [out0, out1, out2, "site"];
     var gsel0 = document.querySelector("#selectType0").value;
     var gsel1 = document.querySelector("#selectType1").value;
     var gsel2 = document.querySelector("#selectType2").value;
 
+    if (!json) {
+      alert('Data is still loading. Please wait and try again.');
+      return;
+    }
+    
     let data = json.map((element) =>
       Object.assign({}, ...keys.map((key) => ({ [key]: element[key] })))
     );
 
     data.forEach(function (d) {
-      if (out0 !== "race") {
+      if (out0 !== "site") {
         d[out0] = +d[out0];
       }
-      if (out1 !== "race") {
+      if (out1 !== "site") {
         d[out1] = +d[out1];
       }
-      if (out2 !== "race") {
+      if (out2 !== "site") {
         d[out2] = +d[out2];
       }
-      if (out3_0 !== "race") {
-        d[out3_0] = +d[out3_0];
-      }
-      if (out3_1 !== "race") {
-        d[out3_1] = +d[out3_1];
-      }
-      d["study"] = "NHS2";
+      // if (out3_0 !== "race") {
+      //   d[out3_0] = +d[out3_0];
+      // }
+      // if (out3_1 !== "race") {
+      //   d[out3_1] = +d[out3_1];
+      // }
+      // d["study"] = "NHS2";
     });
 
-    for (const obj of data) {
-      if (obj.race === "1") {
-        obj.race = "White";
-      }
-      if (obj.race === "2") {
-        obj.race = "Black/African American";
-      }
-      if (obj.race === "3") {
-        obj.race = "Asian";
-      }
-      if (obj.race === "4") {
-        obj.race = "Native Hawaiian/Pacific Islander";
-      }
-      if (obj.race === "5") {
-        obj.race = "American Indian/Alaska Native";
-      }
-      if (obj.race === "6") {
-        obj.race = "Other, including multiracial";
-      }
-    }
+    // for (const obj of data) {
+    //   if (obj.race === "1") {
+    //     obj.race = "White";
+    //   }
+    //   if (obj.race === "2") {
+    //     obj.race = "Black/African American";
+    //   }
+    //   if (obj.race === "3") {
+    //     obj.race = "Asian";
+    //   }
+    //   if (obj.race === "4") {
+    //     obj.race = "Native Hawaiian/Pacific Islander";
+    //   }
+    //   if (obj.race === "5") {
+    //     obj.race = "American Indian/Alaska Native";
+    //   }
+    //   if (obj.race === "6") {
+    //     obj.race = "Other, including multiracial";
+    //   }
+    // }
 
     if (gsel0 === "Pie Chart") {
       var graph0 = new dc.PieChart("#graph0in");
@@ -260,24 +267,27 @@ const button = () => {
     //var graph2 = dc.barChart('#graph2in');
     var sMenu = new dc.SelectMenu("#sMenu");
     var dataCount = new dc.DataCount(".data-count");
-    var avg0 = new dc.NumberDisplay("#avg0");
-    var avg1 = new dc.NumberDisplay("#avg1");
-    var avg2 = new dc.NumberDisplay("#avg2");
+    // var avg0 = new dc.NumberDisplay("#avg0");
+    // var avg1 = new dc.NumberDisplay("#avg1");
+    // var avg2 = new dc.NumberDisplay("#avg2");
     var graph3 = new dc.ScatterPlot("#graph3in");
 
     data = data.filter((d) => {
       if (d[out0] === 888) return false;
       if (d[out0] === 777) return false;
+      if (d[out0] === "") return false;
       if (d[out1] === 888) return false;
       if (d[out1] === 777) return false;
+      if (d[out1] === "") return false;
       if (d[out2] === 888) return false;
       if (d[out2] === 777) return false;
-      if (d[out3_0] === 888) return false;
-      if (d[out3_0] === 777) return false;
-      if (d[out3_1] === 888) return false;
-      if (d[out3_1] === 777) return false;
-      if (d.race === "888") return false;
-      if (d.race === "") return false;
+      if (d[out2] === "") return false;
+      // if (d[out3_0] === 888) return false;
+      // if (d[out3_0] === 777) return false;
+      // if (d[out3_1] === 888) return false;
+      // if (d[out3_1] === 777) return false;
+      // if (d.race === "888") return false;
+      // if (d.race === "") return false;
       return true;
     });
 
@@ -293,8 +303,8 @@ const button = () => {
     const out2Dimension = crossdata.dimension((d) => d[out2]);
     const groupByout2 = out2Dimension.group();
 
-    const raceDimension = crossdata.dimension((d) => d.race);
-    const raceGroup = raceDimension.group();
+    const siteDimension = crossdata.dimension((d) => d.site);
+    const siteGroup = siteDimension.group();
 
     const out3Dimension = crossdata.dimension(function (d) {
       return [d[out3_0], d[out3_1]];
@@ -349,15 +359,15 @@ const button = () => {
       }
     );
 
-    var average = function (d) {
-      return d.n ? d.tot / d.n : 0;
-    };
+    // var average = function (d) {
+    //   return d.n ? d.tot / d.n : 0;
+    // };
 
-    avg0.formatNumber(d3.format(".2f")).valueAccessor(average).group(avgGroup0);
+    // avg0.formatNumber(d3.format(".2f")).valueAccessor(average).group(avgGroup0);
 
-    avg1.formatNumber(d3.format(".2f")).valueAccessor(average).group(avgGroup1);
+    // avg1.formatNumber(d3.format(".2f")).valueAccessor(average).group(avgGroup1);
 
-    avg2.formatNumber(d3.format(".2f")).valueAccessor(average).group(avgGroup2);
+    // avg2.formatNumber(d3.format(".2f")).valueAccessor(average).group(avgGroup2);
     let w = 640,
       h = 320;
 
@@ -386,6 +396,7 @@ const button = () => {
       .group(groupByout3);
 
     if (gsel0 === "Interval Bar Chart") {
+      const max0 = d3.max(data, (d) => d[out0]) || 1;
       dcBarChart(
         graph0,
         out0Dimension,
@@ -393,12 +404,7 @@ const button = () => {
         w,
         h,
         true,
-        d3.scaleLinear().domain([
-          0,
-          d3.max(data, (d) => {
-            return d[out0];
-          }),
-        ]),
+        d3.scaleLinear().domain([0, max0]),
         "# of Subjects",
         out0
       );
@@ -417,6 +423,7 @@ const button = () => {
     }
 
     if (gsel1 === "Interval Bar Chart") {
+      const max1 = d3.max(data, (d) => d[out1]) || 1;
       dcBarChart(
         graph1,
         out1Dimension,
@@ -424,12 +431,7 @@ const button = () => {
         w,
         h,
         true,
-        d3.scaleLinear().domain([
-          0,
-          d3.max(data, (d) => {
-            return d[out1];
-          }),
-        ]),
+        d3.scaleLinear().domain([0, max1]),
         "# of Subjects",
         out1
       );
@@ -448,6 +450,7 @@ const button = () => {
     }
 
     if (gsel2 === "Interval Bar Chart") {
+      const max2 = d3.max(data, (d) => d[out2]) || 1;
       dcBarChart(
         graph2,
         out2Dimension,
@@ -455,12 +458,7 @@ const button = () => {
         w,
         h,
         true,
-        d3.scaleLinear().domain([
-          0,
-          d3.max(data, (d) => {
-            return d[out2];
-          }),
-        ]),
+        d3.scaleLinear().domain([0, max2]),
         "# of Subjects",
         out2
       );
@@ -479,8 +477,8 @@ const button = () => {
     }
 
     sMenu
-      .dimension(raceDimension)
-      .group(raceGroup)
+      .dimension(siteDimension)
+      .group(siteGroup)
       .multiple(true)
       .numberVisible(20);
 
@@ -554,7 +552,7 @@ function dcPieChart(chartname, dim, group, width, height) {
   return chartname
     .width(width)
     .height(height)
-    .radius(width)
+    .radius(Math.min(width, height) / 2 - 10)
     .dimension(dim)
     .group(group);
 }

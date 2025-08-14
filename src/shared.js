@@ -7,28 +7,13 @@ export const emailsAllowedToUpdateData = [
   "ahearntu@nih.gov",
 ];
 
-export const emailforChair = ['shahk6@nih.gov', 'figueroaj@nih.gov', 'sbehpour@deloitte.com', 'kopchickbp@nih.gov'];
-//  [
-// "Roger.Milne@cancervic.org.au",
-// "ahearntu@nih.gov",
-// "garciacm@nih.gov",
-// "wraynr@nih.gov",
-// "kopchickbp@nih.gov",
-//sbehpour@deloitte.com
-// ];
+export const emailforChair = ['shahk6@nih.gov', 'figueroaj@nih.gov', 'kopchickbp@nih.gov'];
 
-export const emailforDACC = ['shahk6@nih.gov', 'figueroaj@nih.gov', 'sbehpour@deloitte.com', 'kopchickbp@nih.gov'];
-
-// [
-//   "pkraft@hsph.harvard.edu",
-//   "garciacm@nih.gov",
-//   "ahearntu@nih.gov",
-//   "mukopadhyays2@nih.gov",
-// ]; // , 'mia.gaudet@nih.gov', 'troisir@nih.gov', 'mukopadhyays2@nih.gov', 'montserrat.garcia-closas@nih.gov', 'garciacm@nih.gov'];
+export const emailforDACC = ['shahk6@nih.gov', 'figueroaj@nih.gov', 'kopchickbp@nih.gov'];
 
 export const publicDataFileId = 697309514903; //Unknown
 
-export const summaryStatsFileId = 1897719782149; //861342561526;//908600664259; //Confluence Summary Statistics (691143057533) => Pilot - BCRP_Summary_Results_AllSubjects.csv (861342561526)
+export const summaryStatsFileId = 1942913543244; //861342561526;//908600664259; //Confluence Summary Statistics (691143057533) => Pilot - BCRP_Summary_Results_AllSubjects.csv (861342561526)
 
 export const summaryStatsCasesFileId = 862065772362; //862065772362; //958869203942; //927803436743; //862065772362; //cases => Pilot - BCRP_Summary_Results_Cases.csv
 

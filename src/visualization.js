@@ -87,6 +87,7 @@ const allFilters = (jsonData, headers, caseSelection) => {
   const site_values = getSites(jsonData);
   const case_control = getCase_Control(jsonData);
   const consdiag_values = getConsdiag(jsonData);
+  const city_values = getCity(jsonData);
 
   let siteOptions = "";
   Object.keys(site_values).forEach((element) => {
@@ -100,11 +101,11 @@ const allFilters = (jsonData, headers, caseSelection) => {
     consdiagOptions + `<option value='${element}'>${element}</option>`;
   });
 
-  // let casecontrolOptions = "";
-  // Object.keys(case_control).forEach((element) => {
-  //   casecontrolOptions =
-  //   casecontrolOptions + `<option value='${element}'>${element}</option>`;
-  // });
+  let cityOptions = "";
+  Object.keys(city_values).forEach((element) => {
+    cityOptions =
+    cityOptions + `<option value='${element}'>${element}</option>`;
+  });
 
   let template = `
         <div style="width: 100%;">
@@ -127,17 +128,16 @@ const allFilters = (jsonData, headers, caseSelection) => {
                     ${consdiagOptions}
                 </select>
             </div>
+`
+  template += `
+            <div class="col-md-12 p-0 form-group">
+                <label class="filter-label font-size-13" for="citySelection">City</label>
+                <select class="form-control font-size-15" id="citySelection" data-variable='city'>
+                    <option value='all' selected>All</option>
+                    ${cityOptions}
+                </select>
+            </div>
 `;
-
-  // template += `  
-  //           <div class="form-group">
-  //               <label class="filter-label font-size-13" for="case_control">Case/Control</label>
-  //               <select class="form-control font-size-15" id="case_control" data-variable='case_control'>
-  //                   <option selected value='all'>All</option>
-  //                   ${casecontrolOptions}
-  //               </select>
-  //           </div>
-  //   `;
 
   template += `</br>
     </div>`;
@@ -198,6 +198,13 @@ const getConsdiag = (jsonData) => {
   let obj = {};
   jsonData.forEach((value) => {
     obj[value.consdiag_cnt] = value.consdiag_cnt;
+  });
+  return obj;
+};
+const getCity = (jsonData) => {
+  let obj = {};
+  jsonData.forEach((value) => {
+    obj[value.city] = value.city;
   });
   return obj;
 };

@@ -112,30 +112,19 @@
                 ">=26": ">=26"
                 }
         },
-    "numpregn" :
+    "pregnumb_w_cat" :
         {
         "title" : "Number of pregnancies",
         "units" : "Number",
         "values" : 
             {
-            "0": "0",
-            "1": "1",
-            "2": "2",
-            "3": "3",
+            ">=5": ">=5",
             "4": "4",
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
-            "10": "10",
-            "11": "11",
-            "12": "12",
-            "13": "13",
-            "14": "14",
-            "15": "15",
-            "16": "16",
-            "DK": "Unknown"
+            "3": "3",
+            "2": "2",
+            "1": "1",
+            "Nulliparous": "Nulliparous",
+            "Unknown": "Unknown"
             }
         },
     "age_cat" : 
@@ -152,19 +141,17 @@
             "age_DK": "Unknown"
             }
         },
-    "ageMenarche" :
+    "menarche_cat" :
         {
         "title" : "Age at Menarche",
         "units" : "Years",
         "values" : 
             {
-            "agemenarche_LE12": "<=12",
-            "agemenarche_13": "13",
-            "agemenarche_14": "14",
-            "agemenarche_15": "15",
-            "agemenarche_GT15": ">15",
-            "agemenarche_777": "Not Applicable",
-            "agemenarche_DK": "Unknown"
+            "<15": "<15",
+            "15": "15",
+            "16": "16",
+            ">=17": ">=17",
+            "Unknown": "Unknown"
             }
         },
     "AJAncestry" :
@@ -313,15 +300,15 @@
             "education_DK": "Unknown" 
             }
         },
-    "fh_breast_canc" :
+    "famhist" :
         {
-        "title" : "Family history of breast cancer (first degree relative)",
+        "title" : "Family History",
         "units" : "",
         "values" : 
             {
-            "fhx_fdr_brca_0": "0",
-            "fhx_fdr_brca_1": "1",
-            "fhx_fdr_brca_DK": "Unknown"
+            "No": "No",
+            "Yes": "Yes",
+            "Unknown": "Unknown"
             }
         },
     "fhx_fdr_brca" :
