@@ -2494,7 +2494,7 @@ export const dataForm = async () => {
         btn.classList.toggle("buttonsubmit--loading");
         btn.disabled = false;
       } else {
-        fileid = response.entries[0].id;
+        let fileid = response.entries[0].id;
         document.getElementById("modalBody").innerHTML = `
             <p>File was successfully uploaded.</p>
             <p>Document ID: ${fileid}</p>`;
