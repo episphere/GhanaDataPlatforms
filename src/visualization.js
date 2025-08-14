@@ -41,6 +41,7 @@ export const getFileContent = async () => {
     document.getElementById(
       "confluenceDiv"
     ).innerHTML = `You don't have access to summary level data, please contact NCI for the access.`;
+    hideAnimation();
     return;
   }
   renderAllCharts(jsonData, headers);
@@ -226,7 +227,7 @@ export const addEventConsortiumSelect = () => {
     element.addEventListener("click", () => {});
   });
 };
-export const renderAllCharts = (data) => {
+export const renderAllCharts = (data, headers) => {
   document.getElementById("chartRow1").innerHTML = "";
   document.getElementById("chartRow2").innerHTML = "";
   let finalData = {};
@@ -242,7 +243,8 @@ export const renderAllCharts = (data) => {
     "dataSummaryVizLabel1",
     finalData,
     "chartRow1",
-    "Full Cohort"
+    "Full Cohort",
+    headers
   );
   generateBarChart(
     "age_cat",
@@ -250,7 +252,8 @@ export const renderAllCharts = (data) => {
     "dataSummaryVizLabel2",
     finalData,
     "chartRow1",
-    "Full Cohort"
+    "Full Cohort",
+    headers
   );
   generateBarChart(
     "flag_gen",
@@ -258,7 +261,8 @@ export const renderAllCharts = (data) => {
     "dataSummaryVizLabel3",
     finalData,
     "chartRow1",
-    "Full Cohort"
+    "Full Cohort",
+    headers
   );
   generateBarChart(
     "flag_weights",
@@ -266,7 +270,8 @@ export const renderAllCharts = (data) => {
     "dataSummaryVizLabel4",
     finalData,
     "chartRow2",
-    "Full Cohort"
+    "Full Cohort",
+    headers
   );
   generateBarChart(
     "bodysize_cat",
@@ -274,7 +279,8 @@ export const renderAllCharts = (data) => {
     "dataSummaryVizLabel5",
     finalData,
     "chartRow2",
-    "Full Cohort"
+    "Full Cohort",
+    headers
   );
   generateBarChart(
     "menop",
@@ -282,7 +288,8 @@ export const renderAllCharts = (data) => {
     "dataSummaryVizLabel6",
     finalData,
     "chartRow2",
-    "Full Cohort"
+    "Full Cohort",
+    headers
   );
 };
 
@@ -503,7 +510,7 @@ const countObjectsWithKeyValue = (arr, key, value) => {
   return count;
 }
 
-const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population) => {
+const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population, headers) => {
   const div = document.createElement("div");
   div.classList = ["col-xl-4 pl-2 padding-right-zero mb-3"];
   const dataGraphs = graphVariables;
@@ -626,13 +633,22 @@ const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population
   });
 
   var htmlTitle = document.getElementById(labelID);
-  htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[parameter].title, parameter, true, true);
+  // Only populate dropdown if it's empty (first time creation)
+  if (htmlTitle.options.length === 0) {
+    if (headers) {
+      headers.forEach(header => {
+        // Only include variables that exist in both jsonData and graphVariables
+        if (dataGraphs[header]) {
+          const selected = header === parameter;
+          htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[header].title, header, selected, selected);
+        }
+      });
+    } else {
+      htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[parameter].title, parameter, true, true);
+    }
+  }
   
   document.getElementById(id).setAttribute('data-parameter', parameter);
-  // for (let index in dataGraphs) {
-  //   let defaultSelected = true ? index===parameter : false
-  //   htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[index].title, index, defaultSelected, defaultSelected);
-  // }
 };
 
 const updateBarChart = (parameter, id, labelID, jsonData, chartRow, population) => {
@@ -747,14 +763,7 @@ const updateBarChart = (parameter, id, labelID, jsonData, chartRow, population) 
     updateAllCharts(id);
   });
 
-  var htmlTitle = document.getElementById(labelID);
-  htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[parameter].title, parameter, true, true);
-  
   document.getElementById(id).setAttribute('data-parameter', parameter);
-  // for (let index in dataGraphs) {
-  //   let defaultSelected = true ? index===parameter : false
-  //   htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[index].title, index, defaultSelected, defaultSelected);
-  // }
 };
 
 const generateAgeBarChart = (parameter, id, labelID, jsonData, chartRow) => {

@@ -12,6 +12,30 @@
                     "Unknown": "Unknown"
                 }
         },
+    "educ_cat":
+        {
+            "title" : "Education",
+            "units" : "",
+            "values":
+                {
+                    "No formal education": "No formal education",
+                    "Primary school": "Primary school",
+                    " Senior secondary school and above": " Senior secondary school and above",
+                    "Junior secondary schooly": "Junior secondary school",
+                    "Unknown": "Unknown"
+                }
+        },
+    "site":
+        {
+            "title" : "Site",
+            "units" : "",
+            "values":
+                {
+                    "PLH": "PLH",
+                    "KBTH": "KBTH",
+                    "KATH": "KATH"
+                }
+        },
     "menop":
         {
             "title" : "Menopause status",
@@ -57,14 +81,14 @@
             "units" : "",
             "values":
                 {
-                "0": "0",
-                "1": "1",
-                "2": "2"
+                "<10": "<10",
+                "Oct-38": "10-38",
+                ">39": ">39"
                 }
         },
     "consdiag_cnt":
         {
-            "title" : "Cons Diag Count",
+            "title" : "Consensus Diagnosis",
             "units" : "",
             "values":
                 {
@@ -82,16 +106,10 @@
             "units" : "",
             "values":
                 {
-                "0": "0",
-                "1": "1",
-                "2": "2",
-                "3": "3",
-                "4": "4",
-                "5": "5",
-                "6": "6",
-                "7": "7",
-                "8": "8",
-                "9": "9"
+                "<19": "<19",
+                "19-21": "21-21",
+                "22-25": "22-25",
+                ">=26": ">=26"
                 }
         },
     "numpregn" :
@@ -127,7 +145,7 @@
         "values" : 
             {
             "<34": "<34",
-            "35-44": "30 to 39",
+            "35-44": "35 to 44",
             "45-54": "45 to 54",
             "55-74": "55 to 74",
             ">75": ">75",

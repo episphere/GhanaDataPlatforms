@@ -15,9 +15,7 @@ import {
 import { pageNavBar } from "../components/navBarMenuItems.js";
 let previousValue = "";
 
-export const protocolSummary = (
-  activeTab, pageHeader
-) => {
+export const protocolSummary = (activeTab, pageHeader) => {
   return `
         <div class="general-bg">
             <div class="container2 body-min-height">
@@ -46,7 +44,6 @@ export const protocolSummary = (
 export const protocolsTemplate = async (page) => {
     //document.getElementById("downloadContainer").style.display = 'none';
     let template = ``;
-    console.log(page);
     if (page == "Anthropometry"){
         template = `
                 <div class="confluence-resources white-bg div-border font-size-18 height100">
