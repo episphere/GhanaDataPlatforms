@@ -97,8 +97,7 @@ export const dataAccess = (activeTab, showDescripton) => {
   let authDacc =
     emailforDACC.indexOf(JSON.parse(localStorage.parms).login) !== -1;
   let navBarItems = "";
-  console.log(authChair);
-  console.log(authDacc);
+
   if (authDacc && authChair) {
     navBarItems = pageNavBar(
       "data_access",
@@ -107,7 +106,7 @@ export const dataAccess = (activeTab, showDescripton) => {
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
   } else if (authChair) {
     navBarItems = pageNavBar(
@@ -125,7 +124,7 @@ export const dataAccess = (activeTab, showDescripton) => {
       "Overview",
       "Submit Concept Form",
       //"View Submissions",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
   } else {
     navBarItems = pageNavBar(
@@ -680,7 +679,7 @@ export const chairSection = (activeTab) => {
       //"Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
   } else if (authChair) {
     navBarItems = pageNavBar(
@@ -698,7 +697,7 @@ export const chairSection = (activeTab) => {
       "Overview",
       //"Submit Concept Form",
       //"View Submissions",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
   } else {
     navBarItems = pageNavBar(
@@ -765,7 +764,7 @@ export const chairFileView = async () => {
          <a class='nav-link' id='daccCompletedTab' href='#daccCompleted' data-mdb-toggle="tab" role='tab' aria-controls='daccCompleted' aria-selected='true'> Review Completed </a>
       </li>
       <li class='nav-item' role='presentation'>
-         <a class='nav-link' id='decidedTab' href='#decided' data-mdb-toggle="tab" role='tab' aria-controls='decided' aria-selected='true'> DACC Decision </a>
+         <a class='nav-link' id='decidedTab' href='#decided' data-mdb-toggle="tab" role='tab' aria-controls='decided' aria-selected='true'> Steering Committee Decision </a>
       </li>
       <!--li class='nav-item' role='presentation'>
          <a class='nav-link' id='deniedTab' href='#denied' data-mdb-toggle="tab" role='tab' aria-controls='denied' aria-selected='true'> Denied </a>
@@ -813,7 +812,7 @@ export const chairFileView = async () => {
                  aria-labeledby='inProgressTab' style="vertical-align:top">
                  <a href="mailto:${emailforDACC.join(
                    "; "
-                 )}" id='email' class='btn btn-dark'>Send Email to DACC</a>`;
+                 )}" id='email' class='btn btn-dark'>Send Email to Steering Committee</a>`;
   template += renderFilePreviewDropdown(filesinprogress, "inProgress");
 
   template += `<div class='tab-pane fade'
@@ -864,7 +863,7 @@ export const chairFileView = async () => {
 
         <div id='finalChairDecision' class="card-body approvedeny" style="background-color:#f6f6f6; display:none">
           <form>
-            <label for="message">Enter Message for submitter or the DACC</label>
+            <label for="message">Enter Message for submitter or the Steering Committee</label>
             <div class='text-muted small'>Submitter will only see the below comment after approve or deny. </div>
             <label for="grade">Select recommendation: </label>
           <select name="grade" id="grade2"></option>
@@ -884,7 +883,7 @@ export const chairFileView = async () => {
             <button type="submit" class="buttonsubmit" value="rejected" onclick="this.classList.toggle('buttonsubmit--loading')">
               <span class="buttonsubmit__text"> Deny </span></button>
             <button type="submit" class="buttonsubmit" value="daccReview" onclick="this.classList.toggle('buttonsubmit--loading')">
-              <span class="buttonsubmit__text"> Return to DACC </span></button>  
+              <span class="buttonsubmit__text"> Return to Steering Committee </span></button>  
           </form>
         </div>
         `;
@@ -1191,7 +1190,7 @@ export const daccSection = (activeTab) => {
       //"Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
   } else if (authChair) {
     navBarItems = pageNavBar(
@@ -1209,7 +1208,7 @@ export const daccSection = (activeTab) => {
       "Overview",
       //"Submit Concept Form",
       //"View Submissions",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
   } else {
     navBarItems = pageNavBar(
@@ -1252,7 +1251,7 @@ export const daccFileView = async () => {
             <div class="container body-min-height">
             <div class="main-summary-row">
                 <div class="align-left">
-                    <h1 class="page-header">DACC Access Only</h1>
+                    <h1 class="page-header">Steering Committee Access Only</h1>
                 </div>
             </div>
             <div class="data-submission div-border font-size-18" style="padding-left: 1rem; padding-right: 1rem;">
@@ -1264,7 +1263,7 @@ export const daccFileView = async () => {
               <a class='nav-link' id='daccReviewTab' href='#daccReview' data-mdb-toggle="tab" role='tab' aria-controls='daccReview' aria-selected='true'> Re-Review </a>
             </li>
             <li class='nav-item' role='presentation'>
-              <a class='nav-link' id='decidedTab' href='#decided' data-mdb-toggle="tab" role='tab' aria-controls='decided' aria-selected='true'> DACC Decision </a>
+              <a class='nav-link' id='decidedTab' href='#decided' data-mdb-toggle="tab" role='tab' aria-controls='decided' aria-selected='true'> Steering Committee Decision </a>
             </li>
             <!--li class='nav-item' role='presentation'>
                 <a class='nav-link' id='completedTab' href='#completed' data-mdb-toggle="tab" role='tab' aria-controls='completed' aria-selected='true'>Completed</a>
@@ -2490,7 +2489,7 @@ const viewFiles = async (files) => {
             <div id="study${id}" class="collapse" aria-labelledby="heading${id}">
               <div class="card-body dacc-submit" style="padding-left: 10px;background-color:#f6f6f6;">
                 <form>
-                  <label for"message">Send to DACC</label>
+                  <label for"message">Send to Steering Committee</label>
                   <div class="input-group">
                     <textarea id="message" name="message" rows="10" cols="65"></textarea>
                   </div>

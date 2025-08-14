@@ -81,7 +81,7 @@ export const navBarMenutemplate = () => {
                       emailforDACC.indexOf(
                         JSON.parse(localStorage.parms).login
                       ) !== -1
-                        ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_access/daccView" title="DACC Menu" id="daccView"> DACC Menu </a>`
+                        ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_access/daccView" title="Steering Committee Menu" id="daccView"> Steering Committee Menu </a>`
                         : ``
                     }
             </div>
@@ -169,7 +169,7 @@ export function pageNavBar(page, activeTab, ...pageHeaders) {
       if (activeTab === "acceptedStudies") link.classList.add("active");
     }
 
-    if (header === "DACC Menu") {
+    if (header === "Steering Committee Menu") {
       link.href = `#${page}/daccView`;
       if (activeTab === "daccView") link.classList.add("active");
     }

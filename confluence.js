@@ -343,7 +343,7 @@ export const confluence = async () => {
         showAnimation();
         if (!element) return;
         if (element.classList.contains("navbar-active")) return;
-        document.title = "EABCS - DACC View";
+        document.title = "EABCS - Steering Committee View";
         assignNavbarActive(element, 1);
         confluenceDiv.innerHTML = daccSection("daccView");
         daccFileView();
@@ -545,7 +545,7 @@ const manageRouter = async () => {
     if (!daccViewElement) return;
     if (daccViewElement.classList.contains("navbar-active")) return;
     assignNavbarActive(daccViewElement, 1);
-    document.title = "EABCS - DACC View";
+    document.title = "EABCS - Steering View";
     confluenceDiv.innerHTML = daccSection();
     removeActiveClass("nav-link", "active");
   } else if (hash === "#data_exploration/dictionary") {

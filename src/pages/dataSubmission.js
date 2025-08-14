@@ -251,7 +251,7 @@ export async function userSubmissionTemplate(pageHeader, activeTab) {
     if (fileInfo.created_by.login === JSON.parse(localStorage.parms).login) {
       files.push({
         file: fileInfo,
-        status: "DACC Review",
+        status: "Steering Committee Review",
         decision: "In Progress",
       });
     }
@@ -262,7 +262,7 @@ export async function userSubmissionTemplate(pageHeader, activeTab) {
     if (fileInfo.created_by.login === JSON.parse(localStorage.parms).login) {
       files.push({
         file: fileInfo,
-        status: "Resubmitted to DACC",
+        status: "Resubmitted to Steering Committee",
         decision: "In Progress",
       });
     }
@@ -313,7 +313,7 @@ export async function userSubmissionTemplate(pageHeader, activeTab) {
       "Submit Concept Form",
       "View Submissions",
       "Chair Menu",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
     // navBarItems = pageNavBar('data_access', activeTab, 'Overview', 'Project Concept Form', 'Accepted', 'Chair Menu', 'DACC Menu');
   } else if (authChair) {
@@ -333,7 +333,7 @@ export async function userSubmissionTemplate(pageHeader, activeTab) {
       "Overview",
       "Submit Concept Form",
       "View Submissions",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
     // navBarItems = pageNavBar('data_access', activeTab, 'Overview', 'Project Concept Form', 'Accepted', 'DACC Menu');
   } else {
