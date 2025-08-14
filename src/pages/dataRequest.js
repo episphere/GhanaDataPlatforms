@@ -370,15 +370,19 @@ export const formSection = async (activeTab, showDescripton) => {
                 <textarea id="aims" name="aims" rows="4" cols="65" required> </textarea>
               </div>
 
-              <!--<div class="input-group">
-                <p>The <a href="#data_exploration/dictionary">EABCS data dictionary</a> lists and describes variables shared by cohorts participating in the EABCS. 
-                Data availability and descriptive statistics can be explored via the <a href="#data_exploration/summary">Explore Data</a> tool. If data from a particular category is requested,
-                all variables from that category will be provided.</p>
-              </div>-->
-              
+              <div class="input-group">
+                <label for="questionData"><b>Questionaire data and variables requested</b><span class='required-label'>*</span></label>
+                <textarea id="questionData" name="questionData" rows="4" cols="65" required> </textarea>
+              </div>
+
+              <div class="input-group">
+                <label for="moleassayData"><b>Existing molecular assay data</b> <i>(e.g. GWAS, IHC from tumor tissue, etc. and manuscript reference)</i><span class='required-label'>*</span></label>
+                <textarea id="moleassayData" name="moleassayData" rows="4" cols="65" required> </textarea>
+              </div>
+    
               <div class="input-group">
                 <div style="display: flex; align-items: center;">
-                  <label for="basevar" style="margin-right: 20px;"><b>Data and biological specimens requested</b><span class='required-label'>*</span></label>
+                  <label for="basevar" style="margin-right: 20px;"><b>Is Biological material involved with the proposal?</b><span class='required-label'>*</span></label>
                   <div style="display: flex; align-items: center;">
                     <input id="basevarYes" name="basevar" type="radio" value="Yes" required/>
                     <label for="basevarYes" style="margin-right: 15px;">Yes</label>
@@ -402,8 +406,33 @@ export const formSection = async (activeTab, showDescripton) => {
                   </div>
                   <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
                     <input id="tissue" name="basevarOptions" type="checkbox" value="Tissue" style="margin-right: 5px;"/>
-                    <label class="container-ul" for="tissue">Tissue</label>
+                    <label class="container-ul" for="tissue">Tumor Tissue</label>
                     <input id="tissueAmount" name="tissueAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                  </div>
+                  <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
+                    <input id="plasma" name="basevarOptions" type="checkbox" value="Plasma" style="margin-right: 5px;"/>
+                    <label class="container-ul" for="plasma">Plasma</label>
+                    <input id="plasmaAmount" name="plasmaAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                  </div>
+                  <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
+                    <input id="bloodclot" name="basevarOptions" type="checkbox" value="Blood Clot" style="margin-right: 5px;"/>
+                    <label class="container-ul" for="bloodclot">Blood Clot</label>
+                    <input id="bloodclotAmount" name="bloodclotAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                  </div>
+                  <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
+                    <input id="redbloodcell" name="basevarOptions" type="checkbox" value="Red Blood Cell" style="margin-right: 5px;"/>
+                    <label class="container-ul" for="redbloodcell">Red Blood Cell</label>
+                    <input id="redbloodcellAmount" name="redbloodcellAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                  </div>
+                  <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
+                    <input id="buffycoat" name="basevarOptions" type="checkbox" value="Buffy Coat" style="margin-right: 5px;"/>
+                    <label class="container-ul" for="buffycoat">Buffy Coat</label>
+                    <input id="buffycoatAmount" name="buffycoatAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
+                  </div>
+                  <div class="inline-field" style="margin-bottom: 10px; display: flex; align-items: baseline;">
+                    <input id="fecalmicrobiome" name="basevarOptions" type="checkbox" value="Fecal Microbiome" style="margin-right: 5px;"/>
+                    <label class="container-ul" for="fecalmicrobiome">Fecal Microbiome</label>
+                    <input id="fecalmicrobiomeAmount" name="fecalmicrobiomeAmount" type="text" placeholder="Amount (e.g., volume, weight, number)" style="margin-left: 10px; display: none; width: 100%; max-width: 400px;"/>
                   </div>
                 </div>
               </div>
@@ -1999,6 +2028,14 @@ export const dataForm = async () => {
     console.log(data);
     const jsondata = Object.fromEntries(data.entries());
     jsondata.basevarOptions = data.getAll("basevarOptions");
+    jsondata.salivaAmount = data.get("salivaAmount") || "";
+    jsondata.serumAmount = data.get("serumAmount") || "";
+    jsondata.tissueAmount = data.get("tissueAmount") || "";
+    jsondata.plasmaAmount = data.get("plasmaAmount") || "";
+    jsondata.bloodclotAmount = data.get("bloodclotAmount") || "";
+    jsondata.redbloodcellAmount = data.get("redbloodcellAmount") || "";
+    jsondata.buffycoatAmount = data.get("buffycoatAmount") || "";
+    jsondata.fecalmicrobiomeAmount = data.get("fecalmicrobiomeAmount") || "";
     jsondata.expdescsplit = jsondata.expdesc.split('\n');
     jsondata.investigatorssplit = jsondata.investigators.split('\n');
     jsondata.backgroundsplit = jsondata.background.split('\n');
@@ -2008,6 +2045,8 @@ export const dataForm = async () => {
     jsondata.analyplansplit = jsondata.analyplan.split('\n');
     jsondata.timesplit = jsondata.timeline.split('\n');
     jsondata.budgetsplit = jsondata.budget.split('\n');
+    jsondata.questionDatasplit = jsondata.questionData ? jsondata.questionData.split('\n') : [];
+    jsondata.moleassayDatasplit = jsondata.moleassayData ? jsondata.moleassayData.split('\n') : [];
 
     // const results = document.querySelector(".results pre");
     // results.innerText = JSON.stringify(formJSON, null, 2);
@@ -2040,6 +2079,8 @@ export const dataForm = async () => {
     const analyplanRun = jsondata.analyplansplit.map(line=>new docx.TextRun({break:1,text:line}));
     const timeRun = jsondata.timesplit.map(line=>new docx.TextRun({break:1,text:line}));
     const budgetRun = jsondata.budgetsplit.map(line=>new docx.TextRun({break:1,text:line}));
+    const questionDataRun = jsondata.questionDatasplit ? jsondata.questionDatasplit.map(line=>new docx.TextRun({break:1,text:line})) : [];
+    const moleassayDataRun = jsondata.moleassayDatasplit ? jsondata.moleassayDatasplit.map(line=>new docx.TextRun({break:1,text:line})) : [];
 
     const doc = new docx.Document({
       styles: {
@@ -2204,7 +2245,7 @@ export const dataForm = async () => {
               alignment: docx.AlignmentType.START,
               children: [
                 new docx.TextRun({
-                  text: "Overall goal and specific aims</b><i> Please provide a concise description of Aims: ",
+                  text: "Overall goal and specific aims: ",
                 }),
               ],
               spacing: {
@@ -2253,7 +2294,7 @@ export const dataForm = async () => {
                   style: "longinput",
                   children: [
                     new docx.TextRun({
-                      text: `${specimen}${jsondata[specimen.toLowerCase() + 'Amount'] ? ': ' + jsondata[specimen.toLowerCase() + 'Amount'] : ''}`,
+                      text: `${specimen}${jsondata[specimen.toLowerCase().replace(/\s+/g, '') + 'Amount'] ? ': ' + jsondata[specimen.toLowerCase().replace(/\s+/g, '') + 'Amount'] : ''}`,
                     }),
                   ],
                   spacing: {
@@ -2325,6 +2366,48 @@ export const dataForm = async () => {
               spacing: {
                 after: 150,
               }}),
+
+            ...(jsondata.questionData ? [
+              new docx.Paragraph({
+                heading: docx.HeadingLevel.HEADING_2,
+                alignment: docx.AlignmentType.START,
+                children: [
+                  new docx.TextRun({
+                    text: "Question Data: ",
+                  }),
+                ],
+                spacing: {
+                  after: 0,
+                },
+              }),
+              new docx.Paragraph({
+                style: "longinput",
+                children: questionDataRun,
+                spacing: {
+                  after: 150,
+                }}),
+            ] : []),
+
+            ...(jsondata.moleassayData ? [
+              new docx.Paragraph({
+                heading: docx.HeadingLevel.HEADING_2,
+                alignment: docx.AlignmentType.START,
+                children: [
+                  new docx.TextRun({
+                    text: "Molecular Assay Data: ",
+                  }),
+                ],
+                spacing: {
+                  after: 0,
+                },
+              }),
+              new docx.Paragraph({
+                style: "longinput",
+                children: moleassayDataRun,
+                spacing: {
+                  after: 150,
+                }}),
+            ] : []),
 
             new docx.Paragraph({
               heading: docx.HeadingLevel.HEADING_2,
@@ -2465,6 +2548,21 @@ export const dataForm = async () => {
     document.getElementById("tissueAmount").style.display = this.checked ? "inline" : "none";
   });
 
+  document.getElementById("plasma").addEventListener("change", function() {
+    document.getElementById("plasmaAmount").style.display = this.checked ? "inline" : "none";
+  });
+  document.getElementById("bloodclot").addEventListener("change", function() {
+    document.getElementById("bloodclotAmount").style.display = this.checked ? "inline" : "none";
+  });
+  document.getElementById("redbloodcell").addEventListener("change", function() {
+    document.getElementById("redbloodcellAmount").style.display = this.checked ? "inline" : "none";
+  });
+  document.getElementById("buffycoat").addEventListener("change", function() {
+    document.getElementById("buffycoatAmount").style.display = this.checked ? "inline" : "none";
+  });
+  document.getElementById("fecalmicrobiome").addEventListener("change", function() {
+    document.getElementById("fecalmicrobiomeAmount").style.display = this.checked ? "inline" : "none";
+  });
   // const downloadJSON = document.getElementById("downloadJSON");
   // downloadJSON.addEventListener("click", handleFormDownload);
 };
