@@ -46,8 +46,8 @@ export const navBarMenutemplate = () => {
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#publicationpage" id="publicationID"> 
                     Publications
                 </a>
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links" href="#data_submission" title="Data Submitted" id="dataSubmission"> 
-                </a>
+                <!--<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links" href="#data_submission" title="Data Submitted" id="dataSubmission"> 
+                </a>-->
                 <div id="governanceNav" class="grid-elements"></div>
                 <div id="myProjectsNav" class="grid-elements"></div>
                 </div>

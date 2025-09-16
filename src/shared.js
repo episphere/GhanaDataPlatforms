@@ -1570,13 +1570,12 @@ export const inactivityTime = () => {
 };
 
 export const csvJSON = (csv) => {
-  console.log(csv);
   const lines = csv.replace(/"/g, "").split(/[\r\n]+/g);
   const result = [];
-  const headers = lines[0].replace(/"/g, "").split(/[,\t]/g);
+  const headers = lines[0].replace(/"/g, "").split(/[,\t]/g).map(h => h.trim());
   for (let i = 1; i < lines.length; i++) {
     const obj = {};
-    const currentline = lines[i].split(/[,\t]/g);
+    const currentline = lines[i].split(/[,\t]/g).map(c => c.trim());
     for (let j = 0; j < headers.length; j++) {
       let value = headers[j];
       // if (value === "age_LT20") value = "<20";
@@ -1599,7 +1598,7 @@ export const csvJSON = (csv) => {
       // if (value === "birth_year_1970_1979") value = "1970-1979";
       // if (value === "birth_year_1980_1989") value = "1980-1989";
       // if (value === "birth_year_1990_1999") value = "1990-1999";
-      obj[value] = currentline[j];
+      obj[value] = currentline[j] || "Unknown";
     }
     if (obj.site !== undefined) {
       result.push(obj);

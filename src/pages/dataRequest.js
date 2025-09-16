@@ -196,7 +196,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
   } else if (authChair) {
     navBarItems = pageNavBar(
@@ -214,7 +214,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
       "Overview",
       "Submit Concept Form",
       //"View Submissions",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
   } else {
     navBarItems = pageNavBar(
@@ -269,7 +269,7 @@ export const formSection = async (activeTab, showDescripton) => {
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
   } else if (authChair) {
     navBarItems = pageNavBar(
@@ -287,7 +287,7 @@ export const formSection = async (activeTab, showDescripton) => {
       "Overview",
       "Submit Concept Form",
       //"View Submissions",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
   } else {
     navBarItems = pageNavBar(
@@ -592,7 +592,7 @@ export const acceptedStudiesSection = (activeTab) => {
       //"Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
   } else if (authChair) {
     navBarItems = pageNavBar(
@@ -610,7 +610,7 @@ export const acceptedStudiesSection = (activeTab) => {
       "Overview",
       //"Submit Concept Form",
       //"View Submissions",
-      "DACC Menu"
+      "Steering Committee Menu"
     );
   } else {
     navBarItems = pageNavBar(
@@ -699,7 +699,7 @@ export const chairSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
       "Steering Committee Menu"
@@ -709,7 +709,7 @@ export const chairSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "Chair Menu"
     );
@@ -718,7 +718,7 @@ export const chairSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "Steering Committee Menu"
     );
@@ -1210,7 +1210,7 @@ export const daccSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
       "Steering Committee Menu"
@@ -1220,7 +1220,7 @@ export const daccSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "Chair Menu"
     );
@@ -1229,7 +1229,7 @@ export const daccSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
-      //"Submit Concept Form",
+      "Submit Concept Form",
       //"View Submissions",
       "Steering Committee Menu"
     );

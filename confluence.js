@@ -168,18 +168,18 @@ export const confluence = async () => {
     // const platformTutorialElement = document.getElementById('platformTutorial');
     // const dataAnalysisElement = document.getElementById('dataAnalysis');
 
-    dataSubmissionElement.addEventListener("click", async () => {
-      if (dataSubmissionElement.classList.contains("navbar-active")) return;
-      showAnimation();
-      assignNavbarActive(dataSubmissionElement, 1);
-      document.title = "EABCS - Data Submit";
-      confluenceDiv.innerHTML = await dataSubmissionTemplate();
-      lazyload();
-      addEventStudyRadioBtn();
-      addEventConsortiaSelect();
-      addEventUploadStudyForm();
-      hideAnimation();
-    });
+    // dataSubmissionElement.addEventListener("click", async () => {
+    //   if (dataSubmissionElement.classList.contains("navbar-active")) return;
+    //   showAnimation();
+    //   assignNavbarActive(dataSubmissionElement, 1);
+    //   document.title = "EABCS - Data Submit";
+    //   confluenceDiv.innerHTML = await dataSubmissionTemplate();
+    //   lazyload();
+    //   addEventStudyRadioBtn();
+    //   addEventConsortiaSelect();
+    //   addEventUploadStudyForm();
+    //   hideAnimation();
+    // });
 
     dataSummaryElement.addEventListener("click", async () => {
       if (dataSummaryElement.classList.contains("navbar-active")) return;

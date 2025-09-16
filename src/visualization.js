@@ -22,6 +22,13 @@ import { addEventSummaryStatsFilterForm, filterData } from "./event.js";
 //console.log(data);
 const plotTextSize = 10.5;
 
+const analyzeUniqueValues = (jsonData, headers) => {
+  headers.forEach(header => {
+    const uniqueValues = [...new Set(jsonData.map(row => row[header]))].filter(val => val !== undefined && val !== null && val !== '');
+    console.log(`${header}:`, uniqueValues);
+  });
+};
+
 const chartLabels = {
   yes: "Yes",
   no: "No",
@@ -35,6 +42,7 @@ export const getFileContent = async () => {
   //const data = await (await fetch('https://raw.githubusercontent.com/episphere/GhanaDataPlatforms/main/static/data/testghana26march2025.csv')).text();
   const {jsonData, headers} = csvJSON(await getFile(summaryStatsFileId));//csv2Json(data)//await getFile(summaryStatsFileId));
   console.log(headers);
+  analyzeUniqueValues(jsonData, headers);
   //const lastModified = (await getFileInfo(summaryStatsFileId)).modified_at;
   //document.getElementById("dataLastModified").innerHTML = `Data current as of - ${new Date(lastModified).toLocaleString()}`;
   if (jsonData.length === 0) {
@@ -244,7 +252,7 @@ export const renderAllCharts = (data, headers) => {
   data.forEach((value) => (totalSubjects += 1));
   document.getElementById("participantCount").innerHTML = `<b>No. of Participants:</b> ${totalSubjects.toLocaleString("en-US")}`;
 
-    generateBarChart(
+  generateBarChart(
     "consdiag_cnt",
     "dataSummaryVizChart1",
     "dataSummaryVizLabel1",
@@ -529,6 +537,16 @@ const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population
   let x = Object.values(dataGraphs[parameter].values);
   let y = Object.keys(dataGraphs[parameter].values).map(key => countObjectsWithKeyValue(jsonData, parameter, key));
 
+  // Filter out "Unknown" if count is 0
+  const filteredChartData = [];
+  for (let i = 0; i < x.length; i++) {
+    if (!(x[i] === "Unknown" && y[i] === 0)) {
+      filteredChartData.push({ x: x[i], y: y[i] });
+    }
+  }
+  x = filteredChartData.map(item => item.x);
+  y = filteredChartData.map(item => item.y);
+
   let csvContent = '';
   for (let i =0; i<x.length;i++) {
     csvContent += x[i] + ',' + y[i] + '\n';
@@ -662,6 +680,17 @@ const updateBarChart = (parameter, id, labelID, jsonData, chartRow, population) 
   const dataGraphs = population==="Full Cohort" ? graphVariables : graphVariablesCases;
   let x = Object.values(dataGraphs[parameter].values);
   let y = Object.keys(dataGraphs[parameter].values).map(key => countObjectsWithKeyValue(jsonData, parameter, key));
+  
+  // Filter out "Unknown" if count is 0
+  const localFilteredData = [];
+  for (let i = 0; i < x.length; i++) {
+    if (!(x[i] === "Unknown" && y[i] === 0)) {
+      localFilteredData.push({ x: x[i], y: y[i] });
+    }
+  }
+  x = localFilteredData.map(item => item.x);
+  y = localFilteredData.map(item => item.y);
+  
   let csvContent = '';
   for (let i =0; i<x.length;i++) {
     csvContent += x[i] + ',' + y[i] + '\n';
@@ -1230,7 +1259,7 @@ const generateParityBarChart = (parameter, id, labelID, jsonData, chartRow) => {
   });
   document.getElementById(chartRow).appendChild(div);
 
-  const filteredData = jsonData
+  let filteredData = jsonData
     .map((dt) => parseInt(dt["parous_0"]))
     .filter((dt) => isNaN(dt) === false);
   let total = 0;
