@@ -21,14 +21,12 @@ import {
   csv2Json,
   json2csv,
   json2csv2,
-  publicDataFileId,
   summaryStatsFileId,
   getFileInfo,
   missingnessStatsFileId,
   assignNavbarActive,
   reSizePlots,
   showComments,
-  summaryStatsFolder,
   summaryStatsFolderId
 } from "./shared.js";
 //import { renderDataSummary } from "./pages/about.js";

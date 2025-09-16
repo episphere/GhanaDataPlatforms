@@ -5,13 +5,7 @@ import {
   csvJSON,
   numberWithCommas,
   summaryStatsFileId,
-  getFileInfo,
   mapReduce,
-  summaryStatsCasesFileId,
-  reSizePlots,
-  csv2Json2,
-  csv2Json,
-  getMail
 } from "./shared.js";
 import { variables } from "./variables.js";
 //import { graphVariables } from "./graphVariables.js";
@@ -528,7 +522,7 @@ const countObjectsWithKeyValue = (arr, key, value) => {
 
 const generateHistogram = (parameter, id, labelID, jsonData, chartRow, population, headers) => {
   const div = document.createElement("div");
-  div.classList = ["col-xl-4 pl-2 padding-right-zero mb-3"];
+  div.classList = ["chart-container"];
   const dataGraphs = graphVariables;
   div.innerHTML = dataVisulizationCards({
     cardHeaderId: labelID,
@@ -595,7 +589,7 @@ const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population
   }
   
   const div = document.createElement("div");
-  div.classList = ["col-xl-4 pl-2 padding-right-zero mb-3"];
+  div.classList = ["chart-container"];
   const dataGraphs = graphVariables;
   div.innerHTML = dataVisulizationCards({
     cardHeaderId: labelID,

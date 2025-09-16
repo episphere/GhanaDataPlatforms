@@ -38,7 +38,10 @@ import {
   showCommentsDropDown,
   getChairApprovalDate,
   uploadFile,
-  filePreviewer
+  filePreviewer,
+  csv2Json3,
+  getFile,
+  summaryStatsFolderId
 } from "../shared.js";
 import { addEventToggleCollapsePanelBtn } from "./description.js";
 import { showPreview } from "../components/boxPreview.js";
@@ -769,8 +772,13 @@ export const chairFileView = async () => {
     <div class="general-bg padding-bottom-1rem">
       <div class="container body-min-height">
         <div class="main-summary-row">
-            <div class="align-left">
+            <div class="col">
                 <h1 class="page-header">Chair Access Only</h1>
+            </div>
+             <div class="col-auto d-flex align-items-center">
+                <button type="submit" id="submitID" class="buttonsubmit" onclick="this.classList.toggle('buttonsubmit--loading')"> 
+                  <span class="buttonsubmit__text"> Update Users </span>
+                </button>
             </div>
         </div>
 
@@ -2931,3 +2939,203 @@ export const formFunctions = () => {
     }
   });
 };
+
+export const testingDataGov = async () => {
+  console.log("testingDataLoaded")
+  const testform = document.getElementById("submitID");
+  testform.addEventListener("click", function(e) {
+    e.preventDefault();
+    dataGovTest();
+  });
+};
+
+export const dataGovTest = async () => {
+  console.log("testing data gov test function");
+  ///
+  const responseData = csv2Json3(await getFile(1987587625687)); // Get summary level data
+  const lastModified = (await getFileInfo(1987587625687)).modified_at;
+
+  const getCollaborators_Metadata = await getCollaboration(summaryStatsFolderId, 'folders', 1000);
+  const getCollaborators_Upload = await getCollaboration(submitterFolder, 'folders', 1000);
+
+  const pendingMetadataCollaborators = getCollaborators_Metadata.entries.filter(collab => collab.status === 'pending');
+  console.log('Pending Metadata Collaborators:', pendingMetadataCollaborators);
+  //console.log(pendingMetadataCollaborators);
+
+  // Check for specific email
+  const targetEmail = 'wkc15@columbia.edu';
+  const foundCollab = getCollaborators_Metadata.entries.find((collab, index) => {
+    const email = collab.invite_email || (collab.accessible_by && collab.accessible_by.login);
+    if (email === targetEmail) {
+      console.log(`Found ${targetEmail} at position ${index}:`, collab);
+      return true;
+    }
+    return false;
+  });
+  
+  if (!foundCollab) {
+    console.log(`${targetEmail} not found in getCollaborators_Metadata`);
+  }
+
+  const emailsInMetadata = getCollaborators_Metadata.entries.map(collab => {
+    if (collab.accessible_by) return collab.accessible_by.login.toLowerCase();
+    if (collab.invite_email) return collab.invite_email.toLowerCase();
+    console.error('Error: Both accessible_by and invite_email are null for:', collab);
+    return null;
+  }).filter(email => email !== null);
+  
+
+  
+  const emailsInUploaddata = getCollaborators_Upload.entries.map(collab => {
+    if (collab.accessible_by) return collab.accessible_by.login.toLowerCase();
+    if (collab.invite_email) return collab.invite_email.toLowerCase();
+    console.error('Error: Both accessible_by and invite_email are null for:', collab);
+    return null;
+  }).filter(email => email !== null);
+
+  const allEmails = responseData.data.map(user => user.Email.toLowerCase());
+  console.log(allEmails);
+
+  // Metadata
+  const includedEmailsMetadata = allEmails.filter(email => emailsInMetadata.includes(email));
+  const notIncludedEmailsMetadata = allEmails.filter(email => !emailsInMetadata.includes(email));
+
+  // Upload
+  const includedEmailsUpload = allEmails.filter(email => emailsInUploaddata.includes(email));
+  const notIncludedEmailsUpload = allEmails.filter(email => !emailsInUploaddata.includes(email));
+
+  console.log('Metadata - Included:', includedEmailsMetadata);
+  console.log('Metadata - Not included:', notIncludedEmailsMetadata);
+
+  console.log('Upload - Included:', includedEmailsUpload);
+  console.log('Upload - Not included:', notIncludedEmailsUpload);
+
+  // Show modal and add missing collaborators
+  let successfulUpdate = '';
+  let issueCount = 0;
+  const header = document.getElementById("confluenceModalHeader");
+  const body = document.getElementById("confluenceModalBody");
+  header.innerHTML = `
+      <h5 class="modal-title">Confirm Adding Collaborators</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  `;
+
+  const hasUsersToAdd = notIncludedEmailsMetadata.length > 0 || notIncludedEmailsUpload.length > 0;
+  
+  let confirmationList;
+  if (hasUsersToAdd) {
+    confirmationList = '<p><strong>The following users will be added:</strong></p>';
+    for (const email of notIncludedEmailsMetadata) {
+      confirmationList += `<p>User: ${email}, Folder: Metadata, Permission: viewer</p>`;
+    }
+
+    for (const email of notIncludedEmailsUpload) {
+      confirmationList += `<p>User: ${email}, Folder: Upload, Permission: uploader</p>`;
+    }
+  } else {
+    confirmationList = '<p>No users to be added</p>';
+  }
+
+  body.innerHTML = `
+    <div style="height: ${Math.floor(window.innerHeight * 2/3)}px; overflow-y: auto; padding-right: 15px;">
+      ${confirmationList}
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      <button type="button" class="btn btn-primary" id="confirmAddCollaborators" ${!hasUsersToAdd ? 'disabled' : ''}>OK - Add Collaborators</button>
+    </div>
+  `;
+
+  $("#confluenceMainModal").modal("show");
+
+// Add event listener for confirmation
+if (hasUsersToAdd) {
+  document.getElementById("confirmAddCollaborators").addEventListener("click", async () => {
+  body.innerHTML = '<div id="collaboratorList"><p>Adding collaborators...</p></div>';
+  const listElement = document.getElementById("collaboratorList");
+  
+  // Add delay function and rate limiting
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  let requestCount = 0;
+  
+  // Add missing collaborators with rate limiting
+  for (const email of notIncludedEmailsMetadata) {
+    if (requestCount >= 50) {
+      listElement.innerHTML += `<p>Rate limit reached, waiting 60 seconds...</p>`;
+      await delay(60000);
+      requestCount = 0;
+    }
+    listElement.innerHTML += `<p>Adding User: ${email}, Folder: Metadata, Permission: viewer</p>`;
+    successfulUpdate = await addNewCollaborator(summaryStatsFolderId, 'folder', email, 'viewer');
+    requestCount++;
+    if (successfulUpdate.status == '201') {
+      listElement.innerHTML += `<p><span style="color: green;">Successful</span>: ${email}, Folder: Metadata, Permission: viewer</p>`;
+    } else {
+      listElement.innerHTML += `<p><span style="color: red;">Failed</span>: ${email}, Folder: Metadata, Permission: viewer</p>`;
+      issueCount += 1;
+    }
+  }
+  
+  for (const email of notIncludedEmailsUpload) {
+    if (requestCount >= 50) {
+      listElement.innerHTML += `<p>Rate limit reached, waiting 60 seconds...</p>`;
+      await delay(60000);
+      requestCount = 0;
+    }
+    listElement.innerHTML += `<p>Adding User: ${email}, Folder: Upload, Permission: uploader</p>`;
+    successfulUpdate = await addNewCollaborator(submitterFolder, 'folder', email, 'uploader');
+    requestCount++;
+    if (successfulUpdate.status == '201') {
+      listElement.innerHTML += `<p><span style="color: green;">Successful</span>: ${email}, Folder: Upload, Permission: uploader</p>`;
+    } else {
+      listElement.innerHTML += `<p><span style="color: red;">Failed</span>: ${email}, Folder: Upload, Permission: uploader</p>`;
+      issueCount += 1;
+    }
+  }
+  
+  if (issueCount > 0) {
+    listElement.innerHTML += `<p><strong>${issueCount} issues detected. Please review list or try again.</strong></p>`;
+  } else {
+    listElement.innerHTML += '<p><strong>All collaborators added successfully!</strong></p>';
+  }
+  });
+}
+
+  ///
+  document.getElementById("submitID").classList.toggle('buttonsubmit--loading');
+  // let val = '0';
+  // if(document.getElementById('folderID')) {
+  //   val = document.getElementById('folderID').value
+  // } else {
+  //   val = dataPlatformDataFolder;
+  // }
+  // console.log(val);
+  // const array = await getFolderInfo(val); //DCEG: 196554876811 BCRP: 145995765326, Confluence: 137304373658
+  // if (!array) {
+  //   document.getElementById("submitID").classList.toggle('buttonsubmit--loading');
+  //   alert("Error: Please input a valid folder ID and check that you have the necessary permissions to access it.");
+  //   return false;
+  // }
+
+  // let template =
+  //   '<div class="card-body data-governance"><ul class="ul-list-style first-list-item collapsible-items p-0 m-0">';
+  // const ID = array.id;
+  // const consortiaName = array.name;
+  // let type = array.type;
+  // let liClass = type === "folder" ? "collapsible consortia-folder" : "";
+  // let title = type === "folder" ? "Expand / Collapse" : "";
+  // template += `<li class="collapsible-items">
+  //           <button class="${liClass}" data-toggle="collapse" href="#toggle${ID}">
+  //               <i title="${title}" data-type="${type}" data-id="${ID}" data-folder-name="${consortiaName}" data-status="pending" class="lazy-loading-spinner"></i>
+  //           </button> ${consortiaName}
+  //       </li>
+  //       `;
+  // template += `</ul></div></div>`;
+  // document.getElementById("folderInput").innerHTML = template;
+  // dataGovernanceLazyLoad();
+  // dataGovernanceCollaboration();
+  // document.getElementById("submitID").classList.toggle('buttonsubmit--loading');
+  // return false;
+}

@@ -28,6 +28,7 @@ import {
   importDictVars,
   amendFormSelect,
   populateAmendSelect,
+  testingDataGov,
 } from "./src/pages/dataRequest.js";
 import {
   checkAccessTokenValidity,
@@ -324,7 +325,7 @@ export const confluence = async () => {
       });
     }
     if (chairViewElement) {
-      chairViewElement.addEventListener("click", () => {
+      chairViewElement.addEventListener("click", async () => {
         if (chairViewElement.classList.contains("navbar-active")) return;
         const element = document.getElementById("chairView");
         showAnimation();
@@ -333,7 +334,8 @@ export const confluence = async () => {
         document.title = "EABCS - Chair View";
         assignNavbarActive(element, 1);
         confluenceDiv.innerHTML = chairSection("chairView");
-        chairFileView();
+        await chairFileView();
+        testingDataGov();
       });
     }
     if (daccViewElement) {
@@ -538,6 +540,7 @@ const manageRouter = async () => {
     assignNavbarActive(chairViewElement, 1);
     document.title = "EABCS - Chair View";
     confluenceDiv.innerHTML = chairSection();
+    testingDataGov();
     removeActiveClass("nav-link", "active");
   } else if (hash === "#data_access/daccView") {
     const daccViewElement = document.getElementById("daccView");

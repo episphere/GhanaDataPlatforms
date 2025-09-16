@@ -1,9 +1,3 @@
-import { addEventConsortiaFilter } from "../event.js";
-import {
-  getPublicFile,
-  numberWithCommas,
-  publicDataFileId,
-} from "./../shared.js";
 import { pageNavBar } from "../components/navBarMenuItems.js";
 
 export const aboutConfluence = (activeTab, showDescription) => {

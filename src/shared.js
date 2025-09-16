@@ -11,23 +11,9 @@ export const emailforChair = ['shahk6@nih.gov', 'figueroaj@nih.gov', 'kopchickbp
 
 export const emailforDACC = ['shahk6@nih.gov', 'figueroaj@nih.gov', 'kopchickbp@nih.gov'];
 
-export const publicDataFileId = 697309514903; //Unknown
-
 export const summaryStatsFileId = 1942913543244; //861342561526;//908600664259; //Confluence Summary Statistics (691143057533) => Pilot - BCRP_Summary_Results_AllSubjects.csv (861342561526)
 
-export const summaryStatsCasesFileId = 862065772362; //862065772362; //958869203942; //927803436743; //862065772362; //cases => Pilot - BCRP_Summary_Results_Cases.csv
-
-export const summaryStatsFolderId = 162298847509;
-
-export const missingnessStatsFileId = 1277209005113;//1276945367872;//1043323929905; //653087731560; //Unknown, TUA Commented out July 21, file needs to be updated to missingness stats using BCRPP data, not confluence data
-// export const missingnessStatsFileId = 653087731560;
-export const missingnessStatsCasesFileId = 1276917853820;
-
-export const missingnessStatsFolderId = 230196820645;
-
-export const cps2StatsFileId = 908522264695;
-
-export const summaryStatsFolder = 145995372820;
+export const summaryStatsFolderId = 117674266284;
 
 export const uploadFormFolder = 302463515558; //Updated for EABCS
 
@@ -42,6 +28,10 @@ export const acceptedFolder = 302461158289; //Updated for EABCS
 export const deniedFolder = 302462150134; //Updated for EABCS
 
 export const submitterFolder = 302459953400; //Updated for EABCS
+
+export const missingnessStatsFileId = 0; //Not used with EABCS
+
+export const missingnessStatsCasesFileId = 0; //Not used with EABCS
 
 export const getFolderItems = async (id) => {
   try {
@@ -1754,6 +1744,28 @@ export const csv2Json = (csv) => {
     jsonData: result,
     headers,
   };
+};
+
+export const csv2Json3 = (csv) => {
+    const lines = csv.replace(/"/g,'').split(/[\r\n]+/g);
+    const result = [];
+    const headers = lines[0].replace(/"/g,'').split(/[,\t]/g);
+    
+    for (let i=1; i < lines.length; i++) {
+        const obj = {};
+        const currentline = lines[i].split(/[,\t]/g);
+        for (let j = 0; j<headers.length; j++) {
+            if (currentline[j]) {
+                let value = headers[j];
+                if (value === 'StudyDesign') value = 'studyDesign';
+                obj[value] = currentline[j];
+            }
+        }
+        
+        if(Object.keys(obj).length > 0) result.push(obj);
+    }
+    
+    return {data:result, headers};
 };
 
 export const json2csv = (json, fields) => {
