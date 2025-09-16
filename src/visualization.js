@@ -111,8 +111,9 @@ const allFilters = (jsonData, headers, caseSelection) => {
 
   let cityOptions = "";
   Object.keys(city_values).forEach((element) => {
+    const displayName = element === "0" ? "Accra" : element === "1" ? "Kumasi" : element;
     cityOptions =
-    cityOptions + `<option value='${element}'>${element}</option>`;
+    cityOptions + `<option value='${element}'>${displayName}</option>`;
   });
 
   let template = `
@@ -525,7 +526,74 @@ const countObjectsWithKeyValue = (arr, key, value) => {
   return count;
 }
 
+const generateHistogram = (parameter, id, labelID, jsonData, chartRow, population, headers) => {
+  const div = document.createElement("div");
+  div.classList = ["col-xl-4 pl-2 padding-right-zero mb-3"];
+  const dataGraphs = graphVariables;
+  div.innerHTML = dataVisulizationCards({
+    cardHeaderId: labelID,
+    cardBodyId: id,
+  });
+
+  // Extract numeric values for histogram
+  const values = jsonData.map(row => parseFloat(row[parameter])).filter(val => !isNaN(val));
+  
+  const data = [{
+    x: values,
+    type: "histogram",
+    marker: { 
+      color: values.map((_, i) => i % 2 === 0 ? "#006B3D" : "#53ab78")
+    },
+    nbinsx: 20
+  }];
+
+  const layout = {
+    xaxis: {
+      title: dataGraphs[parameter].units || parameter,
+      fixedrange: true,
+      tickfont: { size: plotTextSize }
+    },
+    yaxis: {
+      title: "Count",
+      fixedrange: true,
+      tickformat: ",d",
+      tickfont: { size: plotTextSize }
+    },
+    margin: { t: 30, r: 20, b: 80, l: 60 }
+  };
+
+  const config = {
+    responsive: true,
+    displayModeBar: true,
+    modeBarButtonsToRemove: ['hoverClosestCartesian', 'hoverCompareCartesian','toggleHover','toggleSpikelines','zoom2d', 'pan2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d'],
+    displaylogo: false
+  };
+
+  Plotly.newPlot(id, data, layout, config);
+  
+  document.getElementById(chartRow).appendChild(div);
+  
+  const htmlTitle = document.getElementById(labelID);
+  if (htmlTitle.options.length === 0) {
+    if (headers) {
+      headers.forEach(header => {
+        if (dataGraphs[header]) {
+          const selected = header === parameter;
+          htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[header].title, header, selected, selected);
+        }
+      });
+    } else {
+      htmlTitle.options[htmlTitle.options.length] = new Option(dataGraphs[parameter].title, parameter, true, true);
+    }
+  }
+};
+
 const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population, headers) => {
+  // Check if this is a continuous variable
+  if (parameter === "totmos_breastfed" || parameter === "weight") {
+    return generateHistogram(parameter, id, labelID, jsonData, chartRow, population, headers);
+  }
+  
   const div = document.createElement("div");
   div.classList = ["col-xl-4 pl-2 padding-right-zero mb-3"];
   const dataGraphs = graphVariables;
@@ -677,6 +745,45 @@ const generateBarChart = (parameter, id, labelID, jsonData, chartRow, population
 };
 
 const updateBarChart = (parameter, id, labelID, jsonData, chartRow, population) => {
+  // Check if this is a continuous variable
+  if (parameter === "totmos_breastfed" || parameter === "weight") {
+    const values = jsonData.map(row => parseFloat(row[parameter])).filter(val => !isNaN(val));
+    
+    const data = [{
+      x: values,
+      type: "histogram",
+      marker: { 
+        color: values.map((_, i) => i % 2 === 0 ? "#006B3D" : "#53ab78")
+      },
+      nbinsx: 20
+    }];
+
+    const layout = {
+      xaxis: {
+        title: graphVariables[parameter].units || parameter,
+        fixedrange: true,
+        tickfont: { size: plotTextSize }
+      },
+      yaxis: {
+        title: "Count",
+        fixedrange: true,
+        tickformat: ",d",
+        tickfont: { size: plotTextSize }
+      },
+      margin: { t: 30, r: 20, b: 80, l: 60 }
+    };
+
+    const config = {
+      responsive: true,
+      displayModeBar: true,
+      modeBarButtonsToRemove: ['hoverClosestCartesian', 'hoverCompareCartesian','toggleHover','toggleSpikelines','zoom2d', 'pan2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d'],
+      displaylogo: false
+    };
+
+    Plotly.newPlot(id, data, layout, config);
+    return;
+  }
+  
   const dataGraphs = population==="Full Cohort" ? graphVariables : graphVariablesCases;
   let x = Object.values(dataGraphs[parameter].values);
   let y = Object.keys(dataGraphs[parameter].values).map(key => countObjectsWithKeyValue(jsonData, parameter, key));
