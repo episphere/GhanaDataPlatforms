@@ -9,19 +9,19 @@ export const navBarMenutemplate = () => {
             </a>
         </div>
         <div class="grid-elements dropdown">
-            <button class="nav-link nav-menu-links dropdown-toggle dropdown-btn white-font" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="nav-link nav-menu-links dropdown-toggle dropdown-btn white-font" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 About EABCS
             </button>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/overview" id="aboutBCRPP">Overview</a>
-                <!---<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/description" id="studydescBCRPP">Description of Studies</a>--->
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/contact" id="contactGBHS">Study Team Members</a>
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#about/question" id="questionGBHS">Study Questionaire</a>
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="https://github.com/episphere/GhanaDataPlatforms" target="_blank" id="Ghana_github">EABCS GitHub</a>
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/overview" id="aboutBCRPP">Overview</a>
+                <!---<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/description" id="studydescBCRPP">Description of Studies</a>--->
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/contact" id="contactGBHS">Study Team Members</a>
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/questionGBHS" id="questionGBHS">Study Questionaire</a>
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/dbgap" id="dbgapStudy">dbGaP Study</a>
             </div>
         </div>
         <!--<div class="grid-elements dropdown">
-            <button class="nav-link nav-menu-links dropdown-toggle dropdown-btn white-font" title="Confluence" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="nav-link nav-menu-links dropdown-toggle dropdown-btn white-font" title="Confluence" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Events
             </button>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
@@ -29,21 +29,21 @@ export const navBarMenutemplate = () => {
             </div>
         </div>-->
         <div class="grid-elements dropdown">
-            <button class="nav-link nav-menu-links dropdown-toggle dropdown-btn white-font" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="nav-link nav-menu-links dropdown-toggle dropdown-btn white-font" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Explore Data
             </button>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
                 <!--h6 class="dropdown-header dropdown-header-bg font-bold">Explore Data</h6-->
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/dictionary" title="Data Dictionary" id="dataDictionary">
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_exploration/dictionary" title="Data Dictionary" id="dataDictionary">
                   Dictionary
                 </a>
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#protocols/protocol" title="Protocols" id="dataProtocols">
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#protocols/protocol" title="Protocols" id="dataProtocols">
                   Protocols
                 </a>
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_exploration/summary" title="Summary Statistics" id="dataSummary">
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_exploration/summary" title="Summary Statistics" id="dataSummary">
                     Summary Statistics
                 </a>
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#publicationpage" id="publicationID"> 
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#publicationpage" id="publicationID"> 
                     Publications
                 </a>
                 <!--<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links" href="#data_submission" title="Data Submitted" id="dataSubmission"> 
@@ -53,35 +53,35 @@ export const navBarMenutemplate = () => {
                 </div>
             </div>
                 <div class='grid-elements dropdown'>
-                    <button class="nav-link nav-menu-links dropdown-toggle dropdown-btn white-font" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="nav-link nav-menu-links dropdown-toggle dropdown-btn white-font" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Data Access
                     </button>
                     <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_access/overview" title="Data Access" id="dataRequest"> Overview </a>
+                    <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_access/overview" title="Data Access" id="dataRequest"> Overview </a>
                     ${
                       showProjectConceptForm
-                        ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_access/form" title="Data Form" id="dataForm"> Analysis Proposal Form </a>
+                        ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_access/form" title="Data Form" id="dataForm"> Analysis Proposal Form </a>
                     `
                         : ""
                     }
                     ${
                       viewSubmissionsShow
-                        ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#userSubmissions" title='View Your Submissions' id="userSubmissions">View Submissions</a>`
+                        ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#userSubmissions" title='View Your Submissions' id="userSubmissions">View Submissions</a>`
                         : ""
                     }
-                    <!--a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_access/accepted" title="Accepted Studies" id="dataAccepted"> Accepted </a-->
+                    <!--a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_access/accepted" title="Accepted Studies" id="dataAccepted"> Accepted </a-->
                     ${
                       emailforChair.indexOf(
                         JSON.parse(localStorage.parms).login
                       ) !== -1
-                        ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_access/chairView" title="Chair File View" id="chairView"> Chair Menu </a>`
+                        ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_access/chairView" title="Chair File View" id="chairView"> Chair Menu </a>`
                         : ``
                     }
                     ${
                       emailforDACC.indexOf(
                         JSON.parse(localStorage.parms).login
                       ) !== -1
-                        ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links pl-4" href="#data_access/daccView" title="Steering Committee Menu" id="daccView"> Steering Committee Menu </a>`
+                        ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_access/daccView" title="Steering Committee Menu" id="daccView"> Steering Committee Menu </a>`
                         : ``
                     }
             </div>
@@ -92,14 +92,14 @@ export const navBarMenutemplate = () => {
             </a>
         </div>
 
-        <div class="navbar-nav ml-auto">
+        <div class="navbar-nav ms-auto">
             ${
               localStorage.parms && JSON.parse(localStorage.parms).name
                 ? `
                 <div class="grid-elements dropdown">
                     <button class="nav-link nav-menu-links dropdown-toggle dropdown-btn white-font"  title="Welcome, ${
                       JSON.parse(localStorage.parms).name
-                    }!" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    }!" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ${JSON.parse(localStorage.parms).name}
                     </button>
                     <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
@@ -124,22 +124,18 @@ export function pageNavBar(page, activeTab, ...pageHeaders) {
   const outerDivEl = document.createElement("div");
   outerDivEl.classList.add("main-summary-row", "white-bg", "div-border");
 
-  const innerDivEl = document.createElement("div");
-  innerDivEl.classList.add("main-summary-row", "white-bg");
+  const navEl = document.createElement("ul");
+  navEl.classList.add("nav", "nav-pills");
 
-  outerDivEl.appendChild(innerDivEl);
+  outerDivEl.appendChild(navEl);
   containerEl.appendChild(outerDivEl);
 
   for (const header of pageHeaders) {
-    let btn = document.createElement("button");
-    btn.classList.add("sub-menu-btn");
+    let li = document.createElement("li");
+    li.classList.add("nav-item");
+    
     let link = document.createElement("a");
-    link.classList.add(
-      "nav-link",
-      "black-font",
-      "font-size-14",
-      "font-weight-bold"
-    );
+    link.classList.add("nav-link");
 
     //Active Tab Function
     if (header === "Overview") {
@@ -154,10 +150,6 @@ export function pageNavBar(page, activeTab, ...pageHeaders) {
     }
     if (header === "View Submissions") {
       link.href = `#userSubmissions`;
-      console.log(
-        "Active Tab in View Submissions",
-        activeTab === "User Submissions"
-      );
       if (activeTab === "User Submissions") link.classList.add("active");
     }
     if (header === "Chair Menu") {
@@ -185,6 +177,10 @@ export function pageNavBar(page, activeTab, ...pageHeaders) {
     if (header === "Study Questionaire") {
       link.href = `#${page}/questionGBHS`;
       if (activeTab === "questionGBHS") link.classList.add("active");
+    }
+    if (header === "dbGaP Study") {
+      link.href = `#${page}/dbgap`;
+      if (activeTab === "dbgap") link.classList.add("active");
     }
     if (header === "Summary Statistics") {
       link.href = `#${page}/summary`;
@@ -228,8 +224,8 @@ export function pageNavBar(page, activeTab, ...pageHeaders) {
     }
 
     link.innerText = header;
-    btn.appendChild(link);
-    innerDivEl.appendChild(btn);
+    li.appendChild(link);
+    navEl.appendChild(li);
   }
   if (page !== "data_exploration") {
     const overviewDiv = document.createElement("div");

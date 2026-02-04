@@ -250,7 +250,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
                               <div class="main-summary-row confluence-resources white-bg div-border font-size-18">
                                 <div class="col">
                                   <span>You currently do not have access to submit a data request form.</span></br>
-                                  <span>For access, please contact <a href="mailto:EABCS@mail.nih.gov">EABCS</a></span>
+                                  <span>For access, please contact <a href="mailto:NCIGBHS@mail.nih.gov ">EABCS</a></span>
                           </div>
                   </div>
                 `;
@@ -642,9 +642,9 @@ export const acceptedStudiesView = async () => {
     <div class="main-summary-row">
             <div class="row align-left w-100 m-0">
                 <h1 class="col page-header pl-0 pt-2">Learn about EABCS</h1>
-                <div class="ml-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
-                <div class="ml-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
-                <div class="ml-auto mt-3 mb-3" id="downloadContainer">
+                <div class="ms-auto allow-overflow me-2" style="margin:1rem 0" id="pagesContainer"></div>
+                <div class="ms-auto mt-3 mb-3 me-2" id="pageSizeContainer"></div>
+                <div class="ms-auto mt-3 mb-3" id="downloadContainer">
                     <div class="col-md-12 p-0 dropdown">
                         <div class="grid-elements ">
                             <button title="Download" class="transparent-btn form-control dropdown-toggle dropdown-btn" data-toggle="dropdown" id="downloadDictionary" style="color:#000000 !important">

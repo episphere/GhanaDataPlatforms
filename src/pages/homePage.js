@@ -17,7 +17,7 @@ export const infoDeck = () => {
                 </div>
             </div>
             <div class="container align-middle text-center" style="margin-top: 70px;">
-                <div class="card-deck" id="infoDeck" style="min-height: 200px;">`;
+                <div class="row g-3 justify-content-center" id="infoDeck" style="min-height: 200px;">`;
   template += cardContents({
     header: "Learn about the study",
     button: "Learn about the study",
@@ -84,7 +84,7 @@ export const infoDeckAfterLoggedIn = async () => {
                 </div>
             </div>
             <div class="container align-middle text-center" style="margin-top: 70px;">
-                <div class="card-deck" id="infoDeck" style="min-height: 200px;">`;
+                <div class="row g-3 justify-content-center" id="infoDeck" style="min-height: 200px;">`;
 
                 template += cardContents({
                     header: "Learn about the study",
@@ -139,21 +139,23 @@ export const infoDeckAfterLoggedIn = async () => {
 
 const cardContents = (obj) => {
   return `
-        <div class="col-xl card confluence-cards" style="min-width:225px">
-            <div class="primary-bg rounded-circle" style="margin-top: -40px; padding: 10px;">
-                <i class="fas ${obj.icon} fa-2x icon-padding font-white"></i>
-            </div>
-            <div class="card-body">
-                <div class="card-title" style="color: #333B4D">
-                    <div class="font-size-28"><b>${obj.header}</b></div>
+        <div class="col-12 col-xxl-4">
+            <div class="card confluence-cards h-75" style="min-width:225px">
+                <div class="primary-bg rounded-circle" style="margin-top: -40px; padding: 10px;">
+                    <i class="fas ${obj.icon} fa-2x icon-padding font-white"></i>
                 </div>
-                <p class="text-secondary card-text font-size-14">
-                    ${obj.explanation}
-                </p>
-            </div>
+                <div class="card-body">
+                    <div class="card-title" style="color: #333B4D">
+                        <div class="font-size-28"><b>${obj.header}</b></div>
+                    </div>
+                    <p class="text-secondary card-text font-size-14">
+                        ${obj.explanation}
+                    </p>
+                </div>
 
-            <div class="white-bg border-top-0 card-footer" style="width: 100%;">
-                <a class="stretched-link font-white my-2 border border-0 font-bold btn primary-bg" style="width: 90%;" href="${obj.href}" style="text-decoration: none;">${obj.button}</a>
+                <div class="white-bg border-top-0 card-footer" style="width: 100%;">
+                    <a class="stretched-link font-white my-2 border border-0 font-bold btn primary-bg" style="width: 90%; transition: filter 0.2s ease;" href="${obj.href}" onmouseover="this.style.filter='brightness(1.15)'" onmouseout="this.style.filter='brightness(1)'">${obj.button}</a>
+                </div>
             </div>
         </div>
         `;

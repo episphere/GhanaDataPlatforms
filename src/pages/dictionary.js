@@ -96,34 +96,39 @@ export const dataDictionaryTemplate = async () => {
   let headers =  [...new Set(dictionary.flatMap(Object.keys))];
   console.log(headers);
   let template = `
-    <div class="col-xl-2 filter-column" id="summaryFilterSiderBar">
-        <div class="div-border white-bg align-left p-2">
-            <div class="main-summary-row">
-                <div class="col-xl-12 pl-1 pr-0">
-                    <span class="font-size-17 font-bold">Filter</span>
-                    <div id="filterDataDictionary" class="align-left"></div>
+    <div class="main-summary-row">
+        <div class="col-xl-2 filter-column black-font" id="summaryFilterSiderBar">
+            <div class="div-border white-bg align-left p-2">
+                <div class="main-summary-row">
+                    <div class="col-xl-12 pl-1 pr-0">
+                        <span class="font-size-17 font-bold">Filter</span>
+                        <div id="filterDataDictionary" class="align-left"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!---<button class='btn btn-primary' id='saveVars'>Save Variables</button>--->
+            <!---<button class='btn btn-primary' id='saveVars'>Save Variables</button>--->
 
-    </div>
-    <div class="col-xl-10 padding-right-zero" id="summaryStatsCharts">
-        <button id="filterBarToggle"><i class="fas fa-lg fa-caret-left"></i></button>
-        <div class="main-summary-row pl-2" style="min-height: 10px;margin-bottom: 1rem;">
-            <div class="col white-bg div-border align-left font-size-17" style="padding: 0.5rem;" id="listFilters">
-                <span class="font-bold">Variable Category:</span> All
-            </div>
         </div>
-        <div class="main-summary-row pl-2">
-            <div class="col-xl-12 pb-2 pr-0 pl-0 white-bg div-border">
-                <div class="allow-overflow" style="height: calc(100vh - 190px) !important;min-height: 500px;" id="dataDictionaryBody"></div>
+        <div class="col-xl-10 padding-right-zero padding-left-1" id="summaryStatsCharts">
+            <div class="row pl-2" style="min-height: 10px;margin-bottom: 1rem;margin-left: 0;margin-right: 0;gap: 0.5rem;">
+                <div style="width: auto;">
+                    <button id="filterBarToggle" title="Toggle Filter" style="border: 1px solid #ccc; background: white; padding: 5px 10px;"><i class="fas fa-2x fa-caret-left"></i></button>
+                </div>
+                <div class="white-bg div-border align-left font-size-17" style="padding: 0.5rem; flex: 1;" id="listFilters">
+                    <span class="font-bold black-font">Variable Category:</span> All
+                </div>
+            </div>
+            <div class="main-summary-row">
+                <div class="col-xl-12 pb-2 pe-0 ps-0 white-bg div-border">
+                    <div class="allow-overflow" style="height: calc(100vh - 190px) !important;min-height: 500px;" id="dataDictionaryBody"></div>
+                </div>
             </div>
         </div>
     </div>
     `;
   document.getElementById("dataSummaryStatistics").innerHTML = template;
   renderDataDictionaryFilters(dictionary, headers);
+  downloadFiles(dictionary, headers, "dictionary");
   renderDataDictionary(dictionary, 60, headers);
   paginationHandler(dictionary, 60, headers);
   addEventFilterBarToggle();
@@ -269,7 +274,6 @@ const renderDataDictionaryFilters = (dictionary, headers) => {
   `
   document.getElementById("filterDataDictionary").innerHTML = template;
   addEventFilterDataDictionary(dictionary, headers);
-  downloadFiles(dictionary, headers, "dictionary");
   document.getElementById("pageSizeContainer").innerHTML = pageSizeTemplate(dictionary,60);
   addEventPageSizeSelection(dictionary, headers);
 };
@@ -337,7 +341,7 @@ const filterDataHandler = (dictionary) => {
     ${
       variableTypeSelection.length > 0
         ? `
-        <span class="font-bold">Variable Category: </span>${variableTypeSelection[0]} ${
+        <span class="font-bold black-font">Variable Category: </span>${variableTypeSelection[0]} ${
             variableTypeSelection.length > 1
               ? `and <span class="other-variable-count">${
                   variableTypeSelection.length - 1
@@ -346,7 +350,7 @@ const filterDataHandler = (dictionary) => {
           }
     `
         : `
-        <span class="font-bold">Variable Category:</span> All`
+        <span class="font-bold black-font">Variable Category:</span> All`
     }
     `;
 
@@ -419,45 +423,31 @@ const addEventSortColumn = (dictionary, pageSize, headers) => {
 const renderDataDictionary = (dictionary, pageSize, headers) => {
   let template = `
         <div class="row pt-md-3 pb-md-3 m-0 align-left div-sticky">
-            <div class="col-md-11">
-                <div class="row">
+            <div class="col-md-12">
+                <div class="row ps-3 pe-5">
                     <div class="col-md-4 font-bold">Variable <button class="transparent-btn sort-column" data-column-name="Variable Name"><i class="fas fa-sort"></i></button></div>
                     <div class="col-md-5 font-bold">Category <button class="transparent-btn sort-column" data-column-name="Cont/Categorical"><i class="fas fa-sort"></i></button></div>
                     <div class="col-md-3 font-bold">Variable category <button class="transparent-btn sort-column" data-column-name="Variable category "><i class="fas fa-sort"></i></button></div>
                 </div>
             </div>
-            <div class="ml-auto"></div>
         </div>
         <div class="row m-0 align-left allow-overflow w-100">
+        <div class="accordion accordion-flush col-md-12" id="dictionaryAccordian">
         `;
   dictionary.forEach((desc, index) => {
-    //console.log(desc.Coding);
     if (index > pageSize) return;
+    const cleanVarName = desc["Variable Name"] ? desc["Variable Name"].replace(/(<b>)|(<\/b>)/g,"") : "";
     template += `
-        <div class="card border-0 mt-1 mb-1 align-left w-100 pt-md-1 dictionaryData">
-            <div class="pl-3 pt-1 pr-3 pb-1" aria-expanded="false" id="heading${desc["Variable Name"]}">
-                <div class="row">
-                    <div class="col-md-11">
-                        <div class="row">
-                            <div class="col-md-4">${
-                              desc["Variable Name"] ? desc["Variable Name"] : ""
-                            }</div>
-                            <div class="col-md-5">${
-                              desc["Cont/Categorical"] ? desc["Cont/Categorical"] : ""
-                            }</div>
-                            <div class="col-md-3">${
-                              desc["Variable category "] ? desc["Variable category "] : ""
-                            }</div>
-                        </div>
-                    </div>
-                    <div class="ml-auto">
-                        <div class="col-md-12"><button title="Expand/Collapse" class="transparent-btn collapse-panel-btn" data-toggle="collapse" 
-                        data-target="#study${desc["Variable Name"] ? desc["Variable Name"].replace(/(<b>)|(<\/b>)/g,"") : ""}"><i class="fas fa-caret-down fa-2x"></i></button></div>
-                    </div>
-                </div>
-            </div>
-            <div id="study${desc["Variable Name"] ? desc["Variable Name"].replace(/(<b>)|(<\/b>)/g,"") : ""}" class="collapse" aria-labelledby="heading${desc["Variable Name"]}">
-                <div class="card-body" style="padding-left: 10px;background-color:#f6f6f6;">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading${cleanVarName}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#study${cleanVarName}" aria-expanded="false" aria-controls="study${cleanVarName}">
+                    <div class="col-md-4">${desc["Variable Name"] ? desc["Variable Name"] : ""}</div>
+                    <div class="col-md-5">${desc["Cont/Categorical"] ? desc["Cont/Categorical"] : ""}</div>
+                    <div class="col-md-3">${desc["Variable category "] ? desc["Variable category "] : ""}</div>
+                </button>
+            </h2>
+            <div id="study${cleanVarName}" class="accordion-collapse collapse" aria-labelledby="heading${cleanVarName}">
+                <div class="accordion-body">
                     ${
                       desc["Data Source"]
                         ? `<div class="row mb-1 m-0" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;"><div class="col-md-2 pl-2 font-bold">Data Source</div><div class="col">${desc["Data Source"]}</div></div>`
@@ -494,9 +484,8 @@ const renderDataDictionary = (dictionary, pageSize, headers) => {
             </div>
         </div>`;
   });
-  template += `</div>`;
+  template += `</div></div>`;
   document.getElementById("dataDictionaryBody").innerHTML = template;
-  addEventToggleCollapsePanelBtn();
   addEventSortColumn(dictionary, pageSize, headers);
 };
 

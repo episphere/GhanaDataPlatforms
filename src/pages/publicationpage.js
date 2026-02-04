@@ -10,6 +10,11 @@ import {
 } from "./../shared.js";
 import { pageNavBar } from "../components/navBarMenuItems.js";
 import { downloadFiles } from "./dictionary.js";
+import {
+  pageSizeTemplate,
+  dataPagination,
+  paginationTemplate,
+} from "./description.js";
 let previousValue = "";
 
 export const publicationNoSign = (modified_at) => {
@@ -17,12 +22,12 @@ export const publicationNoSign = (modified_at) => {
   <div class="main-summary-row">
          <div class="row align-left w-100 m-0">
               <h1 class="col page-header pl-0 pt-2">Publications</h1>
-                <div class="ml-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
-                <div class="ml-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
-                <div class="ml-auto mt-3 mb-3" id="downloadContainer">
+                <div class="col-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
+                <div class="col-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
+                <div class="col-auto mt-3 mb-3" id="downloadContainer">
                     <div class="col-md-12 p-0 dropdown">
                         <div class="grid-elements ">
-                            <button title="Download" class="transparent-btn form-control dropdown-toggle dropdown-btn" data-toggle="dropdown" id="downloadDictionary" style="color:#000000 !important">
+                            <button title="Download" class="transparent-btn form-control dropdown-toggle dropdown-btn" data-bs-toggle="dropdown" id="downloadDictionary" style="color:#000000 !important">
                                 Download <i class="fas fa-download" style="color:#000000 !important"></i>
                             </button>
                             <div class="dropdown-menu navbar-dropdown" aria-labelledby="downloadDictionary">
@@ -35,7 +40,7 @@ export const publicationNoSign = (modified_at) => {
             </div>
         </div>
         <div class="main-summary-row">
-            <div class="col-xl-2 filter-column div-border white-bg align-left p-2" id="summaryFilterSiderBar">
+            <div class="col-xl-1 filter-column div-border white-bg align-left p-2" id="summaryFilterSiderBar">
                 <div class="main-summary-row">
                     <div class="col-xl-12 pl-1 pr-0">
                         <span class="font-size-17 font-bold">Filter</span>
@@ -43,8 +48,7 @@ export const publicationNoSign = (modified_at) => {
                     </div>
                 </div>
             </div>
-            <div class="col-xl-10 padding-right-zero font-size-16" id="summaryStatsCharts">
-                <button id="filterBarToggle"><i class="fas fa-lg fa-caret-left"></i></button>
+            <div class="col-xl-11 padding-right-zero font-size-16" id="summaryStatsCharts">
                 <div class="main-summary-row pl-2">
                     <div class="col-xl-12 pb-2 pl-0 pr-0 white-bg div-border">
                         <div class="pt-0 pl-2 pb-2 pr-2 allow-overflow" style="height: calc(100vh - 190px) !important;min-height: 500px;" id="descriptionBody"></div>
@@ -62,12 +66,12 @@ export const publication = (modified_at) => {
   <div class="main-summary-row">
          <div class="row align-left w-100 m-0">
               <h1 class="col page-header pl-0 pt-2">Publications</h1>
-                <div class="ml-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
-                <div class="ml-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
-                <div class="ml-auto mt-3 mb-3" id="downloadContainer">
+                <div class="col-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
+                <div class="col-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
+                <div class="col-auto mt-3 mb-3" id="downloadContainer">
                     <div class="col-md-12 p-0 dropdown">
                         <div class="grid-elements ">
-                            <button title="Download" class="transparent-btn form-control dropdown-toggle dropdown-btn" data-toggle="dropdown" id="downloadDictionary" style="color:#000000 !important">
+                            <button title="Download" class="transparent-btn form-control dropdown-toggle dropdown-btn" data-bs-toggle="dropdown" id="downloadDictionary" style="color:#000000 !important">
                                 Download <i class="fas fa-download" style="color:#000000 !important"></i>
                             </button>
                             <div class="dropdown-menu navbar-dropdown" aria-labelledby="downloadDictionary">
@@ -81,7 +85,7 @@ export const publication = (modified_at) => {
         </div>
       
         <div class="main-summary-row">
-            <div class="col-xl-2 filter-column div-border white-bg align-left p-2" id="summaryFilterSiderBar">
+            <div class="col-xl-1 filter-column div-border white-bg align-left p-2" id="summaryFilterSiderBar">
                 <div class="main-summary-row">
                     <div class="col-xl-12 pl-1 pr-0">
                         <span class="font-size-17 font-bold">Filter</span>
@@ -89,8 +93,7 @@ export const publication = (modified_at) => {
                     </div>
                 </div>
             </div>
-            <div class="col-xl-10 padding-right-zero font-size-16" id="summaryStatsCharts">
-                <button id="filterBarToggle"><i class="fas fa-lg fa-caret-left"></i></button>
+            <div class="col-xl-11 padding-right-zero font-size-16" id="summaryStatsCharts">
                 <div class="main-summary-row pl-2">
                     <div class="col-xl-12 pb-2 pl-0 pr-0 white-bg div-border">
                         <div class="pt-0 pl-2 pb-2 pr-2 allow-overflow" style="height: calc(100vh - 190px) !important;min-height: 500px;" id="descriptionBody"></div>
@@ -108,12 +111,12 @@ export const publicationAdmin = (modified_at) => {
   <div class="main-summary-row">
          <div class="row align-left w-100 m-0">
               <h1 class="col page-header pl-0 pt-2">Publications</h1>
-                <div class="ml-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
-                <div class="ml-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
-                <div class="ml-auto mt-3 mb-3" id="downloadContainer">
+                <div class="ms-auto allow-overflow me-2" style="margin:1rem 0" id="pagesContainer"></div>
+                <div class="ms-auto mt-3 mb-3 me-2" id="pageSizeContainer"></div>
+                <div class="ms-auto mt-3 mb-3" id="downloadContainer">
                     <div class="col-md-12 p-0 dropdown">
                         <div class="grid-elements ">
-                            <button title="Download" class="transparent-btn form-control dropdown-toggle dropdown-btn" data-toggle="dropdown" id="downloadDictionary" style="color:#000000 !important">
+                            <button title="Download" class="transparent-btn form-control dropdown-toggle dropdown-btn" data-bs-toggle="dropdown" id="downloadDictionary" style="color:#000000 !important">
                                 Download <i class="fas fa-download" style="color:#000000 !important"></i>
                             </button>
                             <div class="dropdown-menu navbar-dropdown" aria-labelledby="downloadDictionary">
@@ -131,7 +134,7 @@ export const publicationAdmin = (modified_at) => {
           </a>
         </div>
         <div class="main-summary-row">
-            <div class="col-xl-2 filter-column div-border white-bg align-left p-2" id="summaryFilterSiderBar">
+            <div class="col-xl-1 filter-column div-border white-bg align-left p-2" id="summaryFilterSiderBar">
                 <div class="main-summary-row">
                     <div class="col-xl-12 pl-1 pr-0">
                         <span class="font-size-17 font-bold">Filter</span>
@@ -139,8 +142,7 @@ export const publicationAdmin = (modified_at) => {
                     </div>
                 </div>
             </div>
-            <div class="col-xl-10 padding-right-zero font-size-16" id="summaryStatsCharts">
-                <button id="filterBarToggle"><i class="fas fa-lg fa-caret-left"></i></button>
+            <div class="col-xl-11 padding-right-zero font-size-16" id="summaryStatsCharts">
                 <!---<div class="main-summary-row pl-2" style="min-height: 10px;margin-bottom: 1rem;">
                     <div class="col white-bg div-border align-left font-size-17" style="padding: 0.5rem;" id="listFilters">
                         <span class="font-bold">Region:</span> All
@@ -253,7 +255,6 @@ const getDescription = async (signedIn) => {
     defaultPageSize
   );
   addEventPageSizeSelection(json, headers);
-  addEventFilterBarToggle();
 };
 
 const getDescriptionAdmin = async (signedIn) => {
@@ -375,7 +376,6 @@ const getDescriptionAdmin = async (signedIn) => {
     defaultPageSize
   );
   addEventPageSizeSelection(json, headers);
-  addEventFilterBarToggle();
 };
 
 const renderStudyDescription = (descriptions, pageSize, headers, signedIn) => {
@@ -383,93 +383,64 @@ const renderStudyDescription = (descriptions, pageSize, headers, signedIn) => {
   const newDesc = descriptions.map(selectProps("title", "date", "first author", "journal_name", "doi", "all authors"));
 	
   let uniqueTitles = [...new Map(newDesc.map((item) => [item["title"], item])).values()];
-  // const allTitles = Object.values(newDesc).map((dt) => [dt["title"], dt["date"], dt["author"], dt["journal_name"], dt["journal_acro"]]);
-  // let set = new Set(allTitles.map(JSON.stringify));
-  // let uniqueTitles = Array.from(set).map(JSON.parse);
-  // const countries = allCountries
-  //   .filter((d, i) => allCountries.indexOf(d) === i)
-  //   .sort();
-  //const uniqueTitles = allTitles.filter((d, i) => d && allTitles.indexOf(d.trim()) === i).sort();
-
 
   if (descriptions.length > 0) {
     template = `
-        <div class="row m-0 pt-2 pb-2 align-left div-sticky" style="border-bottom: 1px solid rgb(0,0,0, 0.1);">
-            <div class="col-md-7 font-bold ws-nowrap pl-2">Title of Publication <button class="transparent-btn sort-column" data-column-name="title"><i class="fas fa-sort"></i></button></div>
-            <div class="col-md-2 font-bold ws-nowrap">First Author <button class="transparent-btn sort-column" data-column-name="first author"><i class="fas fa-sort"></i></button></div>
-            <div class="col-md-2 font-bold ws-nowrap">Publication Year <button class="transparent-btn sort-column" data-column-name="date"><i class="fas fa-sort"></i></button></div>
-            <div class="col-md-1"></div>
-        </div>`;
+        <div class="row pt-md-3 pb-md-3 m-0 align-left div-sticky">
+            <div class="col-md-12">
+                <div class="row ps-3 pe-5">
+                    <div class="col-md-7 font-bold">Title of Publication <button class="transparent-btn sort-column" data-column-name="title"><i class="fas fa-sort"></i></button></div>
+                    <div class="col-md-3 font-bold text-center">First Author <button class="transparent-btn sort-column" data-column-name="first author"><i class="fas fa-sort"></i></button></div>
+                    <div class="col-md-2 font-bold text-center">Publication Year <button class="transparent-btn sort-column" data-column-name="date"><i class="fas fa-sort"></i></button></div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 align-left allow-overflow w-100">
+        <div class="accordion accordion-flush col-md-12" id="publicationAccordion">
+        `;
     uniqueTitles.forEach((desc, index) => {
       if (index > pageSize) return;
-      var desc2 = descriptions.filter((dt) => dt['title'] === desc["title"]);
-        template += `
-              <div class="card mt-1 mb-1 align-left">
-                  <div style="padding: 10px" aria-expanded="false" id="heading${desc["title"].replace(/\s+/g,"").replace(/[^a-zA-Z ]/g, "")}">
-                      <div class="row">
-                          <div class="col-md-7">${
-                            desc["title"] ? desc["title"] : ""
-                          }</div>
-                          <div class="col-md-2">${
-                            desc["first author"] ? desc["first author"] : ""
-                          }</div>
-                          <div class="col-md-2">${
-                            desc["date"] ? desc["date"].split('/').pop() : ""
-                          }</div>
-                          <div class="col-md-1">
-                              <button title="Expand/Collapse" class="transparent-btn collapse-panel-btn" data-toggle="collapse" data-target="#study${desc["title"].replace(/\s+/g,"").replace(/[^a-zA-Z ]/g, "")}">
-                                  <i class="fas fa-caret-down fa-2x"></i>
-                              </button>
-                          </div>`
-      // if(signedIn) {
-      //   template += `
-      //                     <div class-"col-md-1">
-      //                       <button title="Link To Data Access" class="buttonsubmit" data-id='{"title": "${desc["title"]}", "author": "${desc["author"]}", "date": "${desc["date"]}", "journal": "${desc["journal_name"]}"}' onClick="localStorage.setItem('dataSelected', JSON.stringify($(this).data('id'))); window.location.href = '#data_access/form'"><span class="buttonsubmit__text"> Request Data </span></button>
-      //                     </div>
-      //                     `
-      // } else {
-      //   template += `
-      //   <div class-"col-md-1">
-      //     <a href="#dataAccessHowTo"><button title="Please Log In" class="buttonsubmit"><span class="buttonsubmit__text"> Data Access Process </span></button></a>
-      //   </div>
-      //   `
-      // }
-        template += `
-                      </div>
-                  </div>
-                  <div id="study${desc["title"].replace(/\s+/g,"").replace(/[^a-zA-Z ]/g, "")}" class="collapse" aria-labelledby="heading${desc["title"]}">
-                      <div class="card-body" style="padding-left: 10px;background-color:#f6f6f6;">
-                      ${
-                        desc["journal_name"]
-                          ? `<div class="row mb-1 m-0"><div class="col-md-3 font-bold">Journal</div><div class="col">${desc["journal_name"]}</div></div>`
-                          : ``
-                      }
-                      ${
-                        desc["journal_acro"]
-                          ? `<div class="row mb-1 m-0"><div class="col-md-3 font-bold">Journal Acronym</div><div class="col">${desc["journal_acro"]}</div></div>`
-                          : ``
-                      }
-                      ${
-                        desc["all authors"]
-                          ? `<div class="row mb-1 m-0"><div class="col-md-3 font-bold">Authors</div><div class="col">${desc["all authors"]}</div></div>`
-                          : ``
-                      }
-                      ${
-                        desc["doi"]
-                          ? `<div class="row mb-1 m-0"><div class="col-md-3 font-bold">doi</div><div class="col"><a href=${desc["doi"]} target="__blank">${desc["doi"]}</a></div></div>`
-                          : ``
-                      }`
-
-        template += `
-                      </div>
-                  </div>
-              </div>`;
+      const cleanTitle = desc["title"] ? desc["title"].replace(/\s+/g,"").replace(/[^a-zA-Z ]/g, "") : "";
+      template += `
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading${cleanTitle}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#study${cleanTitle}" aria-expanded="false" aria-controls="study${cleanTitle}">
+                    <div class="col-md-7">${desc["title"] ? desc["title"] : ""}</div>
+                    <div class="col-md-3 text-center">${desc["first author"] ? desc["first author"] : ""}</div>
+                    <div class="col-md-2 text-center">${desc["date"] ? desc["date"].split('/').pop() : ""}</div>
+                </button>
+            </h2>
+            <div id="study${cleanTitle}" class="accordion-collapse collapse" aria-labelledby="heading${cleanTitle}">
+                <div class="accordion-body">
+                    ${
+                      desc["journal_name"]
+                        ? `<div class="row mb-1 m-0" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;"><div class="col-md-3 font-bold">Journal</div><div class="col">${desc["journal_name"]}</div></div>`
+                        : ``
+                    }
+                    ${
+                      desc["journal_acro"]
+                        ? `<div class="row mb-1 m-0" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;"><div class="col-md-3 font-bold">Journal Acronym</div><div class="col">${desc["journal_acro"]}</div></div>`
+                        : ``
+                    }
+                    ${
+                      desc["all authors"]
+                        ? `<div class="row mb-1 m-0" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;"><div class="col-md-3 font-bold">Authors</div><div class="col">${desc["all authors"]}</div></div>`
+                        : ``
+                    }
+                    ${
+                      desc["doi"]
+                        ? `<div class="row mb-1 m-0" style="border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;"><div class="col-md-3 font-bold">doi</div><div class="col"><a href=${desc["doi"]} target="__blank">${desc["doi"]}</a></div></div>`
+                        : ``
+                    }
+                </div>
+            </div>
+        </div>`;
     });
+    template += `</div></div>`;
   } else {
     template += "Data not found!";
   }
   document.getElementById("descriptionBody").innerHTML = template;
-  addEventToggleCollapsePanelBtn();
   addEventSortColumn(descriptions, pageSize, headers);
 };
 
@@ -706,23 +677,6 @@ const paginationHandler = (data, pageSize, headers) => {
   addEventPageBtns(pageSize, data, headers);
 };
 
-export const pageSizeTemplate = (array, startPageSize) => {
-  const contentSize =
-    Math.ceil(array.length / defaultPageSize) * defaultPageSize;
-  let pageSizes = [];
-  for (let i = startPageSize; i <= contentSize; i += defaultPageSize) {
-    pageSizes.push(i);
-  }
-  let template = `
-    <select class="form-control" id="pageSizeSelector">`;
-  pageSizes.forEach((size) => {
-    template += `<option value="${size}">${size}</option>`;
-  });
-  template += `</select>
-    `;
-  return template;
-};
-
 const addEventPageSizeSelection = (data, headers) => {
   const select = document.getElementById("pageSizeSelector");
   select.addEventListener("change", () => {
@@ -730,49 +684,6 @@ const addEventPageSizeSelection = (data, headers) => {
     renderStudyDescription(data, value, headers);
     paginationHandler(data, value, headers);
   });
-};
-
-export const paginationTemplate = (array) => {
-  let template = `
-        <nav aria-label="Page navigation example">
-            <ul class="pagination m-0">`;
-
-  array.forEach((a, i) => {
-    if (i === 0) {
-      template += `<li class="page-item">
-                            <button class="page-link transparent-btn" id="previousPage" data-previous="1" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                            </button>
-                        </li>`;
-    }
-    template += `<li class="page-item"><button class="page-link transparent-btn ${
-      i === 0 ? "active-page" : ""
-    }" data-page=${a}>${a}</button></li>`;
-
-    if (i === array.length - 1) {
-      template += `
-            <li class="page-item">
-                <button class="page-link transparent-btn" id="nextPage" data-next="1" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-                </button>
-            </li>`;
-    }
-  });
-  template += `
-            </ul>
-        </nav>
-    `;
-  return template;
-};
-
-export const dataPagination = (start, end, data) => {
-  const paginatedData = [];
-  for (let i = start; i < end; i++) {
-    if (data[i]) paginatedData.push(data[i]);
-  }
-  return paginatedData;
 };
 
 const addEventPageBtns = (pageSize, data, headers) => {

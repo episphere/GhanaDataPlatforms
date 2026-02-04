@@ -13,9 +13,9 @@ export const renderDescriptionNotSignedIn = (modified_at) => {
   <div class="main-summary-row">
          <div class="row align-left w-100 m-0">
               <h1 class="col page-header pl-0 pt-2">Study Description</h1>
-                <div class="ml-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
-                <div class="ml-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
-                <div class="ml-auto mt-3 mb-3" id="downloadContainer">
+                <div class="col-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
+                <div class="col-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
+                <div class="col-auto mt-3 mb-3" id="downloadContainer">
                     <div class="col-md-12 p-0 dropdown">
                         <div class="grid-elements ">
                             <button title="Download" class="transparent-btn form-control dropdown-toggle dropdown-btn" data-toggle="dropdown" id="downloadDictionary" style="color:#000000 !important">
@@ -70,9 +70,9 @@ export const renderDescription = (modified_at) => {
   <div class="main-summary-row">
          <div class="row align-left w-100 m-0">
               <h1 class="col page-header pl-0 pt-2">Study Description</h1>
-                <div class="ml-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
-                <div class="ml-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
-                <div class="ml-auto mt-3 mb-3" id="downloadContainer">
+                <div class="col-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
+                <div class="col-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
+                <div class="col-auto mt-3 mb-3" id="downloadContainer">
                     <div class="col-md-12 p-0 dropdown">
                         <div class="grid-elements ">
                             <button title="Download" class="transparent-btn form-control dropdown-toggle dropdown-btn" data-toggle="dropdown" id="downloadDictionary" style="color:#000000 !important">

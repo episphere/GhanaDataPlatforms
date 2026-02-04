@@ -53,18 +53,16 @@ export const dataSummary = (
                         ${
                           showPages
                             ? `
-                            <div class="ml-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
-                            <div class="ml-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
-                            <div class="ml-auto mt-3 mb-3" id="downloadContainer">
+                            <div class="col-auto allow-overflow mr-2" style="margin:1rem 0" id="pagesContainer"></div>
+                            <div class="col-auto mt-3 mb-3 mr-2" id="pageSizeContainer"></div>
+                            <div class="col-auto mt-3 mb-3" id="downloadContainer">
                                 <div class="col-md-12 p-0 dropdown">
-                                    <div class="grid-elements ">
-                                        <button title="Download" class="transparent-btn form-control dropdown-toggle dropdown-btn" data-toggle="dropdown" id="downloadDictionary" style="color:#000000 !important">
-                                            Download <i class="fas fa-download" style="color:#000000 !important"></i>
-                                        </button>
-                                        <div class="dropdown-menu navbar-dropdown" aria-labelledby="downloadDictionary">
-                                            <button class="transparent-btn dropdown-item dropdown-menu-links" title="Download dictionary as csv" id="downloadDictionaryCSV">CSV</button>
-                                            <button class="transparent-btn dropdown-item dropdown-menu-links" title="Download dictionary as tsv" id="downloadDictionaryTSV">TSV</button>
-                                        </div>
+                                    <button title="Download" class="transparent-btn form-control dropdown-toggle dropdown-btn" data-bs-toggle="dropdown" id="downloadDictionary" style="color:#000000 !important">
+                                        Download <i class="fas fa-download" style="color:#000000 !important"></i>
+                                    </button>
+                                    <div class="dropdown-menu navbar-dropdown" aria-labelledby="downloadDictionary">
+                                        <button class="transparent-btn dropdown-item dropdown-menu-links" title="Download dictionary as csv" id="downloadDictionaryCSV">CSV</button>
+                                        <button class="transparent-btn dropdown-item dropdown-menu-links" title="Download dictionary as tsv" id="downloadDictionaryTSV">TSV</button>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +86,7 @@ export const dataSummary = (
 export const dataSummaryStatisticsTemplate = () => {
   let template = "";
   template = `
-    <div class="col-xl-2 filter-column" id="summaryFilterSiderBar">
+    <div class="col-xl-1 filter-column" id="summaryFilterSiderBar">
         <div class="card">
             <div class="card-header align-left card-filter-header">
                 <strong class="side-panel-header font-size-17">Filter</strong>
@@ -98,9 +96,8 @@ export const dataSummaryStatisticsTemplate = () => {
             </div>
         </div>
     </div>
-    <div class="col-xl-10 padding-right-zero" id="summaryStatsCharts">
-        <button id="filterBarToggle"><i class="fas fa-lg fa-caret-left"></i></button>
-        <div class="main-summary-row pl-2" style="min-height: 10px;margin-bottom: 1rem;">
+    <div class="col-xl-11 padding-right-zero padding-left-1 position-relative" id="summaryStatsCharts">
+        <div class="main-summary-row" style="min-height: 10px;margin-bottom: 1rem;margin-left: 1rem;">
             <div class="col white-bg div-border align-left font-size-17" style="padding: 0.5rem;" id="participantCount">
                 <p id='participantCount'></p>
             </div>
@@ -112,7 +109,6 @@ export const dataSummaryStatisticsTemplate = () => {
     </div>
     `;
   document.getElementById("dataSummaryStatistics").innerHTML = template;
-  addEventFilterBarToggle();
 };
 
 /**
@@ -150,7 +146,7 @@ const filterItemTemplate = (title, values) => {
 
 export const dataSummaryMissingTopBarTemplate = () => {
   const div1 = document.createElement("div");
-  div1.classList = ["col-xl-2 filter-column"];
+  div1.classList = ["col-xl-1 filter-column"];
   div1.id = "missingnessFilter";
 
   const div2 = document.createElement("div");
@@ -160,11 +156,8 @@ export const dataSummaryMissingTopBarTemplate = () => {
    * 2. Create a function to make one filter item
    */
 
-  div2.classList = ["col-xl-10"];
+  div2.classList = ["col-xl-11"];
   div2.innerHTML = `
-        <button id="filterBarToggle">
-            <i class="fas fa-lg fa-caret-left"></i>
-        </button>
         <div class="main-summary-row" style="min-height: 10px;margin-bottom: 1rem;margin-left: 1rem;">
             <div class="col white-bg div-border align-left font-size-17" style="padding: 0.5rem;" id="listFilters">
                 ${filterItemTemplate("Race", ["All"])}
@@ -233,7 +226,6 @@ export const dataSummaryMissingTemplate = async (popVal) => {
 
   renderFilter(data,initialSelection,Object.keys(cohorts),variables,race,ethnicity,popVal, varselect);
   midset(data, initialSelection);
-  addEventMissingnessFilterBarToggle();
   hideAnimation();
 };
 
@@ -295,28 +287,30 @@ const renderMidsetFilterData = (
   //console.log(popVal);
   if (popVal == "Full Cohort") {
   template += `
-        <div class="form-group" id="population">
+        <div class="form-group mb-3">
         <label class="filter-label font-size-13" for="populationSelection">Population</label>
-        <select class="form-control font-size-15" id="populationSelection">
+        <select class="form-select font-size-15" id="populationSelection">
           <option value="Full Cohort" selected>Full Cohort</option>
           <option value="Cases">Cases</option>
         </select>
+      </div>
   `
   };
   if (popVal == "Cases") {
     template += `
-          <div class="form-group" id="population">
+          <div class="form-group mb-3">
           <label class="filter-label font-size-13" for="populationSelection">Population</label>
-          <select class="form-control font-size-15" id="populationSelection">
+          <select class="form-select font-size-15" id="populationSelection">
             <option value="Full Cohort">Full Cohort</option>
             <option value="Cases" selected>Cases</option>
           </select>
+        </div>
     `
     };
   template += `
-            <div class="form-group" id="raceList">
+            <div class="form-group mb-3">
             <label class="filter-label font-size-13" for="raceSelection">Race</label>
-            <select class="form-control font-size-15" id="raceSelection">`;
+            <select class="form-select font-size-15" id="raceSelection">`;
   transformRace.forEach((anc) => {
     if (anc[0] === "undefined") return;
 
@@ -326,9 +320,9 @@ const renderMidsetFilterData = (
   });
   template += `</select>
         </div>
-          <div class="form-group" id="ethnicityList">
+          <div class="form-group mb-3">
               <label class="filter-label font-size-13" for="ethnicitySelection">Ethnicity</label>
-              <select class="form-control font-size-15" id="ethnicitySelection">`;
+              <select class="form-select font-size-15" id="ethnicitySelection">`;
   transformEthnicity.forEach((anc) => {
     if (anc[0] === "undefined") return;
     template += `<option value="${anc[0]}" ${
@@ -388,7 +382,7 @@ const renderMidsetFilterData = (
                   <li class="custom-borders filter-list-item consortia-study-list" data-variable="${catnospace}">
                     <label for="label${catnospace}" class="variable-name" title="${catnospace}">${cat}</label>`
     template += unique_cat.indexOf(cat) === 0 ?
-                    `<div class="ml-auto">
+                    `<div class="ms-auto">
                       <button type="button" class="consortium-selection consortium-selection-btn" data-toggle="collapse" href="#toggle${catnospace}">
                         <i class="fas fa-caret-up"></i>
                       </button>
@@ -396,7 +390,7 @@ const renderMidsetFilterData = (
                   </li>
                   <ul class="collapse show no-list-style custom-padding allow-overflow max-height-study-list" aria-expanded="true" id="toggle${catnospace}">
                   ` :
-                  `<div class="ml-auto">
+                  `<div class="ms-auto">
                   <button type="button" class="consortium-selection consortium-selection-btn" data-toggle="collapse" href="#toggle${catnospace}">
                     <i class="fas fa-caret-down"></i>
                   </button>

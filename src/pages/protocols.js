@@ -29,12 +29,7 @@ export const protocolSummary = (activeTab, pageHeader) => {
                         <h1 class="col page-header pl-0 pt-2">${pageHeader}</h1>  
                     </div>
                 </div>
-                <div class="confluence-resources white-bg div-border font-size-18 height100" id="protocolPage"></div>
-                <div class="main-summary-row">
-                    <div class="col p-0">
-                        <div class="offset-xl-2 pl-4 align-left" id="dataLastModified"></div>
-                    </div>
-                </div>
+                <div class="confluence-resources font-size-18" id="protocolPage"></div>
             </div>
         </div>
       </div></div>
@@ -76,26 +71,46 @@ export const protocolsTemplate = async (page) => {
                 `
        } else {
     template = `
-    <div class="home-page-stats font-size-18">
-        <div class="main-summary-row">
-            <div class="col align-left">
-                </br>
-                <span>
-                  Downloadable forms in regards to protocols:
-                </span>
-                </br></br>
-                <a href="./static/files/GBHS_Anthropometry_Annotated_d20170821.docx" download>Anthropometry</a>
-                </br>
-                <a href="./static/files/GBHS_Saliva_Collection_Annotated_d20170821.docx" download>Saliva</a>
-                </br>
-                <a href="./static/files/GBHS_Stool_Collection_Annotated_d20170821.docx" download>Stool</a>
-                </br>
-                <a href="./static/files/GBHS_Blood_Collection_Annotated_d20170821.docx" download>Blood</a>
-                </br>
-                <a href="./static/files/GBHS_Breast_Biopsy_Annotated_WithV2_d20170821.docx" download>Breast tissue biopsy collection</a>
-            </div>
+        <h5 class="font-bold mb-3">Downloadable Documents</h5>
+        <p class="mb-4">Download protocol forms and documentation for the study:</p>
+        <div class="list-group shadow-sm">
+            <a href="./static/files/GBHS_Anthropometry_Annotated_d20170821.docx" download class="list-group-item list-group-item-action d-flex align-items-center">
+                <i class="fas fa-file-download me-3 text-primary"></i>
+                <div>
+                    <strong>Anthropometry</strong>
+                    <small class="d-block text-muted">Protocol for anthropometric measurements</small>
+                </div>
+            </a>
+            <a href="./static/files/GBHS_Saliva_Collection_Annotated_d20170821.docx" download class="list-group-item list-group-item-action d-flex align-items-center">
+                <i class="fas fa-file-download me-3 text-primary"></i>
+                <div>
+                    <strong>Saliva Collection</strong>
+                    <small class="d-block text-muted">Protocol for saliva sample collection</small>
+                </div>
+            </a>
+            <a href="./static/files/GBHS_Stool_Collection_Annotated_d20170821.docx" download class="list-group-item list-group-item-action d-flex align-items-center">
+                <i class="fas fa-file-download me-3 text-primary"></i>
+                <div>
+                    <strong>Stool Collection</strong>
+                    <small class="d-block text-muted">Protocol for stool sample collection</small>
+                </div>
+            </a>
+            <a href="./static/files/GBHS_Blood_Collection_Annotated_d20170821.docx" download class="list-group-item list-group-item-action d-flex align-items-center">
+                <i class="fas fa-file-download me-3 text-primary"></i>
+                <div>
+                    <strong>Blood Collection</strong>
+                    <small class="d-block text-muted">Protocol for blood sample collection</small>
+                </div>
+            </a>
+            <a href="./static/files/GBHS_Breast_Biopsy_Annotated_WithV2_d20170821.docx" download class="list-group-item list-group-item-action d-flex align-items-center">
+                <i class="fas fa-file-download me-3 text-primary"></i>
+                <div>
+                    <strong>Breast Tissue Biopsy Collection</strong>
+                    <small class="d-block text-muted">Protocol for breast tissue biopsy collection</small>
+                </div>
+            </a>
         </div>
-    </div>`}
+    `}
 
     document.getElementById("protocolPage").innerHTML = template;
     hideAnimation();

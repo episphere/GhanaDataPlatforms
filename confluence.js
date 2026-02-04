@@ -72,7 +72,7 @@ import {
 } from "./src/event.js";
 import { dataAnalysisTemplate } from "./src/pages/dataAnalysis.js";
 import { getFileContent } from "./src/visualization.js";
-import { aboutConfluence, renderOverView } from "./src/pages/about.js";
+import { aboutConfluence, renderOverView, renderDbGaP } from "./src/pages/about.js";
 import { confluenceResources } from "./src/pages/join.js";
 import { confluenceContactPage, confluenceQuestionairePage } from "./src/pages/contact.js";
 import { footerTemplate } from "./src/components/footer.js";
@@ -357,9 +357,8 @@ export const confluence = async () => {
       if (!element) return;
       if (element.classList.contains("navbar-active")) return;
       document.title = "DCEG - Publication";
-      removeActiveClass("nav-link", "active");
-      assignNavbarActive(element);
-      console.log('publication');
+      //removeActiveClass("nav-link", "active");
+      assignNavbarActive(element, 1);
       aboutConfluence("overview");
       publication();
       //addEventUpdateSummaryStatsData();
@@ -476,17 +475,14 @@ const manageRouter = async () => {
     aboutConfluence("questionGBHS", true);
     confluenceQuestionairePage();
     hideAnimation();
-  } else if (hash === "#about/description") {
-    const element = document.getElementById("studydescBCRPP");
+  } else if (hash === "#about/dbgap") {
+    const element = document.getElementById("dbgapStudy");
     if (!element) return;
-    console.log("test");
-    //if (element.classList.contains("navbar-active")) return;
+    if (element.classList.contains("navbar-active")) return;
+    document.title = "EABCS - dbGaP Study";
     assignNavbarActive(element, 1);
-    document.title = "EABCS - Study Description";
-    showAnimation();
-    // const fileInfo = await getFileInfo(904897189551); //new: 904897189551; original: 881144462693
-    aboutConfluence("description", true);
-    renderDescriptionNotSignedIn('test');
+    aboutConfluence("dbgap", true);
+    renderDbGaP();
     hideAnimation();
   } else if (hash === "#join") {
     const element = document.getElementById("resourcesBCRPP");
@@ -668,7 +664,7 @@ const manageRouter = async () => {
     if (element.classList.contains("navbar-active")) return;
     document.title = "DCEG - publicationpage";
     removeActiveClass("nav-link", "active");
-    assignNavbarActive(element);
+    assignNavbarActive(element,1);
     aboutConfluence("overview");
     publicationNoSign();
   } else window.location.hash = "#home";
@@ -787,16 +783,14 @@ const manageHash = async () => {
     aboutConfluence("questionGBHS", true);
     confluenceQuestionairePage();
     hideAnimation();
-  } else if (hash === "#about/description") {
-    const element = document.getElementById("studydescBCRPP");
+  } else if (hash === "#about/dbgap") {
+    const element = document.getElementById("dbgapStudy");
     if (!element) return;
-    //if (element.classList.contains("navbar-active")) return;
+    if (element.classList.contains("navbar-active")) return;
+    document.title = "EABCS - dbGaP Study";
     assignNavbarActive(element, 1);
-    document.title = "EABCS - Study Description";
-    showAnimation();
-    const fileInfo = await getFileInfo(904897189551); //new: 904897189551; original: 881144462693
-    aboutConfluence("description", fileInfo ? true : false);
-    renderDescription(fileInfo["content_modified_at"]);
+    aboutConfluence("dbgap", true);
+    renderDbGaP();
     hideAnimation();
   } else if (hash === "#join") {
     const element = document.getElementById("resourcesBCRPP");

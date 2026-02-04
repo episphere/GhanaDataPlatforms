@@ -116,7 +116,7 @@ const allFilters = (jsonData, headers, caseSelection) => {
     template += `
             <div class="col-md-12 p-0 form-group">
                 <label class="filter-label font-size-13" for="subcasesSelection">Site</label>
-                <select class="form-control font-size-15" id="subcasesSelection" data-variable='subcases'>
+                <select class="form-select font-size-15" id="subcasesSelection" data-variable='subcases'>
                     <option value='all' selected>All</option>
                     ${siteOptions}
                 </select>
@@ -126,7 +126,7 @@ const allFilters = (jsonData, headers, caseSelection) => {
   template += `
             <div class="col-md-12 p-0 form-group">
                 <label class="filter-label font-size-13" for="consdiagSelection">Consensus Diagnosis</label>
-                <select class="form-control font-size-15" id="consdiagSelection" data-variable='consdiag_cnt'>
+                <select class="form-select font-size-15" id="consdiagSelection" data-variable='consdiag_cnt'>
                     <option value='all' selected>All</option>
                     ${consdiagOptions}
                 </select>
@@ -135,7 +135,7 @@ const allFilters = (jsonData, headers, caseSelection) => {
   template += `
             <div class="col-md-12 p-0 form-group">
                 <label class="filter-label font-size-13" for="citySelection">City</label>
-                <select class="form-control font-size-15" id="citySelection" data-variable='city'>
+                <select class="form-select font-size-15" id="citySelection" data-variable='city'>
                     <option value='all' selected>All</option>
                     ${cityOptions}
                 </select>
