@@ -49,10 +49,11 @@ export const infoDeck = () => {
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10 font-size-18 align-left mb-3">
                     <ul>
-                        <li>Identify factors that predispose to the development of breast cancer among Ghanaian women (including assessing the role of well-accepted breast cancer risk factors originally identified in other populations as well as more speculative factors that might play unique roles among African women)</li>
-                        <li>Identify genetic and other biologic parameters predictive of risk and that may interact with other risk factors (including assessing the role of established breast cancer susceptibility regions originally identified in other populations as well as more speculative factors such as epigenetic and immunologic markers that might play unique roles among African women)</li>
-                        <li>Assess how these factors vary by clinical and molecular characteristics of the tumors (including assessing risk factors for triple negative tumors)</li>
-                        <li>Assist in building capacity for future research investigations in Ghana</li>
+                        <li>Characterize patterns and trends of breast cancer incidence among Ghanaian women and </li>
+                        <li>Identify genetic and non-genetic factors that are associated with breast cancer risk among Ghanaian women and assess similarities and differences with other African ancestry populations (including US)</li>
+                        <li>Uncover predictive biomarkers for breast cancer risk, overall and by subtype</li>
+                        <li>Improve understanding of breast cancer histogenesis and etiologic heterogeneity,  with attention to aggressive subtypes</li>
+                        <li>Strengthen local workforce capacity for sustainable cancer epidemiology and prevention research </li>
                     </ul>
                 </div>
                 <div class="col-lg-1"></div>
@@ -117,10 +118,11 @@ export const infoDeckAfterLoggedIn = async () => {
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10 font-size-18 align-left mb-3">
                     <ul>
-                        <li>Identify factors that predispose to the development of breast cancer among Ghanaian women (including assessing the role of well-accepted breast cancer risk factors originally identified in other populations as well as more speculative factors that might play unique roles among African women)</li>
-                        <li>Identify genetic and other biologic parameters predictive of risk and that may interact with other risk factors (including assessing the role of established breast cancer susceptibility regions originally identified in other populations as well as more speculative factors such as epigenetic and immunologic markers that might play unique roles among African women)</li>
-                        <li>Assess how these factors vary by clinical and molecular characteristics of the tumors (including assessing risk factors for triple negative tumors)</li>
-                        <li>Assist in building capacity for future research investigations in Ghana</li>
+                        <li>Characterize patterns and trends of breast cancer incidence among Ghanaian women and </li>
+                        <li>Identify genetic and non-genetic factors that are associated with breast cancer risk among Ghanaian women and assess similarities and differences with other African ancestry populations (including US)</li>
+                        <li>Uncover predictive biomarkers for breast cancer risk, overall and by subtype</li>
+                        <li>Improve understanding of breast cancer histogenesis and etiologic heterogeneity,  with attention to aggressive subtypes</li>
+                        <li>Strengthen local workforce capacity for sustainable cancer epidemiology and prevention research </li>
                     </ul>
                 </div>
                 <div class="col-lg-1"></div>
