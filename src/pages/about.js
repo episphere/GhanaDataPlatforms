@@ -105,7 +105,7 @@ export const renderOverView = async () => {
                       </thead>
                       <tbody>
                         <tr>
-                          <td><strong>Invasive</strong></td>
+                          <td>Invasive</td>
                           <td class="text-right">1,082</td>
                           <td class="text-right">50.66%</td>
                         </tr>
