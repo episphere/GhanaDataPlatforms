@@ -31,7 +31,7 @@ export const confluenceContactPage = () => {
                                         <h5 class="card-title font-bold text-primary">Trans-Divisional Research Program (TDRP)</h5>
                                         <ul class="list-unstyled mb-0">
                                             <li class="py-1"><i class="fas fa-user-circle me-2 text-muted"></i>Thomas Ahearn, Ph.D.</li>
-                                            <li class="py-1"><i class="fas fa-user-circle me-2 text-muted"></i>Louise A. Brinton, Ph.D.</li>
+                                            <li class="py-1"><i class="fas fa-user-circle me-2 text-muted"></i>Louise A. Brinton, Ph.D. (retired)</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -193,7 +193,7 @@ export const confluenceContactPage = () => {
                                 <p class="mb-2 font-size-18">For questions about the Etiology of Aggressive Breast Cancer Study</p>
                                 <p class="mb-0">
                                     <i class="fas fa-envelope me-2"></i>
-                                    <strong>Email:</strong> <a href="mailto:EABCS@mail.nih.gov">EABCS@mail.nih.gov</a>
+                                    <strong>Email:</strong> <a href="mailto:NCIGBHS@mail.nih.gov">NCIGBHS@mail.nih.gov</a>
                                 </p>
                             </div>
                         </div>
