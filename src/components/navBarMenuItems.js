@@ -17,7 +17,6 @@ export const navBarMenutemplate = () => {
                 <!---<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/description" id="studydescBCRPP">Description of Studies</a>--->
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/contact" id="contactGBHS">Study Team Members</a>
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/questionGBHS" id="questionGBHS">Study Questionaire</a>
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/dbgap" id="dbgapStudy">dbGaP Study</a>
             </div>
         </div>
         <!--<div class="grid-elements dropdown">
@@ -58,6 +57,7 @@ export const navBarMenutemplate = () => {
                     </button>
                     <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_access/overview" title="Data Access" id="dataRequest"> Overview </a>
+                    <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_access/dbgap" id="dbgapStudy">dbGaP Study</a>
                     ${
                       showProjectConceptForm
                         ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_access/form" title="Data Form" id="dataForm"> Analysis Proposal Form </a>
@@ -84,16 +84,10 @@ export const navBarMenutemplate = () => {
                         ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_access/daccView" title="Steering Committee Menu" id="daccView"> Steering Committee Menu </a>`
                         : ``
                     }
-            </div>
-        </div>
-        <div class="grid-elements">
-            <a class="nav-link nav-menu-links white-font" rel="noopener" target="_blank" href="https://github.com/episphere/bcrpDataPlatform/issues" title="BCRPP github issues">
-                Report issue
-            </a>
-        </div>
+                    </div>
+                    </div>
 
-        <div class="navbar-nav ms-auto">
-            ${
+                    <div class="navbar-nav ms-auto">            ${
               localStorage.parms && JSON.parse(localStorage.parms).name
                 ? `
                 <div class="grid-elements dropdown">

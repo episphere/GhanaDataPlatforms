@@ -11,9 +11,7 @@ export const aboutConfluence = (activeTab, showDescription) => {
 
         "Study Team Members",
 
-        "Study Questionaire",
-
-        "dbGaP Study"
+        "Study Questionaire"
       )
     : `<div id='overview'></div>`;
   let template = `
@@ -174,36 +172,6 @@ export const renderOverView = async () => {
   document.getElementById("overview").innerHTML = template;
   // const response = await fetch("./publicDataSet.json");
   // countPublicStatistics(await response.json(), true);
-};
-
-export const renderDbGaP = async () => {
-  let template = `
-    <div class="main-summary-row">
-      <div class="align-left">
-        <h1 class="page-header">dbGaP Study</h1>
-      </div>
-    </div>
-    
-    <div class="home-page-stats font-size-18">
-      <div class="main-summary-row mb-4">
-        <div class="col">
-          <div class="card shadow-sm">
-            <div class="card-body p-4 text-center">
-              <h5 class="card-title font-bold mb-3">EABCS dbGaP Study Information</h5>
-              <p class="mb-4">Access the complete study information on the dbGaP (database of Genotypes and Phenotypes) website.</p>
-              <p class="mb-4"><strong>Study Accession:</strong> phs002387.v2.p1</p>
-              <a href="https://dbgap.ncbi.nlm.nih.gov/beta/study/phs002387.v2.p1/#study" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
-                <i class="fas fa-external-link-alt me-2"></i>Visit dbGaP Study Page
-              </a>
-              <p class="mt-4 text-muted small">This link will open in a new tab</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    `;
-    
-  document.getElementById("overview").innerHTML = template;
 };
 
 // const countPublicStatistics = (d, caseControl) => {

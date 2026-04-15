@@ -106,6 +106,7 @@ export const dataAccess = (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
@@ -116,6 +117,7 @@ export const dataAccess = (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu"
@@ -125,6 +127,7 @@ export const dataAccess = (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Steering Committee Menu"
@@ -134,6 +137,7 @@ export const dataAccess = (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions"
     );
@@ -184,6 +188,91 @@ export const dataAccess = (activeTab, showDescripton) => {
 
   return template;
 };
+
+export const dbGaPStudy = (activeTab) => {
+  let authChair =
+    emailforChair.indexOf(JSON.parse(localStorage.parms).login) !== -1;
+  let authDacc =
+    emailforDACC.indexOf(JSON.parse(localStorage.parms).login) !== -1;
+  let navBarItems = "";
+
+  if (authDacc && authChair) {
+    navBarItems = pageNavBar(
+      "data_access",
+      activeTab,
+      "Overview",
+      "dbGaP Study",
+      "Submit Concept Form",
+      //"View Submissions",
+      "Chair Menu",
+      "Steering Committee Menu"
+    );
+  } else if (authChair) {
+    navBarItems = pageNavBar(
+      "data_access",
+      activeTab,
+      "Overview",
+      "dbGaP Study",
+      "Submit Concept Form",
+      //"View Submissions",
+      "Chair Menu"
+    );
+  } else if (authDacc) {
+    navBarItems = pageNavBar(
+      "data_access",
+      activeTab,
+      "Overview",
+      "dbGaP Study",
+      "Submit Concept Form",
+      //"View Submissions",
+      "Steering Committee Menu"
+    );
+  } else {
+    navBarItems = pageNavBar(
+      "data_access",
+      activeTab,
+      "Overview",
+      "dbGaP Study",
+      "Submit Concept Form",
+      //"View Submissions"
+    );
+  }
+
+  let template = `
+      <div class="general-bg body-min-height padding-bottom-1rem">
+          <div class="container">
+            ${navBarItems}
+      </div>
+      <div class="general-bg padding-bottom-1rem">
+          <div class="container body-min-height">
+              <div class="main-summary-row">
+                  <div class="align-left">
+                      <h1 class="page-header">dbGaP Study</h1>
+                  </div>
+              </div>
+              <div class="home-page-stats font-size-18">
+                <div class="main-summary-row mb-4">
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <div class="card-body p-4 text-center">
+                        <h5 class="card-title font-bold mb-3">EABCS dbGaP Study Information</h5>
+                        <p class="mb-4">Access the complete study information on the dbGaP (database of Genotypes and Phenotypes) website.</p>
+                        <p class="mb-4"><strong>Study Accession:</strong> phs002387.v2.p1</p>
+                        <a href="https://dbgap.ncbi.nlm.nih.gov/beta/study/phs002387.v2.p1/#study" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+                          <i class="fas fa-external-link-alt me-2"></i>Visit dbGaP Study Page
+                        </a>
+                        <p class="mt-4 text-muted small">This link will open in a new tab</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+  `;
+  return template;
+};
+
 export const formSectionOther = async (activeTab, showDescripton) => {
   let authChair =
     emailforChair.indexOf(JSON.parse(localStorage.parms).login) !== -1;
@@ -196,6 +285,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
@@ -206,6 +296,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu"
@@ -215,6 +306,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Steering Committee Menu"
@@ -224,6 +316,7 @@ export const formSectionOther = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions"
     );
@@ -269,6 +362,7 @@ export const formSection = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
@@ -279,6 +373,7 @@ export const formSection = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu"
@@ -288,6 +383,7 @@ export const formSection = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Steering Committee Menu"
@@ -297,6 +393,7 @@ export const formSection = async (activeTab, showDescripton) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions"
     );
@@ -592,6 +689,7 @@ export const acceptedStudiesSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       //"Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
@@ -602,6 +700,7 @@ export const acceptedStudiesSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       //"Submit Concept Form",
       //"View Submissions",
       "Chair Menu"
@@ -611,6 +710,7 @@ export const acceptedStudiesSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       //"Submit Concept Form",
       //"View Submissions",
       "Steering Committee Menu"
@@ -620,6 +720,7 @@ export const acceptedStudiesSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       //"Submit Concept Form",
       //"View Submissions"
     );
@@ -702,6 +803,7 @@ export const chairSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
@@ -712,6 +814,7 @@ export const chairSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu"
@@ -721,6 +824,7 @@ export const chairSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Steering Committee Menu"
@@ -730,6 +834,7 @@ export const chairSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       //"Submit Concept Form",
       //"View Submissions"
     );
@@ -1218,6 +1323,7 @@ export const daccSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu",
@@ -1228,6 +1334,7 @@ export const daccSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Chair Menu"
@@ -1237,6 +1344,7 @@ export const daccSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       "Submit Concept Form",
       //"View Submissions",
       "Steering Committee Menu"
@@ -1246,6 +1354,7 @@ export const daccSection = (activeTab) => {
       "data_access",
       activeTab,
       "Overview",
+      "dbGaP Study",
       //"Submit Concept Form",
       //"View Submissions"
     );

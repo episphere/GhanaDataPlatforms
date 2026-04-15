@@ -29,6 +29,7 @@ import {
   amendFormSelect,
   populateAmendSelect,
   testingDataGov,
+  dbGaPStudy,
 } from "./src/pages/dataRequest.js";
 import {
   checkAccessTokenValidity,
@@ -72,7 +73,7 @@ import {
 } from "./src/event.js";
 import { dataAnalysisTemplate } from "./src/pages/dataAnalysis.js";
 import { getFileContent } from "./src/visualization.js";
-import { aboutConfluence, renderOverView, renderDbGaP } from "./src/pages/about.js";
+import { aboutConfluence, renderOverView } from "./src/pages/about.js";
 import { confluenceResources } from "./src/pages/join.js";
 import { confluenceContactPage, confluenceQuestionairePage } from "./src/pages/contact.js";
 import { footerTemplate } from "./src/components/footer.js";
@@ -475,14 +476,13 @@ const manageRouter = async () => {
     aboutConfluence("questionGBHS", true);
     confluenceQuestionairePage();
     hideAnimation();
-  } else if (hash === "#about/dbgap") {
+  } else if (hash === "#data_access/dbgap") {
     const element = document.getElementById("dbgapStudy");
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
     document.title = "EABCS - dbGaP Study";
     assignNavbarActive(element, 1);
-    aboutConfluence("dbgap", true);
-    renderDbGaP();
+    confluenceDiv.innerHTML = dbGaPStudy("dbgap");
     hideAnimation();
   } else if (hash === "#join") {
     const element = document.getElementById("resourcesBCRPP");
@@ -783,14 +783,13 @@ const manageHash = async () => {
     aboutConfluence("questionGBHS", true);
     confluenceQuestionairePage();
     hideAnimation();
-  } else if (hash === "#about/dbgap") {
+  } else if (hash === "#data_access/dbgap") {
     const element = document.getElementById("dbgapStudy");
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
     document.title = "EABCS - dbGaP Study";
     assignNavbarActive(element, 1);
-    aboutConfluence("dbgap", true);
-    renderDbGaP();
+    confluenceDiv.innerHTML = dbGaPStudy("dbgap");
     hideAnimation();
   } else if (hash === "#join") {
     const element = document.getElementById("resourcesBCRPP");
