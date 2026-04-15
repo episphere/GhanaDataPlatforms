@@ -160,7 +160,7 @@ export const confluence = async () => {
     const dataSummaryElement = document.getElementById("dataSummary");
     const dataSummarySubsetElement = document.getElementById("dataSummarySubset");
     const dataDictionaryElement = document.getElementById("dataDictionary");
-    const dataProtocols = document.getElementById("dataProtocols");
+    const dataForms = document.getElementById("dataForms");
     const dataRequestElement = document.getElementById("dataRequest");
     const dataFormElement = document.getElementById("dataForm");
     const studyAcceptedElement = document.getElementById("studyAccepted");
@@ -254,15 +254,15 @@ export const confluence = async () => {
         dataDictionaryTemplate();
       });
     }
-    if (dataProtocols) {
-      dataProtocols.addEventListener("click", async () => {
-        if (dataProtocols.classList.contains("navbar-active")) return;
+    if (dataForms) {
+      dataForms.addEventListener("click", async () => {
+        if (dataForms.classList.contains("navbar-active")) return;
         const confluenceDiv = document.getElementById("confluenceDiv");
         showAnimation();
-        assignNavbarActive(dataProtocols, 1);
-        document.title = "EABCS - Protocols";
+        assignNavbarActive(dataForms, 1);
+        document.title = "EABCS - Forms";
         confluenceDiv.innerHTML = protocolSummary(
-          "protocol", "Protocols"
+          "form", "Forms"
         )
         //removeActiveClass("nav-link", "active");
         // document
@@ -569,80 +569,80 @@ const manageRouter = async () => {
       .querySelectorAll('[href="#data_exploration/dictionary"]')[1]
       .classList.add("active");
     dataDictionaryTemplate();
-  } else if (hash === "#protocols/protocol") {
-    const dataProtocols = document.getElementById("dataProtocols");
+  } else if (hash === "#forms/form") {
+    const dataForms = document.getElementById("dataForms");
     showAnimation();
-    assignNavbarActive(dataProtocols, 1);
-    document.title = "EABCS - Protocols";
+    assignNavbarActive(dataForms, 1);
+    document.title = "EABCS - Forms";
     confluenceDiv.innerHTML = protocolSummary(
-      "protocol", "Protocols"
+      "form", "Forms"
     )
     await protocolsTemplate('main');
   } 
-  else if (hash === "#protocols/anthropometry") {
-    const dataProtocols = document.getElementById("dataProtocols");
-    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+  else if (hash === "#forms/anthropometry") {
+    const dataForms = document.getElementById("dataForms");
+    //if (!dataForms || dataForms.classList.contains("navbar-active")) return;
     showAnimation();
-    assignNavbarActive(dataProtocols, 1);
-    document.title = "EABCS - Protocols";
+    assignNavbarActive(dataForms, 1);
+    document.title = "EABCS - Forms";
     confluenceDiv.innerHTML = protocolSummary(
       "Anthropometry", "Anthropometry"
     )
     removeActiveClass("nav-link", "active");
-    document.querySelectorAll('[href="#protocols/anthropometry"]')[0].classList.add("active");
+    document.querySelectorAll('[href="#forms/anthropometry"]')[0].classList.add("active");
     await protocolsTemplate('Anthropometry');
   } 
-  else if (hash === "#protocols/saliva") {
-    const dataProtocols = document.getElementById("dataProtocols");
-    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+  else if (hash === "#forms/saliva") {
+    const dataForms = document.getElementById("dataForms");
+    //if (!dataForms || dataForms.classList.contains("navbar-active")) return;
     showAnimation();
-    assignNavbarActive(dataProtocols, 1);
-    document.title = "EABCS - Protocols";
+    assignNavbarActive(dataForms, 1);
+    document.title = "EABCS - Forms";
     confluenceDiv.innerHTML = protocolSummary(
       "Saliva", "Saliva"
     )
     removeActiveClass("nav-link", "active");
-    document.querySelectorAll('[href="#protocols/saliva"]')[0].classList.add("active");
+    document.querySelectorAll('[href="#forms/saliva"]')[0].classList.add("active");
     await protocolsTemplate('Saliva');
   } 
-  else if (hash === "#protocols/stool") {
-    const dataProtocols = document.getElementById("dataProtocols");
-    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+  else if (hash === "#forms/stool") {
+    const dataForms = document.getElementById("dataForms");
+    //if (!dataForms || dataForms.classList.contains("navbar-active")) return;
     showAnimation();
-    assignNavbarActive(dataProtocols, 1);
-    document.title = "EABCS - Protocols";
+    assignNavbarActive(dataForms, 1);
+    document.title = "EABCS - Forms";
     confluenceDiv.innerHTML = protocolSummary(
       "Stool", "Stool"
     )
     removeActiveClass("nav-link", "active");
-    document.querySelectorAll('[href="#protocols/stool"]')[0].classList.add("active");
+    document.querySelectorAll('[href="#forms/stool"]')[0].classList.add("active");
     await protocolsTemplate('Stool');
   } 
-  else if (hash === "#protocols/blood") {
+  else if (hash === "#forms/blood") {
     console.log("Blood");
-    const dataProtocols = document.getElementById("dataProtocols");
-    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+    const dataForms = document.getElementById("dataForms");
+    //if (!dataForms || dataForms.classList.contains("navbar-active")) return;
     showAnimation();
-    assignNavbarActive(dataProtocols, 1);
-    document.title = "EABCS - Protocols";
+    assignNavbarActive(dataForms, 1);
+    document.title = "EABCS - Forms";
     confluenceDiv.innerHTML = protocolSummary(
       "Blood", "Blood"
     )
     removeActiveClass("nav-link", "active");
-    document.querySelectorAll('[href="#protocols/blood"]')[0].classList.add("active");
+    document.querySelectorAll('[href="#forms/blood"]')[0].classList.add("active");
     await protocolsTemplate('Blood');
   } 
-  else if (hash === "#protocols/breasttissuebiopsycollection") {
-    const dataProtocols = document.getElementById("dataProtocols");
-    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+  else if (hash === "#forms/breasttissuebiopsycollection") {
+    const dataForms = document.getElementById("dataForms");
+    //if (!dataForms || dataForms.classList.contains("navbar-active")) return;
     showAnimation();
-    assignNavbarActive(dataProtocols, 1);
-    document.title = "EABCS - Protocols";
+    assignNavbarActive(dataForms, 1);
+    document.title = "EABCS - Forms";
     confluenceDiv.innerHTML = protocolSummary(
       "Breast Tissue Biopsy Collection", "Breast Tissue Biopsy Collection"
     )
     removeActiveClass("nav-link", "active");
-    document.querySelectorAll('[href="#protocols/breasttissuebiopsycollection"]')[0].classList.add("active");
+    document.querySelectorAll('[href="#forms/breasttissuebiopsycollection"]')[0].classList.add("active");
     await protocolsTemplate('Breast Tissue Biopsy Collection');
   } 
   else if (hash === "#userSubmissions") {
@@ -810,75 +810,75 @@ const manageHash = async () => {
     confluenceDiv.innerHTML = confluenceEventsPage();
     await eventsBody();
     hideAnimation();
-} else if (hash === "#protocols/protocol") {
-    const dataProtocols = document.getElementById("dataProtocols");
+} else if (hash === "#forms/form") {
+  const dataForms = document.getElementById("dataForms");
+  showAnimation();
+  assignNavbarActive(dataForms, 1);
+  document.title = "EABCS - Forms";
+  confluenceDiv.innerHTML = protocolSummary(
+    "form", "Forms"
+  )
+  await protocolsTemplate('main');
+}  else if (hash === "#forms/anthropometry") {
+    const dataForms = document.getElementById("dataForms");
+    //if (!dataForms || dataForms.classList.contains("navbar-active")) return;
     showAnimation();
-    assignNavbarActive(dataProtocols, 1);
-    document.title = "EABCS - Protocols";
-    confluenceDiv.innerHTML = protocolSummary(
-      "protocol", "Protocols"
-    )
-    await protocolsTemplate('main');
-}  else if (hash === "#protocols/anthropometry") {
-    const dataProtocols = document.getElementById("dataProtocols");
-    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
-    showAnimation();
-    assignNavbarActive(dataProtocols, 1);
-    document.title = "EABCS - Protocols";
+    assignNavbarActive(dataForms, 1);
+    document.title = "EABCS - Forms";
     confluenceDiv.innerHTML = protocolSummary(
       "Anthropometry", "Anthropometry"
     )
     removeActiveClass("nav-link", "active");
-    document.querySelectorAll('[href="#protocols/anthropometry"]')[0].classList.add("active");
+    document.querySelectorAll('[href="#forms/anthropometry"]')[0].classList.add("active");
     await protocolsTemplate('Anthropometry');
-} else if (hash === "#protocols/saliva") {
-    const dataProtocols = document.getElementById("dataProtocols");
-    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+} else if (hash === "#forms/saliva") {
+    const dataForms = document.getElementById("dataForms");
+    //if (!dataForms || dataForms.classList.contains("navbar-active")) return;
     showAnimation();
-    assignNavbarActive(dataProtocols, 1);
-    document.title = "EABCS - Protocols";
+    assignNavbarActive(dataForms, 1);
+    document.title = "EABCS - Forms";
     confluenceDiv.innerHTML = protocolSummary(
       "Saliva", "Saliva"
     )
     removeActiveClass("nav-link", "active");
-    document.querySelectorAll('[href="#protocols/saliva"]')[0].classList.add("active");
+    document.querySelectorAll('[href="#forms/saliva"]')[0].classList.add("active");
     await protocolsTemplate('Saliva');
-  }  else if (hash === "#protocols/stool") {
-    const dataProtocols = document.getElementById("dataProtocols");
-    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+  }  else if (hash === "#forms/stool") {
+    const dataForms = document.getElementById("dataForms");
+    //if (!dataForms || dataForms.classList.contains("navbar-active")) return;
     showAnimation();
-    assignNavbarActive(dataProtocols, 1);
-    document.title = "EABCS - Protocols";
+    assignNavbarActive(dataForms, 1);
+    document.title = "EABCS - Forms";
     confluenceDiv.innerHTML = protocolSummary(
       "Stool", "Stool"
     )
     removeActiveClass("nav-link", "active");
-    document.querySelectorAll('[href="#protocols/stool"]')[0].classList.add("active");
+    document.querySelectorAll('[href="#forms/stool"]')[0].classList.add("active");
     await protocolsTemplate('Stool');
-  }   else if (hash === "#protocols/blood") {
+  }   else if (hash === "#forms/blood") {
     console.log("Blood");
-    const dataProtocols = document.getElementById("dataProtocols");
-    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+    const dataForms = document.getElementById("dataForms");
+    //if (!dataForms || dataForms.classList.contains("navbar-active")) return;
     showAnimation();
-    assignNavbarActive(dataProtocols, 1);
-    document.title = "EABCS - Protocols";
+    assignNavbarActive(dataForms, 1);
+    document.title = "EABCS - Forms";
     confluenceDiv.innerHTML = protocolSummary(
       "Blood", "Blood"
     )
     removeActiveClass("nav-link", "active");
-    document.querySelectorAll('[href="#protocols/blood"]')[0].classList.add("active");
+    document.querySelectorAll('[href="#forms/blood"]')[0].classList.add("active");
     await protocolsTemplate('Blood');
-  }   else if (hash === "#protocols/breasttissuebiopsycollection") {
-    const dataProtocols = document.getElementById("dataProtocols");
-    //if (!dataProtocols || dataProtocols.classList.contains("navbar-active")) return;
+  }   else if (hash === "#forms/breasttissuebiopsycollection") {
+    const dataForms = document.getElementById("dataForms");
+    //if (!dataForms || dataForms.classList.contains("navbar-active")) return;
     showAnimation();
-    assignNavbarActive(dataProtocols, 1);
-    document.title = "EABCS - Protocols";
+    assignNavbarActive(dataForms, 1);
+    document.title = "EABCS - Forms";
     confluenceDiv.innerHTML = protocolSummary(
       "Breast Tissue Biopsy Collection", "Breast Tissue Biopsy Collection"
     )
     removeActiveClass("nav-link", "active");
-    document.querySelectorAll('[href="#protocols/breasttissuebiopsycollection"]')[0].classList.add("active");
+    document.querySelectorAll('[href="#forms/breasttissuebiopsycollection"]')[0].classList.add("active");
     await protocolsTemplate('Breast Tissue Biopsy Collection');
   } 
   // else if (hash === "#contact") {
