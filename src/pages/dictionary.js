@@ -363,28 +363,41 @@ const filterDataHandler = (dictionary) => {
     return filteredData;
   }
   previousValue = currentValue;
+
+  const searchKeys = [
+    "Variable Name",
+    "Cont/Categorical",
+    "Variable category ",
+    "Data Source",
+    "Question Text/Label",
+    "Variable Type",
+    "Derived variable macro Code",
+    "Format/Value",
+    "Publicly availbale on data platform "
+  ];
+
   let searchedData = JSON.parse(JSON.stringify(filteredData));
   searchedData = searchedData.filter((dt) => {
-    console.log(dt["Variable Name"]);
     let found = false;
-    if (dt['Variable Name']) {
-      if (dt["Variable Name"].toLowerCase().includes(currentValue)) found = true;
-    };
-    if (dt["Cont/Categorical"]) {
-      if (dt["Cont/Categorical"].toLowerCase().includes(currentValue)) found = true;
+    for (const key of searchKeys) {
+      if (dt[key] && dt[key].toString().toLowerCase().includes(currentValue)) {
+        found = true;
+        break;
+      }
     }
     if (found) return dt;
   });
+
   let highlightData = JSON.parse(JSON.stringify(searchedData));
   highlightData.map((dt) => {
-    dt["Variable Name"] = dt["Variable Name"].replace(
-      new RegExp(currentValue, "gi"),
-      "<b>$&</b>"
-    );
-    dt["Cont/Categorical"] = dt["Cont/Categorical"].replace(
-      new RegExp(currentValue, "gi"),
-      "<b>$&</b>"
-    );
+    searchKeys.forEach(key => {
+      if (dt[key]) {
+        dt[key] = dt[key].toString().replace(
+          new RegExp(currentValue, "gi"),
+          "<b>$&</b>"
+        );
+      }
+    });
     return dt;
   });
   return highlightData;
@@ -437,16 +450,17 @@ const renderDataDictionary = (dictionary, pageSize, headers) => {
   dictionary.forEach((desc, index) => {
     if (index > pageSize) return;
     const cleanVarName = desc["Variable Name"] ? desc["Variable Name"].replace(/(<b>)|(<\/b>)/g,"") : "";
+    const safeId = cleanVarName.replace(/[^a-z0-9]/gi, '') + index;
     template += `
         <div class="accordion-item">
-            <h2 class="accordion-header" id="heading${cleanVarName}">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#study${cleanVarName}" aria-expanded="false" aria-controls="study${cleanVarName}">
+            <h2 class="accordion-header" id="heading${safeId}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#study${safeId}" aria-expanded="false" aria-controls="study${safeId}">
                     <div class="col-md-4">${desc["Variable Name"] ? desc["Variable Name"] : ""}</div>
                     <div class="col-md-5">${desc["Cont/Categorical"] ? desc["Cont/Categorical"] : ""}</div>
                     <div class="col-md-3">${desc["Variable category "] ? desc["Variable category "] : ""}</div>
                 </button>
             </h2>
-            <div id="study${cleanVarName}" class="accordion-collapse collapse" aria-labelledby="heading${cleanVarName}">
+            <div id="study${safeId}" class="accordion-collapse collapse" aria-labelledby="heading${safeId}">
                 <div class="accordion-body">
                     ${
                       desc["Data Source"]
