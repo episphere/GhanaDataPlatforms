@@ -16,6 +16,18 @@ import { addEventSummaryStatsFilterForm, filterData } from "./event.js";
 //console.log(data);
 const plotTextSize = 10.5;
 
+const excludedVariables = ["flag_weights"];
+
+const removeVariables = (jsonData, headers) => {
+  const filteredHeaders = headers.filter(header => !excludedVariables.includes(header));
+  const filteredJsonData = jsonData.map(row => {
+    const newRow = { ...row };
+    excludedVariables.forEach(variable => delete newRow[variable]);
+    return newRow;
+  });
+  return { jsonData: filteredJsonData, headers: filteredHeaders };
+};
+
 const analyzeUniqueValues = (jsonData, headers) => {
   headers.forEach(header => {
     const uniqueValues = [...new Set(jsonData.map(row => row[header]))].filter(val => val !== undefined && val !== null && val !== '');
@@ -34,7 +46,12 @@ const chartLabels = {
 export const getFileContent = async () => {
   showAnimation();
   //const data = await (await fetch('https://raw.githubusercontent.com/episphere/GhanaDataPlatforms/main/static/data/testghana26march2025.csv')).text();
-  const {jsonData, headers} = csvJSON(await getFile(summaryStatsFileId));//csv2Json(data)//await getFile(summaryStatsFileId));
+  let {jsonData, headers} = csvJSON(await getFile(summaryStatsFileId));//csv2Json(data)//await getFile(summaryStatsFileId));
+  
+  const filteredData = removeVariables(jsonData, headers);
+  jsonData = filteredData.jsonData;
+  headers = filteredData.headers;
+
   console.log(headers);
   analyzeUniqueValues(jsonData, headers);
   //const lastModified = (await getFileInfo(summaryStatsFileId)).modified_at;
@@ -49,34 +66,46 @@ export const getFileContent = async () => {
   renderAllCharts(jsonData, headers);
 
   const graph1 = document.getElementById("dataSummaryVizLabel1");
+  if (graph1) {
     graph1.addEventListener("change", function (event) {
       filterData(jsonData, headers);
       });
+  }
 
   const graph2 = document.getElementById("dataSummaryVizLabel2");
+  if (graph2) {
     graph2.addEventListener("change", function (event) {
       filterData(jsonData, headers);
       });
+  }
 
   const graph3 = document.getElementById("dataSummaryVizLabel3");
+  if (graph3) {
     graph3.addEventListener("change", function (event) {
       filterData(jsonData, headers);
       });
+  }
 
   const graph4 = document.getElementById("dataSummaryVizLabel4");
+  if (graph4) {
     graph4.addEventListener("change", function (event) {
       filterData(jsonData, headers);
       });
+  }
 
   const graph5 = document.getElementById("dataSummaryVizLabel5");
+  if (graph5) {
     graph5.addEventListener("change", function (event) {
       filterData(jsonData, headers);
       });
+  }
 
   const graph6 = document.getElementById("dataSummaryVizLabel6");
+  if (graph6) {
     graph6.addEventListener("change", function (event) {
       filterData(jsonData, headers);
       });
+  }
 
   allFilters(jsonData, headers, "all");
   hideAnimation();
@@ -247,60 +276,72 @@ export const renderAllCharts = (data, headers) => {
   data.forEach((value) => (totalSubjects += 1));
   document.getElementById("participantCount").innerHTML = `<b>No. of Participants:</b> ${totalSubjects.toLocaleString("en-US")}`;
 
-  generateBarChart(
-    "consdiag_cnt",
-    "dataSummaryVizChart1",
-    "dataSummaryVizLabel1",
-    finalData,
-    "chartRow1",
-    "Full Cohort",
-    headers
-  );
-  generateBarChart(
-    "age_cat",
-    "dataSummaryVizChart2",
-    "dataSummaryVizLabel2",
-    finalData,
-    "chartRow1",
-    "Full Cohort",
-    headers
-  );
-  generateBarChart(
-    "flag_gen",
-    "dataSummaryVizChart3",
-    "dataSummaryVizLabel3",
-    finalData,
-    "chartRow1",
-    "Full Cohort",
-    headers
-  );
-  generateBarChart(
-    "flag_weights",
-    "dataSummaryVizChart4",
-    "dataSummaryVizLabel4",
-    finalData,
-    "chartRow2",
-    "Full Cohort",
-    headers
-  );
-  generateBarChart(
-    "bodysize_cat",
-    "dataSummaryVizChart5",
-    "dataSummaryVizLabel5",
-    finalData,
-    "chartRow2",
-    "Full Cohort",
-    headers
-  );
-  generateBarChart(
-    "menop",
-    "dataSummaryVizChart6",
-    "dataSummaryVizLabel6",
-    finalData,
-    "chartRow2",
-    "Full Cohort",
-    headers
-  );
+  if (!excludedVariables.includes("site")) {
+    generateBarChart(
+      "site",
+      "dataSummaryVizChart1",
+      "dataSummaryVizLabel1",
+      finalData,
+      "chartRow1",
+      "Full Cohort",
+      headers
+    );
+  }
+  if (!excludedVariables.includes("consdiag_cnt")) {
+    generateBarChart(
+      "consdiag_cnt",
+      "dataSummaryVizChart2",
+      "dataSummaryVizLabel2",
+      finalData,
+      "chartRow1",
+      "Full Cohort",
+      headers
+    );
+  }
+  if (!excludedVariables.includes("age_cat")) {
+    generateBarChart(
+      "age_cat",
+      "dataSummaryVizChart3",
+      "dataSummaryVizLabel3",
+      finalData,
+      "chartRow1",
+      "Full Cohort",
+      headers
+    );
+  }
+  if (!excludedVariables.includes("flag_gen")) {
+    generateBarChart(
+      "flag_gen",
+      "dataSummaryVizChart4",
+      "dataSummaryVizLabel4",
+      finalData,
+      "chartRow2",
+      "Full Cohort",
+      headers
+    );
+  }
+  if (!excludedVariables.includes("bodysize_cat")) {
+    generateBarChart(
+      "bodysize_cat",
+      "dataSummaryVizChart5",
+      "dataSummaryVizLabel5",
+      finalData,
+      "chartRow2",
+      "Full Cohort",
+      headers
+    );
+  }
+  if (!excludedVariables.includes("menop")) {
+    generateBarChart(
+      "menop",
+      "dataSummaryVizChart6",
+      "dataSummaryVizLabel6",
+      finalData,
+      "chartRow2",
+      "Full Cohort",
+      headers
+    );
+  }
 };
 
 export const updateAllCharts2 = (data) => {
@@ -310,54 +351,72 @@ export const updateAllCharts2 = (data) => {
   data.forEach((value) => (totalSubjects += 1));
   document.getElementById("participantCount").innerHTML = `<b>No. of Participants:</b> ${totalSubjects.toLocaleString("en-US")}`;
 
-  updateBarChart(
-    document.getElementById("dataSummaryVizLabel1").value,
-    "dataSummaryVizChart1",
-    "dataSummaryVizLabel1",
-    finalData,
-    "chartRow1",
-    "Full Cohort"
-  );
-  updateBarChart(
-    document.getElementById("dataSummaryVizLabel2").value,
-    "dataSummaryVizChart2",
-    "dataSummaryVizLabel2",
-    finalData,
-    "chartRow1",
-    "Full Cohort"
-  );
-  updateBarChart(
-    document.getElementById("dataSummaryVizLabel3").value,
-    "dataSummaryVizChart3",
-    "dataSummaryVizLabel3",
-    finalData,
-    "chartRow1",
-    "Full Cohort"
-  );
-  updateBarChart(
-    document.getElementById("dataSummaryVizLabel4").value,
-    "dataSummaryVizChart4",
-    "dataSummaryVizLabel4",
-    finalData,
-    "chartRow2",
-    "Full Cohort"
-  );
-  updateBarChart(
-    document.getElementById("dataSummaryVizLabel5").value,
-    "dataSummaryVizChart5",
-    "dataSummaryVizLabel5",
-    finalData,
-    "chartRow2",
-    "Full Cohort"
-  );
-  updateBarChart(
-    document.getElementById("dataSummaryVizLabel6").value,
-    "dataSummaryVizChart6",
-    "dataSummaryVizLabel6",
-    finalData,
-    "chartRow2",
-    "Full Cohort"
-  );
+  const label1 = document.getElementById("dataSummaryVizLabel1");
+  if (label1) {
+    updateBarChart(
+      label1.value,
+      "dataSummaryVizChart1",
+      "dataSummaryVizLabel1",
+      finalData,
+      "chartRow1",
+      "Full Cohort"
+    );
+  }
+  const label2 = document.getElementById("dataSummaryVizLabel2");
+  if (label2) {
+    updateBarChart(
+      label2.value,
+      "dataSummaryVizChart2",
+      "dataSummaryVizLabel2",
+      finalData,
+      "chartRow1",
+      "Full Cohort"
+    );
+  }
+  const label3 = document.getElementById("dataSummaryVizLabel3");
+  if (label3) {
+    updateBarChart(
+      label3.value,
+      "dataSummaryVizChart3",
+      "dataSummaryVizLabel3",
+      finalData,
+      "chartRow1",
+      "Full Cohort"
+    );
+  }
+  const label4 = document.getElementById("dataSummaryVizLabel4");
+  if (label4) {
+    updateBarChart(
+      label4.value,
+      "dataSummaryVizChart4",
+      "dataSummaryVizLabel4",
+      finalData,
+      "chartRow2",
+      "Full Cohort"
+    );
+  }
+  const label5 = document.getElementById("dataSummaryVizLabel5");
+  if (label5) {
+    updateBarChart(
+      label5.value,
+      "dataSummaryVizChart5",
+      "dataSummaryVizLabel5",
+      finalData,
+      "chartRow2",
+      "Full Cohort"
+    );
+  }
+  const label6 = document.getElementById("dataSummaryVizLabel6");
+  if (label6) {
+    updateBarChart(
+      label6.value,
+      "dataSummaryVizChart6",
+      "dataSummaryVizLabel6",
+      finalData,
+      "chartRow2",
+      "Full Cohort"
+    );
+  }
 };
 
 export const renderAllCasesCharts = (data) => {
