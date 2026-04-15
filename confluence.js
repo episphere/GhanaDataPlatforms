@@ -82,6 +82,7 @@ import { dataDictionaryTemplate } from "./src/pages/dictionary.js";
 import { showPreview } from "./src/components/boxPreview.js";
 import { confluenceEventsPage, eventsBody } from './src/pages/events.js';
 import { protocolsTemplate, protocolSummary } from './src/pages/protocols.js';
+import { moopSummary, moopTemplate } from './src/pages/moop.js';
 import { publication, publicationNoSign, publicationAdmin } from "./src/pages/publicationpage.js";
 
 /**
@@ -161,6 +162,7 @@ export const confluence = async () => {
     const dataSummarySubsetElement = document.getElementById("dataSummarySubset");
     const dataDictionaryElement = document.getElementById("dataDictionary");
     const dataForms = document.getElementById("dataForms");
+    const dataMOOP = document.getElementById("dataMOOP");
     const dataRequestElement = document.getElementById("dataRequest");
     const dataFormElement = document.getElementById("dataForm");
     const studyAcceptedElement = document.getElementById("studyAccepted");
@@ -269,6 +271,17 @@ export const confluence = async () => {
         //   .querySelectorAll('[href="#protocols"]')[1]
         //   .classList.add("active");
           await protocolsTemplate('main');
+      });
+    }
+    if (dataMOOP) {
+      dataMOOP.addEventListener("click", async () => {
+        if (dataMOOP.classList.contains("navbar-active")) return;
+        const confluenceDiv = document.getElementById("confluenceDiv");
+        showAnimation();
+        assignNavbarActive(dataMOOP, 1);
+        document.title = "EABCS - MOOP";
+        confluenceDiv.innerHTML = moopSummary("moop", "Manual of Operations and Procedures (MOOP)");
+        await moopTemplate();
       });
     }
     if (dataFormElement) {
@@ -579,6 +592,14 @@ const manageRouter = async () => {
     )
     await protocolsTemplate('main');
   } 
+  else if (hash === "#moop") {
+    const dataMOOP = document.getElementById("dataMOOP");
+    showAnimation();
+    assignNavbarActive(dataMOOP, 1);
+    document.title = "EABCS - MOOP";
+    confluenceDiv.innerHTML = moopSummary("moop", "Manual of Operations and Procedures (MOOP)");
+    await moopTemplate();
+  }
   else if (hash === "#forms/anthropometry") {
     const dataForms = document.getElementById("dataForms");
     //if (!dataForms || dataForms.classList.contains("navbar-active")) return;
@@ -733,6 +754,9 @@ const manageHash = async () => {
   } else if (hash === "#publicationpage") {
     const element = document.getElementById("publicationID");
     element.click();
+  } else if (hash === "#moop") {
+    const element = document.getElementById("dataMOOP");
+    if (element) element.click();
   } else if (hash === "#adminpublicationpage") {
     const element = document.getElementById("adminpublicationID");
     element.click();

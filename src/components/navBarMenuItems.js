@@ -39,6 +39,9 @@ export const navBarMenutemplate = () => {
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#forms/form" title="Forms" id="dataForms">
                   Forms
                 </a>
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#moop" title="MOOP" id="dataMOOP">
+                  MOOP
+                </a>
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_exploration/summary" title="Summary Statistics" id="dataSummary">
                     Summary Statistics
                 </a>
