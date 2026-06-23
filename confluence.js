@@ -92,11 +92,6 @@ import { publication, publicationNoSign, publicationAdmin } from "./src/pages/pu
  */
 
 export const confluence = async () => {
-  // if ("serviceWorker" in navigator) {
-  //   try {
-  //     navigator.serviceWorker.register("./serviceWorker.js");
-  //   } catch (error) {}
-  // }
   if(window.navigator && navigator.serviceWorker) {
     navigator.serviceWorker.getRegistrations()
     .then(function(registrations) {
@@ -124,23 +119,18 @@ export const confluence = async () => {
     .getElementById("loginBoxAppProd")
     .addEventListener("click", loginAppProd);
 
-  if (localStorage.parms === undefined) {
-    const loginBoxAppDev = document.getElementById("loginBoxAppDev");
-    const loginBoxAppEpisphere = document.getElementById(
-      "loginBoxAppEpisphere"
-    );
-    const loginBoxAppProd = document.getElementById("loginBoxAppProd");
-    const loginBoxAppStage = document.getElementById("loginBoxAppStage");
-    if (location.origin.match("localhost")) loginBoxAppDev.hidden = false;
-    if (location.origin.match("epidataplatforms-stage"))
-      loginBoxAppStage.hidden = false;
-    if (location.origin.match("epidataplatforms"))
-      loginBoxAppProd.hidden = false;
-    if (location.origin.match("episphere")) loginBoxAppEpisphere.hidden = false;
-
-    await storeAccessToken();
-    manageRouter();
-  }
+    if (localStorage.parms === undefined) {
+        const loginBoxAppDev = document.getElementById('loginBoxAppDev');
+        const loginBoxAppEpisphere = document.getElementById('loginBoxAppEpisphere');
+        const loginBoxAppProd = document.getElementById('loginBoxAppProd');
+        const loginBoxAppStage = document.getElementById('loginBoxAppStage');
+        if (location.origin.match('localhost')) loginBoxAppDev.hidden = false;
+        if (applicationURLs.stage.includes(location.origin)) loginBoxAppStage.hidden = false;
+        if (applicationURLs.prod.includes(location.origin)) loginBoxAppProd.hidden = false;
+        if (location.origin.match('episphere')) loginBoxAppEpisphere.hidden = false;
+        await storeAccessToken();
+        manageRouter();
+    }
   if (localStorage.parms && JSON.parse(localStorage.parms).access_token) {
     const response = await getCurrentUser();
     showAnimation();
@@ -463,7 +453,7 @@ const manageRouter = async () => {
     infoDeck();
     hideAnimation();
   } else if (hash === "#about/overview") {
-    const element = document.getElementById("aboutBCRPP");
+    const element = document.getElementById("aboutGBHS");
     if (!element) return;
     if (element.classList.contains("navbar-active")) return;
     console.log("about overview clicked");
@@ -772,7 +762,7 @@ const manageHash = async () => {
     infoDeckAfterLoggedIn();
     hideAnimation();
   } else if (hash === "#about/overview") {
-    const element = document.getElementById("aboutBCRPP");
+    const element = document.getElementById("aboutGBHS");
     if (!element) return;
     //if (element.classList.contains("navbar-active")) return;
     assignNavbarActive(element, 1);

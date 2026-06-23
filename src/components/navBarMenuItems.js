@@ -13,7 +13,7 @@ export const navBarMenutemplate = () => {
                 About EABCS
             </button>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/overview" id="aboutBCRPP">Overview</a>
+                <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/overview" id="aboutGBHS">Overview</a>
                 <!---<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/description" id="studydescBCRPP">Description of Studies</a>--->
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/contact" id="contactGBHS">Study Team Members</a>
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/questionGBHS" id="questionGBHS">Study Questionaire</a>

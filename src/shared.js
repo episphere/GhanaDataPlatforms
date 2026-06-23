@@ -1950,7 +1950,8 @@ export function selectProps(...props){
 };
 
 export const applicationURLs = {
-  dev: "https://episphere.github.io/bcrpDataPlatform",
-  stage: "https://epidataplatforms-stage.cancer.gov/bcrp",
-  prod: "https://epidataplatforms.cancer.gov/bcrpp",
+    'dev': 'https://episphere.github.io',
+    'stage': 'https://epidataplatforms-stage.cancer.gov/gbhs',
+    'prod': 'https://epidataplatforms.cancer.gov/gbhs',
+    'local': 'http://localhost'
 };
