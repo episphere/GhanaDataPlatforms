@@ -106,9 +106,9 @@ export const confluence = async () => {
       }
     });
   }
-  if (window.location.href.includes("index.html")){
-    location.href = location.href.replace("index.html", "");
-  };
+  if (window.location.href.includes("index.html")) {
+    history.replaceState(null, "", window.location.href.replace("index.html", ""));
+  }
   const confluenceDiv = document.getElementById("confluenceDiv");
   const navBarOptions = document.getElementById("navBarOptions");
   document
