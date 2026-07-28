@@ -1,0 +1,147 @@
+{
+  "title": "Study Team Members",
+  "sections": [
+    {
+      "title": "NCI Division of Cancer Epidemiology and Genetics (DCEG)",
+      "groups": [
+        {
+          "title": "Integrative Tumor Epidemiology Branch (ITEB)",
+          "members": [
+            { "name": "Jonine Figueroa, Ph.D., M.P.H" },
+            { "name": "Mustapha Abubakar, M.D., Ph.D." },
+            { "name": "Khushali Keyur Shahm, M.P.H" }
+          ]
+        },
+        {
+          "title": "Trans-Divisional Research Program (TDRP)",
+          "members": [
+            { "name": "Thomas Ahearn, Ph.D." },
+            { "name": "Louise A. Brinton, Ph.D. (retired)" }
+          ]
+        },
+        {
+          "title": "Occupational and Environmental Epidemiology Branch (OEEB)",
+          "members": [
+            { "name": "Laura Beane-Freeman, Ph.D." }
+          ]
+        },
+        {
+          "title": "Office of the Director (OD)",
+          "members": [
+            { "name": "Brittny Davis Lynn, Ph.D. M.P.H." }
+          ]
+        },
+        {
+          "title": "Infectious and Immunology Epidemiology Branch (IIB)",
+          "members": [
+            { "name": "James J. Goedert (retired), M.D." },
+            { "name": "Sam Mbulaiteye, M.D." }
+          ]
+        },
+        {
+          "title": "Biostatistics Branch (BB)",
+          "members": [
+            { "name": "Barry Graubard (retired), Ph.D." },
+            { "name": "Ruth Pfeiffer, Ph.D." }
+          ]
+        },
+        {
+          "title": "Molecular and Digital Pathology Lab (MDPL)",
+          "members": [
+            { "name": "Petra Lenz M.D." }
+          ]
+        },
+        {
+          "title": "Metabolic Epidemiology Branch (MEB)",
+          "members": [
+            { "name": "Rashmi Sinha, Ph.D." },
+            { "name": "Emily Vogtmann Ph.D." }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ghana Collaborators",
+      "groups": [
+        {
+          "title": "Korle Bu Teaching Hospital and University of Ghana, Accra",
+          "members": [
+            { "name": "Joe Clegg-Lamptey, M.D." },
+            { "name": "Naomi Ohene Oti, R.N." },
+            { "name": "Florence Dedey, M.D." },
+            { "name": "Lawrence Edusei, M.D." },
+            { "name": "Joel Yarney, M.D." },
+            { "name": "Verne Vanderpuye, M.D." }
+          ]
+        },
+        {
+          "title": "University of Ghana",
+          "members": [
+            { "name": "Kofi Nyarko, M.D., M.P.H." }
+          ]
+        },
+        {
+          "title": "Komfo Anokye Teaching Hospital, Kumasi",
+          "members": [
+            { "name": "Baffour Awuah, M.D." },
+            { "name": "Ernest Adjei, M.D." },
+            { "name": "Francis Aitpillah, M.D." },
+            { "name": "Daniel Ansong, M.D." },
+            { "name": "Ernest Osei Bonsu Baawuah, M.D." },
+            { "name": "Amankwaa Fiempong, M.D." },
+            { "name": "Nicolas Titiloye, M.D." }
+          ]
+        },
+        {
+          "title": "Peace and Love Hospitals, Kumasi",
+          "members": [
+            { "name": "Beatrice Wiafe Addai, M.D., Ph.D." },
+            { "name": "Seth A Wiafe, M.P.H., G.I.S.P., Ph.D." }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Outside Collaborators",
+      "groups": [
+        {
+          "wide": true,
+          "members": [
+            {
+              "name": "Montserrat Garcia-Closas, M.D., Dr.Ph.",
+              "affiliation": "The Institute of Cancer Research, UK"
+            },
+            {
+              "name": "Melissa Troester Ph.D., M.P.H.",
+              "affiliation": "University of North Carolina, NC"
+            },
+            {
+              "name": "Doratha A Byrd Ph.D., M.P.H.",
+              "affiliation": "Moffit Cancer Center, FL"
+            },
+            {
+              "name": "Dezheng Huo Ph.D., M.D.",
+              "affiliation": "University of Chicago, IL"
+            },
+            {
+              "name": "Olufunmilayo (Funmi) I. Olopade, Ph.D., M.D.",
+              "affiliation": "University of Chicago, IL"
+            },
+            {
+              "name": "Christopher A Haiman Sc.D.",
+              "affiliation": "Norris Comprehensive Cancer Center, CA"
+            },
+            {
+              "name": "Wei Zheng Ph.D.",
+              "affiliation": "Vanderbilt University School of Medicine, TN"
+            },
+            {
+              "name": "Maire Duggan, M.D.",
+              "affiliation": "University of Calgary, Canada"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
