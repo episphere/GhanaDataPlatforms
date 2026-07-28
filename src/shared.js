@@ -197,7 +197,7 @@ export const storeAccessToken = async () => {
     else if (location.origin.indexOf("epidataplatforms-stage") !== -1)
       clt = config.iniAppStage;
     else if (location.origin.indexOf("epidataplatforms") !== -1)
-      clt = config.iniAppDev;
+      clt = config.iniAppProd;
     document.getElementById("confluenceDiv").innerHTML = "";
 
     var myHeaders = new Headers();
