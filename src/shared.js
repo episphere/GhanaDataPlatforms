@@ -1952,6 +1952,6 @@ export function selectProps(...props){
 export const applicationURLs = {
     'dev': 'https://episphere.github.io',
     'stage': 'https://epidataplatforms-stage.cancer.gov/gbhs',
-    'prod': 'https://epidataplatforms.cancer.gov/gbhs',
+    'prod': 'https://epidataplatforms.cancer.gov/eabcs',
     'local': 'http://localhost'
 };
