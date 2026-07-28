@@ -1,9 +1,21 @@
-import { hideAnimation, showAnimation, assignNavbarActive } from "../shared.js";
-import { moopContent } from "./moopContent.js";
+import { hideAnimation } from "../shared.js";
+import { pageNavBar } from "../components/navBarMenuItems.js";
 
 export const moopSummary = (activeTab, pageHeader) => {
+  const navBarItems = pageNavBar(
+    "about",
+    activeTab,
+    "Overview",
+    "Study Team Members",
+    "Study Questionaire",
+    "MOOP"
+  );
+
   return `
         <div class="general-bg align-left">
+            <div class="container">
+                ${navBarItems}
+            </div>
             <div class="container2 body-min-height">
                 <div class="main-summary-row" style="margin-top: 10px; margin-bottom: 10px;">
                     <div class="col-xl-3 filter-column black-font" id="moopFilterSidebar">
@@ -60,7 +72,7 @@ export const moopTemplate = async () => {
     let tocHtml = `<div class="list-group list-group-flush">`;
     moopChapters.forEach(chapter => {
         tocHtml += `
-            <button type="button" class="list-group-item list-group-item-action moop-toc-item border-0" data-chapter="${chapter.id}" data-file="${chapter.file}" data-title="${chapter.title}">
+            <button type="button" class="list-group-item list-group-item-action moop-toc-item border-0" data-file="${chapter.file}" data-title="${chapter.title}">
                 ${chapter.title}
             </button>
         `;
@@ -71,10 +83,9 @@ export const moopTemplate = async () => {
     const tocItems = document.getElementsByClassName("moop-toc-item");
     Array.from(tocItems).forEach(item => {
         item.addEventListener("click", () => {
-            const chapterId = item.dataset.chapter;
             const file = item.dataset.file;
             const title = item.dataset.title;
-            renderChapter(chapterId, file, title);
+            renderChapter(file, title);
             
             // Update active state
             Array.from(tocItems).forEach(i => i.classList.remove("active"));
@@ -85,22 +96,15 @@ export const moopTemplate = async () => {
     hideAnimation();
 };
 
-const renderChapter = (chapterId, file, title) => {
+const renderChapter = (file, title) => {
     const contentArea = document.getElementById("moopActualContent");
-    const hasHtml = moopContent[chapterId] !== undefined;
 
     contentArea.innerHTML = `
-        <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+        <div class="mb-4 border-bottom pb-2">
             <h2 class="m-0">${title}</h2>
-            <div class="btn-group" role="group" aria-label="View mode">
-                <button type="button" class="btn btn-sm btn-outline-secondary ${hasHtml ? 'active' : 'disabled'}" id="viewTextMode">Text View</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary ${!hasHtml ? 'active' : ''}" id="viewPdfMode">PDF View</button>
-            </div>
         </div>
         
-        <div id="chapterContentContainer">
-            ${hasHtml ? renderHtmlContent(chapterId) : renderPdfContent(file)}
-        </div>
+        ${renderPdfContent(file)}
         
         <div class="mt-4 pt-3 border-top">
             <a href="./MOOP/${file}" target="_blank" class="btn btn-sm btn-link text-primary p-0">
@@ -108,24 +112,6 @@ const renderChapter = (chapterId, file, title) => {
             </a>
         </div>
     `;
-
-    if (hasHtml) {
-        document.getElementById("viewTextMode").addEventListener("click", () => {
-            document.getElementById("viewTextMode").classList.add("active");
-            document.getElementById("viewPdfMode").classList.remove("active");
-            document.getElementById("chapterContentContainer").innerHTML = renderHtmlContent(chapterId);
-        });
-    }
-
-    document.getElementById("viewPdfMode").addEventListener("click", () => {
-        document.getElementById("viewPdfMode").classList.add("active");
-        document.getElementById("viewTextMode").classList.remove("active");
-        document.getElementById("chapterContentContainer").innerHTML = renderPdfContent(file);
-    });
-};
-
-const renderHtmlContent = (chapterId) => {
-    return `<div class="moop-text-content">${moopContent[chapterId].html}</div>`;
 };
 
 const renderPdfContent = (file) => {

@@ -11,7 +11,9 @@ export const aboutConfluence = (activeTab, showDescription) => {
 
         "Study Team Members",
 
-        "Study Questionaire"
+        "Study Questionaire",
+
+        "MOOP"
       )
     : `<div id='overview'></div>`;
   let template = `
