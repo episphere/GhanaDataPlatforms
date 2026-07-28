@@ -3,9 +3,24 @@ import { logOut } from "./manageAuthentication.js";
 import { confluence } from "../confluence.js";
 
 export const emailsAllowedToUpdateData = [
-  "kopchickbp@nih.gov",
-  "ahearntu@nih.gov",
+  'shahk6@nih.gov', 'figueroaj@nih.gov', 'kopchickbp@nih.gov'
 ];
+
+export const isDataAdmin = () => {
+  if (!localStorage.parms) return false;
+
+  try {
+    const login = JSON.parse(localStorage.parms).login;
+    return Boolean(
+      login &&
+      emailsAllowedToUpdateData.some(
+        email => email.toLowerCase() === login.toLowerCase()
+      )
+    );
+  } catch (error) {
+    return false;
+  }
+};
 
 export const emailforChair = ['shahk6@nih.gov', 'figueroaj@nih.gov', 'kopchickbp@nih.gov'];
 

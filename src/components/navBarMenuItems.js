@@ -1,4 +1,9 @@
-import { applicationURLs, emailforChair, emailforDACC } from "./../shared.js";
+import {
+  applicationURLs,
+  emailforChair,
+  emailforDACC,
+  isDataAdmin
+} from "./../shared.js";
 const showProjectConceptForm = true;
 const viewSubmissionsShow = false;
 export const navBarMenutemplate = () => {
@@ -72,6 +77,11 @@ export const navBarMenutemplate = () => {
                         ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#userSubmissions" title='View Your Submissions' id="userSubmissions">View Submissions</a>`
                         : ""
                     }
+                    ${
+                      isDataAdmin()
+                        ? `<a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_access/admin" title="Admin Table" id="adminTable"> Admin Table </a>`
+                        : ""
+                    }
                     <!--a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#data_access/accepted" title="Accepted Studies" id="dataAccepted"> Accepted </a-->
                     ${
                       emailforChair.indexOf(
@@ -127,6 +137,14 @@ export function pageNavBar(page, activeTab, ...pageHeaders) {
   outerDivEl.appendChild(navEl);
   containerEl.appendChild(outerDivEl);
 
+  if (
+    page === "data_access" &&
+    isDataAdmin() &&
+    !pageHeaders.includes("Admin Table")
+  ) {
+    pageHeaders.push("Admin Table");
+  }
+
   for (const header of pageHeaders) {
     let li = document.createElement("li");
     li.classList.add("nav-item");
@@ -161,6 +179,10 @@ export function pageNavBar(page, activeTab, ...pageHeaders) {
     if (header === "Steering Committee Menu") {
       link.href = `#${page}/daccView`;
       if (activeTab === "daccView") link.classList.add("active");
+    }
+    if (header === "Admin Table") {
+      link.href = "#data_access/admin";
+      if (activeTab === "admin") link.classList.add("active");
     }
 
     if (header === "Description of Studies") {

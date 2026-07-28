@@ -60,7 +60,8 @@ import {
   uploadFormFolder,
   uploadFile,
   uploadWordFile,
-  getFile
+  getFile,
+  isDataAdmin
 } from "./src/shared.js";
 import {
   addEventConsortiaSelect,
@@ -84,6 +85,7 @@ import { confluenceEventsPage, eventsBody } from './src/pages/events.js';
 import { protocolsTemplate, protocolSummary } from './src/pages/protocols.js';
 import { moopSummary, moopTemplate } from './src/pages/moop.js';
 import { publication, publicationNoSign, publicationAdmin } from "./src/pages/publicationpage.js";
+import { adminTableTemplate, loadAdminTable } from "./src/pages/adminTable.js";
 
 /**
  * 1. add Scientifix comitte to menu
@@ -154,6 +156,7 @@ export const confluence = async () => {
     const dataForms = document.getElementById("dataForms");
     const dataMOOP = document.getElementById("dataMOOP");
     const dataRequestElement = document.getElementById("dataRequest");
+    const adminTableElement = document.getElementById("adminTable");
     const dataFormElement = document.getElementById("dataForm");
     const studyAcceptedElement = document.getElementById("studyAccepted");
     const chairViewElement = document.getElementById("chairView");
@@ -379,6 +382,22 @@ export const confluence = async () => {
       confluenceDiv.innerHTML = dataRequestTemplate("overview");
       hideAnimation();
     });
+    if (adminTableElement) {
+      adminTableElement.addEventListener("click", async () => {
+        if (!isDataAdmin()) {
+          window.location.hash = "#data_access/overview";
+          return;
+        }
+        if (adminTableElement.classList.contains("navbar-active")) return;
+
+        showAnimation();
+        assignNavbarActive(adminTableElement, 1);
+        document.title = "EABCS - Admin Table";
+        confluenceDiv.innerHTML = adminTableTemplate();
+        await loadAdminTable();
+        hideAnimation();
+      });
+    }
     const folders = await getFolderItems(0);
     const array = filterConsortiums(folders.entries);
     const projectArray = filterProjects(folders.entries);
@@ -711,6 +730,13 @@ const manageHash = async () => {
     element.click();
   } else if (hash === "#data_access/overview") {
     const element = document.getElementById("dataRequest");
+    element.click();
+  } else if (hash === "#data_access/admin") {
+    const element = document.getElementById("adminTable");
+    if (!element || !isDataAdmin()) {
+      window.location.hash = "#data_access/overview";
+      return;
+    }
     element.click();
   } else if (hash === "#data_access/form") {
     const element = document.getElementById("dataForm");
