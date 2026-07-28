@@ -1,3 +1,5 @@
+import { getAppAssetUrl } from "../shared.js";
+
 export const confluenceContactPage = () => {
   const template = `
         <div class="general-bg padding-bottom-1rem">
@@ -215,7 +217,7 @@ export const confluenceQuestionairePage = () => {
                       </div>
                   </div>
                   <div class="confluence-resources white-bg div-border font-size-18 height100">
-                    <iframe src="./static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf" width="100%" height="100%">
+                    <iframe src="${getAppAssetUrl("static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf")}" width="100%" height="100%"></iframe>
                   </div>
                 </div>
             </div>

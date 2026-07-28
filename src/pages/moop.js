@@ -1,4 +1,4 @@
-import { hideAnimation } from "../shared.js";
+import { getAppAssetUrl, hideAnimation } from "../shared.js";
 import { pageNavBar } from "../components/navBarMenuItems.js";
 
 export const moopSummary = (activeTab, pageHeader) => {
@@ -107,7 +107,7 @@ const renderChapter = (file, title) => {
         ${renderPdfContent(file)}
         
         <div class="mt-4 pt-3 border-top">
-            <a href="./MOOP/${file}" target="_blank" class="btn btn-sm btn-link text-primary p-0">
+            <a href="${getAppAssetUrl(`MOOP/${file}`)}" target="_blank" class="btn btn-sm btn-link text-primary p-0">
                 <i class="fas fa-download me-1"></i> Download original PDF
             </a>
         </div>
@@ -117,7 +117,7 @@ const renderChapter = (file, title) => {
 const renderPdfContent = (file) => {
     return `
         <div class="div-border" style="height: calc(100vh - 350px);">
-            <iframe src="./MOOP/${file}" width="100%" height="100%" style="border: none;"></iframe>
+            <iframe src="${getAppAssetUrl(`MOOP/${file}`)}" width="100%" height="100%" style="border: none;"></iframe>
         </div>
     `;
 };

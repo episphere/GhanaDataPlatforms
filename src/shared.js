@@ -1955,3 +1955,16 @@ export const applicationURLs = {
     'prod': 'https://epidataplatforms.cancer.gov/eabcs',
     'local': 'http://localhost'
 };
+
+export const getAppAssetUrl = (relativePath) => {
+  const currentPath = window.location.pathname;
+  const lastPathSegment = currentPath.split("/").pop();
+  const appBasePath = currentPath.endsWith("/")
+    ? currentPath
+    : lastPathSegment.includes(".")
+      ? currentPath.slice(0, currentPath.lastIndexOf("/") + 1)
+      : `${currentPath}/`;
+  const normalizedPath = relativePath.replace(/^\.?\//, "");
+
+  return new URL(normalizedPath, `${window.location.origin}${appBasePath}`).href;
+};

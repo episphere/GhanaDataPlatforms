@@ -190,10 +190,9 @@ export const dataAccess = (activeTab, showDescripton) => {
 };
 
 export const dbGaPStudy = (activeTab) => {
-  let authChair =
-    emailforChair.indexOf(JSON.parse(localStorage.parms).login) !== -1;
-  let authDacc =
-    emailforDACC.indexOf(JSON.parse(localStorage.parms).login) !== -1;
+  const user = localStorage.parms ? JSON.parse(localStorage.parms) : {};
+  const authChair = emailforChair.includes(user.login);
+  const authDacc = emailforDACC.includes(user.login);
   let navBarItems = "";
 
   if (authDacc && authChair) {
