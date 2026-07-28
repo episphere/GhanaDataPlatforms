@@ -1,4 +1,4 @@
-import { getAppAssetUrl } from "../shared.js";
+import { getAppAssetUrl, loadPdfIntoIframe } from "../shared.js";
 
 export const confluenceContactPage = () => {
   const template = `
@@ -208,6 +208,7 @@ export const confluenceContactPage = () => {
 };
 
 export const confluenceQuestionairePage = () => {
+    const pdfUrl = getAppAssetUrl("static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf");
     const template = `
           <div class="general-bg padding-bottom-1rem">
               <div class="body-min-height">
@@ -217,10 +218,11 @@ export const confluenceQuestionairePage = () => {
                       </div>
                   </div>
                   <div class="confluence-resources white-bg div-border font-size-18 height100">
-                    <iframe src="${getAppAssetUrl("static/files/GBHS_Questionnaire_Annotated_withV2_d20170821_TOC.pdf")}" width="100%" height="100%"></iframe>
+                    <iframe id="questionnairePdfViewer" title="Study Questionnaire PDF" width="100%" height="100%"></iframe>
                   </div>
                 </div>
             </div>
                   `
     document.getElementById("overview").innerHTML = template;
+    loadPdfIntoIframe("questionnairePdfViewer", pdfUrl);
 }

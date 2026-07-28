@@ -1968,3 +1968,50 @@ export const getAppAssetUrl = (relativePath) => {
 
   return new URL(normalizedPath, `${window.location.origin}${appBasePath}`).href;
 };
+
+const pdfObjectUrls = new Map();
+
+export const loadPdfIntoIframe = async (iframeId, pdfUrl) => {
+  const iframe = document.getElementById(iframeId);
+  if (!iframe) return;
+
+  try {
+    const response = await fetch(pdfUrl);
+    if (!response.ok) {
+      throw new Error(`Unable to load PDF (${response.status})`);
+    }
+
+    const pdfBlob = await response.blob();
+    const objectUrl = URL.createObjectURL(
+      pdfBlob.type === "application/pdf"
+        ? pdfBlob
+        : new Blob([pdfBlob], { type: "application/pdf" })
+    );
+
+    if (document.getElementById(iframeId) !== iframe) {
+      URL.revokeObjectURL(objectUrl);
+      return;
+    }
+
+    const previousObjectUrl = pdfObjectUrls.get(iframeId);
+    if (previousObjectUrl) URL.revokeObjectURL(previousObjectUrl);
+
+    pdfObjectUrls.set(iframeId, objectUrl);
+    iframe.src = objectUrl;
+  } catch (error) {
+    console.error("Unable to display PDF:", error);
+
+    const fallback = document.createElement("div");
+    fallback.className = "alert alert-warning m-3";
+    fallback.append("The PDF could not be displayed. ");
+
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = "Open the PDF in a new tab.";
+    fallback.appendChild(link);
+
+    iframe.replaceWith(fallback);
+  }
+};

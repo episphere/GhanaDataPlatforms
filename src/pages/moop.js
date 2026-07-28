@@ -1,4 +1,8 @@
-import { getAppAssetUrl, hideAnimation } from "../shared.js";
+import {
+  getAppAssetUrl,
+  hideAnimation,
+  loadPdfIntoIframe
+} from "../shared.js";
 import { pageNavBar } from "../components/navBarMenuItems.js";
 
 export const moopSummary = (activeTab, pageHeader) => {
@@ -96,28 +100,31 @@ export const moopTemplate = async () => {
     hideAnimation();
 };
 
-const renderChapter = (file, title) => {
+const renderChapter = async (file, title) => {
     const contentArea = document.getElementById("moopActualContent");
+    const pdfUrl = getAppAssetUrl(`MOOP/${file}`);
 
     contentArea.innerHTML = `
         <div class="mb-4 border-bottom pb-2">
             <h2 class="m-0">${title}</h2>
         </div>
         
-        ${renderPdfContent(file)}
+        ${renderPdfContent(title)}
         
         <div class="mt-4 pt-3 border-top">
-            <a href="${getAppAssetUrl(`MOOP/${file}`)}" target="_blank" class="btn btn-sm btn-link text-primary p-0">
+            <a href="${pdfUrl}" target="_blank" class="btn btn-sm btn-link text-primary p-0">
                 <i class="fas fa-download me-1"></i> Download original PDF
             </a>
         </div>
     `;
+
+    await loadPdfIntoIframe("moopPdfViewer", pdfUrl);
 };
 
-const renderPdfContent = (file) => {
+const renderPdfContent = (title) => {
     return `
         <div class="div-border" style="height: calc(100vh - 350px);">
-            <iframe src="${getAppAssetUrl(`MOOP/${file}`)}" width="100%" height="100%" style="border: none;"></iframe>
+            <iframe id="moopPdfViewer" title="${title} PDF" width="100%" height="100%" style="border: none;"></iframe>
         </div>
     `;
 };

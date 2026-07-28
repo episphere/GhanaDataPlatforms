@@ -5,7 +5,8 @@ import {
   shortenText,
   tsv2JsonDic, tsv2Json,
   json2other, getFileXLSX, array2Json, getUniqueKeyNames,
-  getAppAssetUrl
+  getAppAssetUrl,
+  loadPdfIntoIframe
 } from "./../shared.js";
 import {
   addEventToggleCollapsePanelBtn,
@@ -40,34 +41,40 @@ export const protocolSummary = (activeTab, pageHeader) => {
 export const protocolsTemplate = async (page) => {
     //document.getElementById("downloadContainer").style.display = 'none';
     let template = ``;
+    let pdfUrl = "";
     if (page == "Anthropometry"){
+        pdfUrl = getAppAssetUrl("static/files/GBHS_Anthropometry_Annotated_d20170821.pdf");
         template = `
                 <div class="confluence-resources white-bg div-border font-size-18 height100">
-                  <iframe src="${getAppAssetUrl("static/files/GBHS_Anthropometry_Annotated_d20170821.pdf")}" width="100%" height="100%"></iframe>
+                  <iframe id="protocolPdfViewer" title="Anthropometry PDF" width="100%" height="100%"></iframe>
                 </div>
                 `
     } else if (page == "Saliva"){
+        pdfUrl = getAppAssetUrl("static/files/GBHS_Saliva_Collection_Annotated_d20170821.pdf");
         template = `
                 <div class="confluence-resources white-bg div-border font-size-18 height100">
-                  <iframe src="${getAppAssetUrl("static/files/GBHS_Saliva_Collection_Annotated_d20170821.pdf")}" width="100%" height="100%"></iframe>
+                  <iframe id="protocolPdfViewer" title="Saliva Collection PDF" width="100%" height="100%"></iframe>
                 </div>
                 `
     } else if (page == "Stool"){
+        pdfUrl = getAppAssetUrl("static/files/GBHS_Stool_Collection_Annotated_d20170821.pdf");
         template = `
                 <div class="confluence-resources white-bg div-border font-size-18 height100">
-                  <iframe src="${getAppAssetUrl("static/files/GBHS_Stool_Collection_Annotated_d20170821.pdf")}" width="100%" height="100%"></iframe>
+                  <iframe id="protocolPdfViewer" title="Stool Collection PDF" width="100%" height="100%"></iframe>
                 </div>
                 `
        } else if (page == "Blood"){
+        pdfUrl = getAppAssetUrl("static/files/GBHS_Blood_Collection_Annotated_d20170821.pdf");
         template = `
                 <div class="confluence-resources white-bg div-border font-size-18 height100">
-                  <iframe src="${getAppAssetUrl("static/files/GBHS_Blood_Collection_Annotated_d20170821.pdf")}" width="100%" height="100%"></iframe>
+                  <iframe id="protocolPdfViewer" title="Blood Collection PDF" width="100%" height="100%"></iframe>
                 </div>
                 `
        }   else if (page == "Breast Tissue Biopsy Collection"){
+        pdfUrl = getAppAssetUrl("static/files/GBHS_Breast_Biopsy_Annotated_WithV2_d20170821.pdf");
         template = `
                 <div class="confluence-resources white-bg div-border font-size-18 height100">
-                  <iframe src="${getAppAssetUrl("static/files/GBHS_Breast_Biopsy_Annotated_WithV2_d20170821.pdf")}" width="100%" height="100%"></iframe>
+                  <iframe id="protocolPdfViewer" title="Breast Tissue Biopsy Collection PDF" width="100%" height="100%"></iframe>
                 </div>
                 `
        } else {
@@ -114,5 +121,6 @@ export const protocolsTemplate = async (page) => {
     `}
 
     document.getElementById("protocolPage").innerHTML = template;
+    if (pdfUrl) await loadPdfIntoIframe("protocolPdfViewer", pdfUrl);
     hideAnimation();
 }
