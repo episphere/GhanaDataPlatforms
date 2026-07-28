@@ -158,11 +158,6 @@ export const renderOverView = async () => {
                     DCEG Ghana Breast Study
                   </a>
                 </div>
-                <div class="col-md-6 mb-2">
-                  <i class="fas fa-envelope me-2"></i>
-                  <strong>Email:</strong> 
-                  <a href="mailto:NCIGBHS@mail.nih.gov ">NCIGBHS@mail.nih.gov</a>
-                </div>
               </div>
             </div>
           </div>

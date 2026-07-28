@@ -186,21 +186,6 @@ export const confluenceContactPage = () => {
                         </div>
                     </div>
                 </div>
-
-                <!-- Contact Info Card -->
-                <div class="main-summary-row mb-4">
-                    <div class="col">
-                        <div class="card shadow-sm" style="background-color: #f8f9fa;">
-                            <div class="card-body text-center p-4">
-                                <p class="mb-2 font-size-18">For questions about the Etiology of Aggressive Breast Cancer Study</p>
-                                <p class="mb-0">
-                                    <i class="fas fa-envelope me-2"></i>
-                                    <strong>Email:</strong> <a href="mailto:NCIGBHS@mail.nih.gov">NCIGBHS@mail.nih.gov</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     `;
