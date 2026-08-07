@@ -1224,6 +1224,7 @@ table.tablecon td {
   font-size: 1.5vw;
   color: #000000;
   font-family: "Montserrat", sans-serif;
+  white-space: nowrap;
 }
 
 .rounded-circle {
