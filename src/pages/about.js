@@ -31,7 +31,7 @@ export const renderOverView = async () => {
   let template = `
     <div class="main-summary-row">
       <div class="align-left">
-        <h1 class="page-header">Learn About EABCS</h1>
+        <h1 class="page-header">Learn About GBHS</h1>
       </div>
     </div>
     
@@ -43,7 +43,7 @@ export const renderOverView = async () => {
             <div class="card-body p-4">
               <h5 class="card-title font-bold mb-3">Study Overview</h5>
               <p class="card-text">
-                The Etiology of Aggressive Breast Cancer Study (EABCS) is a multidisciplinary 
+                The Ghana Breast Health Study (GBHS) is a multidisciplinary
                 population-based case-control study conducted to determine etiologic factors 
                 associated with different molecular subtypes of breast cancer among Ghanaian women.
               </p>
@@ -270,7 +270,7 @@ export const renderOverView = async () => {
 //   let template = `
 //     <div class="main-summary-row">
 //       <div class="align-left">
-//         <h1 class="page-header">Learn About EABCS</h1>
+//         <h1 class="page-header">Learn About GBHS</h1>
 //       </div>
 //     </div>
     
@@ -282,7 +282,7 @@ export const renderOverView = async () => {
 //             <div class="card-body p-4">
 //               <h5 class="card-title font-bold mb-3">Study Overview</h5>
 //               <p class="card-text">
-//                 The Etiology of Aggressive Breast Cancer Study (EABCS) is a multidisciplinary 
+//                 The Ghana Breast Health Study (GBHS) is a multidisciplinary
 //                 population-based case-control study conducted to determine etiologic factors 
 //                 associated with different molecular subtypes of breast cancer among Ghanaian women.
 //               </p>

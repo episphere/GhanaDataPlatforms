@@ -67,7 +67,7 @@ export const dataAccessNotSignedIn = () => {
               <div class="data-submission div-border font-size-18" style="padding-left: 1rem; padding-right: 1rem;">
                   <div class="row m-0">
                     <b>Guidelines for Scientific Review of Proposals</b>
-                      All studies that are proposing to utilize data collected from the Etiology of Aggressive Breast Cancer Study must be reviewed and approved by the Etiology of Aggressive Breast Cancer Study Steering Committee (GBHSSC).  The proposal should not exceed five pages (including references and tables) and should contain the following information:
+                      All studies that are proposing to utilize data collected from the Ghana Breast Health Study must be reviewed and approved by the Ghana Breast Health Study Steering Committee (GBHSSC).  The proposal should not exceed five pages (including references and tables) and should contain the following information:
                   </div></br>
                   <div class="row m-0">
                       <ol>
@@ -82,7 +82,7 @@ export const dataAccessNotSignedIn = () => {
                           <li style=" margin-botton: 10px;">Timeline for completion of different components of this project (Gantt Chart)</li>
                       </ol>
                   </div>
-                    Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the EABCS Team. The GBHSSC will review proposals 
+                    Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the GBHS Team. The GBHSSC will review proposals
                     as they are submitted and get back to the lead investigators within two weeks. No response after two weeks will be interpreted as having no objections 
                     to the proposal. Updates of proposals will be requested on a yearly basis.  There will need to be evidence of substantial progress over time.  Should 
                     there not be such evidence, the project (and/or associated data) will be considered appropriate for re-assignment to other investigators.
@@ -162,7 +162,7 @@ export const dataAccess = (activeTab, showDescripton) => {
               <div class="data-submission div-border font-size-18" style="padding-left: 1rem; padding-right: 1rem;">
                   <div class="row m-0">
                     <b>Guidelines for Scientific Review of Proposals</b>
-                      All studies that are proposing to utilize data collected from the Etiology of Aggressive Breast Cancer Study must be reviewed and approved by the Etiology of Aggressive Breast Cancer Study Steering Committee (GBHSSC).  The proposal should not exceed five pages (including references and tables) and should contain the following information:
+                      All studies that are proposing to utilize data collected from the Ghana Breast Health Study must be reviewed and approved by the Ghana Breast Health Study Steering Committee (GBHSSC).  The proposal should not exceed five pages (including references and tables) and should contain the following information:
                   </div></br>
                   <div class="row m-0">
                       <ol>
@@ -177,7 +177,7 @@ export const dataAccess = (activeTab, showDescripton) => {
                           <li style=" margin-botton: 10px;">Timeline for completion of different components of this project (Gantt Chart)</li>
                       </ol>
                   </div>
-                    Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the EABCS Team. The GBHSSC will review proposals as they are submitted and get back to the lead investigators within two weeks. No response after two weeks will be interpreted as having no objections to the proposal. Updates of proposals will be requested on a yearly basis.  There will need to be evidence of substantial progress over time.  Should there not be such evidence, the project (and/or associated data) will be considered appropriate for re-assignment to other investigators.
+                    Study proposals will be distributed to members of the GBHSSC with cc to other key personnel of the GBHS Team. The GBHSSC will review proposals as they are submitted and get back to the lead investigators within two weeks. No response after two weeks will be interpreted as having no objections to the proposal. Updates of proposals will be requested on a yearly basis.  There will need to be evidence of substantial progress over time.  Should there not be such evidence, the project (and/or associated data) will be considered appropriate for re-assignment to other investigators.
                 </div>
             </div>
         </div> `;
@@ -254,7 +254,7 @@ export const dbGaPStudy = (activeTab) => {
                   <div class="col">
                     <div class="card shadow-sm">
                       <div class="card-body p-4 text-center">
-                        <h5 class="card-title font-bold mb-3">EABCS dbGaP Study Information</h5>
+                        <h5 class="card-title font-bold mb-3">GBHS dbGaP Study Information</h5>
                         <p class="mb-4">Access the complete study information on the dbGaP (database of Genotypes and Phenotypes) website.</p>
                         <p class="mb-4"><strong>Study Accession:</strong> phs002387.v2.p1</p>
                         <a href="https://dbgap.ncbi.nlm.nih.gov/beta/study/phs002387.v2.p1/#study" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
@@ -737,7 +737,7 @@ export const acceptedStudiesView = async () => {
   let template = `
     <div class="main-summary-row">
             <div class="row align-left w-100 m-0">
-                <h1 class="col page-header pl-0 pt-2">Learn about EABCS</h1>
+                <h1 class="col page-header pl-0 pt-2">Learn about GBHS</h1>
                 <div class="ms-auto allow-overflow me-2" style="margin:1rem 0" id="pagesContainer"></div>
                 <div class="ms-auto mt-3 mb-3 me-2" id="pageSizeContainer"></div>
                 <div class="ms-auto mt-3 mb-3" id="downloadContainer">
@@ -1820,7 +1820,7 @@ export const dataForm = async () => {
               default: new docx.Header({
                 children: [
                   new docx.Paragraph({
-                    text: "Etiology of Aggressive Breast Cancer Study Analysis Proposal",
+                    text: "Ghana Breast Health Study Analysis Proposal",
                     heading: docx.HeadingLevel.HEADING_1,
                     alignment: docx.AlignmentType.CENTER,
                   }),
@@ -1945,7 +1945,7 @@ export const dataForm = async () => {
                 alignment: docx.AlignmentType.START,
                 children: [
                   new docx.TextRun({
-                    text: "Are you a member of EABCS ",
+                    text: "Are you a member of GBHS ",
                   }),
                   new docx.TextRun({
                     text: jsondata.member,
@@ -1961,7 +1961,7 @@ export const dataForm = async () => {
                 alignment: docx.AlignmentType.START,
                 children: [
                   new docx.TextRun({
-                    text: "EABCS Study Acronym(s) for the Contact Investigator: ",
+                    text: "GBHS Study Acronym(s) for the Contact Investigator: ",
                   }),
                   new docx.TextRun({
                     text: jsondata.acro,
@@ -2269,7 +2269,7 @@ export const dataForm = async () => {
             default: new docx.Header({
               children: [
                 new docx.Paragraph({
-                  text: "Etiology of Aggressive Breast Cancer Study Analysis Proposal",
+                  text: "Ghana Breast Health Study Analysis Proposal",
                   heading: docx.HeadingLevel.HEADING_1,
                   alignment: docx.AlignmentType.CENTER,
                 }),

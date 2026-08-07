@@ -835,7 +835,7 @@ export const addEventDataGovernanceNavBar = (bool) => {
     // if(dataGovernanceElement.classList.contains('navbar-active')) return;
     showAnimation();
     assignNavbarActive(dataGovernanceElement, 2);
-    document.title = "EABCS - Data Governance";
+    document.title = "GBHS - Data Governance";
     const confluenceDiv = document.getElementById("confluenceDiv");
     // if(bool){
     confluenceDiv.classList.add("general-bg");
@@ -1080,7 +1080,7 @@ export const addEventMyProjects = () => {
     if (myProjects.classList.contains("navbar-active")) return;
     showAnimation();
     assignNavbarActive(myProjects, 2);
-    document.title = "EABCS - My Projects";
+    document.title = "GBHS - My Projects";
     myProjectsTemplate();
   });
 };

@@ -15,7 +15,7 @@ export const navBarMenutemplate = () => {
         </div>
         <div class="grid-elements dropdown">
             <button class="nav-link nav-menu-links dropdown-toggle dropdown-btn white-font" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                About EABCS
+                About GBHS
             </button>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item nav-link nav-menu-links dropdown-menu-links ps-4" href="#about/overview" id="aboutGBHS">Overview</a>

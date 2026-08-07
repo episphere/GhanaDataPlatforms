@@ -1,3 +1,3 @@
 steps:
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '-r', '*', 'gs://nih-nci-dceg-epidataplatform-eabcs-prod/eabcs']
+  args: ['cp', '-r', '*', 'gs://nih-nci-dceg-epidataplatform-eabcs-prod/gbhs']

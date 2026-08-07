@@ -9,7 +9,7 @@ export const infoDeck = () => {
                 <div class="banner-logo">
                     <div class="banner-overlay-text row justify-content-center text-center">
                         <div class="col-xl-12">
-                            <h1 class="banner-overlay-h1"> Etiology of Aggressive Breast Cancer Study (EABCS) </h1>
+                            <h1 class="banner-overlay-h1"> Ghana Breast Health Study (GBHS) </h1>
                             <div class="banner-overlay-line"></div>
                             <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> A multidisciplinary population-based case-control study</h2>
                         </div>
@@ -61,7 +61,7 @@ export const infoDeck = () => {
         </div>
         <!---<div class="ternary-bg">
             <div class="container align-left confluence-info font-family-montserrat">
-            <div>The EABCS is funded by the US National Cancer Institute (NCI) grant number <a href="https://maps.cancer.gov/overview/DCCPSGrants/abstract.jsp?applId=10263893&term=CA249866">UPDATE FOR EABCS</a> and the NCI Intramural Research Funds. BCRPP is coordinated by the Harvard T.H. Chan School of Public Health and the Division of Cancer Epidemiology and Genetics (DCEG) of NCI, in collaboration with the NCI Cohort Consortium.</div>
+            <div>The GBHS is funded by the US National Cancer Institute (NCI) grant number <a href="https://maps.cancer.gov/overview/DCCPSGrants/abstract.jsp?applId=10263893&term=CA249866">UPDATE FOR GBHS</a> and the NCI Intramural Research Funds. BCRPP is coordinated by the Harvard T.H. Chan School of Public Health and the Division of Cancer Epidemiology and Genetics (DCEG) of NCI, in collaboration with the NCI Cohort Consortium.</div>
             </div>
         </div>--->
     `;
@@ -76,7 +76,7 @@ export const infoDeckAfterLoggedIn = async () => {
                 <div class="banner-logo">
                     <div class="banner-overlay-text row justify-content-center text-center">
                         <div class="col-xl-12">
-                            <h1 class="banner-overlay-h1">Etiology of Aggressive Breast Cancer Study (EABCS)</h1>
+                            <h1 class="banner-overlay-h1">Ghana Breast Health Study (GBHS)</h1>
                             <div class="banner-overlay-line"></div>
                             <h2 class="banner-overlay-h3" style="font-size:1.7vw;"> A multidisciplinary population-based case-control study</h2>
                         </div>
@@ -130,7 +130,7 @@ export const infoDeckAfterLoggedIn = async () => {
         </div>
         <!---<div class="ternary-bg">
             <div class="container align-left confluence-info font-family-montserrat">
-            <div>The EABCS is funded by the US National Cancer Institute (NCI) grant number <a href="https://maps.cancer.gov/overview/DCCPSGrants/abstract.jsp?applId=10263893&term=CA249866">UPDATE FOR EABCS</a> and the NCI Intramural Research Funds. BCRPP is coordinated by the Harvard T.H. Chan School of Public Health and the Division of Cancer Epidemiology and Genetics (DCEG) of NCI, in collaboration with the NCI Cohort Consortium.</div>
+            <div>The GBHS is funded by the US National Cancer Institute (NCI) grant number <a href="https://maps.cancer.gov/overview/DCCPSGrants/abstract.jsp?applId=10263893&term=CA249866">UPDATE FOR GBHS</a> and the NCI Intramural Research Funds. BCRPP is coordinated by the Harvard T.H. Chan School of Public Health and the Division of Cancer Epidemiology and Genetics (DCEG) of NCI, in collaboration with the NCI Cohort Consortium.</div>
             </div>
         </div>--->
     `;

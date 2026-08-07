@@ -30,23 +30,23 @@ export const summaryStatsFileId = 1942913543244; //861342561526;//908600664259; 
 
 export const summaryStatsFolderId = 117674266284;
 
-export const uploadFormFolder = 302463515558; //Updated for EABCS
+export const uploadFormFolder = 302463515558; //Updated for GBHS
 
-export const daccReviewFolder = 302459186137; //Updated for EABCS
+export const daccReviewFolder = 302459186137; //Updated for GBHS
 
-export const daccReviewChairFolder = 302458897963; //Updated for EABCS
+export const daccReviewChairFolder = 302458897963; //Updated for GBHS
 
-export const chairReviewFolder = 302460783786; //Updated for EABCS
+export const chairReviewFolder = 302460783786; //Updated for GBHS
 
-export const acceptedFolder = 302461158289; //Updated for EABCS
+export const acceptedFolder = 302461158289; //Updated for GBHS
 
-export const deniedFolder = 302462150134; //Updated for EABCS
+export const deniedFolder = 302462150134; //Updated for GBHS
 
-export const submitterFolder = 302459953400; //Updated for EABCS
+export const submitterFolder = 302459953400; //Updated for GBHS
 
-export const missingnessStatsFileId = 0; //Not used with EABCS
+export const missingnessStatsFileId = 0; //Not used with GBHS
 
-export const missingnessStatsCasesFileId = 0; //Not used with EABCS
+export const missingnessStatsCasesFileId = 0; //Not used with GBHS
 
 export const getFolderItems = async (id) => {
   try {

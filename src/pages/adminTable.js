@@ -179,7 +179,7 @@ export const adminTableTemplate = () => {
         <div class="main-summary-row align-items-center">
           <div class="col align-left">
             <h1 class="page-header">Admin Table</h1>
-            <p class="mb-0">EABCS analysis proposals across the review workflow.</p>
+            <p class="mb-0">GBHS analysis proposals across the review workflow.</p>
           </div>
           <div class="col-auto">
             <button type="button" class="btn btn-outline-primary" id="refreshAdminTable">
